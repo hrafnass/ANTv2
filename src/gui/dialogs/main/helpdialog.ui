@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HelpDialog</class>
+ <widget class="QDialog" name="HelpDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>870</width>
+    <height>565</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:16pt; font-weight:600; text-decoration: underline;&quot;&gt;Hilfe&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%; font-family:'Ubuntu';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt; text-decoration: underline;&quot;&gt;Programmaufbau:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt; text-decoration: underline;&quot;&gt;Menubar:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;		&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt; text-decoration: underline;&quot;&gt;Datei:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;			Datenbank hinzufügen &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;(Strg+N) &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;				&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;- Fügt eine Datenbank für Normwertberechnung&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;				hinzu&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;			Beenden &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;(Strg+Q) &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;				&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;- Beendet das komplette Programm&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;		&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt; text-decoration: underline;&quot;&gt;Hilfe:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;			Über Reaktionsspiel:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:16pt;&quot;&gt;				&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;- Gibt verwendete Lizenzen und verwendete &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;				Bibliotheken&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;			Hilfe &lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;(Strg+H)&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;				&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;- Zeigt diese Hilfe&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt; text-decoration: underline;&quot;&gt;Startbildschirm:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:14pt;&quot;&gt;		&lt;/span&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;- verwendet zur Testpersoneneingabe (Name, Vorname, Geburtsdatum)&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;		- mit * gekennzeichnete Felder sind obligatorisch&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;		- im Notizenfeld können noch zusätzliche Anmerkungen gemacht werden&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:100%;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:12pt;&quot;&gt;		- Startbutton beginnt das Spiel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::NoTextInteraction</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

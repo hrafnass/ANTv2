@@ -35,6 +35,8 @@ protected:
 
 private:   
     // private methods
+    // calculates the amount of pixels for x or y coordinates (for x char x_or_y == 'x')
+    int pixel(double cm, char x_or_y);
     // methods to set the up and down labels - other_img take the pictures arround the mid image and mid_img is the mid label
     void setUpLables(QString other_img, QString mid_img);
     void setDownLables(QString other_img, QString mid_img);

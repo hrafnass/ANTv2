@@ -49,56 +49,69 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
 
 // set the width and height of the labels for an 1,6 cm long arrow and 0,6 cm free spaces between
 void GameWindow::setLabelSize(){
-    // calculate the size in cm to px
-    // number of px = size [cm] / 2,54 [cm/i] x [dpi]
-    int x_dpi = GameWindow::physicalDpiX();      // get the dpi values
-    int y_dpi = GameWindow::physicalDpiY();
-    // size in px of all arrow labels
-    int arrow_height = static_cast<int>((0.6 / 2.54) * y_dpi);
-    int arrow_width = static_cast<int>((1.6 / 2.54) * x_dpi);
-    int free_height = static_cast<int>((0.6 / 2.54) * y_dpi);
-    int free_width = static_cast<int>((0.6 / 2.54) * x_dpi);
+    // size in px of all arrow/star labels
+    int height = pixel(0.6, 'y');
+    int arrow_width = pixel(1.6, 'x');
+    int free_width = pixel(0.6, 'y');
+    int mid_height = pixel(0.6, 'x');
+    int mid_width = pixel(0.6, 'y');
+
     // sizes for up labels
-    ui->Up1->setFixedHeight(arrow_height);
+    ui->Up1->setFixedHeight(height);
     ui->Up1->setFixedWidth(arrow_width);
-    ui->Up2->setFixedHeight(arrow_height);
+    ui->Up2->setFixedHeight(height);
     ui->Up2->setFixedWidth(arrow_width);
-    ui->Up2_1->setFixedHeight(free_height);
+    ui->Up2_1->setFixedHeight(height);
     ui->Up2_1->setFixedWidth(free_width);
-    ui->Up3->setFixedHeight(arrow_height);
+    ui->Up3->setFixedHeight(height);
     ui->Up3->setFixedWidth(arrow_width);
-    ui->Up4->setFixedHeight(arrow_height);
+    ui->Up4->setFixedHeight(height);
     ui->Up4->setFixedWidth(arrow_width);
-    ui->Up3_2->setFixedHeight(free_height);
+    ui->Up3_2->setFixedHeight(height);
     ui->Up3_2->setFixedWidth(free_width);
-    ui->Up5->setFixedHeight(arrow_height);
+    ui->Up5->setFixedHeight(height);
     ui->Up5->setFixedWidth(arrow_width);
-    ui->Up4_3->setFixedHeight(free_height);
+    ui->Up4_3->setFixedHeight(height);
     ui->Up4_3->setFixedWidth(free_width);
-    ui->Up4_5->setFixedHeight(free_height);
+    ui->Up4_5->setFixedHeight(height);
     ui->Up4_5->setFixedWidth(free_width);
     // sizes for downlabels
-    ui->Down1->setFixedHeight(arrow_height);
+    ui->Down1->setFixedHeight(height);
     ui->Down1->setFixedWidth(arrow_width);
-    ui->Down2->setFixedHeight(arrow_height);
+    ui->Down2->setFixedHeight(height);
     ui->Down2->setFixedWidth(arrow_width);
-    ui->Down2_1->setFixedHeight(free_height);
+    ui->Down2_1->setFixedHeight(height);
     ui->Down2_1->setFixedWidth(free_width);
-    ui->Down3->setFixedHeight(arrow_height);
+    ui->Down3->setFixedHeight(height);
     ui->Down3->setFixedWidth(arrow_width);
-    ui->Down4->setFixedHeight(arrow_height);
+    ui->Down4->setFixedHeight(height);
     ui->Down4->setFixedWidth(arrow_width);
-    ui->Down2_3->setFixedHeight(free_height);
+    ui->Down2_3->setFixedHeight(height);
     ui->Down2_3->setFixedWidth(free_width);
-    ui->Down5->setFixedHeight(arrow_height);
+    ui->Down5->setFixedHeight(height);
     ui->Down5->setFixedWidth(arrow_width);
-    ui->Down3_4->setFixedHeight(free_height);
+    ui->Down3_4->setFixedHeight(height);
     ui->Down3_4->setFixedWidth(free_width);
-    ui->Down4_5->setFixedHeight(free_height);
+    ui->Down4_5->setFixedHeight(height);
     ui->Down4_5->setFixedWidth(free_width);
+    // set mid_label
+    ui->labelMid->setFixedHeight(mid_height);
+    ui->labelMid->setFixedWidth(mid_width);
 }
 
 // private methods
+int GameWindow::pixel(double cm, char x_or_y){
+    int dpi = 0;
+    // get the needed dpi values
+    if(x_or_y == 'x')
+        dpi = GameWindow::physicalDpiX();      // get the dpi values
+    else if (x_or_y == 'y')
+        dpi = GameWindow::physicalDpiY();
+    // calculates the pixel amount
+    int free_width = static_cast<int>((cm / 2.54) * dpi);
+    return free_width;
+}
+
 // set the image labels
 void GameWindow::setUpLables(QString other, QString mid){
     // set the pixmaps

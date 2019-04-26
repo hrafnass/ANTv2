@@ -68,6 +68,7 @@ void Run::possibleCombinations(){
             }
         }
     }
+    cout << "Lenght run vector: " << run_vector.size();
 }
 
 // shuffels the run_vector - and set the iterator to run_vector_begin

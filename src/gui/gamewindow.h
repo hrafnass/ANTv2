@@ -34,6 +34,7 @@ private:
     // methods to set the up and down labels - other_img take the pictures arround the mid image and mid_img is the mid label
     void setUpLables(QString other_img, QString mid_img);
     void setDownLables(QString other_img, QString mid_img);
+    void clearScreen();     // removes input from all labels (load a white pixmap - look if there is a better method)
     // choose which arrow position should loaded in setUp/DownLables
     void showImgArrow();         // show other and mid image on the right label - arrow images
     Ui::GameWindow *ui;

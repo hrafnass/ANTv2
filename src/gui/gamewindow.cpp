@@ -124,7 +124,23 @@ void GameWindow::setDownLables(QString other, QString mid){
     ui->Down5->setPixmap(other);
 }
 
+void GameWindow::clearScreen(){
+    QPixmap free(":/ressources/images/free_space.svg");
+    ui->Down1->setPixmap(free);
+    ui->Down2->setPixmap(free);
+    ui->Down3->setPixmap(free);
+    ui->Down4->setPixmap(free);
+    ui->Down5->setPixmap(free);
+    ui->Up1->setPixmap(free);
+    ui->Up2->setPixmap(free);
+    ui->Up3->setPixmap(free);
+    ui->Up4->setPixmap(free);
+    ui->Up5->setPixmap(free);
+    //ui->labelMid->setPixmap(free);
+}
+
 void GameWindow::showImgArrow(){
+    clearScreen();
     Trial actuellTrial = run->getActuellTrial();        // get the actuell Trial for getting the image values
     switch (actuellTrial.getArrowPosition()) {
     case Trial::arrow_position::both_arrow:     // show the Trial on the Up and on the Down labels
@@ -142,7 +158,7 @@ void GameWindow::showImgArrow(){
         break;
     default:
         cout << "Error in showImgArrow - ArrowPosition isn't set right!!!";
-        return;
+        break;
     }
     cout << "Other Pic" << actuellTrial.getOtherImg().toStdString() << " Mid Pic: " << actuellTrial.getMidImg().toStdString() << endl;
 }

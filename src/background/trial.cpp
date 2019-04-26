@@ -23,7 +23,7 @@ int Trial::getReactionTime() { return reaction_time; }
 Trial::star_position Trial::getStarPosition() { return star_pos; }
 Trial::arrow_position Trial::getArrowPosition() { return arrow_pos; }
 Trial::dir Trial::getDirection(){ return direction;}
-// getter for mid and other image
+// getter for mid and other image (arrows)
 QString Trial::getMidImg() { return mid_img; }
 QString Trial::getOtherImg() { return other_img; }
 

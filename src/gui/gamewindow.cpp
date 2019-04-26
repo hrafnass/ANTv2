@@ -27,11 +27,11 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     switch (event->key()) {
     case Qt::Key_Left:      // pressed left key
         run->setMeasure(100, 0);
-        showImgArrow();
+        imgLoader(STAR);
         break;
     case Qt::Key_Right:     // pressed right key
         run->setMeasure(50, 1);
-        showImgArrow();
+        imgLoader(ARROW);
         break;
     case Qt::Key_Escape:
         cout << "Game ESC";
@@ -139,27 +139,54 @@ void GameWindow::clearScreen(){
     //ui->labelMid->setPixmap(free);
 }
 
-void GameWindow::showImgArrow(){
-    clearScreen();
-    Trial actuellTrial = run->getActuellTrial();        // get the actuell Trial for getting the image values
+void GameWindow::showImgArrow(Trial actuellTrial){
     switch (actuellTrial.getArrowPosition()) {
     case Trial::arrow_position::both_arrow:     // show the Trial on the Up and on the Down labels
         setDownLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg());    // load the images
         setUpLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg());
-        cout << "both" << endl;
         break;
     case Trial::arrow_position::down_arrow:     // shwo the Trial on the down labels
         setDownLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg());    // load the images
-        cout << "down" << endl;
         break;
     case Trial::arrow_position::up_arrow:       // show the Trial on the up labels
         setUpLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg());
-        cout << "up" << endl;
         break;
     default:
         cout << "Error in showImgArrow - ArrowPosition isn't set right!!!";
         break;
     }
-    cout << "Other Pic" << actuellTrial.getOtherImg().toStdString() << " Mid Pic: " << actuellTrial.getMidImg().toStdString() << endl;
+}
+
+void GameWindow::showImgStars(Trial actuellTrial){
+    QPixmap star = QPixmap(star_img);
+    switch (actuellTrial.getStarPosition()) {
+    case Trial::star_position::both_star:     // show the star on the Up and on the Down labels
+        ui->Down3->setPixmap(star);
+        ui->Up3->setPixmap(star);
+        break;
+    case Trial::star_position::up_star:     // shwo the star on the down labels
+        ui->Up3->setPixmap(star);
+        break;
+    case Trial::star_position::down_star:       // show the star on the up labels
+        ui->Down3->setPixmap(star);
+        break;
+    case Trial::star_position::mid:
+        ui->labelMid->setPixmap(star);
+        break;
+    default:
+        break;
+    }
+}
+
+// loads the images for the game
+void GameWindow::imgLoader(bool img) {
+    // clear the screen and get the actuell Trial
+    clearScreen();
+    Trial actuellTrial = run->getActuellTrial();
+    // run the image load function for arrows and stars
+    if(img == STAR)
+        showImgStars(actuellTrial);
+    else if (img == ARROW)
+        showImgArrow(actuellTrial);
 }
 

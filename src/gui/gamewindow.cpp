@@ -48,55 +48,24 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
 }
 
 // set the width and height of the labels for an 1,6 cm long arrow and 0,6 cm free spaces between
-void GameWindow::setLabelSize(){
+void GameWindow::startSettings(){
     // size in px of all arrow/star labels
     int height = pixel(0.6, 'y');
-    int arrow_width = pixel(1.6, 'x');
     int free_width = pixel(0.6, 'y');
-    int mid_height = pixel(0.6, 'x');
-    int mid_width = pixel(0.6, 'y');
-
-    // sizes for up labels
-    ui->Up1->setFixedHeight(height);
-    ui->Up1->setFixedWidth(arrow_width);
-    ui->Up2->setFixedHeight(height);
-    ui->Up2->setFixedWidth(arrow_width);
-    ui->Up2_1->setFixedHeight(height);
-    ui->Up2_1->setFixedWidth(free_width);
-    ui->Up3->setFixedHeight(height);
-    ui->Up3->setFixedWidth(arrow_width);
-    ui->Up4->setFixedHeight(height);
-    ui->Up4->setFixedWidth(arrow_width);
-    ui->Up3_2->setFixedHeight(height);
-    ui->Up3_2->setFixedWidth(free_width);
-    ui->Up5->setFixedHeight(height);
-    ui->Up5->setFixedWidth(arrow_width);
-    ui->Up4_3->setFixedHeight(height);
-    ui->Up4_3->setFixedWidth(free_width);
-    ui->Up4_5->setFixedHeight(height);
-    ui->Up4_5->setFixedWidth(free_width);
-    // sizes for downlabels
-    ui->Down1->setFixedHeight(height);
-    ui->Down1->setFixedWidth(arrow_width);
-    ui->Down2->setFixedHeight(height);
-    ui->Down2->setFixedWidth(arrow_width);
-    ui->Down2_1->setFixedHeight(height);
-    ui->Down2_1->setFixedWidth(free_width);
-    ui->Down3->setFixedHeight(height);
-    ui->Down3->setFixedWidth(arrow_width);
-    ui->Down4->setFixedHeight(height);
-    ui->Down4->setFixedWidth(arrow_width);
-    ui->Down2_3->setFixedHeight(height);
-    ui->Down2_3->setFixedWidth(free_width);
-    ui->Down5->setFixedHeight(height);
-    ui->Down5->setFixedWidth(arrow_width);
-    ui->Down3_4->setFixedHeight(height);
-    ui->Down3_4->setFixedWidth(free_width);
-    ui->Down4_5->setFixedHeight(height);
-    ui->Down4_5->setFixedWidth(free_width);
-    // set mid_label
-    ui->labelMid->setFixedHeight(mid_height);
-    ui->labelMid->setFixedWidth(mid_width);
+    int mid_height = pixel(1, 'x');
+    int mid_width = pixel(1, 'y');
+    // up labels
+    setLabelSize(ui->Up2_1, height, free_width);
+    setLabelSize(ui->Up3_2, height, free_width);
+    setLabelSize(ui->Up4_3, height, free_width);
+    setLabelSize(ui->Up4_5, height, free_width);
+    // down labels
+    setLabelSize(ui->Down2_1, height, free_width);
+    setLabelSize(ui->Down2_3, height, free_width);
+    setLabelSize(ui->Down3_4, height, free_width);
+    setLabelSize(ui->Down4_5, height, free_width);
+    // mid labels
+    setLabelSize(ui->labelMid, mid_height, mid_width);
 }
 
 // private methods
@@ -113,7 +82,10 @@ int GameWindow::pixel(double cm, char x_or_y){
 }
 
 // set the image labels
-void GameWindow::setUpLables(QString other, QString mid){
+void GameWindow::setUpLables(QString other, QString mid, int arrow_width, int arrow_height){
+    // sizes for up labels
+    // up labels - resize the mid label - because it could changed by an star
+    setLabelSize(ui->Up3, arrow_height, arrow_width);
     // set the pixmaps
     QPixmap pix_other(other);
     QPixmap pix_mid(mid);
@@ -125,16 +97,18 @@ void GameWindow::setUpLables(QString other, QString mid){
     ui->Up5->setPixmap(pix_other);
 }
 
-void GameWindow::setDownLables(QString other, QString mid){
+void GameWindow::setDownLables(QString other, QString mid, int arrow_width, int arrow_height){
+    // down labels - resize the mid label - because it could changed by an star
+    setLabelSize(ui->Down3, arrow_height, arrow_width);
     // set the pixmaps
     QPixmap pix_other(other);
     QPixmap pix_mid(mid);
     // load the labels
-    ui->Down1->setPixmap(other);
-    ui->Down2->setPixmap(other);
-    ui->Down3->setPixmap(mid);
-    ui->Down4->setPixmap(other);
-    ui->Down5->setPixmap(other);
+    ui->Down1->setPixmap(pix_other);
+    ui->Down2->setPixmap(pix_other);
+    ui->Down3->setPixmap(pix_mid);
+    ui->Down4->setPixmap(pix_other);
+    ui->Down5->setPixmap(pix_other);
 }
 
 void GameWindow::clearScreen(){
@@ -170,20 +144,33 @@ void GameWindow::showImgArrow(Trial actuellTrial){
     }
 }
 
+void GameWindow::setLabelSize(QLabel *label, int height, int width){
+    label->setFixedHeight(height);
+    label->setFixedWidth(width);
+}
+
 void GameWindow::showImgStars(Trial actuellTrial){
+    // get the size for the labels
+    int arrow_height = pixel(0.6, 'y');
+    int arrow_width = pixel(0.6, 'x');
     QPixmap star = QPixmap(star_img);
     switch (actuellTrial.getStarPosition()) {
     case Trial::star_position::both_star:     // show the star on the Up and on the Down labels
+        setLabelSize(ui->Down3, arrow_height, arrow_width);
+        setLabelSize(ui->Up3, arrow_height, arrow_width);
         ui->Down3->setPixmap(star);
         ui->Up3->setPixmap(star);
         break;
     case Trial::star_position::up_star:     // shwo the star on the down labels
+        setLabelSize(ui->Up3, arrow_height, arrow_width);
         ui->Up3->setPixmap(star);
         break;
     case Trial::star_position::down_star:       // show the star on the up labels
+        setLabelSize(ui->Down3, arrow_height, arrow_width);
         ui->Down3->setPixmap(star);
         break;
     case Trial::star_position::mid:
+        setLabelSize(ui->labelMid, arrow_height, arrow_width);
         ui->labelMid->setPixmap(star);
         break;
     default:

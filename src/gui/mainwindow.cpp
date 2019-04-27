@@ -51,7 +51,7 @@ void MainWindow::on_startGamePushButton_clicked()
     }else {
         run.newGame();          // start the settings for a new game
         game.showFullScreen();  // open the window in fullscreen
-        game.setLabelSize();    // sets the size of all labels
+        game.startSettings();   // sets the size of all labels
     }
     // save all calculated values
     save.openCSVFile(forename, name);

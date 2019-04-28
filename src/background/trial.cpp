@@ -37,7 +37,6 @@ void Trial::setDirection(){
         direction = dir::r;
 }
 
-
 // setter img
 // the most images doesn't exist yet
 void Trial::setImg(){

@@ -14,7 +14,7 @@ bool Saving::openCSVFile(QString name, QString forename) {
 }
 
 // write in the csv file
-void Saving::writeCSVFile(Measurement *measure, Calculation *calc, QString comment) {
+void Saving::writeCSVFile(Calculation *calc, QString comment) {
     /*
         Input of a csv-file:
         trial number, reaction time*, reacted**, average***, right percentage***, median***, effects***, comment***

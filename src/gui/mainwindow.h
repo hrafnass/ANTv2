@@ -42,7 +42,6 @@ private:
     Saving save;
     // saves all values and calculations
     Calculation calc;
-    Measurement measure;
 };
 
 #endif // MAINWINDOW_H

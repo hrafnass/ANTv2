@@ -26,7 +26,6 @@ CONFIG += c++11
 
 SOURCES += \
     src/background/calculation.cpp \
-    src/background/measurement.cpp \
     src/background/run.cpp \
     src/background/saving.cpp \
     src/background/trial.cpp \
@@ -41,7 +40,6 @@ SOURCES += \
 
 HEADERS += \
     src/background/calculation.h \
-    src/background/measurement.h \
     src/background/run.h \
     src/background/saving.h \
     src/background/trial.h \

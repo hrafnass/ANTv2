@@ -25,12 +25,12 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment) {
     int number_of_rows = 1;         // count the number of colums
     QTextStream save(&file);        // output stream for a file
     // saves the headline in the csv file
-    save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment,finished test" << endl;
+    save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment"<< endl;
     // saves all calculated and measured values
-    save << "0,,,"<<QString::number(calc->getMedian())<<","<<QString::number(calc->getAverage())<<","<<QString::number(calc->getRightPercentage())<<","<<QString::number(calc->getEffects())<<","<<comment<<endl;
+    save << ",,,"<<QString::number(calc->getMedian())<<","<<QString::number(calc->getAverage())<<","<<QString::number(calc->getRightPercentage())<<","<<QString::number(calc->getEffects())<<","<<comment<<endl;
     // runs solong elements in the vector
     while (run->readRun()) {
-        save << QString::number(number_of_rows) << QString::number(run->getActuellTrial().getReactionTime());
+        save << QString::number(number_of_rows)<<"," << QString::number(run->getActuellTrial().getReactionTime()) << ",";
         // save if the reaction was right
         if (run->getActuellTrial().getRightReaction())
             save << "true"<< endl;

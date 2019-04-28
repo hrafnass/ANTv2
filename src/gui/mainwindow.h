@@ -12,7 +12,6 @@
 #include "../background/saving.h"
 #include "../background/calculation.h"
 #include "../background/run.h"
-#include "../background/measurement.h"
 
 namespace Ui {
 class MainWindow;

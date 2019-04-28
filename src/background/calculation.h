@@ -1,6 +1,5 @@
 #ifndef CALCULATION_H
 #define CALCULATION_H
-#include "measurement.h"
 #include<vector>
 #include<algorithm>
 

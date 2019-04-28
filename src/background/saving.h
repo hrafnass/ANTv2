@@ -5,10 +5,9 @@
 #include <QString>
 #include <QTime>
 #include <QDate>
-#include <vector>
 
 #include "calculation.h"
-#include "trial.h"
+#include "run.h"
 
 // Saves all calculated and measured data of the reaction game in  a csv file
 class Saving
@@ -16,7 +15,7 @@ class Saving
 public:
     Saving();
     bool openCSVFile(QString name, QString forename);                                   // open a new csv-file
-    void writeCSVFile(vector<Trial> run, Calculation *calc, QString comment);           // saves all calculated and measured values
+    void writeCSVFile(Run *run, Calculation *calc, QString comment);           // saves all calculated and measured values
     void closeCSVFile();                                                                // closes the csv-file
 private:
     // functions

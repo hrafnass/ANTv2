@@ -55,11 +55,10 @@ void MainWindow::on_startGamePushButton_clicked()
     }
     // save all calculated values
     save.openCSVFile(forename, name);
-    save.writeCSVFile(&measure, &calc, notice);
+    save.writeCSVFile(&run, &calc, notice);
     save.closeCSVFile();
     // clear all measured values
     calc.resetValues();
-    measure.clearValues();
     // delete the whole input (forename, name, notice, birthday to Standard)
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");

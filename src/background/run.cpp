@@ -11,8 +11,10 @@ void Run::initRun(int number_of_reruns=2){
 }
 
 void Run::newGame(){
-    shuffelRun();
+    shuffelRun();           // shuffel the vector for a new run
+    setIteratorToStart();   // set the Iterator to vector.begin to iterate over it
     pos = 0;
+    // reseting all measured values in run_vector (import for a second game)
     for(;it_run_vector != run_vector.begin(); ++it_run_vector) {
         // calculates the position in the vector
         pos = it_run_vector - run_vector.begin();
@@ -20,8 +22,7 @@ void Run::newGame(){
         run_vector.at(pos).setReactionTime(-1);
         run_vector.at(pos).setRightReaction(false);
     }
-    // set the iterator to begin
-    it_run_vector = run_vector.begin();
+    setIteratorToStart();   // set the iterator to start - needed for a right use of readRun()
     pos = 0;
 }
 

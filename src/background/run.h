@@ -33,6 +33,7 @@ public:
     bool readRun();       // read an element of run_vector - bool checks if the iterator stay in the range between vector::begin and vector::end
     // setter for the measured values
     void setMeasure(int reaction_time, int choose); // saves the measured values int saves the reaction time and choose saves the value of direction (0 - left), (1 - right)
+    void setIteratorToStart();  // sets the iterator to vector.begin()
     // getter for actuell trial
     Trial getActuellTrial();
 private:

@@ -48,6 +48,8 @@ void Run::setMeasure(int reaction_time, int choose){
         run_vector.at(pos).setRightReaction(false);
 }
 
+// set the iterator to vector.begin
+void Run::setIteratorToStart(){ it_run_vector = run_vector.begin(); }
 
 //returns the actuell trial
 Trial Run::getActuellTrial() {
@@ -75,6 +77,4 @@ void Run::possibleCombinations(){
 void Run::shuffelRun(){
     // using the mt19937 random number generator
     shuffle(run_vector.begin(), run_vector.end(), generator);
-    // set the run_vector iterator to the start
-    it_run_vector = run_vector.begin();
 }

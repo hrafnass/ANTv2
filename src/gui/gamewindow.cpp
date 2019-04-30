@@ -62,7 +62,6 @@ void GameWindow::startSettings(){
 // protected methods
 // adds the key press event
 void GameWindow::keyPressEvent(QKeyEvent *event){
-    run->readRun();
     // catch the pressed key only left and right are needed
     switch (event->key()) {
     case Qt::Key_Left:      // pressed left key
@@ -98,8 +97,21 @@ int GameWindow::pixel(double cm, char x_or_y){
     else if (x_or_y == 'y')
         dpi = GameWindow::physicalDpiY();
     // calculates the pixel amount
-    int free_width = static_cast<int>((cm / 2.54) * dpi);
-    return free_width;
+    int number_of_px = static_cast<int>((cm / 2.54) * dpi);
+    return number_of_px;
+}
+
+// the game
+void GameWindow::gameLoop(){
+    // run solong all 143 trials are over
+    while (run->readRun()) {
+        // 1. show the star wait one second
+
+
+        // 2. show the arrow
+        // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
+    }
+
 }
 
 // set the image labels

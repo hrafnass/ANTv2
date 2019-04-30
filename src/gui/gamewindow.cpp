@@ -19,6 +19,20 @@ GameWindow::~GameWindow()
 // public methods
 void GameWindow::setRun(Run *r){ run = r;}
 
+// the game
+void GameWindow::gameLoop(){
+    // run solong all 143 trials are over
+    while (run->readRun()) {
+        // 1. show the star wait one second
+
+
+        // 2. show the arrow
+        // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
+        delay(2000);
+        cout << "PPPPPPPPPPPPPPP"<<endl;
+    }
+
+}
 
 // set the width and height of the labels for an 1,6 cm long arrow and 0,6 cm free spaces between
 void GameWindow::startSettings(){
@@ -101,17 +115,14 @@ int GameWindow::pixel(double cm, char x_or_y){
     return number_of_px;
 }
 
-// the game
-void GameWindow::gameLoop(){
-    // run solong all 143 trials are over
-    while (run->readRun()) {
-        // 1. show the star wait one second
-
-
-        // 2. show the arrow
-        // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
+// set a delay of miliseconds
+void GameWindow::delay( int millisecondsToWait )
+{
+    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
+    while( QTime::currentTime() < dieTime )
+    {
+        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
     }
-
 }
 
 // set the image labels

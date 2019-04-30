@@ -52,7 +52,7 @@ void MainWindow::on_startGamePushButton_clicked()
         run.newGame();          // start the settings for a new game
         game.showFullScreen();  // open the window in fullscreen
         game.startSettings();   // sets the size of all labels
-        game.gameLoop();        // sttart the game
+        game.gameLoop();        // start game loop
     }
     // save all calculated values
     save.openCSVFile(forename, name);

@@ -25,10 +25,14 @@ void GameWindow::gameLoop(){
     while (run->readRun()) {
         // 1. show the star wait one second
 
-
+        showImgArrow(run->getActuellTrial());
+        delay(1000);
+        clearScreen();
         // 2. show the arrow
         // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
+        showImgArrow(run->getActuellTrial());
         delay(2000);
+        clearScreen();
         cout << "PPPPPPPPPPPPPPP"<<endl;
     }
 

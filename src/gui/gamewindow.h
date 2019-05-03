@@ -58,6 +58,7 @@ private:
     // saves the image names
     const QString star_img = ":/ressources/images/star.svg";
     const QString plus_img = ":/ressources/images/plus.svg";
+    bool quit_loop;  // if the esc button is pressed quit_loop is set to false - so the game loop quits - in startSettings it's set to true
 };
 
 #endif // GAMEWINDOW_H

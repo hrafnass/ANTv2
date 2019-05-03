@@ -10,6 +10,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    time_measurement.start();   // start the time measurement
 }
 
 GameWindow::~GameWindow()
@@ -25,18 +26,18 @@ void GameWindow::gameLoop(){
     // run solong all 143 trials are over or esc is pressed and set quit_loop to false
     while (run->readRun() && quit_loop) {
         // 1. show the star wait one second
-
+        to_long = true; // set to long on true -> the isn't measured any more
         showImgArrow(run->getActuellTrial());
         delay(1000);
         clearScreen();
         // 2. show the arrow
         // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
         showImgArrow(run->getActuellTrial());
+        time_measurement.restart();
+        to_long = false;            // the trial can measured;
         delay(2000);
         clearScreen();
-        cout << "PPPPPPPPPPPPPPP"<<endl;
     }
-
 }
 
 // set the width and height of the labels for an 1,6 cm long arrow and 0,6 cm free spaces between
@@ -85,14 +86,16 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     // catch the pressed key only left and right are needed
     switch (event->key()) {
     case Qt::Key_Left:      // pressed left key
-        run->setMeasure(100, 0);
-        imgLoader(STAR);
-        cout << "Star";
+        if(!to_long)
+            run->setMeasure(time_measurement.elapsed(), 0);     // saves the measured time and the pressed key
+        else
+            run->setMeasure(-1, 0);     // saves the measured time and the pressed key
         break;
     case Qt::Key_Right:     // pressed right key
-        run->setMeasure(50, 1);
-        imgLoader(ARROW);
-        cout << "Arrows";
+        if(!to_long)
+            run->setMeasure(time_measurement.elapsed(), 1);     // saves the measured time and the pressed key
+        else
+            run->setMeasure(-1, 1);     // saves the measured time and the pressed key
         break;
     case Qt::Key_Escape:
         cout << "Game ESC";

@@ -59,6 +59,8 @@ private:
     const QString star_img = ":/ressources/images/star.svg";
     const QString plus_img = ":/ressources/images/plus.svg";
     bool quit_loop;  // if the esc button is pressed quit_loop is set to false - so the game loop quits - in startSettings it's set to true
+    QTime time_measurement; // saves the time in the game loop and calculate the reaction time in the keypress function
+    bool to_long = true;           // check if the waiting time is bigger then 2000 ms -> the next trial is loaded
 };
 
 #endif // GAMEWINDOW_H

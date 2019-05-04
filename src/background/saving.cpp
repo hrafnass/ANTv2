@@ -29,6 +29,7 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment) {
     // saves all calculated and measured values
     save << ",,,"<<QString::number(calc->getMedian())<<","<<QString::number(calc->getAverage())<<","<<QString::number(calc->getRightPercentage())<<","<<QString::number(calc->getEffects())<<","<<comment<<endl;
     // runs solong elements in the vector
+    run->setIteratorToStart();      // start the iterator at the beginn
     while (run->readRun()) {
         save << QString::number(number_of_rows)<<"," << QString::number(run->getActuellTrial().getReactionTime()) << ",";
         // save if the reaction was right

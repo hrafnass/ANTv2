@@ -233,7 +233,6 @@
     <property name="title">
      <string>Datei</string>
     </property>
-    <addaction name="actionAddDatabase"/>
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">

@@ -25,8 +25,8 @@ void GameWindow::setRun(Run *r){ run = r;}
 void GameWindow::gameLoop(){
     // run solong all 143 trials are over or esc is pressed and set quit_loop to false
     while (run->readRun() && quit_loop) {
+        cout << "read run = true and quit loop"<<endl;
         // 1. show the star wait one second
-        to_long = true; // set to long on true -> the isn't measured any more
         showImgArrow(run->getActuellTrial());
         delay(1000);
         clearScreen();
@@ -90,17 +90,18 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
             run->setMeasure(time_measurement.elapsed(), 0);     // saves the measured time and the pressed key
         else
             run->setMeasure(-1, 0);     // saves the measured time and the pressed key
+        to_long = true;                 // stop all other keys
         break;
     case Qt::Key_Right:     // pressed right key
         if(!to_long)
             run->setMeasure(time_measurement.elapsed(), 1);     // saves the measured time and the pressed key
         else
             run->setMeasure(-1, 1);     // saves the measured time and the pressed key
+        to_long = true;                 // stop all other keys
         break;
     case Qt::Key_Escape:
         cout << "Game ESC";
         // show the save dialog
-        quit_loop = false;      // quit the gaming loop
         save.setModal(true);
         save.exec();
         this->close();      // mit esc wird das fenster geschlossen

@@ -12,3 +12,8 @@ SaveDialog::~SaveDialog()
 {
     delete ui;
 }
+
+// save/not save the run
+void SaveDialog::on_buttonBox_accepted(){
+
+}

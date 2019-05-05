@@ -60,6 +60,7 @@ private:
     const QString plus_img = ":/ressources/images/plus.svg";
     QTime time_measurement; // saves the time in the game loop and calculate the reaction time in the keypress function
     bool to_long = true;           // check if the waiting time is bigger then 2000 ms -> the next trial is loaded
+    bool loop = true;         // check if the gaming loop can quit
 };
 
 #endif // GAMEWINDOW_H

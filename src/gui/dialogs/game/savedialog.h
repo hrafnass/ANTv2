@@ -15,6 +15,9 @@ public:
     explicit SaveDialog(QWidget *parent = nullptr);
     ~SaveDialog();
 
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::SaveDialog *ui;
 };

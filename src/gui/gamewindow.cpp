@@ -24,7 +24,7 @@ void GameWindow::setRun(Run *r){ run = r;}
 // the game
 void GameWindow::gameLoop(){
     // run solong all 143 trials are over or esc is pressed and set quit_loop to false
-    while (run->readRun() && quit_loop) {
+    while (run->readRun() && loop) {
         cout << "read run = true and quit loop"<<endl;
         // 1. show the star wait one second
         showImgArrow(run->getActuellTrial());
@@ -42,7 +42,7 @@ void GameWindow::gameLoop(){
 
 // set the width and height of the labels for an 1,6 cm long arrow and 0,6 cm free spaces between
 void GameWindow::startSettings(){
-    quit_loop = true;           // set the start loop to true
+    loop = true;           // set the start loop to true
     // clear screen
     clearScreen();              // if the gui is used fore more than one game, it has to be cleaned
     // size in px of all arrow/star labels
@@ -100,6 +100,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         to_long = true;                 // stop all other keys
         break;
     case Qt::Key_Escape:
+        loop = false;   // quit the loop
         cout << "Game ESC";
         // show the save dialog
         save.setModal(true);

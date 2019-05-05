@@ -2,6 +2,7 @@
 #define SAVEDIALOG_H
 
 #include <QDialog>
+#include <QAbstractButton>
 
 namespace Ui {
 class SaveDialog;
@@ -16,7 +17,7 @@ public:
     ~SaveDialog();
     void setSaving(bool*);    // set the saving
 private slots:
-    void on_buttonBox_accepted();
+    void on_buttonBox_clicked(QAbstractButton *button);
 
 private:
     Ui::SaveDialog *ui;

@@ -1,5 +1,8 @@
 #include "savedialog.h"
 #include "ui_savedialog.h"
+#include <iostream>
+
+using namespace std;
 
 SaveDialog::SaveDialog(QWidget *parent) :
     QDialog(parent),
@@ -18,14 +21,14 @@ void SaveDialog::setSaving(bool *save){
     saving = save;
 }
 
-// private slots
-void SaveDialog::on_buttonBox_accepted()
+void SaveDialog::on_buttonBox_clicked(QAbstractButton *button)
 {
-    QAbstractButton clicked_button;   // saves the clicked button
-    ui->buttonBox->clicked(&clicked_button);    // get the clicked button
-    QDialogButtonBox::StandardButton button = ui->buttonBox->standardButton(&clicked_button);   // get the clicked button
-    if(button == QDialogButtonBox::Save)
+    QDialogButtonBox::StandardButton which = ui->buttonBox->standardButton(button);   // get the clicked button
+    if(which == QDialogButtonBox::Save){
+        cout << "SAVE" << endl;
         *saving = true;
-    else
+    }else{
         *saving = false;
+        cout << "Close" << endl;
+    }
 }

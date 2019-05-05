@@ -103,7 +103,9 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     case Qt::Key_Escape:
         loop = false;   // quit the loop
         cout << "Game ESC";
-        save.setSaving(&save_game);
+        save.setSaving(save_game);
+        if(*save_game)
+            cout << "Could Saved" << endl;
         // show the save dialog
         save.setModal(true);
         save.exec();

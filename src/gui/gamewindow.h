@@ -30,7 +30,7 @@ public:
     // set the Run
     void setRun(Run *run);
     // set label size at the start
-    void startSettings(bool*);
+    void startSettings(bool*);              // bool* set the saving pointer
     void gameLoop();                        // THE GAME
 
 protected:

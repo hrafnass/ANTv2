@@ -35,6 +35,8 @@ void MainWindow::on_actionAboutReactiongame_triggered()
 
 void MainWindow::on_startGamePushButton_clicked()
 {
+    // when the game should save s is true
+    bool s = false;
     // saves the whole text input
     QString forename = ui->forenameLineEdit->text();
     QString name = ui->nameLineEdit->text();
@@ -51,13 +53,15 @@ void MainWindow::on_startGamePushButton_clicked()
     }else {
         run.newGame();          // start the settings for a new game
         game.showFullScreen();  // open the window in fullscreen
-        game.startSettings();   // sets the size of all labels
+        game.startSettings(&s);   // sets the size of all labels
         game.gameLoop();        // start game loop
     }
     // save all calculated values
-    save.openCSVFile(forename, name);
-    save.writeCSVFile(&run, &calc, notice);
-    save.closeCSVFile();
+    if(s){
+        save.openCSVFile(forename, name);
+        save.writeCSVFile(&run, &calc, notice);
+        save.closeCSVFile();
+    }
     // clear all measured values
     calc.resetValues();
     // delete the whole input (forename, name, notice, birthday to Standard)

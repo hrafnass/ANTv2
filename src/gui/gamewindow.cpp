@@ -41,8 +41,9 @@ void GameWindow::gameLoop(){
 }
 
 // set the width and height of the labels for an 1,6 cm long arrow and 0,6 cm free spaces between
-void GameWindow::startSettings(){
-    loop = true;           // set the start loop to true
+void GameWindow::startSettings(bool *s){
+    loop = true;            // set the start loop to true
+    save_game = s;          // save check if the game could save
     // clear screen
     clearScreen();              // if the gui is used fore more than one game, it has to be cleaned
     // size in px of all arrow/star labels
@@ -102,6 +103,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     case Qt::Key_Escape:
         loop = false;   // quit the loop
         cout << "Game ESC";
+        save.setSaving(&save_game);
         // show the save dialog
         save.setModal(true);
         save.exec();

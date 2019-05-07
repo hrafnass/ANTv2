@@ -27,17 +27,20 @@ void GameWindow::gameLoop(){
     while (run->readRun() && loop) {
         cout << "read run = true and quit loop"<<endl;
         // 1. show the star wait one second
-        showImgArrow(run->getActuellTrial());
-        delay(1000);
+        showImgStars(run->getActuellTrial());
+        //delay(1000);
         clearScreen();
         // 2. show the arrow
         // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
+        pressed = false;        // set pressed to false -> now you can press a key
         showImgArrow(run->getActuellTrial());
         time_measurement.restart();
         to_long = false;            // the trial can measured;
-        delay(2000);
+        //delay(2000);
+        to_long = true;             // if the reaction time is to long
         clearScreen();
     }
+    this->close();  // close the window
 }
 
 // set the width and height of the labels for an 1,6 cm long arrow and 0,6 cm free spaces between
@@ -85,6 +88,9 @@ void GameWindow::startSettings(bool *s){
 // adds the key press event
 void GameWindow::keyPressEvent(QKeyEvent *event){
     // catch the pressed key only left and right are needed
+    if(pressed)     // quit the function if a key was pressed before
+        return;
+
     switch (event->key()) {
     case Qt::Key_Left:      // pressed left key
         if(!to_long)
@@ -113,8 +119,9 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         break;
     default:                // pressed false key, mabye do nothing or
         cout << "wrong key";
-        break;
+        return;             // return so the pressed variable isn't changed
     }
+    pressed = true; // know how can't presse again
     cout << "Right Reaction " << run->getActuellTrial().getRightReaction() << endl;
 }
 

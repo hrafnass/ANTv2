@@ -23,12 +23,15 @@ void GameWindow::setRun(Run *r){ run = r;}
 
 // the game
 void GameWindow::gameLoop(){
+    QEventLoop stop_loop;
     // run solong all 143 trials are over or esc is pressed and set quit_loop to false
     while (run->readRun() && loop) {
         cout << "read run = true and quit loop"<<endl;
         // 1. show the star wait one second
         showImgStars(run->getActuellTrial());
         //delay(1000);
+        QTimer::singleShot(1000, &stop_loop, SLOT(quit()));
+        stop_loop.exec();
         clearScreen();
         // 2. show the arrow
         // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
@@ -37,6 +40,8 @@ void GameWindow::gameLoop(){
         time_measurement.restart();
         to_long = false;            // the trial can measured;
         //delay(2000);
+        QTimer::singleShot(2000, &stop_loop, SLOT(quit()));
+        stop_loop.exec();
         to_long = true;             // if the reaction time is to long
         clearScreen();
     }
@@ -139,14 +144,14 @@ int GameWindow::pixel(double cm, char x_or_y){
 }
 
 // set a delay of miliseconds
-void GameWindow::delay( int millisecondsToWait )
+/*void GameWindow::delay( int millisecondsToWait )
 {
     QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
     while( QTime::currentTime() < dieTime )
     {
         QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
     }
-}
+}*/
 
 // set the image labels
 void GameWindow::setUpLables(QString other, QString mid, int arrow_width, int arrow_height){

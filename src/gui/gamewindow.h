@@ -9,7 +9,8 @@
 #include <QApplication>
 #include <QtGui>
 #include <QLabel>
-#include <QTime>
+//#include <QTime>
+#include <QTimer>
 
 // Game Dialogs
 #include "src/gui/dialogs/game/savedialog.h"
@@ -38,7 +39,7 @@ protected:
 
 private:   
     // private methods
-    void delay(int);                        // set a delay in gameLoop
+    // void delay(int);                        // set a delay in gameLoop
     // functions to create all values for the images and load them
     int pixel(double, char);                // calculates the amount of pixels for x or y coordinates (for x char x_or_y == 'x')
     void setLabelSize(QLabel *, int, int);  // set the size of an label

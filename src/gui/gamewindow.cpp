@@ -10,7 +10,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
-    time_measurement.start();   // start the time measurement
+    timer.start();   // start the time measurement
 }
 
 GameWindow::~GameWindow()
@@ -24,6 +24,8 @@ void GameWindow::setRun(Run *r){ run = r;}
 // the game
 void GameWindow::gameLoop(){
     QEventLoop stop_loop;
+
+    timer.start();          // starts the timer
     // run solong all 143 trials are over or esc is pressed and set quit_loop to false
     while (run->readRun() && loop) {
         cout << "read run = true and quit loop"<<endl;
@@ -36,8 +38,8 @@ void GameWindow::gameLoop(){
         // 2. show the arrow
         // if the reaction is in a time of 2 seconds, take the anwser, else go to the next trial
         pressed = false;        // set pressed to false -> now you can press a key
+        timer.restart();        // restart the timer
         showImgArrow(run->getActuellTrial());
-        time_measurement.restart();
         to_long = false;            // the trial can measured;
         //delay(2000);
         QTimer::singleShot(2000, &stop_loop, SLOT(quit()));
@@ -99,14 +101,14 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     switch (event->key()) {
     case Qt::Key_Left:      // pressed left key
         if(!to_long)
-            run->setMeasure(time_measurement.elapsed(), 0);     // saves the measured time and the pressed key
+            run->setMeasure(timer.elapsed(), 0);     // saves the measured time and the pressed key
         else
             run->setMeasure(-1, 0);     // saves the measured time and the pressed key
         to_long = true;                 // stop all other keys
         break;
     case Qt::Key_Right:     // pressed right key
         if(!to_long)
-            run->setMeasure(time_measurement.elapsed(), 1);     // saves the measured time and the pressed key
+            run->setMeasure(timer.elapsed(), 1);     // saves the measured time and the pressed key
         else
             run->setMeasure(-1, 1);     // saves the measured time and the pressed key
         to_long = true;                 // stop all other keys

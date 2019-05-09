@@ -10,6 +10,7 @@
 #include <QtGui>
 #include <QLabel>
 //#include <QTime>
+#include <QElapsedTimer>
 #include <QTimer>
 
 // Game Dialogs
@@ -59,7 +60,7 @@ private:
     // saves the image names
     const QString star_img = ":/ressources/images/star.svg";
     const QString plus_img = ":/ressources/images/plus.svg";
-    QTime time_measurement; // saves the time in the game loop and calculate the reaction time in the keypress function
+    QElapsedTimer timer;        // timer for measurement
     bool to_long = true;            // check if the waiting time is bigger then 2000 ms -> the next trial is loaded
     bool loop = true;           // check if the gaming loop can quit
     bool *save_game;            // if the game should save save_game is true - over the setSaving function in savedialog is save_game changed

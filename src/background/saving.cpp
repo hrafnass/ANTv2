@@ -27,7 +27,7 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment) {
     // saves the headline in the csv file
     save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment"<< endl;
     // saves all calculated and measured values
-    save << ",,,"<<QString::number(calc->getMedian())<<","<<QString::number(calc->getAverage())<<","<<QString::number(calc->getRightPercentage())<<","<<QString::number(calc->getEffects())<<","<<comment<<endl;
+    // save << ",,,"<<QString::number(calc->getMedian())<<","<<QString::number(calc->getAverage())<<","<<QString::number(calc->getRightPercentage())<<","<<QString::number(calc->getEffects())<<","<<comment<<endl;
     // runs solong elements in the vector
     run->setIteratorToStart();      // start the iterator at the beginn
     while (run->readRun()) {

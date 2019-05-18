@@ -6,7 +6,6 @@
 #include "dialogs/main/aboutgamedialog.h"
 #include "dialogs/main/reminder.h"
 #include "gamewindow.h"
-//#include "gamewindow.h"
 // classes for values and saving
 #include "../background/saving.h"
 #include "../background/calculation.h"
@@ -38,7 +37,7 @@ private:
     // saves all values
     Saving save;
     // saves all values and calculations
-    Calculation calc;
+    // Calculation calc;
 };
 
 #endif // MAINWINDOW_H

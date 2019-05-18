@@ -1,4 +1,4 @@
-#include "calculation.h"
+/*#include "calculation.h"
 
 //set all vairables 0
 Calculation::Calculation(){
@@ -33,17 +33,17 @@ void Calculation::resetValues(){
     effects = 0;
     median = 0;
 }
-
+*/
 // calculate all values
-void Calculation::calcValues(vector<Run> reaction_times, int all_trials, int right_trials){
+/*void Calculation::calcValues(vector<Run> reaction_times, int all_trials, int right_trials){
     calcAverageReactionTime(reaction_times);        // calculates the reaction times
     calcRightPercentage(all_trials, right_trials);  // calculates the percentage of right reactions
-}
+}*/
 
 // all calculation functions
 // average:
 // calculation: (sum of all reaction times) / (number of reactio times)
-void Calculation::calcAverageReactionTime(Run *reaction_times){
+/*void Calculation::calcAverageReactionTime(Run *reaction_times){
     reaction_times->setIteratorToStart(); // set the iterator to start
     int reaction_values = 0;    // saves the reaction_times values
     int i = 0;                  // saves the number of counted values
@@ -54,13 +54,13 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
     }
     // calculates the average rection time and save it in average
     average = reaction_values / reaction_times->
-}
+}*/
 
 // right percentage:
 // calculation: ((number of right trials) / (number of all trials)) * 100
-void Calculation::calcRightPercentage(int all_trials, int right_trials) {
+/*void Calculation::calcRightPercentage(int all_trials, int right_trials) {
     percentage = (right_trials/all_trials)*100;
-}
+}*/
 
 // median:
 /*
@@ -68,7 +68,7 @@ void Calculation::calcRightPercentage(int all_trials, int right_trials) {
  *  even: 1/2*(to_median.at(to_median.size()/2) + to_median.at(to_median.size()/2+1))
  *  odd: to_median.at((to_median.size()+1)/2)
  * */
-double Calculation::calcMedian(vector<Run> to_median){
+/*double Calculation::calcMedian(vector<Run> to_median){
     sort(to_median.begin(), to_median.end());       // sorting the to_median vector
     unsigned int size = to_median.size();           // saves the vector size
     if(size == 0)                                   // returns -1 if there is an error with to_median
@@ -83,10 +83,10 @@ double Calculation::calcMedian(vector<Run> to_median){
     }
     return median;
 }
-
+*/
 /* calcEffects calculate the conflict/orientation/alertness effect
  * reaction_times1 is the first vector for the median calculation
  * reaction_times2 is the seconded vector for the median calculation */
-void Calculation::calcEffects(vector<Run> reaction_times1, vector<Run>reaction_times2){
+/*void Calculation::calcEffects(vector<Run> reaction_times1, vector<Run>reaction_times2){
     effects = calcMedian(reaction_times1) - calcMedian(reaction_times2);  // calculates the effect value
-}
+}*/

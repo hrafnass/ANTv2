@@ -4,7 +4,6 @@
 #include <QMainWindow>
 // windows
 #include "dialogs/main/aboutgamedialog.h"
-#include "dialogs/main/helpdialog.h"
 #include "dialogs/main/reminder.h"
 #include "gamewindow.h"
 //#include "gamewindow.h"

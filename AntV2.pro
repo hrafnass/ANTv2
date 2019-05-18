@@ -32,7 +32,6 @@ SOURCES += \
     src/gui/dialogs/game/breakdialog.cpp \
     src/gui/dialogs/game/savedialog.cpp \
     src/gui/dialogs/main/aboutgamedialog.cpp \
-    src/gui/dialogs/main/helpdialog.cpp \
     src/gui/dialogs/main/reminder.cpp \
     src/gui/gamewindow.cpp \
     src/gui/mainwindow.cpp \
@@ -47,7 +46,6 @@ HEADERS += \
     src/gui/dialogs/game/breakdialog.h \
     src/gui/dialogs/game/savedialog.h \
     src/gui/dialogs/main/aboutgamedialog.h \
-    src/gui/dialogs/main/helpdialog.h \
     src/gui/dialogs/main/reminder.h \
     src/gui/mainwindow.h
 

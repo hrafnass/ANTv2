@@ -56,7 +56,6 @@ FORMS += \
     src/gui/dialogs/game/savedialog.ui \
     src/gui/gamewindow.ui \
     src/gui/mainwindow.ui \
-    src/gui/dialogs/main/helpdialog.ui \
     src/gui/dialogs/main/aboutgamedialog.ui \
     src/gui/dialogs/main/reminder.ui
 

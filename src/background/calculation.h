@@ -3,6 +3,8 @@
 #include<vector>
 #include<algorithm>
 
+#include "run.h"
+
 using namespace std;
 
 // calculates everything every needed value from the measured values
@@ -19,13 +21,13 @@ public:
     // resets all calculated values
     void resetValues();
     // calculates all values - run all private calculation functions
-    void calcValues(vector<int> reaction_times, int all_trials, int right_trials);
+    void calcValues(vector<Run> reaction_times, int all_trials, int right_trials);
 private:
     // functions for calculation of all values
-    void calcAverageReactionTime(vector<int> reaction_times);   // calculates the average reaction time of all reaction times
-    double calcMedian(vector<int> to_median);                   // calculates the median of an vector<int>
+    void calcAverageReactionTime(Run *reaction_times);   // calculates the average reaction time of all reaction times
+    double calcMedian(vector<Run> to_median);                   // calculates the median of an vector<int>
     void calcRightPercentage(int all_trials, int right_trials); // calculates the percentage of right reactions
-    void calcEffects(vector<int> reaction_times1, vector<int>reaction_times2);
+    void calcEffects(vector<Run> reaction_times1, vector<Run>reaction_times2);
     // variables - calculated values
     double average;
     double median;

@@ -27,7 +27,6 @@ public:
 
 private slots:
     // windows from the menu bar
-    void on_actionHelp_triggered();
     void on_actionAboutReactiongame_triggered();
     // game window started with button click
     void on_startGamePushButton_clicked();

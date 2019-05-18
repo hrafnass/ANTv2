@@ -15,15 +15,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// open the Helpwindow dialog
-void MainWindow::on_actionHelp_triggered()
-{
-    HelpDialog help_dialog;
-    // Helpwindow is everytime in foreground
-    help_dialog.setModal(true);
-    help_dialog.exec();
-}
-
 // open the About Game dialog
 void MainWindow::on_actionAboutReactiongame_triggered()
 {
@@ -55,6 +46,7 @@ void MainWindow::on_startGamePushButton_clicked()
         game.showFullScreen();  // open the window in fullscreen
         game.startSettings(&s);   // sets the size of all labels
         game.gameLoop();        // start game loop
+        s = true;               // wenn the game finished, all measured values can be saved
     }
     // save all calculated values
     if(s){

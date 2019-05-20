@@ -1,9 +1,9 @@
 #include "run.h"
 
 // Public Methods
-// number_of_reruns: is the number how often possibleCombinations has to used - standard is 2
-// initRun fills the run_vector if the all needed Trial in a Run, normal 96 Trials
-void Run::initRun(int number_of_reruns=2){
+// number_of_reruns: is the number how often possibleCombinations has to used - standard is 3
+// initRun fills the run_vector if the all needed Trial in a Run, normal 72 Trials
+void Run::initRun(int number_of_reruns=3){
     // fills the run_vector
     for(int i = 0; i < number_of_reruns; i++){
         possibleCombinations();
@@ -61,6 +61,11 @@ void Run::setIteratorToStart(){ it_run_vector = run_vector.begin(); }
 Trial Run::getActuellTrial() {
     cout << "Actuelle Position: "<<pos<<endl;
     return run_vector.at(pos);}
+
+/*
+ * number_of_trials % number_of_runs = 0 -> one run is finished
+*/
+
 
 // Private Methods
 // create 48 possible Trials - all combinations of images and arrow and star positions

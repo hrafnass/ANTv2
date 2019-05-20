@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    run.initRun(2);     // loaded the run with 3
+    run.initRun(3);     // loaded the run with 3
     game.setRun(&run);  // give run to gamewindow
 }
 

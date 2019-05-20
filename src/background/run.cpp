@@ -6,7 +6,7 @@
 void Run::initRun(unsigned int number_of_reruns=3){
     number_of_runs = number_of_reruns;      // saves the wanted run number
     // fills the run_vector
-    for(int i = 0; i < number_of_reruns; i++){
+    for(unsigned int i = 0; i < number_of_reruns; i++){
         possibleCombinations();
     }
 }
@@ -63,9 +63,21 @@ Trial Run::getActuellTrial() {
     cout << "Actuelle Position: "<<pos<<endl;
     return run_vector.at(pos);}
 
-//number_of_trials % number_of_trials_in_a_run = 0 -> one run is finished
+/*
+ * number_of_trials % number_of_trials_in_a_run = 0 -> one run is finished
+ * number_of_trials_in_a_run = number_of_trials_in_run_vector / number_of_runs
+ * pos starts at 0 -> number_of_trials = pos + 1
+*/
 bool Run::getPause(){
-
+    cout << "getPause()" << endl;
+    unsigned long vector_size = run_vector.size();      // saves the run_vector size
+    if(vector_size == 0)                                // check if the vector is filled; if it isn't every pause call is true
+        return false;
+    unsigned long trial_number_in_run = run_vector.size() / number_of_runs;     // calculates the trials in a run - also could be a constant(72)
+    unsigned long pause = (pos+1) % trial_number_in_run;    // if pos+1 is 0 a run is over
+    if(pause == 0)                                      // a run is over - at the end of a run
+        return true;
+    return false;                                       // in a run
 }
 
 

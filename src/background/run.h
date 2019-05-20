@@ -30,12 +30,13 @@ public:
     // methods for the run_vector
     void initRun(int);          // fills all possible trials in the run_vector
     void newGame();             // create a new shuffeld, clean trial
-    bool readRun();       // read an element of run_vector - bool checks if the iterator stay in the range between vector::begin and vector::end
+    bool readRun();             // read an element of run_vector - bool checks if the iterator stay in the range between vector::begin and vector::end
     // setter for the measured values
     void setMeasure(int reaction_time, int choose); // saves the measured values int saves the reaction time and choose saves the value of direction (0 - left), (1 - right)
     void setIteratorToStart();  // sets the iterator to vector.begin()
     // getter for actuell trial
     Trial getActuellTrial();
+    bool getPause();            // check if one of the n runs is full-filled(yes = return true; no = return false)
 private:
     void possibleCombinations();           // create all possible arrow and star combinations
     void shuffelRun();          // shuffels the run_vector (used bevor every run) - and set it_run_vector at run_vector.begin()

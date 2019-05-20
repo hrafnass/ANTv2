@@ -26,7 +26,7 @@ void GameWindow::gameLoop(){
     QEventLoop stop_loop;
 
     timer.start();          // starts the timer
-    // run solong all 143 trials are over or esc is pressed and set quit_loop to false
+    // run solong all 144 trials are over or esc is pressed and set quit_loop to false
     while (run->readRun() && loop) {
         cout << "read run = true and quit loop"<<endl;
         // 1. show the star wait one second

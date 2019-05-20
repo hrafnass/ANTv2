@@ -3,7 +3,8 @@
 // Public Methods
 // number_of_reruns: is the number how often possibleCombinations has to used - standard is 3
 // initRun fills the run_vector if the all needed Trial in a Run, normal 72 Trials
-void Run::initRun(int number_of_reruns=3){
+void Run::initRun(unsigned int number_of_reruns=3){
+    number_of_runs = number_of_reruns;      // saves the wanted run number
     // fills the run_vector
     for(int i = 0; i < number_of_reruns; i++){
         possibleCombinations();
@@ -62,9 +63,10 @@ Trial Run::getActuellTrial() {
     cout << "Actuelle Position: "<<pos<<endl;
     return run_vector.at(pos);}
 
-/*
- * number_of_trials % number_of_runs = 0 -> one run is finished
-*/
+//number_of_trials % number_of_trials_in_a_run = 0 -> one run is finished
+bool Run::getPause(){
+
+}
 
 
 // Private Methods

@@ -40,7 +40,7 @@ class Run
 public:
     Run() {generator.seed(rd());} // init the random generator
     // methods for the run_vector
-    void initRun(int);          // fills all possible trials in the run_vector
+    void initRun(unsigned int); // fills all possible trials in the run_vector
     void newGame();             // create a new shuffeld, clean trial
     bool readRun();             // read an element of run_vector - bool checks if the iterator stay in the range between vector::begin and vector::end
     // setter for the measured values
@@ -60,6 +60,7 @@ private:
     mt19937 generator; // random_generator for shuffelRun
     // saves the position of the iterator
     unsigned int pos;
+    unsigned int number_of_runs;    // saves the number of runs - needed for getPause()
     // starposition vector to get all posible star positions for run
     vector<Trial::star_position> star_pos_vec = { Trial::star_position::up_star, Trial::star_position::down_star, Trial::star_position::mid, Trial::star_position::both_star};
     vector<Trial::arrow_position> arrow_pos_vec = { Trial::arrow_position::up_arrow, Trial::arrow_position::down_arrow, Trial::arrow_position::both_arrow};

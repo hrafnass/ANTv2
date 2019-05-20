@@ -9,6 +9,18 @@
 using namespace std;
 
 /*
+ * Aboute the Run-Class:
+ *  - one run is made of 72 trials, which are all possible combinations of all arrow images, arrow positions and star positions
+ *  - after every run the gamer could take a pause (getPause() is needed for)
+ *  - the number of runs can set in run.init(number_of_runs)
+ *  - the number of all possible trials only could increased, if more images and image positions added
+ *  - to proof, if a run is finished, to save measured values, to read out the the trials the vector position and the vector iterator are needed
+ *  - all trials of every run are saved in a run vector;
+ *      Why?
+ *          - the measured values are easier to calculate
+ *          - the number of trials never become so big, that a modern computer couldn't handle it
+ *              (for 1200 Trials max. one hour is needed - to long for an test)
+ *
  * How to use  Run-Class:
  * Run run;
  * run.init(2);     // 3 runs - 72*3=216

@@ -71,8 +71,7 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
  *  odd: to_median.at((to_median.size()+1)/2)
  * */
 double Calculation::calcMedian(Run *calc_median){
-    vector<int> times
-    sort(to_median.begin(), to_median.end());       // sorting the to_median vector
+    sort(calc_median->setIteratorToStart(), , compareTimeFunction);       // sorting the to_median vector
     unsigned int size = to_median.size();           // saves the vector size
     if(size == 0)                                   // returns -1 if there is an error with to_median
         return -1;
@@ -88,7 +87,7 @@ double Calculation::calcMedian(Run *calc_median){
 }
 
 // compare function for the sort algorithmus in calcMedian
-bool Calculation::compareTimeFunction(const Trial& t1, const Trial &t2){
+bool Calculation::compareTimeFunction(Trial& t1, Trial &t2){
     return t1.getReactionTime() < t2.getReactionTime();
 }
 

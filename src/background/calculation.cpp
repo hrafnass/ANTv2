@@ -69,16 +69,14 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
  * calculation:
  *  even: 1/2*(to_median.at(to_median.size()/2) + to_median.at(to_median.size()/2+1))
  *  odd: to_median.at((to_median.size()+1)/2)
+ *  - includes all negative values (Trials with no reactions)
  * */
 double Calculation::calcMedian(Run *calc_median){
     sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction);       // sorting the to_median vector
-    unsigned int size = to_median.size();           // saves the vector size
-    if(size == 0)                                   // returns -1 if there is an error with to_median
-        return -1;
     double median = 0;                              // saves the return value
     // check if the vector size is odd or even
-    if(to_median.size() % 2){   // to_median.size % 2 = 1 -> size is odd
-        unsigned int position = (size+1)/2;         // calculates the position in to_median
+    if(calc_median->getVectorSize() % 2){           // to_median.size % 2 = 1 -> size is odd
+        unsigned int position = (calc_median+1)/2;         // calculates the position in to_median
         median = to_median.at(position);
     }else{                      // to_median.size % 2 = 0 -> size is even
         median = (1/2)*(to_median.at(size/2)+ to_median.at(size/2+1));

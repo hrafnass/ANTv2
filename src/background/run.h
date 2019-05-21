@@ -53,6 +53,7 @@ public:
     vector<Trial>::iterator getVectorEnd(){ return run_vector.end();}       // returns the end of the vectord
     vector<Trial>::iterator getVectorStart(){ return run_vector.begin();}   // returns the start of the run_vector
     unsigned long getVectorSize() { return run_vector.size();}              // returns the size of whole vector
+    bool getTrialAtPos(unsigned int pos, Trial *trial);           // loads  the trial at the position pos in the run_vector
 private:
     void possibleCombinations();           // create all possible arrow and star combinations
     void shuffelRun();          // shuffels the run_vector (used bevor every run) - and set it_run_vector at run_vector.begin()

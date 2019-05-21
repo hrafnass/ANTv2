@@ -28,7 +28,7 @@ private:
     double calcMedian(Run *median);                         // calculates the median of an vector<int>
     void calcRightPercentage(int all_trials, int right_trials); // calculates the percentage of right reactions
     void calcEffects(vector<Run> reaction_times1, vector<Run>reaction_times2);
-    bool compareTimeFunction(Trial& t1, Trial &t2); // a function for sort all Trials in run vector (compare all time values)
+    bool compareTimeFunction(Trial t1, Trial t2); // a function for sort all Trials in run vector (compare all time values)
 
     // variables - calculated values
     double average;

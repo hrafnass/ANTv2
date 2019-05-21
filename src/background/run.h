@@ -54,6 +54,7 @@ public:
     vector<Trial>::iterator getVectorStart(){ return run_vector.begin();}   // returns the start of the run_vector
     unsigned long getVectorSize() { return run_vector.size();}              // returns the size of whole vector
     bool getTrialAtPos(unsigned int pos, Trial *trial);           // loads  the trial at the position pos in the run_vector
+    unsigned int nmbrAllRightReactions() { return number_of_all_right_reactions;}   // getter for the number
 private:
     void possibleCombinations();           // create all possible arrow and star combinations
     void shuffelRun();          // shuffels the run_vector (used bevor every run) - and set it_run_vector at run_vector.begin()
@@ -66,6 +67,7 @@ private:
     // saves the position of the iterator
     unsigned int pos;
     unsigned int number_of_runs;    // saves the number of runs - needed for getPause()
+    unsigned int number_of_all_right_reactions;     // saves the number of all right reactions
     // starposition vector to get all posible star positions for run
     vector<Trial::star_position> star_pos_vec = { Trial::star_position::up_star, Trial::star_position::down_star, Trial::star_position::mid, Trial::star_position::both_star};
     vector<Trial::arrow_position> arrow_pos_vec = { Trial::arrow_position::up_arrow, Trial::arrow_position::down_arrow, Trial::arrow_position::both_arrow};

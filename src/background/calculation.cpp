@@ -1,6 +1,6 @@
-/*#include "calculation.h"
+#include "calculation.h"
 
-//set all vairables 0
+/*//set all vairables 0
 Calculation::Calculation(){
     average = 0;
     percentage = 0;
@@ -42,8 +42,8 @@ void Calculation::resetValues(){
 
 // all calculation functions
 // average:
-// calculation: (sum of all reaction times) / (number of reactio times)
-/*void Calculation::calcAverageReactionTime(Run *reaction_times){
+// calculation: (sum of all measured reaction times) / (number of the measured reaction times)
+void Calculation::calcAverageReactionTime(Run *reaction_times){
     reaction_times->setIteratorToStart(); // set the iterator to start
     int reaction_values = 0;    // saves the reaction_times values
     int i = 0;                  // saves the number of counted values
@@ -51,10 +51,12 @@ void Calculation::resetValues(){
     while(reaction_times->readRun()){
         if(reaction_times->getActuellTrial().getReactionTime() > -1){
             reaction_values = reaction_values + reaction_times->getActuellTrial().getReactionTime(); // calculates the reaction time
+            ++i;
+        }
     }
     // calculates the average rection time and save it in average
-    average = reaction_values / reaction_times->
-}*/
+    average = reaction_values / i;
+}
 
 // right percentage:
 // calculation: ((number of right trials) / (number of all trials)) * 100

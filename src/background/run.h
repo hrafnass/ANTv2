@@ -38,7 +38,12 @@ using namespace std;
 class Run
 {
 public:
-    Run() {generator.seed(rd());} // init the random generator
+    // init all start values
+    Run() {
+        generator.seed(rd());
+        number_of_runs = 3;
+        number_of_all_right_reactions = 0;
+    } // init the random generator
     // methods for the run_vector
     void initRun(unsigned int); // fills all possible trials in the run_vector
     void newGame();             // create a new shuffeld, clean trial

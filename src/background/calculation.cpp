@@ -12,7 +12,7 @@ Calculation::Calculation(){
 double Calculation::getAverage(){
     return average;
 }
-/* va
+
 double Calculation::getRightPercentage(){
     return percentage;
 }
@@ -33,7 +33,7 @@ void Calculation::resetValues(){
     effects = 0;
     median = 0;
 }
-*/
+
 // calculate all values
 /*void Calculation::calcValues(vector<Run> reaction_times, int all_trials, int right_trials){
     calcAverageReactionTime(reaction_times);        // calculates the reaction times

@@ -48,9 +48,10 @@ void Run::setMeasure(int reaction_time, int choose){
     cout << "setMeasure: Time: " << reaction_time << "Choose: " << choose << endl;
     run_vector.at(pos).setReactionTime(reaction_time);
     // check if the direction the same -> 0 = left; 1 = rigt
-    if (run_vector.at(pos).getDirection() == choose)
+    if (run_vector.at(pos).getDirection() == choose){
         run_vector.at(pos).setRightReaction(true);
-    else
+        ++number_of_all_right_reactions;    // increase the number of all right reactions
+    }else
         run_vector.at(pos).setRightReaction(false);
 
     cout << "Runvector: " << run_vector.at(pos).getReactionTime() << endl;

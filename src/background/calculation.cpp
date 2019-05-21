@@ -1,13 +1,13 @@
 #include "calculation.h"
 
-/*//set all vairables 0
+//set all vairables 0
 Calculation::Calculation(){
     average = 0;
     percentage = 0;
     effects = 0;
     median = 0;
 }
-
+/*
 // all getter
 double Calculation::getAverage(){
     return average;

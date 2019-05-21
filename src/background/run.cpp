@@ -13,6 +13,7 @@ void Run::initRun(unsigned int number_of_reruns=3){
 
 void Run::newGame(){
     shuffelRun();           // shuffel the vector for a new run
+    number_of_all_right_reactions = 0;  // set the number to 0 - the game isn't started yet -> no reaction is right
     setIteratorToStart();   // set the Iterator to vector.begin to iterate over it
     pos = 0;
     // reseting all measured values in run_vector (import for a second game)

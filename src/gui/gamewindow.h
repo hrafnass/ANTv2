@@ -15,6 +15,7 @@
 
 // Game Dialogs
 #include "src/gui/dialogs/game/savedialog.h"
+#include "src/gui/dialogs/game/breakdialog.h"
 // background functions
 #include "../background/run.h"
 
@@ -52,6 +53,7 @@ private:
     void imgLoader(bool);                // clear the screen and load the arrow or the star image
     void showImgArrow(Trial);            // show other and mid image on the right label - arrow images
     void showImgStars(Trial);            // shows all stars
+    void breakWindow();                         //load a break window between to runs
     Ui::GameWindow *ui;
     // dialog between the three sessions
     SaveDialog save;    // save dialog, which is used when you press ESC

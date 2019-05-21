@@ -145,6 +145,17 @@ int GameWindow::pixel(double cm, char x_or_y){
     return number_of_px;
 }
 
+// load a break window
+void GameWindow::breakWindow(){
+    if(!run->getPause())    // if no run is finished (modulo isn't 0)
+        return;
+    BreakDialog pause;
+    // AboutGamewindow is everytime in foreground
+    pause.setModal(true);
+    pause.exec();
+    cout << "Load Pause-Dialog " << endl;
+}
+
 // set a delay of miliseconds
 /*void GameWindow::delay( int millisecondsToWait )
 {

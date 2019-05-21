@@ -35,10 +35,10 @@ void Calculation::resetValues(){
 }
 
 // calculate all values
-/*void Calculation::calcValues(vector<Run> reaction_times, int all_trials, int right_trials){
-    calcAverageReactionTime(reaction_times);        // calculates the reaction times
-    calcRightPercentage(all_trials, right_trials);  // calculates the percentage of right reactions
-}*/
+void Calculation::calcValues(Run *run){
+    calcAverageReactionTime(run);        // calculates the reaction times
+    calcRightPercentage(run->getVectorSize(), run->getNmbrAllRightReactions());  // calculates the percentage of right reactions
+}
 
 // all calculation functions
 // average without negativ values -> (no reactions):

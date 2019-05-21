@@ -21,7 +21,7 @@ public:
     // resets all calculated values
     void resetValues();
     // calculates all values - run all private calculation functions
-    void calcValues(vector<Run> reaction_times, int all_trials, int right_trials);
+    void calcValues(Run *run);
 private:
     // functions for calculation of all values
     void calcAverageReactionTime(Run *reaction_times);      // calculates the average reaction time of all reaction times, which aren't -1 (no reaction, trials after game quit)

@@ -41,7 +41,7 @@ void Calculation::resetValues(){
 }*/
 
 // all calculation functions
-// average:
+// average without negativ values -> (no reactions):
 // calculation: (sum of all measured reaction times) / (number of the measured reaction times)
 void Calculation::calcAverageReactionTime(Run *reaction_times){
     reaction_times->setIteratorToStart(); // set the iterator to start
@@ -60,9 +60,7 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
 
 // right percentage:
 // calculation: ((number of right trials) / (number of all trials)) * 100
-/*void Calculation::calcRightPercentage(int all_trials, int right_trials) {
-    percentage = (right_trials/all_trials)*100;
-}*/
+void Calculation::calcRightPercentage(int all_trials, int right_trials) { percentage = (right_trials/all_trials)*100;}
 
 // median for reaction times:
 /*

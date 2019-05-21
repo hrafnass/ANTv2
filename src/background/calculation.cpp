@@ -7,12 +7,12 @@ Calculation::Calculation(){
     effects = 0;
     median = 0;
 }
-/*
+
 // all getter
 double Calculation::getAverage(){
     return average;
 }
-
+/*
 double Calculation::getRightPercentage(){
     return percentage;
 }

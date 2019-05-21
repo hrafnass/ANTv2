@@ -72,14 +72,22 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
  *  - includes all negative values (Trials with no reactions)
  * */
 double Calculation::calcMedian(Run *calc_median){
+    Trial *t1, *t2;      // saves the Trials for the median calculation
+    int median = -1;      // saves the median value
     sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction);       // sorting the to_median vector
-    double median = 0;                              // saves the return value
     // check if the vector size is odd or even
     if(calc_median->getVectorSize() % 2){           // to_median.size % 2 = 1 -> size is odd
-        unsigned int position = (calc_median+1)/2;         // calculates the position in to_median
-        median = to_median.at(position);
+        unsigned long position = (calc_median->getVectorSize()+1)/2;         // calculates the position in the run_vector of run
+        if(calc_median->getTrialAtPos(position, t1))
+            median = t1->getReactionTime();
     }else{                      // to_median.size % 2 = 0 -> size is even
-        median = (1/2)*(to_median.at(size/2)+ to_median.at(size/2+1));
+        // return -1 if the needed Trial isn't reachable
+        if(!calc_median->getTrialAtPos(calc_median->getVectorSize()/2, t1))
+            return median;
+        if(!calc_median->getTrialAtPos(calc_median->getVectorSize()/2+1, t2))
+            return median;
+        // calculates the trial
+        median = (1/2)*(t1->getReactionTime()+ t2->getReactionTime());
     }
     return median;
 }

@@ -49,7 +49,9 @@ public:
     // getter for actuell trial
     Trial getActuellTrial();
     bool getPause();            // check if one of the n runs is full-filled(yes = return true; no = return false)
-    vector<Trial>::iterator getVectorEnd(){ return run_vector.end();}   // returns the end of the vectord
+    // needed for searches and calculations in run_vector
+    vector<Trial>::iterator getVectorEnd(){ return run_vector.end();}       // returns the end of the vectord
+    vector<Trial>::iterator getVectorStart(){ return run_vector.begin();}   // returns the start of the run_vector
 private:
     void possibleCombinations();           // create all possible arrow and star combinations
     void shuffelRun();          // shuffels the run_vector (used bevor every run) - and set it_run_vector at run_vector.begin()

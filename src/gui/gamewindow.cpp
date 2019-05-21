@@ -46,6 +46,7 @@ void GameWindow::gameLoop(){
         stop_loop.exec();
         to_long = true;             // if the reaction time is to long
         clearScreen();
+        breakWindow();  // check if a run is finished an opens the break window
     }
     this->close();  // close the window
 }

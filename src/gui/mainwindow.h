@@ -37,7 +37,7 @@ private:
     // saves all values
     Saving save;
     // saves all values and calculations
-    // Calculation calc;
+    Calculation calc;
 };
 
 #endif // MAINWINDOW_H

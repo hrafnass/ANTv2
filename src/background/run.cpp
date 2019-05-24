@@ -84,16 +84,18 @@ bool Run::getPause(){
 
 /*
  * get the trial at position pos - pos >-1 and < vector.size()
- * before using the Trial *trial value the return values should checked
+ * before using the Trial return value the existing pointer parameter should be checked.
+ * *existing = true - Trial exists in run_vector
+ * *existing = false
 */
-bool Run::getTrialAtPos(unsigned int pos, Trial *trial){
-    trial = nullptr;
-    // if the Trial exist Trial is write in trial and the return is true else false
+Trial Run::getTrialAtPos(unsigned int pos, bool *existing){
+    // if the Trial exist Trial is returned and *existing is true
     if(pos < run_vector.size()){
-        trial = &run_vector.at(pos);
-        return true;
+        cout << "Trial at: " << pos << endl;
+        *existing = true;
+        return run_vector.at(pos);
     }
-    return false;
+    *existing = false;
 }
 
 

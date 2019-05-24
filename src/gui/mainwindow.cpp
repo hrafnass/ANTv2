@@ -32,14 +32,15 @@ void MainWindow::on_startGamePushButton_clicked()
     QString forename = ui->forenameLineEdit->text();
     QString name = ui->nameLineEdit->text();
     QString notice = ui->noticeTextEdit->toPlainText();
+    QString birthday = ui->birthdayLabel->text();
     // saves the birthday
-    // check if forename or name is empty
-    if(forename.isEmpty() || name.isEmpty()){
+    // check if forename, name or birthday is empty
+    if(forename.isEmpty() || name.isEmpty() || birthday.isEmpty()){
         // open remind window
         Reminder reminder_dialog;
         reminder_dialog.setModal(true);
         reminder_dialog.exec();
-        ui->birthdayLabel->setPixmap(QPixmap(QString::fromUtf8(":/cross_klein.png")));
+        // ui->birthdayLabel->setPixmap(QPixmap(QString::fromUtf8(":/cross_klein.png")));
         return;
     }else {
         run.newGame();          // start the settings for a new game
@@ -49,15 +50,21 @@ void MainWindow::on_startGamePushButton_clicked()
         s = true;               // wenn the game finished, all measured values can be saved
     }
     // save all calculated values
-    /*if(s){
+    if(s){
+        // reset the calculations
+        calc.resetValues();
+        // calc the values
+        calc.calcValues(&run);
+        // save the values
         save.openCSVFile(forename, name);
-        save.writeCSVFile(&run, &calc, notice);
+        save.writeCSVFile(&run, &calc, notice, birthday);
         save.closeCSVFile();
-    }*/
+    }
     // clear all measured values
     // calc.resetValues();
     // delete the whole input (forename, name, notice, birthday to Standard)
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");
     ui->noticeTextEdit->setText("");
+    ui->birthdayLabel->setText("");
 }

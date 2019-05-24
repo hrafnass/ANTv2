@@ -2,7 +2,6 @@
 #define REMINDER_H
 
 #include <QDialog>
-
 namespace Ui {
 class Reminder;
 }

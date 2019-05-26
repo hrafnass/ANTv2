@@ -37,7 +37,7 @@ public:
         l,      // left
         r       // right
     } dir;
-
+    Trial(){}
     Trial(star_position star_pos, arrow_position arrow_pos, image img);
     // setter for trial
     void setReactionTime(int time);                     // set the reaction time

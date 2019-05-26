@@ -33,7 +33,7 @@ bool Run::readRun(){
     // checks if the iterator is equal run_vector.end()
     // if it's true the vector end is reached -> the run is finished and readRun has to start again (next run) -> run_vector has to be shuffel
     if(it_run_vector == run_vector.end()){
-        cout << "Read Run end"<<endl;
+        cout << "THE END"<<endl;
         return false;       // is the sign to shuffle the run_vector again - the Run has ended
     }
     // saves the postion and iterates
@@ -45,7 +45,6 @@ bool Run::readRun(){
 
 // set the measured values
 void Run::setMeasure(int reaction_time, int choose){
-    cout << "setMeasure: Time: " << reaction_time << "Choose: " << choose << endl;
     run_vector.at(pos).setReactionTime(reaction_time);
     // check if the direction the same -> 0 = left; 1 = rigt
     if (run_vector.at(pos).getDirection() == choose){
@@ -53,17 +52,13 @@ void Run::setMeasure(int reaction_time, int choose){
         ++number_of_all_right_reactions;    // increase the number of all right reactions
     }else
         run_vector.at(pos).setRightReaction(false);
-
-    cout << "Runvector: " << run_vector.at(pos).getReactionTime() << endl;
 }
 
 // set the iterator to vector.begin
 void Run::setIteratorToStart(){ it_run_vector = run_vector.begin(); }
 
 //returns the actuell trial
-Trial Run::getActuellTrial() {
-    cout << "Actuelle Position: "<<pos<<endl;
-    return run_vector.at(pos);}
+Trial Run::getActuellTrial() { return run_vector.at(pos);}
 
 /*
  * number_of_trials % number_of_trials_in_a_run = 0 -> one run is finished
@@ -106,7 +101,7 @@ void Run::possibleCombinations(){
             }
         }
     }
-    cout << "Lenght run vector: " << run_vector.size();
+    cout << "Lenght run vector: " << run_vector.size() << endl;
 }
 
 // shuffels the run_vector - and set the iterator to run_vector_begin

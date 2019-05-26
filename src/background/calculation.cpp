@@ -36,12 +36,9 @@ void Calculation::resetValues(){
 
 // calculate all values
 void Calculation::calcValues(Run *run){
-    cout << "Average Reactiontime" <<endl;
     calcAverageReactionTime(run);        // calculates the reaction times
-    //cout << "right percentage"<<endl;
     calcRightPercentage(run->getVectorSize(), run->getNmbrAllRightReactions());  // calculates the percentage of right reactions
-    cout << "calcmedian"<<endl;
-    median = calcMedian(run);        // calculates the median
+    calcMedian(run);        // calculates the median
 }
 
 // all calculation functions

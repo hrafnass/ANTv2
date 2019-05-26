@@ -32,7 +32,7 @@ void MainWindow::on_startGamePushButton_clicked()
     QString forename = ui->forenameLineEdit->text();
     QString name = ui->nameLineEdit->text();
     QString notice = ui->noticeTextEdit->toPlainText();
-    QString birthday = ui->birthdayLabel->text();
+    QString birthday = ui->birthdayDateEdit->date().toString();
     // saves the birthday
     // check if forename, name or birthday is empty
     if(forename.isEmpty() || name.isEmpty() || birthday.isEmpty()){
@@ -64,5 +64,4 @@ void MainWindow::on_startGamePushButton_clicked()
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");
     ui->noticeTextEdit->setText("");
-    ui->birthdayLabel->setText("");
 }

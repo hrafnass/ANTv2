@@ -8,6 +8,7 @@
 #include <QKeyEvent>
 #include <QApplication>
 #include <QtGui>
+#include <QCursor>
 #include <QLabel>
 //#include <QTime>
 #include <QElapsedTimer>
@@ -53,8 +54,9 @@ private:
     void imgLoader(bool);                // clear the screen and load the arrow or the star image
     void showImgArrow(Trial);            // show other and mid image on the right label - arrow images
     void showImgStars(Trial);            // shows all stars
-    void breakWindow();                         //load a break window between to runs
+    void breakWindow();                  //load a break window between to runs
     Ui::GameWindow *ui;
+    QCursor cursor;         // used to hide the cursor
     // dialog between the three sessions
     SaveDialog save;    // save dialog, which is used when you press ESC
     // saves the run

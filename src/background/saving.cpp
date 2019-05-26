@@ -36,7 +36,6 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
         else
             save << "false"<< endl;
         ++number_of_rows;
-        cout << "number of rows: " << number_of_rows;
     }
     // calc the values
     calc->calcValues(run);

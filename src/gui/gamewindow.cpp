@@ -54,6 +54,7 @@ void GameWindow::gameLoop(){
 void GameWindow::startSettings(bool *s){
     loop = true;            // set the start loop to true
     save_game = s;          // save check if the game could save
+    cursor.setShape(Qt::CursorShape::BlankCursor);  // set the cursor invisible
     // clear screen
     clearScreen();              // if the gui is used fore more than one game, it has to be cleaned
     // size in px of all arrow/star labels
@@ -261,16 +262,3 @@ void GameWindow::showImgStars(Trial actuellTrial){
         break;
     }
 }
-/*
-// loads the images for the game
-void GameWindow::imgLoader(bool img) {
-    // clear the screen and get the actuell Trial
-    clearScreen();
-    Trial actuellTrial = run->getActuellTrial();
-    // run the image load function for arrows and stars
-    if(img == STAR)
-        showImgStars(actuellTrial);
-    else if (img == ARROW)
-        showImgArrow(actuellTrial);
-}
-*/

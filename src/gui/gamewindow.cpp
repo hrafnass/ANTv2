@@ -28,7 +28,6 @@ void GameWindow::gameLoop(){
     timer.start();          // starts the timer
     // run solong all 144 trials are over or esc is pressed and set quit_loop to false
     while (run->readRun() && loop) {
-        cout << "read run = true and quit loop"<<endl;
         // 1. show the star wait one second
         showImgStars(run->getActuellTrial());
         //delay(1000);
@@ -116,7 +115,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         break;
     case Qt::Key_Escape:
         loop = false;   // quit the loop
-        cout << "Game ESC";
+        cout << "GAME ESC";
         save.setSaving(save_game);
         if(*save_game)
             cout << "Could Saved" << endl;
@@ -130,7 +129,6 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         return;             // return so the pressed variable isn't changed
     }
     pressed = true; // know how can't presse again
-    cout << "Right Reaction " << run->getActuellTrial().getRightReaction() << endl;
 }
 
 // private methods
@@ -227,7 +225,7 @@ void GameWindow::showImgArrow(Trial actuellTrial){
         setUpLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(1.6, 'x'), pixel(0.6, 'y'));
         break;
     default:
-        cout << "Error in showImgArrow - ArrowPosition isn't set right!!!" << endl;
+        cout << "Error: in showImgArrow - ArrowPosition isn't set right!!!" << endl;
         break;
     }
 }
@@ -263,7 +261,7 @@ void GameWindow::showImgStars(Trial actuellTrial){
         break;
     }
 }
-
+/*
 // loads the images for the game
 void GameWindow::imgLoader(bool img) {
     // clear the screen and get the actuell Trial
@@ -275,3 +273,4 @@ void GameWindow::imgLoader(bool img) {
     else if (img == ARROW)
         showImgArrow(actuellTrial);
 }
+*/

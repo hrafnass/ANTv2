@@ -70,6 +70,7 @@ void Calculation::calcRightPercentage(int all_trials, int right_trials) {
         cout << "Error: No Trials founded!!!" << endl;
         return;
     }
+    cout << "right trials: " << right_trials << " all trials: " << all_trials << endl;
     percentage = (right_trials/all_trials)*100;
 }
 

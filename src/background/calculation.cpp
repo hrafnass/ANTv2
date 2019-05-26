@@ -58,7 +58,10 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
             ++i;
         }
     }
-    cout << "reaction values sum: "<< reaction_values << "number of values: " << i <<endl;
+    if(i == 0){
+        average = 0;
+        cout << "Error - No reaction value over -1 - no reaction measured"<<endl;
+    }
     // calculates the average rection time and save it in average
     average = reaction_values / i;
 }

@@ -53,8 +53,6 @@ void MainWindow::on_startGamePushButton_clicked()
     if(s){
         // reset the calculations
         calc.resetValues();
-        // calc the values
-        calc.calcValues(&run);
         // save the values
         save.openCSVFile(forename, name);
         save.writeCSVFile(&run, &calc, notice, birthday);

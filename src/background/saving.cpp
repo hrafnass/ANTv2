@@ -26,13 +26,9 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
     QTextStream save(&file);        // output stream for a file
     // saves the headline in the csv file
     save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment,birthday"<< endl;
-    // saves all calculated and measured values
-    save << ",,,"<<QString::number(calc->getMedian())<<","<<QString::number(calc->getAverage())<<","<<QString::number(calc->getRightPercentage())<<","<<QString::number(calc->getEffects())<<","<<comment<<","<<birthday<<endl;
     // runs solong elements in the vector
     run->setIteratorToStart();      // start the iterator at the beginn
-    cout << "CSV BEFORE LOOP\n";
      while (run->readRun()) {
-        cout << "CSV SAVE\n";
         save << QString::number(number_of_rows)<<"," << QString::number(run->getActuellTrial().getReactionTime()) << ",";
         // save if the reaction was right
         if (run->getActuellTrial().getRightReaction())
@@ -42,6 +38,10 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
         ++number_of_rows;
         cout << "number of rows: " << number_of_rows;
     }
+    // calc the values
+    calc->calcValues(run);
+    // saves all calculated and measured values
+    save << ",,,"<<QString::number(calc->getMedian())<<","<<QString::number(calc->getAverage())<<","<<QString::number(calc->getRightPercentage())<<","<<QString::number(calc->getEffects())<<","<<comment<<","<<birthday<<endl;
     return;
 }
 

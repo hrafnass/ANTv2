@@ -83,8 +83,27 @@ void Calculation::calcRightPercentage(int all_trials, int right_trials) {
  *  odd: to_median.at((to_median.size()+1)/2)
  *  - includes all negative values (Trials with no reactions)
  * */
-double Calculation::calcMedian(Run *calc_median){
-
+bool Calculation::calcMedian(Run *calc_median){
+    Trial odd, even;    // Trials
+    // positions for the Trials
+    unsigned int odd_position = (calc_median->getVectorSize()+1)/2;
+    unsigned int even_position = (calc_median->getVectorSize())/2;
+    sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction); // sorting the to_median vector
+    // median calculation
+    if(calc_median->getVectorSize()%2){ // 0 is in c/c++ false, everything else true -> odd vector size is true
+        if(calc_median->getTrialAtPos(odd_position, &odd)){
+            median = odd.getReactionTime();
+            return true;
+        }
+    }else{                              // even
+        // get the trial of the odd and the even median part
+        if(calc_median->getTrialAtPos(odd_position, &odd) && calc_median->getTrialAtPos(even_position, &even)){
+            median = 0.5*(odd.getReactionTime()+even.getReactionTime());
+            return true;
+        }
+    }
+    cout << "Error: Median couldn't calculated!!!" << endl;
+    return false;
 }
 
 // compare function for the sort algorithmus in calcMedian

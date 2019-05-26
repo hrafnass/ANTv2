@@ -82,22 +82,15 @@ bool Run::getPause(){
     return false;                                       // in a run
 }
 
-/*
- * get the trial at position pos - pos >-1 and < vector.size()
- * before using the Trial return value the existing pointer parameter should be checked.
- * *existing = true - Trial exists in run_vector
- * *existing = false
-*/
-Trial Run::getTrialAtPos(unsigned int pos, bool *existing){
-    // if the Trial exist Trial is returned and *existing is true
+// return = true, if the trial at position pos exists, else false
+// geTrialAtPos get a Trial at position pos
+bool Run::getTrialAtPos(unsigned int pos, Trial *trial){
     if(pos < run_vector.size()){
-        cout << "Trial at: " << pos << endl;
-        *existing = true;
-        return run_vector.at(pos);
+        trial = &run_vector.at(pos);
+        return true;
     }
-    *existing = false;
+    return false;
 }
-
 
 // Private Methods
 // create 48 possible Trials - all combinations of images and arrow and star positions

@@ -40,7 +40,6 @@ void MainWindow::on_startGamePushButton_clicked()
         Reminder reminder_dialog;
         reminder_dialog.setModal(true);
         reminder_dialog.exec();
-        // ui->birthdayLabel->setPixmap(QPixmap(QString::fromUtf8(":/cross_klein.png")));
         return;
     }else {
         run.newGame();          // start the settings for a new game
@@ -54,7 +53,8 @@ void MainWindow::on_startGamePushButton_clicked()
         // reset the calculations
         calc.resetValues();
         // save the values
-        save.openCSVFile(forename, name);
+        if(!save.openCSVFile(forename, name))    // if the file descriptor doesn't open
+            return;
         save.writeCSVFile(&run, &calc, notice, birthday);
         save.closeCSVFile();
     }

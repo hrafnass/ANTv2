@@ -85,20 +85,24 @@ void Calculation::calcRightPercentage(int all_trials, int right_trials) {
  * */
 bool Calculation::calcMedian(Run *calc_median){
     Trial odd, even;    // Trials
-    // positions for the Trials
-    unsigned int odd_position = (calc_median->getVectorSize()+1)/2;
-    unsigned int even_position = (calc_median->getVectorSize())/2;
     sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction); // sorting the to_median vector
     // median calculation
     if(calc_median->getVectorSize()%2){ // 0 is in c/c++ false, everything else true -> odd vector size is true
-        if(calc_median->getTrialAtPos(odd_position, &odd)){
+        unsigned int odd_pos = (calc_median->getVectorSize()+1)/2;  // trial position
+        if(calc_median->getTrialAtPos(odd_pos, &odd)){
             median = odd.getReactionTime();
+            cout << "median : " << median << endl;
             return true;
         }
     }else{                              // even
+        // trial positions
+        unsigned int even_pos = (calc_median->getVectorSize())/2;
+        unsigned int odd_pos = (calc_median->getVectorSize())/2+1;
         // get the trial of the odd and the even median part
-        if(calc_median->getTrialAtPos(odd_position, &odd) && calc_median->getTrialAtPos(even_position, &even)){
+        if(calc_median->getTrialAtPos(odd_pos, &odd) && calc_median->getTrialAtPos(even_pos, &even)){
             median = 0.5*(odd.getReactionTime()+even.getReactionTime());
+            cout << "odd pos: " << odd_pos << " even pos: " << even_pos << endl;
+            cout << "median : " << median << " odd: " <<odd.getReactionTime() << " even: " << even.getReactionTime() <<endl;
             return true;
         }
     }

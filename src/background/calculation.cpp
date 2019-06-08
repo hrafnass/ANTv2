@@ -84,14 +84,13 @@ void Calculation::calcRightPercentage(int all_trials, int right_trials) {
  *  - includes all negative values (Trials with no reactions)
  * */
 bool Calculation::calcMedian(Run *calc_median){
-    Trial odd, even;    // Trials
-    sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction); // sorting the to_median vector
+    /*sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction); // sorting the to_median vector
     // median calculation
     if(calc_median->getVectorSize()%2){ // 0 is in c/c++ false, everything else true -> odd vector size is true
         unsigned int odd_pos = (calc_median->getVectorSize()+1)/2;  // trial position
-        if(calc_median->getTrialAtPos(odd_pos, &odd)){
-            median = odd.getReactionTime();
-            cout << "median : " << median << endl;
+        if(calc_median->getTrialAtPos(odd_pos, odd)){
+            median = odd->getReactionTime();
+            cout << "median : " << median << " odd pos: " << odd_pos << endl;
             return true;
         }
     }else{                              // even
@@ -99,16 +98,16 @@ bool Calculation::calcMedian(Run *calc_median){
         unsigned int even_pos = (calc_median->getVectorSize())/2;
         unsigned int odd_pos = (calc_median->getVectorSize())/2+1;
         // get the trial of the odd and the even median part
-        if(calc_median->getTrialAtPos(odd_pos, &odd) && calc_median->getTrialAtPos(even_pos, &even)){
-            median = 0.5*(odd.getReactionTime()+even.getReactionTime());
-            cout << "odd pos: " << odd_pos << " even pos: " << even_pos << endl;
-            cout << "median : " << median << " odd: " <<odd.getReactionTime() << " even: " << even.getReactionTime() <<endl;
+        if(calc_median->getTrialAtPos(odd_pos, odd) && calc_median->getTrialAtPos(even_pos, even)){
+            // median = 0.5*(odd->getReactionTime()+even->getReactionTime());
+            cout << "odd pos: " << odd_pos << " even pos: " << even_pos << " odd pointer: " << odd <<endl;
+            cout << "median : " << median << " odd: " <<odd->getReactionTime() << " even: " << even->getReactionTime() <<endl;
             return true;
         }
     }
     cout << "Error: Median couldn't calculated!!!" << endl;
     return false;
-}
+*/}
 
 // compare function for the sort algorithmus in calcMedian
 bool Calculation::compareTimeFunction(Trial t1, Trial t2){

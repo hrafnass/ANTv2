@@ -81,13 +81,8 @@ bool Run::getPause(){
 
 // return = true, if the trial at position pos exists, else false
 // geTrialAtPos get a Trial at position pos
-bool Run::getTrialAtPos(unsigned int pos, Trial *trial){
-    if(pos < run_vector.size()){
-        trial = &run_vector.at(pos);
-        return true;
-    }
-    return false;
-}
+// no check that pos is in the vector
+Trial Run::getTrialAtPos(unsigned int pos){ return run_vector.at(pos);}
 
 // Private Methods
 // create 48 possible Trials - all combinations of images and arrow and star positions

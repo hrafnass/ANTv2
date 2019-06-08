@@ -84,30 +84,31 @@ void Calculation::calcRightPercentage(int all_trials, int right_trials) {
  *  - includes all negative values (Trials with no reactions)
  * */
 bool Calculation::calcMedian(Run *calc_median){
-    /*sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction); // sorting the to_median vector
+    sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction); // sorting the to_median vector
+    // calculates the vector positions
+    unsigned int odd_pos = (calc_median->getVectorSize()+1)/2;
+    unsigned int even_pos = (calc_median->getVectorSize())/2;
+
     // median calculation
     if(calc_median->getVectorSize()%2){ // 0 is in c/c++ false, everything else true -> odd vector size is true
-        unsigned int odd_pos = (calc_median->getVectorSize()+1)/2;  // trial position
-        if(calc_median->getTrialAtPos(odd_pos, odd)){
-            median = odd->getReactionTime();
+        if(odd_pos < calc_median->getVectorSize()){ // position is from 0 to (vector size -1)
+            median = calc_median->getTrialAtPos(odd_pos).getReactionTime(); // get the reaction time from the calculated trial
             cout << "median : " << median << " odd pos: " << odd_pos << endl;
             return true;
         }
     }else{                              // even
-        // trial positions
-        unsigned int even_pos = (calc_median->getVectorSize())/2;
-        unsigned int odd_pos = (calc_median->getVectorSize())/2+1;
         // get the trial of the odd and the even median part
-        if(calc_median->getTrialAtPos(odd_pos, odd) && calc_median->getTrialAtPos(even_pos, even)){
-            // median = 0.5*(odd->getReactionTime()+even->getReactionTime());
-            cout << "odd pos: " << odd_pos << " even pos: " << even_pos << " odd pointer: " << odd <<endl;
-            cout << "median : " << median << " odd: " <<odd->getReactionTime() << " even: " << even->getReactionTime() <<endl;
+        if((even_pos+1) < calc_median->getVectorSize()){    // the median for a even vector size needs 2 values even_pos and even_pos +1
+            // calculates the median
+            median = 0.5*(calc_median->getTrialAtPos(even_pos).getReactionTime()+calc_median->getTrialAtPos(even_pos+1).getReactionTime());
+            cout << "pos1: " << even_pos << " pos2: " << (even_pos+1) << " median: " << median << endl;
             return true;
         }
     }
     cout << "Error: Median couldn't calculated!!!" << endl;
+    median = -1;        // the calculation got an error
     return false;
-*/}
+}
 
 // compare function for the sort algorithmus in calcMedian
 bool Calculation::compareTimeFunction(Trial t1, Trial t2){

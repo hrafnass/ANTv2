@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     run.initRun(3);     // loaded the run with 3
     game.setRun(&run);  // give run to gamewindow
+    game.setCursor(Qt::BlankCursor);    // blanks the cursor from the game window
 }
 
 MainWindow::~MainWindow()

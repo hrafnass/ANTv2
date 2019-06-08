@@ -24,7 +24,7 @@ public:
     void calcValues(Run *run);
 private:
     // functions for calculation of all values
-    void calcAverageReactionTime(Run *reaction_times);      // calculates the average reaction time of all reaction times, which aren't -1 (no reaction, trials after game quit)
+    void calcAverageReactionTime(Run *reaction_times);    // calculates the average reaction time of all reaction times, which aren't -1 (no reaction, trials after game quit)
     bool calcMedian(Run *median);                         // calculates the median of an vector<int>
     void calcRightPercentage(int all_trials, int right_trials); // calculates the percentage of right reactions
     void calcEffects(vector<Run> reaction_times1, vector<Run>reaction_times2);

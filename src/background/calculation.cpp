@@ -56,8 +56,9 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
         }
     }
     if(i == 0){
-        average = 0;
+        average = -1;   // no values existing - everything is -1
         cout << "Error - No reaction value over -1 - no reaction measured"<<endl;
+        return;
     }
     // calculates the average rection time and save it in average
     average = reaction_values / i;
@@ -68,6 +69,7 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
 void Calculation::calcRightPercentage(int all_trials, int right_trials) {
     if(all_trials == 0){
         cout << "Error: No Trials founded!!!" << endl;
+        percentage = -1;        // no values existing - everything is -1
         return;
     }
     cout << "right trials: " << right_trials << " all trials: " << all_trials << endl;

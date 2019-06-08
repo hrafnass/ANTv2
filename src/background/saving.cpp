@@ -35,7 +35,7 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
     // calc the values
     calc->calcValues(run);
     // saves all calculated and measured values
-    save << ",,,"<<calc->getMedian()<<","<<calc->getAverage()<<","<<calc->getRightPercentage()<<","<<calc->getEffects()<<","<<comment<<","<<birthday<<endl;
+    save << ",,,"<<calc->getMedian()<<","<<calc->getAverage()<<","<<calc->getRightPercentage()<<","<<calc->getEffects()<<","<<comment<<","<<birthday.toUtf8()<<endl;
     return;
 }
 

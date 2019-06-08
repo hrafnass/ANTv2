@@ -9,7 +9,7 @@ Saving::Saving(){
 bool Saving::openCSVFile(QString name, QString forename) {
     QString filename = createFilename(name, forename);      // creates the filename for the csv file
     file.setFileName(filename);                     // sets the filename of the file
-    bool opened = file.open(QIODevice::WriteOnly);  // tries to open the csv file in write only mode
+    bool opened = file.open(QFile::WriteOnly);  // tries to open the csv file in write only mode
     return opened;                                  // true if the file is opened/created else false
 }
 
@@ -28,9 +28,9 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
     save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment,birthday"<< endl;
     // runs solong elements in the vector
     run->setIteratorToStart();      // start the iterator at the beginn
-     while (run->readRun()) {
-        save << QString::number(number_of_rows)<<"," << QString::number(run->getActuellTrial().getReactionTime()) << ",";
-        // save if the reaction was right
+    while (run->readRun()) {
+        save << number_of_rows<<"," << run->getActuellTrial().getReactionTime() << ",";
+         // save if the reaction was right
         if (run->getActuellTrial().getRightReaction())
             save << "true"<< endl;
         else
@@ -40,7 +40,7 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
     // calc the values
     calc->calcValues(run);
     // saves all calculated and measured values
-    save << ",,,"<<QString::number(calc->getMedian(),'f')<<","<<QString::number(calc->getAverage(),'f')<<","<<QString::number(calc->getRightPercentage(),'f')<<","<<QString::number(calc->getEffects(),'f')<<","<<comment<<","<<birthday<<endl;
+    save << ",,,"<<calc->getMedian()<<","<<calc->getAverage()<<","<<calc->getRightPercentage()<<","<<calc->getEffects()<<","<<comment<<","<<birthday<<endl;
     return;
 }
 

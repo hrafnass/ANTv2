@@ -11,6 +11,7 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     timer.start();   // start the time measurement
+
 }
 
 GameWindow::~GameWindow()
@@ -54,7 +55,6 @@ void GameWindow::gameLoop(){
 void GameWindow::startSettings(bool *s){
     loop = true;            // set the start loop to true
     save_game = s;          // save check if the game could save
-    cursor.setShape(Qt::CursorShape::BlankCursor);  // set the cursor invisible
     // clear screen
     clearScreen();              // if the gui is used fore more than one game, it has to be cleaned
     // size in px of all arrow/star labels

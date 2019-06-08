@@ -56,7 +56,6 @@ private:
     void showImgStars(Trial);            // shows all stars
     void breakWindow();                  //load a break window between to runs
     Ui::GameWindow *ui;
-    QCursor cursor;         // used to hide the cursor
     // dialog between the three sessions
     SaveDialog save;    // save dialog, which is used when you press ESC
     // saves the run

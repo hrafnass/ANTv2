@@ -43,8 +43,9 @@ void MainWindow::on_startGamePushButton_clicked()
         return;
     }else {
         run.newGame();          // start the settings for a new game
+        cout << "start game" << endl;
         game.showFullScreen();  // open the window in fullscreen
-        game.startSettings(&s);   // sets the size of all labels
+        game.startSettings(&s); // sets the size of all labels
         game.gameLoop();        // start game loop
         s = true;               // wenn the game finished, all measured values can be saved
     }

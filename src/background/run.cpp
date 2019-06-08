@@ -18,13 +18,13 @@ void Run::newGame(){
     pos = 0;
     // reseting all measured values in run_vector (import for a second game)
     for(;it_run_vector != run_vector.end(); ++it_run_vector) {
-        cout << "Before reset: " << run_vector.at(pos).getReactionTime() << " pos: " << pos << "right reaction: " << run_vector.at(pos).getRightReaction() <<endl;
         // calculates the position in the vector
         pos = it_run_vector - run_vector.begin();
+        // cout << "Before reset: " << run_vector.at(pos).getReactionTime() << " pos: " << pos << "right reaction: " << run_vector.at(pos).getRightReaction() <<endl;
         // set the vector values to start
         run_vector.at(pos).setReactionTime(-1);
         run_vector.at(pos).setRightReaction(false);
-        cout << "After reset: " << run_vector.at(pos).getReactionTime() << " pos: " << pos << "right reaction: " << run_vector.at(pos).getRightReaction() <<endl;
+        // cout << "After reset: " << run_vector.at(pos).getReactionTime() << " pos: " << pos << "right reaction: " << run_vector.at(pos).getRightReaction() <<endl;
     }
     setIteratorToStart();   // set the iterator to start - needed for a right use of readRun()
     pos = 0;

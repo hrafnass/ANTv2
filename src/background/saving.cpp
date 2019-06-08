@@ -1,10 +1,5 @@
 #include "saving.h"
 
-Saving::Saving(){
-    time = QTime::currentTime();    // init the qtime object
-    date = QDate::currentDate();    // init the qdate object
-}
-
 // opens the csv file
 bool Saving::openCSVFile(QString name, QString forename) {
     QString filename = createFilename(name, forename);      // creates the filename for the csv file
@@ -57,6 +52,8 @@ void Saving::closeCSVFile(){
 */
 QString Saving::createFilename(QString name, QString forename){
     // create the filename
+    QDate date = QDate::currentDate();  // get the current date  (system clock)
+    QTime time = QTime::currentTime();  // get the current time     -"-
     QString filename = name+"_"+forename+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm")+".csv";
     // returns the filename
     return filename;

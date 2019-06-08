@@ -22,8 +22,6 @@ private:
     QString createFilename(QString name, QString forename);         // creates a new filename for the csv-file
     // variables
     QFile file;                 // saves the "qt-file descriptor"
-    QDate date;                 // saves the qdate object for the filename
-    QTime time;                 // saves the qtime object for the filename
 };
 
 #endif // SAVING_H

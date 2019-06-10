@@ -1,7 +1,7 @@
 #ifndef BREAKDIALOG_H
 #define BREAKDIALOG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 namespace Ui {
 class BreakDialog;

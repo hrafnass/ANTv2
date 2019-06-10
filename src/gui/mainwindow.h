@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
 // windows
 #include "dialogs/main/aboutgamedialog.h"
 #include "dialogs/main/reminder.h"

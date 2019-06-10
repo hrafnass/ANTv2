@@ -4,15 +4,15 @@
 #define STAR true
 #define ARROW false
 
-#include <QWidget>
-#include <QKeyEvent>
-#include <QApplication>
-#include <QtGui>
-#include <QCursor>
-#include <QLabel>
-//#include <QTime>
-#include <QElapsedTimer>
-#include <QTimer>
+#include <QtCore/QElapsedTimer>
+#include <QtCore/QTimer>
+
+#include <QtGui/QKeyEvent>
+#include <QtGui/QCursor>
+
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 
 // Game Dialogs
 #include "src/gui/dialogs/game/savedialog.h"

@@ -1,7 +1,7 @@
 #ifndef ABOUTGAMEDIALOG_H
 #define ABOUTGAMEDIALOG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 namespace Ui {
 class AboutGameDialog;

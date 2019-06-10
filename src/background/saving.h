@@ -1,10 +1,11 @@
 #ifndef SAVING_H
 #define SAVING_H
-#include <QFile>
-#include <QTextStream>
-#include <QString>
-#include <QTime>
-#include <QDate>
+
+#include <QtCore/QDate>
+#include <QtCore/QFile>
+#include <QtCore/QString>
+#include <QtCore/QTextStream>
+#include <QtCore/QTime>
 
 #include "calculation.h"
 #include "run.h"

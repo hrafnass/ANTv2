@@ -1,8 +1,8 @@
 #ifndef SAVEDIALOG_H
 #define SAVEDIALOG_H
 
-#include <QDialog>
-#include <QAbstractButton>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QAbstractButton>
 
 namespace Ui {
 class SaveDialog;

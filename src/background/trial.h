@@ -1,6 +1,7 @@
 #ifndef TRIAL_H
 #define TRIAL_H
-#include <QString>
+
+#include <QtCore/QString>
 #include <vector>
 
 using namespace std;

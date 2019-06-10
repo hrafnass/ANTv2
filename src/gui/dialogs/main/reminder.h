@@ -1,7 +1,7 @@
 #ifndef REMINDER_H
 #define REMINDER_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 namespace Ui {
 class Reminder;
 }

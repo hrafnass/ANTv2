@@ -1,1 +1,0 @@
-used qt source code

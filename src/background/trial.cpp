@@ -59,11 +59,11 @@ void Trial::setImg(){
             break;
         case image::sslss:
             mid_img = ":/ressources/images/arrow_left.svg";
-            other_img = ":/ressources/images/free_space.svg";
+            other_img = ":/ressources/images/bar.svg";
             break;
         case image::ssrss:
             mid_img = ":/ressources/images/arrow_right.svg";
-            other_img = ":/ressources/images/free_space.svg";
+            other_img = ":/ressources/images/bar.svg";
             break;
         default:
                 return;

@@ -58,12 +58,13 @@ void GameWindow::startSettings(bool *s){
     // clear screen
     clearScreen();              // if the gui is used fore more than one game, it has to be cleaned
     // size in px of all arrow/star labels
-    int height = pixel(0.6, 'y');
+    int height = pixel(1.0, 'y');
     int free_width = pixel(0.6, 'x');
     int mid_height = pixel(1, 'x');
     int mid_width = pixel(1, 'y');
-    int arrow_width = pixel(1.6, 'x');
-    int arrow_height = pixel(0.6, 'y');
+    int arrow_width = pixel(2.54, 'x');
+    int arrow_height = pixel(1.0, 'y');
+    int spacer_width = pixel(1, 'x');
     // up labels ( free)
     setLabelSize(ui->Up2_1, height, free_width);
     setLabelSize(ui->Up3_2, height, free_width);
@@ -90,6 +91,10 @@ void GameWindow::startSettings(bool *s){
     setLabelSize(ui->Down5, arrow_height, arrow_width);
     // mid label
     setLabelSize(ui->labelMid, mid_height, mid_width);
+    // set spacers
+    ui->verticalSpacerUpMid->changeSize(spacer_width, spacer_width, QSizePolicy::Fixed, QSizePolicy::Fixed);
+    ui->verticalSpacerDownMid->changeSize(spacer_width, spacer_width, QSizePolicy::Fixed, QSizePolicy::Fixed);
+
 }
 
 // protected methods
@@ -206,14 +211,14 @@ void GameWindow::clearScreen(){
 void GameWindow::showImgArrow(Trial actuellTrial){
     switch (actuellTrial.getArrowPosition()) {
     case Trial::arrow_position::both_arrow:     // show the Trial on the Up and on the Down labels
-        setDownLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(1.6, 'x'), pixel(0.6, 'y'));    // load the images
-        setUpLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(1.6, 'x'), pixel(0.6, 'y'));
+        setDownLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(2.54, 'x'), pixel(1.0, 'y'));    // load the images
+        setUpLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(2.54, 'x'), pixel(1.0, 'y'));
         break;
     case Trial::arrow_position::down_arrow:     // shwo the Trial on the down labels
-        setDownLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(1.6, 'x'), pixel(0.6, 'y'));    // load the images
+        setDownLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(2.54, 'x'), pixel(1.0, 'y'));    // load the images
         break;
     case Trial::arrow_position::up_arrow:       // show the Trial on the up labels
-        setUpLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(1.6, 'x'), pixel(0.6, 'y'));
+        setUpLables(actuellTrial.getOtherImg(), actuellTrial.getMidImg(), pixel(2.54, 'x'), pixel(1.0, 'y'));
         break;
     default:
         cout << "Error: in showImgArrow - ArrowPosition isn't set right!!!" << endl;

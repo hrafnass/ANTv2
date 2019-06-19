@@ -64,7 +64,7 @@ void GameWindow::startSettings(bool *s){
     int mid_width = pixel(1, 'y');
     int arrow_width = pixel(2.54, 'x');
     int arrow_height = pixel(1.0, 'y');
-    int spacer_width = pixel(1, 'x');
+    int spacer_width = pixel(3, 'x');
     // up labels ( free)
     setLabelSize(ui->Up2_1, height, free_width);
     setLabelSize(ui->Up3_2, height, free_width);

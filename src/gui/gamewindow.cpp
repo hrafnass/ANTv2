@@ -156,16 +156,6 @@ void GameWindow::breakWindow(){
     cout << "Load Pause-Dialog " << endl;
 }
 
-// set a delay of miliseconds
-/*void GameWindow::delay( int millisecondsToWait )
-{
-    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
-    while( QTime::currentTime() < dieTime )
-    {
-        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
-    }
-}*/
-
 // set the image labels
 void GameWindow::setUpLables(QString other, QString mid, int arrow_width, int arrow_height){
     // sizes for up labels

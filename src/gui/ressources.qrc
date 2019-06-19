@@ -1,11 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>ressources/images/false.svg</file>
         <file>ressources/images/free_space.svg</file>
         <file>ressources/images/plus.svg</file>
-        <file>ressources/images/right.svg</file>
         <file>ressources/images/star.svg</file>
         <file>ressources/images/arrow_left.svg</file>
         <file>ressources/images/arrow_right.svg</file>
+        <file>ressources/images/bar.svg</file>
     </qresource>
 </RCC>

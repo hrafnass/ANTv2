@@ -6,6 +6,12 @@
 
 using namespace std;
 
+/*
+ * The Trial-Class only has to be changed, if you want to add/remove images/images positions/measured values.
+ * ATTENTION: if you change settings in Trial, you have to controll all other background classes, the game window and the ressources.
+ * In ANTv2 the Trial-Class is needed for the Run-Class to create all possible Trials.
+ * */
+
 // Trial is the show of one arrow with one star
 class Trial
 {

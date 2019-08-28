@@ -14,13 +14,12 @@ using namespace std;
  *  - after every run the gamer could take a pause (getPause() is needed for)
  *  - the number of runs can set in run.init(number_of_runs)
  *  - the number of all possible trials only could increased, if more images and image positions added
- *  - to proof, if a run is finished, to save measured values, to read out the the trials the vector position and the vector iterator is needed
+ *  - to proof, if a run is finished, to save measured values, to read out the the trials the vector position and the vector iterator are needed
  *  - all trials of every run are saved in a run vector;
  *      Why?
  *          - the measured values are easier to calculate
  *          - the number of trials never become so big, that a modern computer couldn't handle it
- *              (for 1200 Trials the player need min. one hour - to long for an test)
- * 				(one Trial needs 3secs -> 1200*3 sec = 3600 secs = 1h)
+ *              (for 1200 Trials max. one hour is needed - to long for an test)
  *
  * How to use  Run-Class:
  * Run run;
@@ -28,11 +27,10 @@ using namespace std;
  * newGame();       // before every new game start, to mix and reset the trials new
  *
  * while(run.readRun()){
- *      (run.getActuellTrial()).getMidImg();         	// load the name of the mid image
- * 		(run.getActuellTrial()).getOtherImg();			// load the name of all other images:	other img	other img	mid img 	other img 	other img ( - - -> - -)
- *      (run.getActuellTrial()).getArrowPosition(); /	/ Position of the arrow (up, down, ...)
+ *      (run.getActuellTrial()).getImage();         // Imagename to load
+ *      (run.getActuellTrial()).getArrowPosition(); // Position of the arrow (up, down, ...)
  *      // measure values and set them: int time, int dir
- *      run.setMeasure(time, dir);                  	// saves the measurement
+ *      run.setMeasure(time, dir);                  // saves the measurement
  * }
  */
 

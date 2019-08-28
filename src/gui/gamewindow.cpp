@@ -142,11 +142,12 @@ int GameWindow::pixel(double cm, char x_or_y){
     int dpi = 0;
     // get the needed dpi values
     if(x_or_y == 'x')
-        dpi = GameWindow::physicalDpiX();      // get the dpi values
+        dpi = GameWindow::logicalDpiX();      // get the dpi values
     else if (x_or_y == 'y')
-        dpi = GameWindow::physicalDpiY();
+        dpi = GameWindow::logicalDpiY();
     // calculates the pixel amount
-    int number_of_px = static_cast<int>((cm / 2.54) * dpi);
+    int number_of_px = static_cast<int>(((cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());
+    cout << " physical: " << GameWindow::physicalDpiX() <<" DPI: " << dpi << " CM:" << cm << " pixelratio: " << GameWindow::devicePixelRatioF() << " Number: " << number_of_px << endl;
     return number_of_px;
 }
 

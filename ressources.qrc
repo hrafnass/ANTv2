@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/ressources/images">
+        <file alias="arrow_left.svg">src/gui/ressources/images/arrow_left.svg</file>
+        <file alias="arrow_right.svg">src/gui/ressources/images/arrow_right.svg</file>
+        <file alias="bar.svg">src/gui/ressources/images/bar.svg</file>
+        <file alias="free_space.svg">src/gui/ressources/images/free_space.svg</file>
+        <file alias="plus.svg">src/gui/ressources/images/plus.svg</file>
+        <file alias="star.svg">src/gui/ressources/images/star.svg</file>
+    </qresource>
+</RCC>

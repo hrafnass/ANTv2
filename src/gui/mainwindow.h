@@ -32,7 +32,7 @@ private:
     // Windows
     Ui::MainWindow *ui;
     // gaming
-    //GameWindow game;
+    GameWindow game;
     Run run;
     // saves all values
     Saving save;

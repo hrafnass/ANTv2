@@ -38,7 +38,8 @@ public:
     bool gameLoop(Run *r);      // gaming loop
 
 protected:
-    void keyPressEvent(QKeyEvent *);        // get the key events
+    void keyPressEvent(QKeyEvent *);        // press key
+    void keyReleaseEvent(QKeyEvent *);      // release key
 
 private:
     Ui::GameWindow *ui;

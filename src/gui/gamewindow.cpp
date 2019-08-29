@@ -43,7 +43,7 @@ bool GameWindow::gameLoop(Run *r){
 
 
 // protected
-// keyEvent
+// keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
     // need a measure function - and only the first press should saved
     if(event->key() == Qt::Key_Left){
@@ -54,3 +54,14 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         cout << "pressed right key" << endl;
     }
 }
+
+// keyEvent (Release)
+void GameWindow::keyReleaseEvent(QKeyEvent *event){
+    // only needed for GameEsc
+    if(event->key() == Qt::Key_Escape){
+        cout << "ESC released" << endl;
+        this->close();
+    }
+}
+
+

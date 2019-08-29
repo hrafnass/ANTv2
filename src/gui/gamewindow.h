@@ -34,6 +34,9 @@ public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
 
+    // game loop
+    bool gameLoop(Run *r);      // gaming loop
+
 protected:
     void keyPressEvent(QKeyEvent *);        // get the key events
 

@@ -6,6 +6,8 @@
 using namespace std;
 
 
+// public
+
 // window constructor
 GameWindow::GameWindow(QWidget *parent) :
     QWidget(parent),
@@ -15,22 +17,35 @@ GameWindow::GameWindow(QWidget *parent) :
 }
 
 
+bool GameWindow::gameLoop(Run *r){
+
+    for(unsigned int i = r->getPos(); r->readRun(); ++i){
+        // clear screen
+
+        // paint svgs (stars)
+
+        // wait 1000ms
+
+        // clear screen (stars)
+
+        // paint arrows
+
+        // start access to the keyPressEvent
+
+        // wait 2000ms
+    }
+
+}
+
+
+
+
 
 
 // protected
 // keyEvent
 void GameWindow::keyPressEvent(QKeyEvent *event){
-    /* needed keys:
-     *      ESC - quit the game
-     *      left arrow and right arrow
-     */
-    // ESC
-    if(event->key() == Qt::Key_Escape){
-        cout << "close the gaming window" << endl;
-        this->close();
-        return;
-    }
-
+    // need a measure function - and only the first press should saved
     if(event->key() == Qt::Key_Left){
         cout << "pressed left key" << endl;
     }
@@ -38,5 +53,4 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_Right){
         cout << "pressed right key" << endl;
     }
-
 }

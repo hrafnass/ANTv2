@@ -48,18 +48,22 @@ public:
     void initRun(unsigned int); // fills all possible trials in the run_vector
     void newGame();             // create a new shuffeld, clean trial
     bool readRun();             // read an element of run_vector - bool checks if the iterator stay in the range between vector::begin and vector::end
+
     // setter for the measured values
     void setMeasure(int reaction_time, int choose); // saves the measured values int saves the reaction time and choose saves the value of direction (0 - left), (1 - right)
     void setIteratorToStart();  // sets the iterator to vector.begin()
+
     // getter for actuell trial
     Trial getActuellTrial();
     bool getPause();            // check if one of the n runs is full-filled(yes = return true; no = return false)
+
     // needed for searches and calculations in run_vectorrrt
     vector<Trial>::iterator getVectorEnd(){ return run_vector.end();}       // returns the end of the vectord
     vector<Trial>::iterator getVectorStart(){ return run_vector.begin();}   // returns the start of the run_vector
     unsigned long getVectorSize() { return run_vector.size();}              // returns the size of whole vector
     Trial getTrialAtPos(unsigned int pos);           // loads  the trial at the position pos from the run_vector
     unsigned int getNmbrAllRightReactions() { return number_of_all_right_reactions;}   // getter for the number
+
     // infos for the game users
     unsigned int getPos() { return pos;}            // return the pos oft the iterator
     unsigned int getSizeOfIterator() { return run_vector.size();}     // return the size of the iterator

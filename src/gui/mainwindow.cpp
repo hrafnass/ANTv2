@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    run.initRun(3);     // loaded the run with 3
-    game.setCursor(Qt::BlankCursor);    // blanks the cursor from the game window
+    // run.initRun(3);     // loaded the run with 3
+    //game.setCursor(Qt::BlankCursor);    // blanks the cursor from the game window
 }
 
 MainWindow::~MainWindow()
@@ -39,12 +39,13 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.setModal(true);
         reminder_dialog.exec();
         return;
-    }else {
-        run.newGame();          // start the settings for a new game
-        cout << "start game" << endl;
-        game.showFullScreen();  // open the window in fullscreen
-        game.gameLoop(&run);    // start game loop
     }
+    // vlt durch slot ersetzen
+    run.newGame();          // start the settings for a new game
+    cout << "start game" << endl;
+    //game.showFullScreen();  // open the window in fullscreen
+    //game.gameLoop(&run);    // start game loop
+
     // clear all measured values
     // calc.resetValues();
     // delete the whole input (forename, name, notice, birthday to Standard)

@@ -16,6 +16,10 @@ GameWindow::GameWindow(QWidget *parent) :
     ui->setupUi(this);
 }
 
+GameWindow::~GameWindow()
+{
+    delete ui;
+}
 
 bool GameWindow::gameLoop(Run *r){
     cout << "Start game" << endl;
@@ -34,7 +38,7 @@ bool GameWindow::gameLoop(Run *r){
 
         // wait 2000ms
     }
-
+    return true;
 }
 
 

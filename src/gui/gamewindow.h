@@ -51,7 +51,7 @@ private:
     QEventLoop ev;                  // event loop - needed for keyRelease/PressEvent
 
     // needed for time measurement
-    QTimer timer;
+    QElapsedTimer timer;
 };
 
 #endif // GAMEWINDOW_H

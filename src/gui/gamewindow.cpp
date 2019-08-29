@@ -28,23 +28,24 @@ GameWindow::~GameWindow()
 
 bool GameWindow::gameLoop(Run *r){
     timer.start();  // starting the timer
-    for(; r->readRun();){
+    while(r->readRun()){
         // clear screen
 
         // paint svgs (stars)
 
-        QTimer::singleShot(TIME_BETWEEN_ARROWS, printf("Waiting 1000ms")); // wait 1000ms
+        QTimer::singleShot(TIME_BETWEEN_ARROWS, &ev, SLOT(quit())); // stops event loop for timer restart
 
 
         // clear screen (stars)
 
         // paint arrows
         // gaming time
-        timer.start();      // starts the timer
-        timer.singleShot(TIME_FOR_REACTION, &ev, SLOT(quit())); // pause the game loop for TIME_FOR_REACTION ms and then quit ev
-        timer.stop();       // stops the timer (needed for keypressevent)
+        timer.restart();        // restarts the timer
+        ev.exec();              // starts the event loop
+        QTimer::singleShot(TIME_FOR_REACTION, &ev, SLOT(quit())); // pause the game loop for TIME_FOR_REACTION ms and then quit ev
         ev.exec();          // activate the event loop - needed for ESC
     }
+    this->close();
     return true;
 }
 
@@ -57,7 +58,7 @@ bool GameWindow::gameLoop(Run *r){
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
     // if the timer is not active no key press events can take
-    if(!timer.isActive()){
+    if(timer.elapsed() < TIME_FOR_REACTION){
         cout << "Timer is not Active" << endl;
         return;
     }

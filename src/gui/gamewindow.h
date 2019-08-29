@@ -42,7 +42,9 @@ protected:
     void keyReleaseEvent(QKeyEvent *);      // release key
 
 private:
+    // needed vor the grafic surface
     Ui::GameWindow *ui;
+    QEventLoop ev;                  // event loop - needed for keyRelease/PressEvent
 };
 
 #endif // GAMEWINDOW_H

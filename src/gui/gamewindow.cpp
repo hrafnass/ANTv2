@@ -16,13 +16,17 @@ GameWindow::GameWindow(QWidget *parent) :
     ui->setupUi(this);
 }
 
+// destructor
 GameWindow::~GameWindow()
 {
     delete ui;
 }
 
+
+
+
 bool GameWindow::gameLoop(Run *r){
-    cout << "Start game" << endl;
+    cout << "Start game" << endl << "New Event to start and stop" << endl;
     for(unsigned int i = r->getPos(); r->readRun(); ++i){
         // clear screen
 
@@ -49,14 +53,18 @@ bool GameWindow::gameLoop(Run *r){
 // protected
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
-    // need a measure function - and only the first press should saved
-    if(event->key() == Qt::Key_Left){
-        cout << "pressed left key" << endl;
+    switch (event->key()) {
+    case Qt::Key_Left:
+        cout << "left key" << endl;
+        break;
+    case Qt::Key_Right:
+        cout << "right key" << endl;
+        break;
+    case Qt::Key_Escape:
+        cout << "Wrong key" << endl;
+        return;
     }
-
-    if(event->key() == Qt::Key_Right){
-        cout << "pressed right key" << endl;
-    }
+    ev.quit();      // stop the event loop after the first left or right key was pressed
 }
 
 // keyEvent (Release)

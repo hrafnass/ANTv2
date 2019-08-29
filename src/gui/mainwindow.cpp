@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     run.initRun(3);     // loaded the run with 3
-    game.setRun(&run);  // give run to gamewindow
     game.setCursor(Qt::BlankCursor);    // blanks the cursor from the game window
 }
 
@@ -27,8 +26,6 @@ void MainWindow::on_actionAboutReactiongame_triggered()
 
 void MainWindow::on_startGamePushButton_clicked()
 {
-    // when the game should save s is true
-    bool s = false;
     // saves the whole text input
     QString forename = ui->forenameLineEdit->text();
     QString name = ui->nameLineEdit->text();
@@ -46,19 +43,7 @@ void MainWindow::on_startGamePushButton_clicked()
         run.newGame();          // start the settings for a new game
         cout << "start game" << endl;
         game.showFullScreen();  // open the window in fullscreen
-        game.startSettings(&s); // sets the size of all labels
-        game.gameLoop();        // start game loop
-        s = true;               // wenn the game finished, all measured values can be saved
-    }
-    // save all calculated values
-    if(s){
-        // reset the calculations
-        calc.resetValues();
-        // save the values
-        if(!save.openCSVFile(forename, name))    // if the file descriptor doesn't open
-            return;
-        save.writeCSVFile(&run, &calc, notice, birthday);
-        save.closeCSVFile();
+        game.gameLoop(&run);    // start game loop
     }
     // clear all measured values
     // calc.resetValues();

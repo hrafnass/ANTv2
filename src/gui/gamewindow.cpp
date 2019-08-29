@@ -18,7 +18,7 @@ GameWindow::GameWindow(QWidget *parent) :
 
 
 bool GameWindow::gameLoop(Run *r){
-
+    cout << "Start game" << endl;
     for(unsigned int i = r->getPos(); r->readRun(); ++i){
         // clear screen
 

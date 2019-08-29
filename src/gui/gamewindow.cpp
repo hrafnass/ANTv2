@@ -2,7 +2,6 @@
 #include "ui_gamewindow.h"
 
 #include <iostream>
-#include <stdio.h>
 
 using namespace std;
 
@@ -23,21 +22,15 @@ GameWindow::~GameWindow()
     delete ui;
 }
 
-
-
-
+//Functions
+// game loop
 bool GameWindow::gameLoop(Run *r){
     timer.start();  // starting the timer
     while(r->readRun()){
         // clear screen
-
         // paint svgs (stars)
-
         QTimer::singleShot(TIME_BETWEEN_ARROWS, &ev, SLOT(quit())); // stops event loop for timer restart
-
-
         // clear screen (stars)
-
         // paint arrows
         // gaming time
         timer.restart();        // restarts the timer
@@ -50,11 +43,7 @@ bool GameWindow::gameLoop(Run *r){
 }
 
 
-
-
-
-
-// protected
+// protected:
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
     // if the timer is not active no key press events can take
@@ -85,5 +74,19 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
         this->close();
     }
 }
+
+
+// private:
+//calculations: number of px 
+int GameWindow::cmToPixelNbrX(int width_in_cm){
+	int dpi = GameWindow::logicalDpiX();											// get the logical dpi for width
+	return static_cast<int>(((cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+}
+
+int GameWindow::cmToPixelNbrY(int height_in_cm){
+	int dpi = GameWindow::logicalDpiY();											// get the logical dpi for height
+	return static_cast<int>(((cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+}
+
 
 

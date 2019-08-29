@@ -1,8 +1,6 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-// #define STAR true
-// #define ARROW false
 #define RIGHT 1             // for the measure of the pressed keys: RIGHT = 1
 #define LEFT 0              //              -"-                     LEFT  = 0
 
@@ -37,15 +35,21 @@ class GameWindow : public QWidget
 public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
-
     // game loop
-    bool gameLoop(Run *r);      // gaming loop
+    bool gameLoop(Run *r);      // gaming loop    
 
 protected:
+	// Events
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release key
 
 private:
+	// functions
+	// size calculation
+    int cmToPixelNbrX(int);		// calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
+    int cmToPixelNbrY(int);		// -"-																				 - Y coord (height in pixel)
+
+	// variables
     // needed vor the grafic surface
     Ui::GameWindow *ui;
     QEventLoop ev;                  // event loop - needed for keyRelease/PressEvent

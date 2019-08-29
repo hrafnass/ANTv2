@@ -27,7 +27,7 @@ GameWindow::~GameWindow()
 
 bool GameWindow::gameLoop(Run *r){
     cout << "Start game" << endl << "New Event to start and stop" << endl;
-    for(unsigned int i = r->getPos(); r->readRun(); ++i){
+    for(; r->readRun();){
         // clear screen
 
         // paint svgs (stars)
@@ -53,6 +53,12 @@ bool GameWindow::gameLoop(Run *r){
 // protected
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
+    // if the timer is not active no key press events can take
+    if(!timer.isActive()){
+        cout << "Timer is not Active" << endl;
+        return;
+    }
+    // switch for all wanted keys
     switch (event->key()) {
     case Qt::Key_Left:
         cout << "left key" << endl;

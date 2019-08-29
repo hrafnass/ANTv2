@@ -45,6 +45,9 @@ private:
     // needed vor the grafic surface
     Ui::GameWindow *ui;
     QEventLoop ev;                  // event loop - needed for keyRelease/PressEvent
+
+    // needed for time measurement
+    QTimer timer;
 };
 
 #endif // GAMEWINDOW_H

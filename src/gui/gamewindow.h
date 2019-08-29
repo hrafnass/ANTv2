@@ -1,9 +1,23 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-#define RIGHT 1             // for the measure of the pressed keys: RIGHT = 1
-#define LEFT 0              //              -"-                     LEFT  = 0
 
+// DIRECTIONS
+#define RIGHT 	1             // for the measure of the pressed keys: RIGHT = 1
+#define LEFT 	0             //              -"-                     LEFT  = 0
+
+// PICTURE LENGTHS IN CM
+#define STAR_X 	1
+#define ARROW_X 2.54
+#define PLUS_X  1.6
+#define BAR_X   2.54
+// PICTURE WIDTHS IN CM
+#define STAR_Y  1
+#define ARROW_Y 0.6
+#define PLUS_Y  1.6
+#define BAR_Y   0.6
+
+// TIMES
 // waiting times in ther game
 #define TIME_BETWEEN_ARROWS 1000    // in ms
 #define TIME_FOR_REACTION   2000    // in ms

@@ -6,6 +6,10 @@
 #define RIGHT 1             // for the measure of the pressed keys: RIGHT = 1
 #define LEFT 0              //              -"-                     LEFT  = 0
 
+// waiting times in ther game
+#define TIME_BETWEEN_ARROWS 1000    // in ms
+#define TIME_FOR_REACTION   2000    // in ms
+
 #include <QtCore/QElapsedTimer>
 #include <QtCore/QTimer>
 

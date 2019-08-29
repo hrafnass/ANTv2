@@ -2,6 +2,7 @@
 #include "ui_gamewindow.h"
 
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -26,21 +27,23 @@ GameWindow::~GameWindow()
 
 
 bool GameWindow::gameLoop(Run *r){
-    cout << "Start game" << endl << "New Event to start and stop" << endl;
+    timer.start();  // starting the timer
     for(; r->readRun();){
         // clear screen
 
         // paint svgs (stars)
 
-        // wait 1000ms
+        QTimer::singleShot(TIME_BETWEEN_ARROWS, printf("Waiting 1000ms")); // wait 1000ms
+
 
         // clear screen (stars)
 
         // paint arrows
-
-        // start access to the keyPressEvent
-
-        // wait 2000ms
+        // gaming time
+        timer.start();      // starts the timer
+        timer.singleShot(TIME_FOR_REACTION, &ev, SLOT(quit())); // pause the game loop for TIME_FOR_REACTION ms and then quit ev
+        timer.stop();       // stops the timer (needed for keypressevent)
+        ev.exec();          // activate the event loop - needed for ESC
     }
     return true;
 }

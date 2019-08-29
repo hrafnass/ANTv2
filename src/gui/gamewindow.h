@@ -1,8 +1,10 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-#define STAR true
-#define ARROW false
+// #define STAR true
+// #define ARROW false
+#define RIGHT 1             // for the measure of the pressed keys: RIGHT = 1
+#define LEFT 0              //              -"-                     LEFT  = 0
 
 #include <QtCore/QElapsedTimer>
 #include <QtCore/QTimer>

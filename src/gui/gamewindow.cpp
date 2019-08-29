@@ -24,5 +24,19 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
      *      ESC - quit the game
      *      left arrow and right arrow
      */
+    // ESC
+    if(event->key() == Qt::Key_Escape){
+        cout << "close the gaming window" << endl;
+        this->close();
+        return;
+    }
+
+    if(event->key() == Qt::Key_Left){
+        cout << "pressed left key" << endl;
+    }
+
+    if(event->key() == Qt::Key_Right){
+        cout << "pressed right key" << endl;
+    }
 
 }

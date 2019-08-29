@@ -60,6 +60,9 @@ public:
     unsigned long getVectorSize() { return run_vector.size();}              // returns the size of whole vector
     Trial getTrialAtPos(unsigned int pos);           // loads  the trial at the position pos from the run_vector
     unsigned int getNmbrAllRightReactions() { return number_of_all_right_reactions;}   // getter for the number
+    // infos for the game users
+    unsigned int getPos() { return pos;}            // return the pos oft the iterator
+    unsigned int getSizeOfIterator() { return run_vector.size();}     // return the size of the iterator
 private:
     void possibleCombinations();           // create all possible arrow and star combinations
     void shuffelRun();          // shuffels the run_vector (used bevor every run) - and set it_run_vector at run_vector.begin()

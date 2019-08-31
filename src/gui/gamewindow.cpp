@@ -77,7 +77,7 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
 
 
 // private:
-//calculations: number of px 
+// calculations: number of px 
 int GameWindow::cmToPixelNbrX(int width_in_cm){
 	int dpi = GameWindow::logicalDpiX();											// get the logical dpi for width
 	return static_cast<int>(((cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
@@ -88,5 +88,10 @@ int GameWindow::cmToPixelNbrY(int height_in_cm){
 	return static_cast<int>(((cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
-
-
+// clears all labels
+void GameWindow::deletePixmaps(){
+	// iterate over all labels and clear them
+	foreach(QLabel *label, ui->findChildren<QLabel *>()){
+		label->clear();
+	}
+}

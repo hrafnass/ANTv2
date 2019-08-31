@@ -62,6 +62,9 @@ private:
 	// size calculation
     int cmToPixelNbrX(int);		// calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
     int cmToPixelNbrY(int);		// -"-																				 - Y coord (height in pixel)
+    
+    // screen manipulation (paint, delete, ...)
+    void deletePixmaps();		// deletes all pictures in all pixmaps
 
 	// variables
     // needed vor the grafic surface

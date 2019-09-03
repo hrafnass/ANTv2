@@ -103,16 +103,21 @@ void GameWindow::paintArrows(Trial *t){
     QList<QLabel *> up_arrows = this->findChildren<QLabel *>("Up");
     QList<QLabel *> down_arrows = this->findChildren<QLabel *>("Down");
 
+    // paint the other images and the mid images
     if(t->getArrowPosition() == Trial::up_arrow){
         cout << "Up Arrows" << endl;
         paint(up_arrows, t->getOtherImg());
+        ui->MidAbove->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::down_arrow) {
         cout << "Down Arrows" << endl;
         paint(down_arrows, t->getOtherImg());
+        ui->MidBelow->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::both_arrow) {
         cout << "Both Arrows" << endl;
         paint(up_arrows, t->getOtherImg());
         paint(down_arrows, t->getOtherImg());
+        ui->MidAbove->setPixmap(t->getMidImg());
+        ui->MidBelow->setPixmap(t->getMidImg());
     }
 }
 

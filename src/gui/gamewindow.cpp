@@ -28,9 +28,11 @@ bool GameWindow::gameLoop(Run *r){
     timer.start();  // starting the timer
     while(r->readRun()){
         // clear screen
+        deletePixmaps();
         // paint svgs (stars)
         QTimer::singleShot(TIME_BETWEEN_ARROWS, &ev, SLOT(quit())); // stops event loop for timer restart
         // clear screen (stars)
+        deletePixmaps();
         // paint arrows
         // gaming time
         timer.restart();        // restarts the timer
@@ -80,18 +82,23 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
 // calculations: number of px 
 int GameWindow::cmToPixelNbrX(int width_in_cm){
 	int dpi = GameWindow::logicalDpiX();											// get the logical dpi for width
-	return static_cast<int>(((cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+    return static_cast<int>(((width_in_cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
 int GameWindow::cmToPixelNbrY(int height_in_cm){
 	int dpi = GameWindow::logicalDpiY();											// get the logical dpi for height
-	return static_cast<int>(((cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+    return static_cast<int>(((height_in_cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
 // clears all labels
 void GameWindow::deletePixmaps(){
 	// iterate over all labels and clear them
-	foreach(QLabel *label, ui->findChildren<QLabel *>()){
+    foreach(QLabel *label, this->findChildren<QLabel *>()){
 		label->clear();
 	}
+}
+
+// paint all arrows
+void GameWindow::paintArrows(){
+    QList<QLabel *> up_arrows = this->findChildren<QLabel *>("Up");
 }

@@ -65,7 +65,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up4_5">
+      <widget class="QLabel" name="BetweenU45">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -94,7 +94,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up4_3">
+      <widget class="QLabel" name="BetweenU34">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -123,7 +123,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up3_2">
+      <widget class="QLabel" name="BetweenU23">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -152,7 +152,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up2_1">
+      <widget class="QLabel" name="BetweenU12">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -250,7 +250,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="ressources.qrc">:/ressources/images/plus.svg</pixmap>
+        <pixmap resource="../../ressources.qrc">:/ressources/images/plus.svg</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -326,7 +326,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down4_5">
+      <widget class="QLabel" name="BetweenD45">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -358,7 +358,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down3_4">
+      <widget class="QLabel" name="BetweenD34">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -390,7 +390,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down2_3">
+      <widget class="QLabel" name="BetweenD23">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -422,7 +422,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down2_1">
+      <widget class="QLabel" name="BetweenD12">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -487,7 +487,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

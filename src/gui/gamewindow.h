@@ -17,6 +17,7 @@
 #define PLUS_Y  1.6
 #define BAR_Y   0.6
 
+
 // TIMES
 // waiting times in ther game
 #define TIME_BETWEEN_ARROWS 1000    // in ms
@@ -65,6 +66,8 @@ private:
     
     // screen manipulation (paint, delete, ...)
     void deletePixmaps();		// deletes all pictures in all pixmaps
+    void paintStars();			// paint all stars (like clear screen)
+    void paintArrows();			// paint all arrows 		-"-
 
 	// variables
     // needed vor the grafic surface

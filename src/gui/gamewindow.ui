@@ -107,7 +107,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up3">
+      <widget class="QLabel" name="MidAbove">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -239,7 +239,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="labelMid">
+      <widget class="QLabel" name="Centreline">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -374,7 +374,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down3">
+      <widget class="QLabel" name="MidBelow">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>

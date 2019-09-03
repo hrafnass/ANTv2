@@ -99,6 +99,29 @@ void GameWindow::deletePixmaps(){
 }
 
 // paint all arrows
-void GameWindow::paintArrows(){
+void GameWindow::paintArrows(Trial *t){
     QList<QLabel *> up_arrows = this->findChildren<QLabel *>("Up");
+    QList<QLabel *> down_arrows = this->findChildren<QLabel *>("Down");
+
+    if(t->getArrowPosition() == Trial::up_arrow){
+        cout << "Up Arrows" << endl;
+
+    }else if (t->getArrowPosition() == Trial::down_arrow) {
+        cout << "Down Arrows" << endl;
+    }else if (t->getArrowPosition() == Trial::both_arrow) {
+        cout << "Both Arrows" << endl;
+    }
 }
+
+void GameWindow::paint(QList<QLabel *> *l, QString img){
+    // list is empty
+    if(l->isEmpty())
+        return;
+
+    // runs over the list and fills it with the QString image
+    for(QList<QLabel*>::iterator it = l->begin(); it != l->end(); ++it){
+        l->at(it-l->begin())->setPixmap(img);
+    }
+
+}
+

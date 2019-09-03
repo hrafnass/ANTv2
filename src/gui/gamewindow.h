@@ -67,7 +67,10 @@ private:
     // screen manipulation (paint, delete, ...)
     void deletePixmaps();		// deletes all pictures in all pixmaps
     void paintStars();			// paint all stars (like clear screen)
-    void paintArrows();			// paint all arrows 		-"-
+    void paintArrows(Trial *);	// paint all arrows 		-"-
+
+    // list functions
+    void paint(QList<QLabel *> *,QString);
 
 	// variables
     // needed vor the grafic surface

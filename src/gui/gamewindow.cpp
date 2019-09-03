@@ -126,14 +126,17 @@ void GameWindow::paintArrows(Trial *t){
 
 
 // fills the labels of the QList with img
-void GameWindow::paint(QList<QLabel *> l, QString img){
+void GameWindow::paint(QList<QLabel *> l, QString img, int w, int h){
     // list is empty
     if(l.isEmpty())
         return;
 
+    int pos;    // saves the pos in l
     // runs over the list and fills it with the QString image
     for(QList<QLabel*>::iterator it = l.begin(); it != l.end(); ++it){
-        l.at(it-l.begin())->setPixmap(img);
+        pos = it - l.begin();
+        l.at(pos)->setFixedSize(w, h);
+        l.at(pos)->setPixmap(img);
     }
 
 }

@@ -26,6 +26,7 @@ GameWindow::~GameWindow()
 // game loop
 bool GameWindow::gameLoop(Run *r){
     timer.start();  // starting the timer
+    Trial t;
     while(r->readRun()){
         // clear screen
         deletePixmaps();
@@ -34,6 +35,8 @@ bool GameWindow::gameLoop(Run *r){
         // clear screen (stars)
         deletePixmaps();
         // paint arrows
+        t = r->getActuellTrial();
+        paintArrows(&t);
         // gaming time
         timer.restart();        // restarts the timer
         ev.exec();              // starts the event loop

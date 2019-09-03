@@ -105,22 +105,27 @@ void GameWindow::paintArrows(Trial *t){
 
     if(t->getArrowPosition() == Trial::up_arrow){
         cout << "Up Arrows" << endl;
-
+        paint(up_arrows, t->getOtherImg());
     }else if (t->getArrowPosition() == Trial::down_arrow) {
         cout << "Down Arrows" << endl;
+        paint(down_arrows, t->getOtherImg());
     }else if (t->getArrowPosition() == Trial::both_arrow) {
         cout << "Both Arrows" << endl;
+        paint(up_arrows, t->getOtherImg());
+        paint(down_arrows, t->getOtherImg());
     }
 }
 
-void GameWindow::paint(QList<QLabel *> *l, QString img){
+
+// fills the labels of the QList with img
+void GameWindow::paint(QList<QLabel *> l, QString img){
     // list is empty
-    if(l->isEmpty())
+    if(l.isEmpty())
         return;
 
     // runs over the list and fills it with the QString image
-    for(QList<QLabel*>::iterator it = l->begin(); it != l->end(); ++it){
-        l->at(it-l->begin())->setPixmap(img);
+    for(QList<QLabel*>::iterator it = l.begin(); it != l.end(); ++it){
+        l.at(it-l.begin())->setPixmap(img);
     }
 
 }

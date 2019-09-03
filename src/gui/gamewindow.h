@@ -70,7 +70,7 @@ private:
     void paintArrows(Trial *);	// paint all arrows 		-"-
 
     // list functions
-    void paint(QList<QLabel *> *,QString);
+    void paint(QList<QLabel *>,QString);
 
 	// variables
     // needed vor the grafic surface

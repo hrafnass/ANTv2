@@ -118,16 +118,16 @@ void GameWindow::paintArrows(Trial *t){
     // paint the other images and the mid images
     if(t->getArrowPosition() == Trial::up_arrow){
         cout << "Up Arrows" << endl;
-        paint(up_arrows, t->getOtherImg(), w, h);
+        paintListLabels(up_arrows, t->getOtherImg(), w, h);
         ui->MidAbove->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::down_arrow) {
         cout << "Down Arrows" << endl;
-        paint(down_arrows, t->getOtherImg(),w ,h);
+        paintListLabels(down_arrows, t->getOtherImg(),w ,h);
         ui->MidBelow->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::both_arrow) {
         cout << "Both Arrows" << endl;
-        paint(up_arrows, t->getOtherImg(), w, h);
-        paint(down_arrows, t->getOtherImg(), w, h);
+        paintListLabels(up_arrows, t->getOtherImg(), w, h);
+        paintListLabels(down_arrows, t->getOtherImg(), w, h);
         ui->MidAbove->setPixmap(t->getMidImg());
         ui->MidBelow->setPixmap(t->getMidImg());
     }
@@ -140,12 +140,10 @@ void GameWindow::paintArrows(Trial *t){
 
 
 // fills the labels of the QList with img
-void GameWindow::paint(QList<QLabel *> l, QString img, int w, int h){
+void GameWindow::paintListLabels(QList<QLabel *> l, QString img, int w, int h){
     // list is empty
     if(l.isEmpty())
         return;
-
-    cout << "pant";
 
     int pos;    // saves the pos in l
     // runs over the list and fills it with the QString image
@@ -153,7 +151,6 @@ void GameWindow::paint(QList<QLabel *> l, QString img, int w, int h){
         pos = it - l.begin();
         l.at(pos)->setFixedSize(w, h);
         l.at(pos)->setPixmap(img);
-        cout << "paint";
     }
 
 }

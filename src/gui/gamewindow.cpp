@@ -83,12 +83,12 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
 
 // private:
 // calculations: number of px 
-int GameWindow::cmToPixelNbrX(int width_in_cm){
+int GameWindow::cmToPixelNbrX(double width_in_cm){
 	int dpi = GameWindow::logicalDpiX();											// get the logical dpi for width
     return static_cast<int>(((width_in_cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
-int GameWindow::cmToPixelNbrY(int height_in_cm){
+int GameWindow::cmToPixelNbrY(double height_in_cm){
 	int dpi = GameWindow::logicalDpiY();											// get the logical dpi for height
     return static_cast<int>(((height_in_cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
@@ -103,25 +103,39 @@ void GameWindow::deletePixmaps(){
 
 // paint all arrows
 void GameWindow::paintArrows(Trial *t){
-    QList<QLabel *> up_arrows = this->findChildren<QLabel *>("Up");
-    QList<QLabel *> down_arrows = this->findChildren<QLabel *>("Down");
+    QRegularExpression exp_up("UpLabel*");
+    QRegularExpression exp_down("DownLabel*");
+
+    QList<QLabel *> up_arrows = this->findChildren<QLabel *>(exp_up);
+    QList<QLabel *> down_arrows = this->findChildren<QLabel *>(exp_down);
+
+    cout << "UP: " << up_arrows.size() << " DOWN: " << down_arrows.size() << endl;
+
+    // width and height of the "other" arrows
+    int w = cmToPixelNbrX(ARROW_X);
+    int h = cmToPixelNbrY(ARROW_Y);
 
     // paint the other images and the mid images
     if(t->getArrowPosition() == Trial::up_arrow){
         cout << "Up Arrows" << endl;
-        paint(up_arrows, t->getOtherImg());
+        paint(up_arrows, t->getOtherImg(), w, h);
         ui->MidAbove->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::down_arrow) {
         cout << "Down Arrows" << endl;
-        paint(down_arrows, t->getOtherImg());
+        paint(down_arrows, t->getOtherImg(),w ,h);
         ui->MidBelow->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::both_arrow) {
         cout << "Both Arrows" << endl;
-        paint(up_arrows, t->getOtherImg());
-        paint(down_arrows, t->getOtherImg());
+        paint(up_arrows, t->getOtherImg(), w, h);
+        paint(down_arrows, t->getOtherImg(), w, h);
         ui->MidAbove->setPixmap(t->getMidImg());
         ui->MidBelow->setPixmap(t->getMidImg());
     }
+
+    // set a fixed size for the mid labels
+    ui->MidAbove->setFixedSize(w, h);
+    ui->MidBelow->setFixedSize(w, h);
+
 }
 
 
@@ -131,12 +145,15 @@ void GameWindow::paint(QList<QLabel *> l, QString img, int w, int h){
     if(l.isEmpty())
         return;
 
+    cout << "pant";
+
     int pos;    // saves the pos in l
     // runs over the list and fills it with the QString image
     for(QList<QLabel*>::iterator it = l.begin(); it != l.end(); ++it){
         pos = it - l.begin();
         l.at(pos)->setFixedSize(w, h);
         l.at(pos)->setPixmap(img);
+        cout << "paint";
     }
 
 }

@@ -49,7 +49,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="Up5">
+      <widget class="QLabel" name="UpLabel5">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -78,7 +78,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up4">
+      <widget class="QLabel" name="UpLabel4">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -136,7 +136,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up2">
+      <widget class="QLabel" name="UpLabel2">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -168,7 +168,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Up1">
+      <widget class="QLabel" name="UpLabel1">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -310,7 +310,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="Down5">
+      <widget class="QLabel" name="DownLabel5">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -342,7 +342,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down4">
+      <widget class="QLabel" name="DownLabel4">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -406,7 +406,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down2">
+      <widget class="QLabel" name="DownLabel2">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -438,7 +438,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="Down1">
+      <widget class="QLabel" name="DownLabel1">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>

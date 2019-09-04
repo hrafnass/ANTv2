@@ -25,6 +25,7 @@
 
 #include <QtCore/QElapsedTimer>
 #include <QtCore/QTimer>
+#include <QtCore/QRegularExpression>
 
 #include <QtGui/QKeyEvent>
 #include <QtGui/QCursor>
@@ -61,8 +62,8 @@ protected:
 private:
 	// functions
 	// size calculation
-    int cmToPixelNbrX(int);		// calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
-    int cmToPixelNbrY(int);		// -"-																				 - Y coord (height in pixel)
+    int cmToPixelNbrX(double);		// calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
+    int cmToPixelNbrY(double);		// -"-																				 - Y coord (height in pixel)
     
     // screen manipulation (paint, delete, ...)
     void deletePixmaps();		// deletes all pictures in all pixmaps

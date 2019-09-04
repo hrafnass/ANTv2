@@ -157,18 +157,34 @@ void GameWindow::paintListLabelsArrows(QList<QLabel *> l, QString img, int w, in
 
 // Star
 void GameWindow::paintStars(Trial *t){
+    // calculate width and height;
+    int w = cmToPixelNbrX(STAR_X);
+    int h = cmToPixelNbrY(STAR_Y);
+
     // switch instead of many ifs
     switch (t->getStarPosition()) {
     case Trial::up_star:
+        paintStar(ui->MidAbove,":/ressources/images/star.svg", w, h);
         break;
     case Trial::down_star:
+        paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
         break;
     case Trial::both_star:
+        paintStar(ui->MidAbove, ":/ressources/images/star.svg", w, h);
+        paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
         break;
     case Trial::mid:
+        paintStar(ui->Centreline, ":/ressources/images/star.svg",w, h);
         break;
     default:
         cout << "Can't paint stars"<<endl;
         break;
     }
+}
+
+// make the star settings
+void GameWindow::paintStar(QLabel *l, QString img, int w, int h){
+    // set the size and paint the star
+    l->setFixedSize(w, h);
+    l->setPixmap(img);
 }

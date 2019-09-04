@@ -28,20 +28,23 @@ bool GameWindow::gameLoop(Run *r){
     timer.start();  // starting the timer
     Trial t;
     while(r->readRun()){
+        t = r->getActuellTrial();   // get the actuell trial
         // clear screen
         deletePixmaps();
         // paint svgs (stars)
+        paintStars(&t);
+        // wait 1000ms
         QTimer::singleShot(TIME_BETWEEN_ARROWS, &ev, SLOT(quit())); // stops event loop for timer restart
+        ev.exec();
         // clear screen (stars)
-        deletePixmaps();
-        // paint arrows
-        t = r->getActuellTrial();
-        paintArrows(&t);
+         deletePixmaps();
         // gaming time
         timer.restart();        // restarts the timer
-        ev.exec();              // starts the event loop
+        // paint arrows
+        paintArrows(&t);
+        // wait 2000 ms
         QTimer::singleShot(TIME_FOR_REACTION, &ev, SLOT(quit())); // pause the game loop for TIME_FOR_REACTION ms and then quit ev
-        ev.exec();          // activate the event loop - needed for ESC
+        ev.exec();              // starts the event loop
     }
     this->close();
     return true;
@@ -165,16 +168,20 @@ void GameWindow::paintStars(Trial *t){
     switch (t->getStarPosition()) {
     case Trial::up_star:
         paintStar(ui->MidAbove,":/ressources/images/star.svg", w, h);
+        cout << "up star"<<endl;
         break;
     case Trial::down_star:
         paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
+        cout << "down star"<<endl;
         break;
     case Trial::both_star:
         paintStar(ui->MidAbove, ":/ressources/images/star.svg", w, h);
         paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
+        cout << "both star"<<endl;
         break;
     case Trial::mid:
         paintStar(ui->Centreline, ":/ressources/images/star.svg",w, h);
+        cout << "mid star"<<endl;
         break;
     default:
         cout << "Can't paint stars"<<endl;

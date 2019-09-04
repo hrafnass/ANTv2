@@ -102,6 +102,8 @@ void GameWindow::deletePixmaps(){
     foreach(QLabel *label, this->findChildren<QLabel *>()){
 		label->clear();
 	}
+    // paint the fixation cross
+    paintPlus();
 }
 
 // Arrows

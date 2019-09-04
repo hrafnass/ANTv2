@@ -78,7 +78,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
 void GameWindow::keyReleaseEvent(QKeyEvent *event){
     // only needed for GameEsc
     if(event->key() == Qt::Key_Escape){
-        cout << "ESC released" << endl;
+        // cout << "ESC released" << endl;
         this->close();
     }
 }
@@ -112,8 +112,7 @@ void GameWindow::paintArrows(Trial *t){
 
     QList<QLabel *> up_arrows = this->findChildren<QLabel *>(exp_up);
     QList<QLabel *> down_arrows = this->findChildren<QLabel *>(exp_down);
-
-    cout << "UP: " << up_arrows.size() << " DOWN: " << down_arrows.size() << endl;
+    // cout << "UP: " << up_arrows.size() << " DOWN: " << down_arrows.size() << endl;
 
     // width and height of the "other" arrows
     int w = cmToPixelNbrX(ARROW_X);
@@ -194,4 +193,17 @@ void GameWindow::paintStar(QLabel *l, QString img, int w, int h){
     // set the size and paint the star
     l->setFixedSize(w, h);
     l->setPixmap(img);
+}
+
+
+// plus image
+void GameWindow::paintPlus(){
+    // saves the img pos
+    QString plus = ":/ressources/images/plus.svg";
+    // calc width and height
+    int w = cmToPixelNbrX(PLUS_X);
+    int h = cmToPixelNbrY(PLUS_Y);
+    // paint
+    ui->Centreline->setFixedSize(w, h);
+    ui->Centreline->setPixmap(plus);
 }

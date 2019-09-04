@@ -73,8 +73,9 @@ private:
     void paintStars(Trial *);	// paint all stars (like clear screen)
     void paintArrows(Trial *);	// paint all arrows 		-"-
 
-    // list functions
-    void paintListLabels(QList<QLabel *>,QString,int,int);
+    // functions for label settings
+    void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"
+    void paintStar(QLabel *, QString, int, int); // paint a star
 
 	// variables
     // needed vor the grafic surface

@@ -85,12 +85,12 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
 // calculations: number of px 
 int GameWindow::cmToPixelNbrX(double width_in_cm){
 	int dpi = GameWindow::logicalDpiX();											// get the logical dpi for width
-    return static_cast<int>(((width_in_cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+    return static_cast<int>(((width_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
 int GameWindow::cmToPixelNbrY(double height_in_cm){
 	int dpi = GameWindow::logicalDpiY();											// get the logical dpi for height
-    return static_cast<int>(((height_in_cm / 2.54) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+    return static_cast<int>(((height_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
 // clears all labels
@@ -101,6 +101,7 @@ void GameWindow::deletePixmaps(){
 	}
 }
 
+// Arrows
 // paint all arrows
 void GameWindow::paintArrows(Trial *t){
     QRegularExpression exp_up("UpLabel*");
@@ -138,8 +139,7 @@ void GameWindow::paintArrows(Trial *t){
 
 }
 
-
-// fills the labels of the QList with img
+// fills the labels of the QList with img -> needed for paintStars
 void GameWindow::paintListLabels(QList<QLabel *> l, QString img, int w, int h){
     // list is empty
     if(l.isEmpty())
@@ -155,3 +155,20 @@ void GameWindow::paintListLabels(QList<QLabel *> l, QString img, int w, int h){
 
 }
 
+// Star
+void GameWindow::paintStars(Trial *t){
+    // switch instead of many ifs
+    switch (t->getStarPosition()) {
+    case Trial::up_star:
+        break;
+    case Trial::down_star:
+        break;
+    case Trial::both_star:
+        break;
+    case Trial::mid:
+        break;
+    default:
+        cout << "Can't paint stars"<<endl;
+        break;
+    }
+}

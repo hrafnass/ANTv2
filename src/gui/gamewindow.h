@@ -17,6 +17,9 @@
 #define PLUS_Y  1.6
 #define BAR_Y   0.6
 
+// 2.54 cm = 1 Inch
+#define INCH_IN_CM 2.54
+
 
 // TIMES
 // waiting times in ther game
@@ -67,7 +70,7 @@ private:
     
     // screen manipulation (paint, delete, ...)
     void deletePixmaps();		// deletes all pictures in all pixmaps
-    void paintStars();			// paint all stars (like clear screen)
+    void paintStars(Trial *);	// paint all stars (like clear screen)
     void paintArrows(Trial *);	// paint all arrows 		-"-
 
     // list functions

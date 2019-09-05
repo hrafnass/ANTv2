@@ -95,6 +95,7 @@ private:
 
     // needed for time measurement
     QElapsedTimer timer;
+    Run *run;
 };
 
 #endif // GAMEWINDOW_H

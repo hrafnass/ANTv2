@@ -25,6 +25,7 @@ GameWindow::~GameWindow()
 //Functions
 // game loop
 bool GameWindow::gameLoop(Run *r){
+    run = r;        // saves the "Run Object"
     timer.start();  // starting the timer
     Trial t;
     while(r->readRun()){
@@ -55,7 +56,8 @@ bool GameWindow::gameLoop(Run *r){
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
     // if the timer is not active no key press events can take
-    if(timer.elapsed() < TIME_FOR_REACTION){
+    // the measured time is > 2000 ms
+    if(timer.elapsed() > TIME_FOR_REACTION){
         cout << "Timer is not Active" << endl;
         return;
     }
@@ -63,8 +65,10 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     switch (event->key()) {
     case Qt::Key_Left:
         cout << "left key" << endl;
+        run->setMeasure(timer.elapsed(), LEFT);     // measured time
         break;
     case Qt::Key_Right:
+        run->setMeasure(timer.elapsed(), RIGHT);    // -"-
         cout << "right key" << endl;
         break;
     case Qt::Key_Escape:

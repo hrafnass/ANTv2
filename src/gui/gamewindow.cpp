@@ -56,7 +56,7 @@ bool GameWindow::gameLoop(Run *r){
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
     // if the timer is not active no key press events can take
-    // the measured time is > 2000 ms
+    // the measured time is > TIME_FOR_REA2000 ms
     if(timer.elapsed() > TIME_FOR_REACTION){
         cout << "Timer is not Active" << endl;
         return;
@@ -71,7 +71,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         run->setMeasure(timer.elapsed(), RIGHT);    // -"-
         cout << "right key" << endl;
         break;
-    case Qt::Key_Escape:
+    default:
         cout << "Wrong key" << endl;
         return;
     }

@@ -1,21 +1,31 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-
 // DIRECTIONS
 #define RIGHT 	1             // for the measure of the pressed keys: RIGHT = 1
 #define LEFT 	0             //              -"-                     LEFT  = 0
 
+/*
+ * Explanation of paintPlus:
+ * Problem: If a star and a plus is printed the plus jumps up or down, but the plus doesn't jump if the star is located
+ * up and down.
+ * Why? If the pictures have different heights the spacer moves the mid label (Centreline) up or down. So the MidAbove
+ * and MidBelow label need the same size (setFixedHeight).
+ * There are 2 possible solutions:
+ *      1. All heights have to be the same, so the plus can't move up or down
+ *      2. You set the labels over and und the plus at the same value (STAR_Y, because a star is shown at the same time.
+*/
+
 // PICTURE LENGTHS IN CM
 #define STAR_X 	1
-#define ARROW_X 2.54
-#define PLUS_X  1.6
-#define BAR_X   2.54
+#define ARROW_X 2
+#define PLUS_X  1
+#define BAR_X   2
 // PICTURE WIDTHS IN CM
 #define STAR_Y  1
-#define ARROW_Y 0.6
-#define PLUS_Y  1.6
-#define BAR_Y   0.6
+#define ARROW_Y 1
+#define PLUS_Y  1
+#define BAR_Y   1
 
 // 2.54 cm = 1 Inch
 #define INCH_IN_CM 2.54

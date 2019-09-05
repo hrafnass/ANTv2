@@ -195,6 +195,9 @@ void GameWindow::paintStar(QLabel *l, QString img, int w, int h){
     // set the size and paint the star
     l->setFixedSize(w, h);
     l->setPixmap(img);
+    // only needed star height different to arrow heigth - explanation in gamewindow.h
+    // ui->MidAbove->setFixedHeight(cmToPixelNbrY(STAR_Y));
+    // ui->MidBelow->setFixedHeight(cmToPixelNbrY(STAR_Y));
 }
 
 

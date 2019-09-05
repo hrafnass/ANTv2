@@ -15,7 +15,8 @@
    version="1.1"
    id="svg823"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="plus.svg">
+   sodipodi:docname="plus.svg"
+   enable-background="new">
   <defs
      id="defs817" />
   <sodipodi:namedview
@@ -51,19 +52,19 @@
   </metadata>
   <g
      inkscape:label="Ebene 1"
-     inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-287)">
+     transform="translate(0,-287)"
+     inkscape:groupmode="layer">
     <path
-       style="fill:none;stroke:#000000;stroke-width:7.56849766;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 18.902344,0 V 37.794922 Z"
-       transform="matrix(0.26458333,0,0,0.26458333,0,287)"
-       id="path1368"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       id="path5092"
+       d="m 5.0012451,287 v 9.99991 z"
+       style="fill:none;stroke:#000000;stroke-width:2.00249839;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:label="path5092" />
     <path
        inkscape:connector-curvature="0"
        id="path1370"
-       d="M 10,292.22875 H 0"
+       d="M 10,291.99875 H 0"
        style="fill:none;stroke:#000000;stroke-width:2.00249839;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

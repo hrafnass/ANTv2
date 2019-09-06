@@ -29,7 +29,6 @@ bool GameWindow::gameLoop(Run *r){
     timer.start();  // starting the timer
     Trial t;
     while(r->readRun()){
-        cout << "timer loop start: " << timer.elapsed() <<endl;
         t = r->getActuellTrial();   // get the actuell trial
         // paint svgs (stars)
         paintStars(&t);
@@ -57,15 +56,15 @@ bool GameWindow::gameLoop(Run *r){
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
     // if the timer is not active no key press events can take
-    // the measured time is > TIME_FOR_REA2000 ms
-    if(timer.elapsed() > TIME_FOR_REACTION){
-        cout << "Timer is not Active" << endl;
+    // the measured time is > TIME_FOR_REA2000 ms or the Left or right key was pressed before
+    if(timer.elapsed() > TIME_FOR_REACTION || run->getActuellTrial().getMeasure()){
+        cout << "no key check" << endl;
         return;
     }
     // switch for all wanted keys
     switch (event->key()) {
     case Qt::Key_Left:
-        run->setMeasure(timer.elapsed(), LEFT);     // measured time
+        run->setMeasure(timer.elapsed(), LEFT);     // measured time, key and that the key was pressed
         break;
     case Qt::Key_Right:
         run->setMeasure(timer.elapsed(), RIGHT);    // -"-
@@ -105,6 +104,12 @@ void GameWindow::deletePixmaps(){
     foreach(QLabel *label, this->findChildren<QLabel *>()){
 		label->clear();
 	}
+    // check if an pause is needed and opens the break window in foreground
+    if(run->getPause()){
+        BreakDialog pause;
+        pause.setModal(true);
+        pause.exec();
+    }
     // paint the fixation cross
     paintPlus();
 }

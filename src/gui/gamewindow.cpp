@@ -25,7 +25,7 @@ GameWindow::~GameWindow()
 
 //Functions
 // game loop
-bool GameWindow::gameLoop(Run *r){
+bool GameWindow::gameLoop(Run *r, QString name, QString forename, QString comment, QString birthday){
     run = r;        // saves the "Run Object"
     timer.start();  // starting the timer
     Trial t;

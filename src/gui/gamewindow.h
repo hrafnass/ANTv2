@@ -52,6 +52,7 @@
 #include "src/gui/dialogs/game/breakdialog.h"
 // background functions
 #include "../background/run.h"
+#include "../background/saving.h"
 
 namespace Ui {
 class GameWindow;
@@ -65,7 +66,8 @@ public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
     // game loop
-    bool gameLoop(Run *r);      // gaming loop    
+    bool gameLoop(Run *r);      // gaming loop
+    bool gameResults(QString, QString, QString, QString);   // saves and calculates all mvalues
 
 protected:
 	// Events

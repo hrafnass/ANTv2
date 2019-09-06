@@ -15,7 +15,7 @@ class Saving
 {
 public:
     bool openCSVFile(QString name, QString forename);                                   // open a new csv-file
-    void writeCSVFile(Run *run, Calculation *calc, QString comment, QString birthday);           // saves all calculated and measured values
+    void writeCSVFile(Run *run, QString comment, QString birthday);           // saves all calculated and measured values
     void closeCSVFile();                                                                // closes the csv-file
 private:
     // functions

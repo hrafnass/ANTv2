@@ -9,7 +9,7 @@ bool Saving::openCSVFile(QString name, QString forename) {
 }
 
 // write in the csv file
-void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString birthday) {
+void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {
     /*
         Input of a csv-file:
         trial number, reaction time*, reacted**, average***, right percentage***, median***, effects***, comment***
@@ -17,6 +17,7 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
         **  true if there was a reaction false if not
         *** all values from Calculation
     */
+    Calculation calc;
     int number_of_rows = 1;         // count the number of colums
     QTextStream save(&file);        // output stream for a file
     // saves the headline in the csv file
@@ -33,9 +34,9 @@ void Saving::writeCSVFile(Run *run, Calculation *calc, QString comment, QString 
         ++number_of_rows;
     }
     // calc the values
-    calc->calcValues(run);
+    calc.calcValues(run);
     // saves all calculated and measured values
-    save << ",,,"<<calc->getMedian()<<","<<calc->getAverage()<<","<<calc->getRightPercentage()<<","<<calc->getEffects()<<","<<comment<<","<<birthday<<endl;
+    save << ",,,"<<calc.getMedian()<<","<<calc.getAverage()<<","<<calc.getRightPercentage()<<","<<calc.getEffects()<<","<<comment<<","<<birthday<<endl;
     return;
 }
 

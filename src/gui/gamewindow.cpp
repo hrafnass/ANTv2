@@ -25,7 +25,7 @@ GameWindow::~GameWindow()
 
 //Functions
 // game loop
-bool GameWindow::gameLoop(Run *r, QString name, QString forename, QString comment, QString birthday){
+bool GameWindow::gameLoop(Run *r){
     run = r;        // saves the "Run Object"
     timer.start();  // starting the timer
     Trial t;
@@ -47,10 +47,25 @@ bool GameWindow::gameLoop(Run *r, QString name, QString forename, QString commen
         ev.exec();              // starts the event loop
         // clear screen
         deletePixmaps();
-    }
+    }    
     this->close();
     return true;
 }
+
+// saves all values
+bool GameWindow::gameResults(QString name, QString forename, QString comment, QString birthday){
+    Saving save;        // saves the data
+    // writes the data in a csv file
+    if(save.openCSVFile(name, forename))
+    {
+        save.writeCSVFile(run, comment, birthday);
+    }else {
+        return false;
+    }
+    save.closeCSVFile();    // close file
+    return true;
+}
+
 
 
 // protected:

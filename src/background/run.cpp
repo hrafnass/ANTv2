@@ -54,6 +54,8 @@ void Run::setMeasure(int reaction_time, int choose){
         ++number_of_all_right_reactions;    // increase the number of all right reactions
     }else
         run_vector.at(pos).setRightReaction(false);
+    // save that the Trial was measured
+    run_vector.at(pos).setMeasure(true);
 }
 
 // set the iterator to vector.begin

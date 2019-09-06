@@ -68,8 +68,10 @@ public:
     unsigned int getPos() { return pos;}            // return the pos oft the iterator
     unsigned int getSizeOfIterator() { return run_vector.size();}     // return the size of the iterator
 private:
+    // functions
     void possibleCombinations();           // create all possible arrow and star combinations
     void shuffelRun();          // shuffels the run_vector (used bevor every run) - and set it_run_vector at run_vector.begin()
+    // variables
     vector<Trial> run_vector {};           // saves alle Trials for a Run - empty vector = start value of run_vector
     vector<Trial>::iterator it_run_vector; // the vector::iterator to iterate over the run_vector
     // pseudo random generator - if shuffelRun every time use a new generator i get every time the same shuffel

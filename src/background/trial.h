@@ -54,6 +54,9 @@ public:
     // return other and mid_img
     QString getMidImg();
     QString getOtherImg();
+    // getter and setter for measure
+    void setMeasure(bool m) { measured = m;}
+    bool getMeasure() { return measured;}
 private:
     // private methods
     void setDirection();        // the direction value
@@ -70,6 +73,8 @@ private:
     // other_img other_img mid_img other_img other_img
     QString mid_img;			// saves the img in the mid - the importend arrow
     QString other_img;			// saves the img, shown arround the mid pic
+    // measured?
+    bool measured;              // checks if the Trial values where measured
 };
 
 #endif // TRIAL_H

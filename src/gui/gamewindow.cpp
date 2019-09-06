@@ -29,9 +29,8 @@ bool GameWindow::gameLoop(Run *r){
     timer.start();  // starting the timer
     Trial t;
     while(r->readRun()){
+        cout << "timer loop start: " << timer.elapsed() <<endl;
         t = r->getActuellTrial();   // get the actuell trial
-        // clear screen
-        deletePixmaps();
         // paint svgs (stars)
         paintStars(&t);
         // wait 1000ms
@@ -46,6 +45,8 @@ bool GameWindow::gameLoop(Run *r){
         // wait 2000 ms
         QTimer::singleShot(TIME_FOR_REACTION, &ev, SLOT(quit())); // pause the game loop for TIME_FOR_REACTION ms and then quit ev
         ev.exec();              // starts the event loop
+        // clear screen
+        deletePixmaps();
     }
     this->close();
     return true;
@@ -64,18 +65,16 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     // switch for all wanted keys
     switch (event->key()) {
     case Qt::Key_Left:
-        cout << "left key" << endl;
         run->setMeasure(timer.elapsed(), LEFT);     // measured time
         break;
     case Qt::Key_Right:
         run->setMeasure(timer.elapsed(), RIGHT);    // -"-
-        cout << "right key" << endl;
         break;
     default:
         cout << "Wrong key" << endl;
         return;
     }
-    ev.quit();      // stop the event loop after the first left or right key was pressed
+    cout << "TIME: " << run->getActuellTrial().getReactionTime() << endl;
 }
 
 // keyEvent (Release)
@@ -126,15 +125,12 @@ void GameWindow::paintArrows(Trial *t){
 
     // paint the other images and the mid images
     if(t->getArrowPosition() == Trial::up_arrow){
-        cout << "Up Arrows" << endl;
         paintListLabelsArrows(up_arrows, t->getOtherImg(), w, h);
         ui->MidAbove->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::down_arrow) {
-        cout << "Down Arrows" << endl;
         paintListLabelsArrows(down_arrows, t->getOtherImg(),w ,h);
         ui->MidBelow->setPixmap(t->getMidImg());
     }else if (t->getArrowPosition() == Trial::both_arrow) {
-        cout << "Both Arrows" << endl;
         paintListLabelsArrows(up_arrows, t->getOtherImg(), w, h);
         paintListLabelsArrows(down_arrows, t->getOtherImg(), w, h);
         ui->MidAbove->setPixmap(t->getMidImg());
@@ -173,20 +169,16 @@ void GameWindow::paintStars(Trial *t){
     switch (t->getStarPosition()) {
     case Trial::up_star:
         paintStar(ui->MidAbove,":/ressources/images/star.svg", w, h);
-        cout << "up star"<<endl;
         break;
     case Trial::down_star:
         paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
-        cout << "down star"<<endl;
         break;
     case Trial::both_star:
         paintStar(ui->MidAbove, ":/ressources/images/star.svg", w, h);
         paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
-        cout << "both star"<<endl;
         break;
     case Trial::mid:
         paintStar(ui->Centreline, ":/ressources/images/star.svg",w, h);
-        cout << "mid star"<<endl;
         break;
     default:
         cout << "Can't paint stars"<<endl;

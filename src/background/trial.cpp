@@ -9,6 +9,7 @@ Trial::Trial(star_position star_posi, arrow_position arrow_posi, image img1)
     reaction_time = -1;             // no reaction is the start value
     setDirection();                 // set the direction after setting img
     setImg();                       // set the images
+    measured = false;               // standard value for measurement is false -> Trial has no measured values
 }
 
 // public methods

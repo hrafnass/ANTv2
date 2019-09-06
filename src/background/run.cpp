@@ -24,6 +24,7 @@ void Run::newGame(){
         // set the vector values to start
         run_vector.at(pos).setReactionTime(-1);
         run_vector.at(pos).setRightReaction(false);
+        run_vector.at(pos).setMeasure(false);   // else in a seconde run no value could measured
         cout << "After reset: " << run_vector.at(pos).getReactionTime() << " pos: " << pos << "right reaction: " << run_vector.at(pos).getRightReaction() <<endl;
     }
     setIteratorToStart();   // set the iterator to start - needed for a right use of readRun()

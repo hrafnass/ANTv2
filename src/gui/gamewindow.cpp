@@ -14,6 +14,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    game = true;    // needed for the game loop
 }
 
 // destructor
@@ -28,7 +29,7 @@ bool GameWindow::gameLoop(Run *r){
     run = r;        // saves the "Run Object"
     timer.start();  // starting the timer
     Trial t;
-    while(r->readRun()){
+    while(r->readRun() && game){
         t = r->getActuellTrial();   // get the actuell trial
         // paint svgs (stars)
         paintStars(&t);
@@ -80,8 +81,13 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
 void GameWindow::keyReleaseEvent(QKeyEvent *event){
     // only needed for GameEsc
     if(event->key() == Qt::Key_Escape){
-        // cout << "ESC released" << endl;
+        cout << "ESC released" << endl;
+        game = false;   // quits the game loop - maybe found a better qt function
         this->close();
+        // paint the Save dialog
+        SaveDialog save;
+        save.setModal(true);
+        save.exec();
     }
 }
 

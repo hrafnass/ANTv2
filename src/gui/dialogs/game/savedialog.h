@@ -21,7 +21,7 @@ private slots:
 
 private:
     Ui::SaveDialog *ui;
-    bool *saving; // check if the dialog game should save
+    bool saving; // check if the dialog game should save
 };
 
 #endif // SAVEDIALOG_H

@@ -44,6 +44,7 @@ void MainWindow::on_startGamePushButton_clicked()
     cout << "start game" << endl;
     game.showFullScreen();  // open the window in fullscreen
     game.gameLoop(&run);    // start game loop
+    game.gameResults(name, forename, notice, birthday); // saves all data
 
     // clear all measured values
     // calc.resetValues();

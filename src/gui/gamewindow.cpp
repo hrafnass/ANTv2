@@ -25,8 +25,7 @@ GameWindow::~GameWindow()
 
 //Functions
 // game loop
-bool GameWindow::gameLoop(Run *r){
-    run = r;        // saves the "Run Object"
+bool GameWindow::gameLoop(){
     timer.start();  // starting the timer
     Trial t;
     while(r->readRun() && game){

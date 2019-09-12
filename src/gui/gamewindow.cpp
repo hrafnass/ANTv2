@@ -47,6 +47,8 @@ bool GameWindow::gameLoop(){
         ev.exec();              // starts the event loop
         // clear screen
         deletePixmaps();
+        // paint the break dialog, if it is possible
+        paintBreakDialog();
     }    
     this->close();
     return true;

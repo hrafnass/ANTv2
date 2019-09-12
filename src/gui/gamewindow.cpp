@@ -28,8 +28,9 @@ GameWindow::~GameWindow()
 bool GameWindow::gameLoop(){
     timer.start();  // starting the timer
     Trial t;
-    while(r->readRun() && game){
-        t = r->getActuellTrial();   // get the actuell trial
+    game = true;
+    while(run->readRun() && game){
+        t = run->getActuellTrial();   // get the actuell trial
         // paint svgs (stars)
         paintStars(&t);
         // wait 1000ms

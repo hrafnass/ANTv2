@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     run.initRun(3);     // loaded the run with 3
+    game.setRun(&run);  // give run to GameWindow
     game.setCursor(Qt::BlankCursor);    // blanks the cursor from the game window
 }
 
@@ -42,9 +43,8 @@ void MainWindow::on_startGamePushButton_clicked()
     }
     run.newGame();          // start the settings for a new game
     cout << "start game" << endl;
-    GameWindow game;
     game.showFullScreen();  // open the window in fullscreen
-    game.gameLoop(&run);    // start game loop
+    game.gameLoop();        // start game loop
     game.gameResults(name, forename, notice, birthday); // saves all data
 
     // clear all measured values

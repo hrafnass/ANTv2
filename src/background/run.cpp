@@ -36,7 +36,7 @@ bool Run::readRun(){
     // checks if the iterator is equal run_vector.end()
     // if it's true the vector end is reached -> the run is finished and readRun has to start again (next run) -> run_vector has to be shuffel
     if(it_run_vector == run_vector.end()){
-        cout << "THE END"<<endl;
+        cout << "THE END - it_run_vector: "<<endl;
         return false;       // is the sign to shuffle the run_vector again - the Run has ended
     }
     // saves the postion and iterates

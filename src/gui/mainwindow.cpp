@@ -42,6 +42,7 @@ void MainWindow::on_startGamePushButton_clicked()
     }
     run.newGame();          // start the settings for a new game
     cout << "start game" << endl;
+    GameWindow game;
     game.showFullScreen();  // open the window in fullscreen
     game.gameLoop(&run);    // start game loop
     game.gameResults(name, forename, notice, birthday); // saves all data

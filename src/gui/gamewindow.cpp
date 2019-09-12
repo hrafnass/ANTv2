@@ -125,12 +125,6 @@ void GameWindow::deletePixmaps(){
     foreach(QLabel *label, this->findChildren<QLabel *>()){
 		label->clear();
 	}
-    // check if an pause is needed and opens the break window in foreground
-    if(run->getPause()){
-        BreakDialog pause;
-        pause.setModal(true);
-        pause.exec();
-    }
     // paint the fixation cross
     paintPlus();
 }
@@ -183,6 +177,16 @@ void GameWindow::paintListLabelsArrows(QList<QLabel *> l, QString img, int w, in
         l.at(pos)->setPixmap(img);
     }
 
+}
+
+// paints the BreakDialog
+void GameWindow::paintBreakDialog(){
+    // check if an pause is needed and opens the break window in foreground
+    if(run->getPause()){
+        BreakDialog pause;
+        pause.setModal(true);
+        pause.exec();
+    }
 }
 
 // Star

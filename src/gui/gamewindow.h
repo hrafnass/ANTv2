@@ -87,10 +87,12 @@ private:
     void paintStars(Trial *);	// paint all stars (like clear screen)
     void paintArrows(Trial *);	// paint all arrows 		-"-
     void paintPlus();           // paints the plus img
+    // dialog painting
+    void paintBreakDialog();    // paints the BreakDialog
 
     // functions for label settings
     void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"
-    void paintStar(QLabel *, QString, int, int); // paint a star
+    void paintStar(QLabel *, QString, int, int);                    // paint a star
 
 	// variables
     // needed vor the grafic surface

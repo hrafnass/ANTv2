@@ -41,3 +41,6 @@ void SaveDialog::accepted(){
     }
     s.closeCSVFile();   // close the descriptor
 }
+
+// recieves the RejectedRole Button Press
+void SaveDialog::rejected(){ cout << "No File is saved!!!" << endl;}

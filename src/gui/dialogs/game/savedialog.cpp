@@ -20,6 +20,7 @@ SaveDialog::~SaveDialog()
 bool SaveDialog::setSaving(Saving *save, Run *run, QString name, QString  forename, QString comment, QString birthday){
     s = save;   // saves the address of saving in s
     s.setQFileDescriptor(name, forename);
+    // saves all params in needed global variables
     r = run;
     com = comment;
     birth = birthday;
@@ -32,20 +33,11 @@ void SaveDialog::accepted(){
     bool opened = s.openCSVFile();
     if(opened)
     {
+        // saves all data
         cout << "save file" << endl;
-        s.writeCSVFile(
-    }else  
-}
-
-
-/*
-    // writes the data in a csv file
-    if(save.openCSVFile(name, forename))
-    {
-        save.writeCSVFile(run, comment, birthday);
-    }else {
-        return false;
+        s.writeCSVFile(r, com, birth);
+    }else{
+        cout << "file couldn't open!!!" << endl;
     }
-    save.closeCSVFile();    // close file
-    return true;
-*/
+    s.closeCSVFile();   // close the descriptor
+}

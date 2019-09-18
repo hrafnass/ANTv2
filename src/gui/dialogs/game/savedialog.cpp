@@ -17,8 +17,20 @@ SaveDialog::~SaveDialog()
 }
 
 // setter für Saving
-bool SaveDialog::setSaving(Saving *save, QString name, QString  forename, QString  notice, QString  birthday){
+bool SaveDialog::setSaving(Saving *save, QString name, QString  forename){
     s = save;   // saves the address of saving in s
+    s.setQFileDescriptor(name, forename);
+}
+
+
+// protected: slots
+// recieves the AcceptRole Buttonpress
+void SaveDialog::accepted(){
+    
+}
+
+
+/*
     // writes the data in a csv file
     if(save.openCSVFile(name, forename))
     {
@@ -28,11 +40,4 @@ bool SaveDialog::setSaving(Saving *save, QString name, QString  forename, QStrin
     }
     save.closeCSVFile();    // close file
     return true;
-}
-
-
-// protected: slots
-// recieves the AcceptRole Buttonpress
-void SaveDialog::accepted(){
-    
-}
+*/

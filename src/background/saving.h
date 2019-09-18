@@ -14,9 +14,12 @@
 class Saving
 {
 public:
-    bool openCSVFile();                                   // open a new csv-file
-    void writeCSVFile(Run *run, QString comment, QString birthday);                     // saves all calculated and measured values
+    // open and close a file descriptor
+    bool openCSVFile();                                                                 // open a new csv-file
     void closeCSVFile();                                                                // closes the csv-file
+    // write
+    void writeCSVFile(Run *run, QString comment, QString birthday);                     // saves all calculated and measured values
+    // qfile descriptor settings
     void setQFileDescriptor(QString name, QString forename);                            // set the standard settings for the qfile-descriptor
 private:
     // functions

@@ -18,7 +18,7 @@ class SaveDialog : public QDialog
 public:
     explicit SaveDialog(QWidget *parent = nullptr);
     ~SaveDialog();
-    bool setSaving(Saving *save, QString name, QString  forename);
+    bool setSaving(Saving *save, Run *run, QString name, QString  forename, QString comment, QString birthday);
 private slots:
     void accepted();
     void rejected();
@@ -26,6 +26,10 @@ private slots:
 private:
     Ui::SaveDialog *ui;
     Saving *s;          // save all data
+    // needed for setSaving
+    Run *r;
+    QString com;
+    QString birth;
 };
 
 #endif // SAVEDIALOG_H

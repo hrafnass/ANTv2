@@ -47,9 +47,9 @@ bool GameWindow::gameLoop(){
         ev.exec();              // starts the event loop
         // clear screen
         deletePixmaps();
-        // paint the break dialog, if it is possible
-        paintBreakDialog();
-    }    
+        // paint the break dialog, if it is possible    
+    }
+    // paintBreakDialog();   
     this->close();
     return true;
 }
@@ -182,14 +182,14 @@ void GameWindow::paintListLabelsArrows(QList<QLabel *> l, QString img, int w, in
 }
 
 // paints the BreakDialog
-void GameWindow::paintBreakDialog(){
+/*void GameWindow::paintBreakDialog(){
     // check if an pause is needed and opens the break window in foreground
     if(run->getPause()){
         BreakDialog pause;
         pause.setModal(true);
         pause.exec();
     }
-}
+}*/
 
 // Star
 void GameWindow::paintStars(Trial *t){

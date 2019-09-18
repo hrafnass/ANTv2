@@ -49,7 +49,7 @@
 
 // Game Dialogs
 #include "src/gui/dialogs/game/savedialog.h"
-#include "src/gui/dialogs/game/breakdialog.h"
+// #include "src/gui/dialogs/game/breakdialog.h"
 // background functions
 #include "../background/run.h"
 #include "../background/saving.h"
@@ -88,7 +88,7 @@ private:
     void paintArrows(Trial *);	// paint all arrows 		-"-
     void paintPlus();           // paints the plus img
     // dialog painting
-    void paintBreakDialog();    // paints the BreakDialog
+    // void paintBreakDialog();    // paints the BreakDialog
 
     // functions for label settings
     void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"

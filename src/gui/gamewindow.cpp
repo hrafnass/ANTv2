@@ -47,15 +47,15 @@ bool GameWindow::gameLoop(){
         ev.exec();              // starts the event loop
         // clear screen
         deletePixmaps();
-        // paint the break dialog, if it is possible    
-    }
-    // paintBreakDialog();   
+        // paint the break dialog, if it is possible
+        paintBreakDialog();
+    }    
     this->close();
     return true;
 }
 
 // saves all values
-bool GameWindow::gameResults(QString name, QString forename, QString comment, QString birthday){
+/*bool GameWindow::gameResults(QString name, QString forename, QString comment, QString birthday){
     Saving save;        // saves the data
     // writes the data in a csv file
     if(save.openCSVFile(name, forename))
@@ -66,7 +66,7 @@ bool GameWindow::gameResults(QString name, QString forename, QString comment, QS
     }
     save.closeCSVFile();    // close file
     return true;
-}
+}*/
 
 
 
@@ -182,14 +182,14 @@ void GameWindow::paintListLabelsArrows(QList<QLabel *> l, QString img, int w, in
 }
 
 // paints the BreakDialog
-/*void GameWindow::paintBreakDialog(){
+void GameWindow::paintBreakDialog(){
     // check if an pause is needed and opens the break window in foreground
     if(run->getPause()){
         BreakDialog pause;
         pause.setModal(true);
         pause.exec();
     }
-}*/
+}
 
 // Star
 void GameWindow::paintStars(Trial *t){

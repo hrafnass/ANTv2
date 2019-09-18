@@ -4,6 +4,9 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QAbstractButton>
 
+// background
+#include "../background/saving.h"
+
 namespace Ui {
 class SaveDialog;
 }
@@ -15,10 +18,14 @@ class SaveDialog : public QDialog
 public:
     explicit SaveDialog(QWidget *parent = nullptr);
     ~SaveDialog();
+    void setSaving(Saving *save) = { s = save;}
 private slots:
+    void accepted();
+    void rejected();
 
 private:
     Ui::SaveDialog *ui;
+    Saving *s;          // save all data
 };
 
 #endif // SAVEDIALOG_H

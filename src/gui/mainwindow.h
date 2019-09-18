@@ -37,6 +37,8 @@ private:
     // gaming
     GameWindow game;
     Run run;
+    // SaveDialog
+    SaveDialog save_dialog;
     // saves all values
     Saving save;
     // saves all values and calculations

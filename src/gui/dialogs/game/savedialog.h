@@ -4,8 +4,9 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QAbstractButton>
 
-// background
-#include "../background/saving.h"
+// background functions
+#include "../../../background/run.h"
+#include "../../../background/saving.h"
 
 namespace Ui {
 class SaveDialog;

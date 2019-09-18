@@ -41,11 +41,12 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.exec();
         return;
     }
-    run.newGame();          // start the settings for a new game
+    save_dialog.setSaving(&save, &run, name, forename, notice, birthday);   // save all infos for the save dialog
+    /*run.newGame();          // start the settings for a new game
     cout << "start game" << endl;
     game.showFullScreen();  // open the window in fullscreen
     game.gameLoop();        // start game loop
-    //game.gameResults(name, forename, notice, birthday); // saves all data
+    //game.gameResults(name, forename, notice, birthday); // saves all data*/
 
     // clear all measured values
     // calc.resetValues();

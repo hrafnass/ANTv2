@@ -34,5 +34,5 @@ bool SaveDialog::setSaving(Saving *save, QString name, QString  forename, QStrin
 // protected: slots
 // recieves the AcceptRole Buttonpress
 void SaveDialog::accepted(){
-
+    
 }

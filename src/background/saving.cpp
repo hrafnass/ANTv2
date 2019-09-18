@@ -1,11 +1,15 @@
 #include "saving.h"
 
 // opens the csv file
-bool Saving::openCSVFile(QString name, QString forename) {
-    QString filename = createFilename(name, forename);      // creates the filename for the csv file
-    file.setFileName(filename);                     // sets the filename of the file
-    bool opened = file.open(QFile::WriteOnly);  // tries to open the csv file in write only mode
-    return opened;                                  // true if the file is opened/created else false
+bool Saving::openCSVFile() {
+    bool opened = file.open(QFile::WriteOnly);              // tries to open the csv file in write only mode
+    return opened;                                          // true if the file is opened/created else false
+}
+
+// sets the qfile-descriptor
+void Saving::setQFileDescriptor(QString name, QString forename){
+        QString filename = createFilename(name, forename);      // creates the filename for the csv file
+        file.setFileName(filename);                             // sets the filename of the file
 }
 
 // write in the csv file

@@ -42,12 +42,11 @@ void MainWindow::on_startGamePushButton_clicked()
         return;
     }
     save_dialog.setSaving(&save, &run, name, forename, notice, birthday);   // save all infos for the save dialog
-    /*run.newGame();          // start the settings for a new game
-    cout << "start game" << endl;
+    run.newGame();          // start the settings for a new game
     game.showFullScreen();  // open the window in fullscreen
     game.gameLoop();        // start game loop
-    //game.gameResults(name, forename, notice, birthday); // saves all data*/
-
+    save_dialog.setModal(true);
+    save_dialog.exec();
     // clear all measured values
     // calc.resetValues();
     // delete the whole input (forename, name, notice, birthday to Standard)

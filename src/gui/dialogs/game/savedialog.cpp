@@ -29,7 +29,7 @@ bool SaveDialog::setSaving(Saving *save, Run *run, QString name, QString  forena
 
 // protected: slots
 // recieves the AcceptRole Buttonpress
-void SaveDialog::accepted(){
+void SaveDialog::accept(){
     bool opened = s->openCSVFile();
     if(opened)
     {
@@ -43,4 +43,4 @@ void SaveDialog::accepted(){
 }
 
 // recieves the RejectedRole Button Press
-void SaveDialog::rejected(){ cout << "No File is saved!!!" << endl;}
+void SaveDialog::reject(){ cout << "No File is saved!!!" << endl;}

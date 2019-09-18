@@ -88,7 +88,11 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
         // paint the Save dialog
         /*SaveDialog save;
         save.setModal(true);
-        save.exec();*/
+        save.exec();
+        INFO: ES KÖNNTE NOCHMAL getPause()  UND CO AUSGEFÜHRT WERDEN UND SICH DAMIT
+        NOCHMAL FENSTER ÖFFNEN, ABER DAS IST EHER NEBENRANGIG - ES KANN NOCH EINEN
+        SCHLEIFENDURCHLAUF IN GAMELOOP GEBEN UND DAMIT ALLE AUSGEFÜHRTEN FUNKTIONEN
+        */
     }
 }
 

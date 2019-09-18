@@ -5,6 +5,9 @@
 // windows
 #include "dialogs/main/aboutgamedialog.h"
 #include "dialogs/main/reminder.h"
+// moved from game window to main window
+#include "dialogs/game/savedialog.h"
+
 #include "gamewindow.h"
 // classes for values and saving
 #include "../background/saving.h"

@@ -67,7 +67,7 @@ public:
     ~GameWindow();
     // game loop
     bool gameLoop();      // gaming loop
-    bool gameResults(QString, QString, QString, QString);   // saves and calculates all mvalues
+    // bool gameResults(QString, QString, QString, QString);   // saves and calculates all mvalues
     // add run
     void setRun(Run *r) { run = r;}
 

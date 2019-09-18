@@ -15,3 +15,24 @@ SaveDialog::~SaveDialog()
 {
     delete ui;
 }
+
+// setter für Saving
+bool SaveDialog::setSaving(Saving *save, QString name, QString  forename, QString  notice, QString  birthday){
+    s = save;   // saves the address of saving in s
+    // writes the data in a csv file
+    if(save.openCSVFile(name, forename))
+    {
+        save.writeCSVFile(run, comment, birthday);
+    }else {
+        return false;
+    }
+    save.closeCSVFile();    // close file
+    return true;
+}
+
+
+// protected: slots
+// recieves the AcceptRole Buttonpress
+void SaveDialog::accepted(){
+
+}

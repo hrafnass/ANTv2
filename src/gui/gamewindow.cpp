@@ -54,22 +54,6 @@ bool GameWindow::gameLoop(){
     return true;
 }
 
-// saves all values
-/*bool GameWindow::gameResults(QString name, QString forename, QString comment, QString birthday){
-    Saving save;        // saves the data
-    // writes the data in a csv file
-    if(save.openCSVFile(name, forename))
-    {
-        save.writeCSVFile(run, comment, birthday);
-    }else {
-        return false;
-    }
-    save.closeCSVFile();    // close file
-    return true;
-}*/
-
-
-
 // protected:
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
@@ -102,9 +86,9 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
         game = false;   // quits the game loop - maybe found a better qt function
         this->close();
         // paint the Save dialog
-        SaveDialog save;
+        /*SaveDialog save;
         save.setModal(true);
-        save.exec();
+        save.exec();*/
     }
 }
 

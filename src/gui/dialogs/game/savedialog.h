@@ -22,7 +22,7 @@ public:
     bool setSaving(Saving *save, Run *run, QString name, QString  forename, QString comment, QString birthday);
 private slots:
     void accept();
-    void reject();
+    //void reject();
 
 private:
     Ui::SaveDialog *ui;

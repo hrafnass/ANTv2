@@ -41,16 +41,19 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.exec();
         return;
     }
-    save_dialog.setSaving(&save, &run, name, forename, notice, birthday);   // save all infos for the save dialog
-    run.newGame();          // start the settings for a new game
-    game.showFullScreen();  // open the window in fullscreen
-    game.gameLoop();        // start game loop
-    save_dialog.setModal(true);
-    save_dialog.exec();
-    // clear all measured values
-    // calc.resetValues();
-    // delete the whole input (forename, name, notice, birthday to Standard)
+    // free labels
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");
     ui->noticeTextEdit->setText("");
+    // game
+    run.newGame();          // start the settings for a new game
+    game.showFullScreen();  // open the window in fullscreen
+    game.gameLoop();        // start game loop
+    // save data
+    cout << "1 ";
+    save_dialog.setSaving(&save, &run, name, forename, notice, birthday);   // save all infos for the save dialog
+    cout << "2 ";
+    save_dialog.setModal(true);
+    save_dialog.exec();
+    cout << "3 ";
 }

@@ -25,7 +25,7 @@ void Run::newGame(){
         run_vector.at(pos).setReactionTime(-1);
         run_vector.at(pos).setRightReaction(false);
         run_vector.at(pos).setMeasure(false);   // else in a seconde run no value could measured
-        cout << "[*] After reset:  " << run_vector.at(pos).getReactionTime() << " pos: " << pos << " right reaction: " << run_vector.at(pos).getRightReaction() <<endl;
+        cout << "[*] After  reset: " << run_vector.at(pos).getReactionTime() << " pos: " << pos << " right reaction: " << run_vector.at(pos).getRightReaction() <<endl;
     }
     setIteratorToStart();   // set the iterator to start - needed for a right use of readRun()
     pos = 0;
@@ -36,7 +36,7 @@ bool Run::readRun(){
     // checks if the iterator is equal run_vector.end()
     // if it's true the vector end is reached -> the run is finished and readRun has to start again (next run) -> run_vector has to be shuffel
     if(it_run_vector == run_vector.end()){
-        cout << "THE END - it_run_vector: "<<endl;
+        cout << "[*] End of Run Vector"<<endl;
         return false;       // is the sign to shuffle the run_vector again - the Run has ended
     }
     // saves the postion and iterates
@@ -71,7 +71,6 @@ Trial Run::getActuellTrial() { return run_vector.at(pos);}
  * pos starts at 0 -> number_of_trials = pos + 1
 */
 bool Run::getPause(){
-    cout << "getPause()" << endl;
     unsigned long vector_size = run_vector.size();      // saves the run_vector size
     if(vector_size == 0)                                // check if the vector is filled; if it isn't every pause call is true
         return false;
@@ -101,7 +100,7 @@ void Run::possibleCombinations(){
             }
         }
     }
-    cout << "Lenght run vector: " << run_vector.size() << endl;
+    cout << "[*] Lenght run vector: " << run_vector.size() << endl;
 }
 
 // shuffels the run_vector - and set the iterator to run_vector_begin

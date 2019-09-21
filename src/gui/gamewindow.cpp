@@ -51,7 +51,7 @@ bool GameWindow::gameLoop(){
         paintBreakDialog();
     }    
     this->close();
-    return true;
+    return game;
 }
 
 // protected:
@@ -72,7 +72,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         run->setMeasure(timer.elapsed(), RIGHT);    // -"-
         break;
     default:
-        cout << "Wrong key" << endl;
+        cout << "[*] Wrong key" << endl;
         return;
     }
     cout << "TIME: " << run->getActuellTrial().getReactionTime() << endl;
@@ -82,17 +82,9 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
 void GameWindow::keyReleaseEvent(QKeyEvent *event){
     // only needed for GameEsc
     if(event->key() == Qt::Key_Escape){
-        cout << "ESC released" << endl;
+        cout << "[*] esc key - game loop quiting" << endl;
         game = false;   // quits the game loop - maybe found a better qt function
         this->close();
-        // paint the Save dialog
-        /*SaveDialog save;
-        save.setModal(true);
-        save.exec();
-        INFO: ES KÖNNTE NOCHMAL getPause()  UND CO AUSGEFÜHRT WERDEN UND SICH DAMIT
-        NOCHMAL FENSTER ÖFFNEN, ABER DAS IST EHER NEBENRANGIG - ES KANN NOCH EINEN
-        SCHLEIFENDURCHLAUF IN GAMELOOP GEBEN UND DAMIT ALLE AUSGEFÜHRTEN FUNKTIONEN
-        */
     }
 }
 

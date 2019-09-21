@@ -28,6 +28,10 @@ private slots:
     void on_buttonBox_rejected();
 
 private:
+    // Functions
+    void setValues();
+
+    // Variables
     Ui::SaveDialog *ui;
     // calculation and saving
     Saving s;           // save all data

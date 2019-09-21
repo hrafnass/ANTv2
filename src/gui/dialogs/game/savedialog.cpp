@@ -29,7 +29,8 @@ bool SaveDialog::setSaving(Run *run, QString name, QString  forename, QString co
 
 void SaveDialog::on_buttonBox_accepted()
 {
-    bool opened = s.openCSVFile();
+    setValues();                        // get the needed values
+    bool opened = s.openCSVFile();      // try to opens a file
     if(opened)
     {
         // saves all data

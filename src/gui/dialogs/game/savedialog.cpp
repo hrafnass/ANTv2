@@ -17,7 +17,7 @@ SaveDialog::~SaveDialog()
 }
 
 // setter für Saving
-bool SaveDialog::setSaving(Run *run, QString name, QString  forename, QString comment, QString birthday){
+void SaveDialog::setSaving(Run *run, QString name, QString  forename, QString comment, QString birthday){
     // catch all needed params
     r = run;
     com = comment;
@@ -29,14 +29,13 @@ bool SaveDialog::setSaving(Run *run, QString name, QString  forename, QString co
 
 void SaveDialog::on_buttonBox_accepted()
 {
-    setValues();                        // get the needed values
+    // setValues();                        // get the needed values
     bool opened = s.openCSVFile();      // try to opens a file
     if(opened)
     {
-        // saves all data
         cout << "[*] Save file!!!" << endl;
-        s.writeCSVFile(r, com, birth);
-        s.closeCSVFile();   // close the descriptor
+        s.writeCSVFile(r, com, birth);  // saves all data
+        s.closeCSVFile();               // close the descriptor
     }else{
         cout << "[*] Couldn't open file!!!" << endl;
     }
@@ -52,8 +51,8 @@ void SaveDialog::on_buttonBox_rejected()
 }
 
 // private:
-void SaveDialog::setValues(){
+/*void SaveDialog::setValues(){
     // delete and calcs the new values
     c.resetValues();
     c.calcValues(r);
-}
+}*/

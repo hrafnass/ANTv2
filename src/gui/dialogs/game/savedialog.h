@@ -8,7 +8,7 @@
 #include "../../../background/run.h"
 // classes for values and saving
 #include "../../../background/saving.h"
-#include "../../../background/calculation.h"
+// #include "../../../background/calculation.h"
 
 namespace Ui {
 class SaveDialog;
@@ -21,7 +21,7 @@ class SaveDialog : public QDialog
 public:
     explicit SaveDialog(QWidget *parent = nullptr);
     ~SaveDialog();
-    bool setSaving(Run *, QString, QString, QString, QString);    // to init the save and calculation of all values
+    void setSaving(Run *, QString, QString, QString, QString);    // to init the save and calculation of all values
 
 private slots:
     void on_buttonBox_accepted();
@@ -35,7 +35,7 @@ private:
     Ui::SaveDialog *ui;
     // calculation and saving
     Saving s;           // save all data
-    Calculation c;      // calculation
+    // Calculation c;      // calculation
     // needed for startSaving
     Run *r;
     QString com;

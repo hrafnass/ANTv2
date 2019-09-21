@@ -1,6 +1,13 @@
 #ifndef SAVEDIALOG_H
 #define SAVEDIALOG_H
 
+/*
+ * Info: savedialog.h, savedialog.cpp, savedialog.ui aren't used in gamewindow.
+ *       They are only used in mainwindow (slot: on_startGamePushButton_clicked()).
+ *       In the first version the save dialog was shown after the ESC key was pressed or the
+ *       gameLoop finished.
+*/
+
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QAbstractButton>
 

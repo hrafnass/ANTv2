@@ -30,6 +30,9 @@
 // 2.54 cm = 1 Inch
 #define INCH_IN_CM 2.54
 
+// PICTURE NAMES
+#define STAR_NAME ":/ressources/images/star.svg"
+
 
 // TIMES
 // waiting times in ther game

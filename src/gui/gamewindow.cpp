@@ -188,20 +188,20 @@ void GameWindow::paintStars(Trial *t){
     // switch instead of many ifs
     switch (t->getStarPosition()) {
     case Trial::up_star:
-        paintStar(ui->MidAbove,":/ressources/images/star.svg", w, h);
+        paintStar(ui->MidAbove, STAR_NAME, w, h);
         break;
     case Trial::down_star:
-        paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
+        paintStar(ui->MidBelow, STAR_NAME, w, h);
         break;
     case Trial::both_star:
-        paintStar(ui->MidAbove, ":/ressources/images/star.svg", w, h);
-        paintStar(ui->MidBelow, ":/ressources/images/star.svg", w, h);
+        paintStar(ui->MidAbove, STAR_NAME, w, h);
+        paintStar(ui->MidBelow, STAR_NAME, w, h);
         break;
     case Trial::mid:
-        paintStar(ui->Centreline, ":/ressources/images/star.svg",w, h);
+        paintStar(ui->Centreline, STAR_NAME,w, h);
         break;
     default:
-        cout << "Can't paint stars"<<endl;
+        cout << "[*] Can't paint stars"<<endl;
         break;
     }
 }

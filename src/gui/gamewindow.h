@@ -32,6 +32,7 @@
 
 // PICTURE NAMES
 #define STAR_NAME ":/ressources/images/star.svg"
+#define PLUS_NAME ":/ressources/images/plus.svg"
 
 
 // TIMES

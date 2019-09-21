@@ -220,7 +220,7 @@ void GameWindow::paintStar(QLabel *l, QString img, int w, int h){
 // plus image
 void GameWindow::paintPlus(){
     // saves the img pos
-    QString plus = ":/ressources/images/plus.svg";
+    QString plus = PLUS_NAME;
     // calc width and height
     int w = cmToPixelNbrX(PLUS_X);
     int h = cmToPixelNbrY(PLUS_Y);

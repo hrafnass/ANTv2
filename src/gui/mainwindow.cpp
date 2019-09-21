@@ -19,7 +19,6 @@ MainWindow::~MainWindow()
 // open the About Game dialog
 void MainWindow::on_actionAboutReactiongame_triggered()
 {
-    AboutGameDialog about_game;
     // AboutGamewindow is everytime in foreground
     about_game.setModal(true);
     about_game.exec();
@@ -36,7 +35,6 @@ void MainWindow::on_startGamePushButton_clicked()
     // check if forename, name or birthday is empty
     if(forename.isEmpty() || name.isEmpty() || birthday.isEmpty()){
         // open remind window
-        Reminder reminder_dialog;
         reminder_dialog.setModal(true);
         reminder_dialog.exec();
         return;
@@ -50,10 +48,8 @@ void MainWindow::on_startGamePushButton_clicked()
     game.showFullScreen();  // open the window in fullscreen
     game.gameLoop();        // start game loop
     // save data
-    cout << "1 ";
-    save_dialog.setSaving(&save, &run, name, forename, notice, birthday);   // save all infos for the save dialog
-    cout << "2 ";
+    // save_dialog.setSaving(&save, &run, name, forename, notice, birthday);   // save all infos for the save dialog
     save_dialog.setModal(true);
     save_dialog.exec();
-    cout << "3 ";
+
 }

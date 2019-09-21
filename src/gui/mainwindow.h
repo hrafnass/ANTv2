@@ -10,8 +10,8 @@
 
 #include "gamewindow.h"
 // classes for values and saving
-#include "../background/saving.h"
-#include "../background/calculation.h"
+// #include "../background/saving.h"
+// #include "../background/calculation.h"
 #include "../background/run.h"
 
 namespace Ui {
@@ -32,17 +32,22 @@ private slots:
     // game window started with button click
     void on_startGamePushButton_clicked();
 private:
-    // Windows
+    // Windows UI
     Ui::MainWindow *ui;
     // gaming
     GameWindow game;
-    Run run;
     // SaveDialog
     SaveDialog save_dialog;
+    // ReminderDialog
+    Reminder reminder_dialog;
+    // aboutDialog
+    AboutGameDialog about_game;
+
+    Run run;
     // saves all values
-    Saving save;
+    // Saving save;
     // saves all values and calculations
-    Calculation calc;
+    // Calculation calc;
 };
 
 #endif // MAINWINDOW_H

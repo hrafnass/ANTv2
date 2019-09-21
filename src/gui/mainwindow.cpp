@@ -48,7 +48,7 @@ void MainWindow::on_startGamePushButton_clicked()
     game.showFullScreen();  // open the window in fullscreen
     game.gameLoop();        // start game loop
     // save data
-    // save_dialog.setSaving(&save, &run, name, forename, notice, birthday);   // save all infos for the save dialog
+    save_dialog.setSaving(&run, name, forename, notice, birthday);
     save_dialog.setModal(true);
     save_dialog.exec();
 

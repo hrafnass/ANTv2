@@ -26,32 +26,27 @@ bool SaveDialog::setSaving(Saving *save, Run *run, QString name, QString  forena
     birth = birthday;
 }
 
+// private slots:
 
-// protected: slots
-// recieves the AcceptRole Buttonpress
-void SaveDialog::accept(){
+void SaveDialog::on_buttonBox_accepted()
+{
     bool opened = s->openCSVFile();
-    cout << "2.1 ";
     if(opened)
     {
         // saves all data
-        cout << "save file" << endl;
+        cout << "[*] " << endl;
         s->writeCSVFile(r, com, birth);
         s->closeCSVFile();   // close the descriptor
-        cout << "2.2 ";
     }else{
         cout << "file couldn't open!!!" << endl;
     }
-    cout << "2.3 ";
     this->close(); // close the window
-    cout << "2.4 " << endl;
     return;
 }
 
-// recieves the RejectedRole Button Press
-/*void SaveDialog::reject(){
+void SaveDialog::on_buttonBox_rejected()
+{
     cout << "No File is saved!!!" << endl;
     this->close();
     return;
-}*/
-
+}

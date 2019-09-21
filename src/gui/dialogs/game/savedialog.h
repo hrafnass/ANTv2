@@ -20,9 +20,10 @@ public:
     explicit SaveDialog(QWidget *parent = nullptr);
     ~SaveDialog();
     bool setSaving(Saving *save, Run *run, QString name, QString  forename, QString comment, QString birthday);
+
 private slots:
-    void accept();
-    //void reject();
+    void on_buttonBox_accepted();
+    void on_buttonBox_rejected();
 
 private:
     Ui::SaveDialog *ui;

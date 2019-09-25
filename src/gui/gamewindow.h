@@ -34,6 +34,10 @@
 #define STAR_NAME ":/ressources/images/star.svg"
 #define PLUS_NAME ":/ressources/images/plus.svg"
 
+// TRAININGS MODE TEXTS
+#define CORRECT "RICHTIG!!!"
+#define WRONG "FALSCH!!!"
+
 
 // TIMES
 // waiting times in ther game
@@ -75,7 +79,7 @@ public:
     // add run
     void setRun(Run *r) { run = r;}
     // game or exercise - only needed for Strg+H in mainwindow
-    void setExercise(bool exercise) { training = exercise;}
+    void setExercise(bool exercise) { train = exercise;}
 
 protected:
 	// Events
@@ -100,6 +104,9 @@ private:
     void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"
     void paintStar(QLabel *, QString, int, int);                    // paint a star
 
+    // trainings functions
+    void training();    // check if the exercise mode is active and paint the right input for the labels
+
 	// variables
     // needed vor the grafic surface
     Ui::GameWindow *ui;
@@ -113,7 +120,7 @@ private:
     bool game;
     // setting variable to check if the game window only was opened by void on_action_bung_triggered() (mainwindow)
     // needed for training
-    bool training;
+    bool train;
 };
 
 #endif // GAMEWINDOW_H

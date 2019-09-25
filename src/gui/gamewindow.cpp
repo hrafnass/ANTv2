@@ -15,7 +15,7 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     game = true;        // needed for the game loop
-    training = false;   // standard setting: the gamewindow wasn't opened for exercise
+    train = false;   // standard setting: the gamewindow wasn't opened for exercise
 }
 
 // destructor
@@ -75,7 +75,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     default:
         cout << "[*] Wrong key" << endl;
         return;
-    }
+    }    
     cout << "[*] Elapsed time: " << run->getActuellTrial().getReactionTime() << endl;
 }
 
@@ -219,4 +219,15 @@ void GameWindow::paintPlus(){
     // paint
     ui->Centreline->setFixedSize(w, h);
     ui->Centreline->setPixmap(plus);
+}
+
+// training functions
+void GameWindow::training(){
+    // if the exercise is true the centreling labe prints right and wrong
+    if(train){
+        if(run->getActuellTrial().getRightReaction())
+            ui->Centreline->setText(CORRECT);
+        else
+            ui->Centreline->setText(WRONG);
+    }
 }

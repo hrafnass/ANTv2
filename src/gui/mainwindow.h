@@ -31,7 +31,12 @@ private slots:
     void on_actionAboutReactiongame_triggered();
     // game window started with button click
     void on_startGamePushButton_clicked();
+    void on_action_bung_triggered();
+
 private:
+    // game function
+    void startGame();   // needed to start the game in exercise or measurement mode
+
     // Windows UI
     Ui::MainWindow *ui;
     // gaming

@@ -75,7 +75,8 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     default:
         cout << "[*] Wrong key" << endl;
         return;
-    }    
+    }
+    training(); // react for the exercise runs
     cout << "[*] Elapsed time: " << run->getActuellTrial().getReactionTime() << endl;
 }
 

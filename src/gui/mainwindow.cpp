@@ -53,3 +53,8 @@ void MainWindow::on_startGamePushButton_clicked()
     save_dialog.exec();
 
 }
+
+void MainWindow::on_action_bung_triggered()
+{
+
+}

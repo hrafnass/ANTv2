@@ -14,7 +14,8 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
-    game = true;    // needed for the game loop
+    game = true;        // needed for the game loop
+    training = false;   // standard setting: the gamewindow wasn't opened for exercise
 }
 
 // destructor

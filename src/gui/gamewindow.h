@@ -74,6 +74,8 @@ public:
     // bool gameResults(QString, QString, QString, QString);   // saves and calculates all mvalues
     // add run
     void setRun(Run *r) { run = r;}
+    // game or exercise - only needed for Strg+H in mainwindow
+    void setExercise(bool exercise) { training = exercise;}
 
 protected:
 	// Events
@@ -109,6 +111,9 @@ private:
 
     // main game loop
     bool game;
+    // setting variable to check if the game window only was opened by void on_action_bung_triggered() (mainwindow)
+    // needed for training
+    bool training;
 };
 
 #endif // GAMEWINDOW_H

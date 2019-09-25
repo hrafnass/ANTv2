@@ -60,7 +60,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     // if the timer is not active no key press events can take
     // the measured time is > TIME_FOR_REA2000 ms or the Left or right key was pressed before
     if(timer.elapsed() > TIME_FOR_REACTION || run->getActuellTrial().getMeasure()){
-        cout << "no key check" << endl;
+        cout << "[*] No key saved." << endl;
         return;
     }
     // switch for all wanted keys
@@ -75,7 +75,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         cout << "[*] Wrong key" << endl;
         return;
     }
-    cout << "TIME: " << run->getActuellTrial().getReactionTime() << endl;
+    cout << "[*] Elapsed time: " << run->getActuellTrial().getReactionTime() << endl;
 }
 
 // keyEvent (Release)
@@ -119,7 +119,6 @@ void GameWindow::paintArrows(Trial *t){
 
     QList<QLabel *> up_arrows = this->findChildren<QLabel *>(exp_up);
     QList<QLabel *> down_arrows = this->findChildren<QLabel *>(exp_down);
-    // cout << "UP: " << up_arrows.size() << " DOWN: " << down_arrows.size() << endl;
 
     // width and height of the "other" arrows
     int w = cmToPixelNbrX(ARROW_X);

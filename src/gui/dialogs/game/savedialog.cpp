@@ -49,10 +49,3 @@ void SaveDialog::on_buttonBox_rejected()
     this->close();
     return;
 }
-
-// private:
-/*void SaveDialog::setValues(){
-    // delete and calcs the new values
-    c.resetValues();
-    c.calcValues(r);
-}*/

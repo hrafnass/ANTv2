@@ -6,6 +6,23 @@
 
 using namespace std;
 
+/*  A Trial is a combination of 5 arrows (allowed combis saved in image), the positions of the arrows
+ *  (arrow_position) and the position of the stars (star_positions), which are shown between the arrow combis.
+ *  With this trials we want to check, how fast a person could check in which direction (dir) the mid arrow points.
+ *  Needed characteristics: - check if it was measured      (measured)
+ *                          - direction of the mid arrow    (direction)
+ *                          - reaction time for a check     (reaction_time)
+ *                          - was the reaction right        (right_reaction)
+ *                          - the names for the arrow imgs  (mid_img, other_img)
+ *                          - positions of star(s),arrows,...   (star_pos, arrow_pos, img)
+ *
+ *  A Trial is used in the Run-Class. There are all needed/wanted trials saved in a run_vector and show by the gui
+ *  in the gameloop.
+ *
+ *  FOR THE STANDARDIZED TEST YOU RUN ALL COMBINATIONS OF IMAGE, STAR_POSITION, ARROW_POSITION THREE TIMES WITH A PAUSE
+ *  BETWEEN EVERY X % 72 = 0 COMBI.
+ **/
+
 // Trial is the show of one arrow with one star
 class Trial
 {

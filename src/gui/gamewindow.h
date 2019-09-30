@@ -27,6 +27,10 @@
 #define PLUS_Y  1
 #define BAR_Y   1
 
+// SPACER DISTANCE IN CM
+#define DISTANCE_ARROW_PLUS_Y 2     // its the fixed distance of a spacer - we use 2.54  at the moment
+#define DISTANCE_ARROW_PLUS_X 2     // its the fixed distance of a spacer - we use 2.54  at the moment
+
 // 2.54 cm = 1 Inch
 #define INCH_IN_CM 2.54
 
@@ -35,8 +39,8 @@
 #define PLUS_NAME ":/ressources/images/plus.svg"
 
 // TRAININGS MODE TEXTS
-#define CORRECT "RICHTIG!!!"
-#define WRONG "FALSCH!!!"
+#define CORRECT ":/ressources/images/right.svg"
+#define WRONG ":/ressources/images/false.svg"
 
 
 // TIMES

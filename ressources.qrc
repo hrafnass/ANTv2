@@ -5,5 +5,7 @@
         <file alias="bar.svg">src/gui/ressources/images/bar.svg</file>
         <file alias="plus.svg">src/gui/ressources/images/plus.svg</file>
         <file alias="star.svg">src/gui/ressources/images/star.svg</file>
+        <file alias="false.svg">src/gui/ressources/images/false.svg</file>
+        <file alias="right.svg">src/gui/ressources/images/right.svg</file>
     </qresource>
 </RCC>

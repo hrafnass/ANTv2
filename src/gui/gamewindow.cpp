@@ -16,6 +16,19 @@ GameWindow::GameWindow(QWidget *parent) :
     ui->setupUi(this);
     game = true;        // needed for the game loop
     train = false;   // standard setting: the gamewindow wasn't opened for exercise
+    /* We need a fixed size between arrows and the plus img. Important for the test.
+     * I take 1 inch (2 cm) for the distance between arrows and plus.
+     * We only need to change the height. The width doesn't interest.
+     * -> w, expanding aren't needed; only h and fixed
+     **/
+    // calcs the needed px size
+    int w = cmToPixelNbrX(DISTANCE_ARROW_PLUS_X);
+    int h = cmToPixelNbrY(DISTANCE_ARROW_PLUS_Y);
+    // changes the size
+    ui->verticalSpacerUpMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
+    ui->verticalSpacerDownMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
+    // weiß nicht ob ich das wirklich brauche
+    // layout()->invalidate();
 }
 
 // destructor
@@ -224,11 +237,19 @@ void GameWindow::paintPlus(){
 
 // training functions
 void GameWindow::training(){
+    // calc width and height
+    int w = cmToPixelNbrX(PLUS_X);  // same height and width in plus and right/wrong
+    int h = cmToPixelNbrY(PLUS_Y);
+    // paint
+    ui->Centreline->setFixedSize(w, h);
     // if the exercise is true the centreling labe prints right and wrong
     if(train){
-        if(run->getActuellTrial().getRightReaction())
-            ui->Centreline->setText(CORRECT);
-        else
-            ui->Centreline->setText(WRONG);
+        if(run->getActuellTrial().getRightReaction()){
+            QString right = CORRECT;
+            ui->Centreline->setPixmap(right);
+        }else{
+            QString wrong = WRONG;
+            ui->Centreline->setText(wrong);
+        }
     }
 }

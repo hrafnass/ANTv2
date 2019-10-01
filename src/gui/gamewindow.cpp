@@ -249,7 +249,7 @@ void GameWindow::training(){
             ui->Centreline->setPixmap(right);
         }else{
             QString wrong = WRONG;
-            ui->Centreline->setText(wrong);
+            ui->Centreline->setPixmap(wrong);
         }
     }
 }

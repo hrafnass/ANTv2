@@ -35,7 +35,7 @@ private slots:
 
 private:
     // game function
-    void startGame();   // needed to start the game in exercise or measurement mode
+    void gamingModes(bool);           // needed to start the game in exercise or measurement mode 
 
     // Windows UI
     Ui::MainWindow *ui;

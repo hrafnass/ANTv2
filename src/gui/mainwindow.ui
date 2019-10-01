@@ -284,6 +284,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>nameLineEdit</tabstop>
+  <tabstop>forenameLineEdit</tabstop>
+  <tabstop>birthdayDateEdit</tabstop>
+  <tabstop>noticeTextEdit</tabstop>
+  <tabstop>startGamePushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

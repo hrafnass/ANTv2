@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>FreeSans</family>
+    <family>MS Shell Dlg 2</family>
     <pointsize>12</pointsize>
     <weight>75</weight>
     <bold>true</bold>

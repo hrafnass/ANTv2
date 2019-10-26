@@ -14,6 +14,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    number_of_trials = -1;  // standard setting for a real game; excercise: number_of_trials > 0, game: number_of_trials = -1
     game = true;        // needed for the game loop
     train = false;      // standard setting: the gamewindow wasn't opened for exercise
     /* We need a fixed size between arrows and the plus img. Important for the test.
@@ -252,4 +253,15 @@ void GameWindow::training(){
             ui->Centreline->setPixmap(wrong);
         }
     }
+}
+
+void GameWindow::gameChanger(){
+    // function is only for excersice
+    if(!train)
+        return;
+    // if the number of trainings trials > 0
+    if(number_of_trials > 12)
+        number_of_trials--;
+    // number_of_trials = 0
+    game = false;
 }

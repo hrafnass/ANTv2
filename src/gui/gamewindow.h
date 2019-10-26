@@ -83,6 +83,7 @@ public:
     // add run
     void setRun(Run *r) { run = r;}
     // game or exercise - only needed for Strg+H in mainwindow
+    // number of trials - how many trials you can try before you start the game
     void setExercise(bool exercise, int nbr_of_trials = 12) { train = exercise; number_of_trials = nbr_of_trials;}
 
 protected:
@@ -110,6 +111,7 @@ private:
 
     // trainings functions
     void training();    // check if the exercise mode is active and paint the right input for the labels
+    void gameChanger(); // change game to false(quits gameLoop) when number_of_trials = 0
 
 	// variables
     // needed vor the grafic surface

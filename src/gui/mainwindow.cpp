@@ -62,7 +62,7 @@ void MainWindow::on_action_bung_triggered() {
 
 // game function
 void MainWindow::gamingModes(bool mode){
-    game.setExercise(mode);
+    game.setExercise(mode, 5);
     run.newGame();          // start the settings for a new game
     game.showFullScreen();  // open the window in fullscreen
     game.gameLoop();        // start game loop

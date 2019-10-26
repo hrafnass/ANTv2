@@ -262,8 +262,10 @@ void GameWindow::gameChanger(){
     if(!train)
         return;
     // if the number of trainings trials > 0
-    if(number_of_trials > 12)
+    if(number_of_trials > 0){
         number_of_trials--;
+        return;
+    }
     // number_of_trials = 0
     game = false;
 }

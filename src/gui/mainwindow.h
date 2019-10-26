@@ -7,6 +7,8 @@
 #include "dialogs/main/reminder.h"
 // moved from game window to main window
 #include "dialogs/game/savedialog.h"
+// excercise dialog
+#include "dialogs/main/excercisedialog.h"
 
 #include "gamewindow.h"
 // classes for values and saving
@@ -47,6 +49,8 @@ private:
     Reminder reminder_dialog;
     // aboutDialog
     AboutGameDialog about_game;
+    // excersice dialog
+    ExcerciseDialog excercise_dialog;
 
     Run run;
     // saves all values

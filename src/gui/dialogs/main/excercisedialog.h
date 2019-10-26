@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include <iostream>
+
 namespace Ui {
 class ExcerciseDialog;
 }
@@ -14,6 +16,11 @@ class ExcerciseDialog : public QDialog
 public:
     explicit ExcerciseDialog(QWidget *parent = nullptr);
     ~ExcerciseDialog();
+
+private slots:
+    void on_buttonBox_accepted();
+
+    void on_buttonBox_rejected();
 
 private:
     Ui::ExcerciseDialog *ui;

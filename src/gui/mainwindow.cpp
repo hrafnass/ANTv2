@@ -55,7 +55,9 @@ void MainWindow::on_startGamePushButton_clicked()
 // start in exercise mode Strg+U
 void MainWindow::on_action_bung_triggered() {
     gamingModes(true);
-
+    // ask the user for a new excercise
+    excercise_dialog.setModal(true);
+    excercise_dialog.exec();
 }
 
 // game function

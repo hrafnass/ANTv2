@@ -50,7 +50,8 @@ HEADERS += \
     src/gui/dialogs/main/aboutgamedialog.h \
     src/gui/dialogs/main/reminder.h \
     src/gui/gamewindow.h \
-    src/gui/mainwindow.h
+    src/gui/mainwindow.h \
+    src/gui/dialogs/main/excercisedialog.h
 
 SOURCES += \
     src/background/calculation.cpp \
@@ -63,7 +64,8 @@ SOURCES += \
     src/gui/dialogs/main/reminder.cpp \
     src/gui/gamewindow.cpp \
     src/gui/mainwindow.cpp \
-    src/main.cpp
+    src/main.cpp \
+    src/gui/dialogs/main/excercisedialog.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,6 +1,9 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
+
+#define NBR_TRAINING_TRIALS 12 // its the number of trainings trials for the the excercise game
+
 // DIRECTIONS
 #define RIGHT 	1             // for the measure of the pressed keys: RIGHT = 1
 #define LEFT 	0             //              -"-                     LEFT  = 0
@@ -84,7 +87,7 @@ public:
     void setRun(Run *r) { run = r;}
     // game or exercise - only needed for Strg+H in mainwindow
     // number of trials - how many trials you can try before you start the game
-    void setExercise(bool exercise, int nbr_of_trials = 12) { train = exercise; number_of_trials = nbr_of_trials;}
+    void setExercise(bool exercise, int nbr_of_trials = NBR_TRAINING_TRIALS) { train = exercise; number_of_trials = nbr_of_trials;}
 
 protected:
 	// Events

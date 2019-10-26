@@ -45,8 +45,6 @@ bool GameWindow::gameLoop(){
     Trial t;
     game = true;
     while(run->readRun() && game){
-        // needed if gameLoop uses the excercise mode
-        gameChanger();
         t = run->getActuellTrial();   // get the actuell trial
         // paint svgs (stars)
         paintStars(&t);
@@ -66,6 +64,8 @@ bool GameWindow::gameLoop(){
         deletePixmaps();
         // paint the break dialog, if it is possible
         paintBreakDialog();
+        // needed if gameLoop uses the excercise mode
+        gameChanger();
     }    
     this->close();
     return game;
@@ -77,7 +77,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     // if the timer is not active no key press events can take
     // the measured time is > TIME_FOR_REA2000 ms or the Left or right key was pressed before
     if(timer.elapsed() > TIME_FOR_REACTION || run->getActuellTrial().getMeasure()){
-        cout << "[*] No key saved." << endl;
+        cout << "[*] No key saved." << " - excercise number: " << number_of_trials << endl;
         return;
     }
     // switch for all wanted keys

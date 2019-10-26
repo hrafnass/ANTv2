@@ -83,7 +83,7 @@ public:
     // add run
     void setRun(Run *r) { run = r;}
     // game or exercise - only needed for Strg+H in mainwindow
-    void setExercise(bool exercise) { train = exercise;}
+    void setExercise(bool exercise, int nbr_of_trials = 12) { train = exercise; number_of_trials = nbr_of_trials;}
 
 protected:
 	// Events
@@ -125,6 +125,7 @@ private:
     // setting variable to check if the game window only was opened by void on_action_bung_triggered() (mainwindow)
     // needed for training
     bool train;
+    int number_of_trials;   // save how many trials you should excercise before you start with the right game; whished standard is 12
 };
 
 #endif // GAMEWINDOW_H

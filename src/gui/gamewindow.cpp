@@ -15,7 +15,7 @@ GameWindow::GameWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     game = true;        // needed for the game loop
-    train = false;   // standard setting: the gamewindow wasn't opened for exercise
+    train = false;      // standard setting: the gamewindow wasn't opened for exercise
     /* We need a fixed size between arrows and the plus img. Important for the test.
      * I take 1 inch (2 cm) for the distance between arrows and plus.
      * We only need to change the height. The width doesn't interest.

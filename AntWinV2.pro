@@ -37,7 +37,8 @@ FORMS += \
     src/gui/gamewindow.ui \
     src/gui/mainwindow.ui \
     src/gui/dialogs/game/savedialog.ui \
-    src/gui/dialogs/main/reminder.ui
+    src/gui/dialogs/main/reminder.ui \
+    src/gui/dialogs/game/excercisedialog.ui
 
 HEADERS += \
     src/background/calculation.h \

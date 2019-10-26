@@ -53,7 +53,10 @@ void MainWindow::on_startGamePushButton_clicked()
 }
 
 // start in exercise mode Strg+U
-void MainWindow::on_action_bung_triggered() { gamingModes(true); }
+void MainWindow::on_action_bung_triggered() {
+    gamingModes(true);
+
+}
 
 // game function
 void MainWindow::gamingModes(bool mode){

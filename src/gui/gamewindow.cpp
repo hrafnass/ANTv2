@@ -45,6 +45,8 @@ bool GameWindow::gameLoop(){
     Trial t;
     game = true;
     while(run->readRun() && game){
+        // needed if gameLoop uses the excercise mode
+        gameChanger();
         t = run->getActuellTrial();   // get the actuell trial
         // paint svgs (stars)
         paintStars(&t);

@@ -18,6 +18,7 @@ ExcerciseDialog::~ExcerciseDialog()
 void ExcerciseDialog::on_buttonBox_accepted()
 {
     cout << "[*] Start a new excercise game" << endl;
+    this->close();
 }
 
 // no button was pushed

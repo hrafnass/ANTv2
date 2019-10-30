@@ -246,7 +246,7 @@ void GameWindow::training(){
     // paint
     ui->Centreline->setFixedSize(w, h);
     // if the exercise is true the centreling labe prints right and wrong
-    if(train){
+    if(train && run->getActuellTrial().getMeasure()){       // paint only if a value was measured + train = true!!!
         if(run->getActuellTrial().getRightReaction()){
             QString right = CORRECT;
             ui->Centreline->setPixmap(right);
@@ -262,8 +262,8 @@ void GameWindow::gameChanger(){
     if(!train)
         return;
     // if the number of trainings trials > 0
-    if(number_of_trials > 0){
-        number_of_trials--;
+    if(number_of_trials > 1){
+        --number_of_trials;
         return;
     }
     // number_of_trials = 0

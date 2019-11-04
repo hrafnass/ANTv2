@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+// maybe instead of show+setmodal set open
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -23,7 +25,7 @@ void MainWindow::on_actionAboutReactiongame_triggered()
 {
     // AboutGamewindow is everytime in foreground
     about_game.setModal(true);
-    about_game.exec();
+    about_game.show();
 }
 
 void MainWindow::on_startGamePushButton_clicked()
@@ -38,7 +40,7 @@ void MainWindow::on_startGamePushButton_clicked()
     if(forename.isEmpty() || name.isEmpty() || birthday.isEmpty()){
         // open remind window
         reminder_dialog.setModal(true);
-        reminder_dialog.exec();
+        reminder_dialog.show();
         return;
     }
     // free labels
@@ -50,8 +52,7 @@ void MainWindow::on_startGamePushButton_clicked()
     // save data
     save_dialog.setSaving(&run, name, forename, notice, birthday);
     save_dialog.setModal(true);
-    save_dialog.exec();
-
+    save_dialog.show();
 }
 
 // start in exercise mode Strg+U

@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     run.initRun(3);     // loaded the run with 3
     game.setRun(&run);  // give run to GameWindow
     game.setCursor(Qt::BlankCursor);    // blanks the cursor from the game window
+    // connects the mainwindow with the excercisedialog
+    connect(&excercise_dialog,SIGNAL(buttonPressed()), this, SLOT(on_action_bung_triggered()));
 }
 
 MainWindow::~MainWindow()
@@ -57,7 +59,7 @@ void MainWindow::on_action_bung_triggered() {
     gamingModes(true);
     // ask the user for a new excercise
     excercise_dialog.setModal(true);
-    excercise_dialog.exec();
+    excercise_dialog.show();
 }
 
 // game function

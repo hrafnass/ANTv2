@@ -17,6 +17,9 @@ public:
     explicit ExcerciseDialog(QWidget *parent = nullptr);
     ~ExcerciseDialog();
 
+signals:
+    void buttonPressed();
+
 private slots:
     void on_buttonBox_accepted();
 
@@ -24,6 +27,7 @@ private slots:
 
 private:
     Ui::ExcerciseDialog *ui;
+
 };
 
 #endif // EXCERCISEDIALOG_H

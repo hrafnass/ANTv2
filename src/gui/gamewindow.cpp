@@ -45,28 +45,20 @@ bool GameWindow::gameLoop(){
     Trial t;
     game = true;
     while(run->readRun() && game){
-        t = run->getActuellTrial();   // get the actuell trial
-        // paint svgs (stars)
-        paintStars(&t);
-        // wait 1000ms
-        QTimer::singleShot(TIME_BETWEEN_ARROWS, &ev, SLOT(quit())); // stops event loop for timer restart
-        ev.exec();
-        // clear screen (stars)
-         deletePixmaps();
-        // gaming time
+        t = run->getActuellTrial();     // get the actuell trial
+        paintStars(&t);                 // paint svgs (stars)
+        sleepGame(TIME_BETWEEN_ARROWS); // wait 1000ms
+        deletePixmaps();                // clear screen (stars)
         timer.restart();        // restarts the timer
-        // paint arrows
-        paintArrows(&t);
-        // wait 2000 ms
-        QTimer::singleShot(TIME_FOR_REACTION, &ev, SLOT(quit())); // pause the game loop for TIME_FOR_REACTION ms and then quit ev
-        ev.exec();              // starts the event loop
-        // clear screen
-        deletePixmaps();
-        // paint the break dialog, if it is possible
-        paintBreakDialog();
-        // needed if gameLoop uses the excercise mode
-        gameChanger();
-    }    
+        paintArrows(&t);        // paint arrows
+        sleepGame(TIME_FOR_REACTION);           // wait 2000 ms
+        deletePixmaps();        // clear screen (arrpws)
+        paintBreakDialog();     // paint the break dialog, if it is possible
+        gameChanger();          // needed if gameLoop uses the excercise mode
+    }
+    // check if the eventloop is running and quit if it is
+    if(ev.isRunning())
+        ev.exit();
     this->close();
     return game;
 }
@@ -183,8 +175,7 @@ void GameWindow::paintBreakDialog(){
     // check if an pause is needed and opens the break window in foreground
     if(run->getPause()){
         BreakDialog pause;
-        pause.setModal(true);
-        pause.exec();
+        pause.open();
     }
 }
 
@@ -237,6 +228,14 @@ void GameWindow::paintPlus(){
     ui->Centreline->setFixedSize(w, h);
     ui->Centreline->setPixmap(plus);
 }
+
+// timer
+void GameWindow::sleepGame(int sleep_time){
+    // pause the game loop for sleep_time ms and then quit ev
+    QTimer::singleShot(sleep_time, &ev, SLOT(quit()));
+    ev.exec();              // starts the event loop
+}
+
 
 // training functions
 void GameWindow::training(){

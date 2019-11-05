@@ -112,6 +112,9 @@ private:
     void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"
     void paintStar(QLabel *, QString, int, int);                    // paint a star
 
+    // timer
+    void sleepGame(int sleep_time);        // set the game for sleep_time ms in sleep
+
     // trainings functions
     void training();    // check if the exercise mode is active and paint the right input for the labels
     void gameChanger(); // change game to false(quits gameLoop) when number_of_trials = 0

@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-// maybe instead of show+setmodal set open
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

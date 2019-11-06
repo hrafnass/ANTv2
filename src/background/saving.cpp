@@ -41,6 +41,7 @@ void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {
     calc.calcValues(run);
     // saves all calculated and measured values
     save << ",,,"<<calc.getMedian()<<","<<calc.getAverage()<<","<<calc.getRightPercentage()<<","<<calc.getEffects()<<","<<comment<<","<<birthday<<endl;
+    calc.resetValues(); // reset all calculated values
     return;
 }
 

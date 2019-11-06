@@ -66,14 +66,14 @@ void Calculation::calcAverageReactionTime(Run *reaction_times){
 
 // right percentage:
 // calculation: ((number of right trials) / (number of all trials)) * 100
-void Calculation::calcRightPercentage(int all_trials, int right_trials) {
+void Calculation::calcRightPercentage(unsigned long all_trials, unsigned long right_trials) {
     if(all_trials == 0){
         cout << "Error: No Trials founded!!!" << endl;
         percentage = -1;        // no values existing - everything is -1
         return;
     }
-    cout << "right trials: " << right_trials << " all trials: " << all_trials << endl;
-    percentage = (right_trials/all_trials)*100;
+    percentage = (static_cast<double>(right_trials)/static_cast<double>(all_trials))*100;
+    cout << "right trials: " << right_trials << " all trials: " << all_trials << " percentage: "<< percentage <<endl;
 }
 
 // median for reaction times:

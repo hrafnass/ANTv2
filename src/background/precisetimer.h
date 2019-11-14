@@ -42,7 +42,7 @@ public:
 private:
     // functions:
     void resetValues();                     // reset all variables to -1
-    void calcElapsedTime(long long);        // calcs the values for elapsedTimeIn...Secs; long long = MICRO_SECS or MILI_SECS
+    void calcElapsedTime(long long, LARGE_INTEGER*);        // calcs the values for elapsedTimeIn...Secs; long long = MICRO_SECS or MILI_SECS
 
     //variables:
     // saves the needed time stamps

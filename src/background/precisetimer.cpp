@@ -19,9 +19,6 @@ void PreciseTimer::setTimeStamp(bool start_or_stop){
 // return elapsed time in micro seconds
 long long PreciseTimer::elapsedTimeInMicroSecs(){
     LARGE_INTEGER elapsed_microssecs;
-    elapsed_microssecs.QuadPart = start.QuadPart - stop.QuadPart;           // calcs the ticks difference
-    elapsed_microssecs.QuadPart = elapsed_microssecs.QuadPart*MICROS_SECS;  // convert into microseconds
-    elapsed_microssecs.QuadPart = elapsed_microssecs.QuadPart / frequency.QuadPart;    // calculate the elapsed time in microseconds
     return elapsed_microssecs.QuadPart;
 }
 
@@ -31,11 +28,18 @@ long long PreciseTimer::elapsedTimeInMiliSecs(){
 }
 
 
-// private functions
+// private functions:
 // resets all stamps - used in time elapsing functions
 void PreciseTimer::resetValues(){
     // set all stamps to a negativ value
     start.QuadPart = -1;
     stamp.QuadPart = -1;
     stop.QuadPart = -1;
+}
+
+// calculates the elapsed time
+void PreciseTimer::calcElapsedTime(long long micro_or_mili, LARGE_INTEGER* elapsed){
+    elapsed->QuadPart = start.QuadPart - stop.QuadPart;               // calcs the ticks difference
+    elapsed->QuadPart = elapsed->QuadPart*micro_or_mili;    // convert into microseconds
+    elapsed->QuadPart = elapsed->QuadPart / frequency.QuadPart;    // calculate the elapsed time in microseconds
 }

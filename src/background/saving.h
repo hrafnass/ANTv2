@@ -10,6 +10,19 @@
 #include "calculation.h"
 #include "run.h"
 
+/*
+ * How to use:
+ *
+ * Saving s;
+ * Run r;
+ * QString name, forename, comment, birthday;
+ * s.setQFileDescriptor(name, forename);
+ * s.openCSVFile();
+ * s.writeCSVFile(&r, comment, birthday
+ * s.closeCSVFile();
+ */
+
+
 // Saves all calculated and measured data of the reaction game in  a csv file
 class Saving
 {

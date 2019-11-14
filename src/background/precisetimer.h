@@ -11,9 +11,21 @@ using namespace std;
 #define STOP  false     // time stamp saved int stop
 
 // Measures with the windows api the time in ms accuracy.
-/* PreciseTimer uses the QueryPerfomanceCounter (QPC) of the Windows API.
+/*
+ * Information about PreciseTimer:
+ *
+ * PreciseTimer uses the QueryPerfomanceCounter (QPC) of the Windows API.
  * The class only can used on Windows XP and higher without doubt.
  * On lower windows versions it could be that QPC doesn't work.
+ *
+ * Use:
+ *
+ * PreciseTimer timer;
+ * timer.setTimeStamp(START);
+ * sleep(...);
+ * timer.setTimeStamp(STOP);
+ * elapsed_time = timer.elapsed()   // values in ms
+ *
  */
 
 class PreciseTimer
@@ -22,7 +34,7 @@ public:
     PreciseTimer();
     // bool init();
     void setTimeStamp(bool);
-    long elapsed();         // calculates the differenz between start and stop and set them to 0
+    long elapsed();         // calculates the differenz between start and stop and reset the stamps
 private:
     // saves the needed time stamps
     LARGE_INTEGER start;

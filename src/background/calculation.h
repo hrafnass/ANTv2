@@ -7,6 +7,19 @@
 
 using namespace std;
 
+/*
+ * Use:
+ *
+ * Calculation calc;
+ * Run run;             // need a run
+ * calc.resetValues();  // reset all values
+ * calc.calcValues(&run);   // calc all values (average, median, right percentage, effects)
+ * // return values
+ * double average = calc.getAverage();
+ * double median = calcMedian();
+ * ...
+ */
+
 // calculates everything every needed value from the measured values
 class Calculation
 {

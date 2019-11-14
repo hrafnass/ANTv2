@@ -232,7 +232,7 @@ void GameWindow::paintPlus(){
 // timer
 void GameWindow::sleepGame(int sleep_time){
     // pause the game loop for sleep_time ms and then quit ev
-    QTimer::singleShot(sleep_time, &ev, SLOT(quit()));
+    QTimer::singleShot(sleep_time, Qt::PreciseTimer,&ev, SLOT(quit())); // make a shot with ms accuracy
     ev.exec();              // starts the event loop
 }
 

@@ -24,10 +24,11 @@ using namespace std;
  * Use:
  *
  * PreciseTimer timer;
+ * long long elapsed_time;
  * timer.setTimeStamp(START);
  * sleep(...);
  * timer.setTimeStamp(STOP);
- * elapsed_time = timer.elapsed()   // values in ms
+ * elapsed_time = timer.elapsedTimeIn...Secs()   // values in micro or mili seconds
  *
  */
 
@@ -35,16 +36,14 @@ class PreciseTimer
 {
 public:
     PreciseTimer();
-    // bool init();
     void setTimeStamp(bool);
     long long elapsedTimeInMicroSecs();     // calculates the elapsed time in microseconds
     long long elapsedTimeInMiliSecs();      //                      -"-       miliseconds
 private:
     // functions:
-    void resetValues();                     // reset all variables to -1
-    void calcElapsedTime(long long, LARGE_INTEGER*);        // calcs the values for elapsedTimeIn...Secs; long long = MICRO_SECS or MILI_SECS
-
-    //variables:
+    void resetValues();                     // reset all stamps to -1
+    // calc the elapsed time and uses then resetValues
+    void calcElapsedTime(long long, LARGE_INTEGER*);
     // saves the needed time stamps
     LARGE_INTEGER start;
     LARGE_INTEGER stop;

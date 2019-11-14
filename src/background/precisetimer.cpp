@@ -21,3 +21,11 @@ void PreciseTimer::setTimeStamp(bool start_or_stop){
     else
         stop = stamp;
 }
+
+long long PreciseTimer::elapsedTimeInMicroSecs(){
+    LARGE_INTEGER elapsed_microssecs;
+    elapsed_microssecs.QuadPart = start.QuadPart - stop.QuadPart;           // calcs the ticks difference
+    elapsed_microssecs.QuadPart = elapsed_microssecs.QuadPart*MICROS_SECS;  // convert into microseconds
+    elapsed_microssecs.QuadPart = elapsedTimeInMicroSecs() / frequency.QuadPart;    // calculate the elapsed time in microseconds
+    return elapsed_microssecs.QuadPart;
+}

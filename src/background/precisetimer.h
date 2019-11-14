@@ -10,6 +10,9 @@ using namespace std;
 #define START true      // time stamp saved in start
 #define STOP  false     // time stamp saved int stop
 
+#define MILI_SECS 1000      // used in elapsedTimeInMiliSecs
+#define MICROS_SECS 1000000 // used in elapsedTimeInMicroSecs
+
 // Measures with the windows api the time in ms accuracy.
 /*
  * Information about PreciseTimer:
@@ -34,7 +37,8 @@ public:
     PreciseTimer();
     // bool init();
     void setTimeStamp(bool);
-    long elapsed();         // calculates the differenz between start and stop and reset the stamps
+    long long elapsedTimeInMicroSecs();     // calculates the elapsed time in microseconds
+    double elapsedTimeInMiliSecs();         //                      -"-       miliseconds
 private:
     // saves the needed time stamps
     LARGE_INTEGER start;

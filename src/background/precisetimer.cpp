@@ -2,6 +2,7 @@
 
 PreciseTimer::PreciseTimer()
 {
+    resetValues();                          // reset all time stamp values
     QueryPerformanceFrequency(&frequency);  // cached the counter frequency
 }
 
@@ -47,8 +48,8 @@ void PreciseTimer::calcElapsedTime(long long micro_or_mili, LARGE_INTEGER* elaps
         elapsed->QuadPart = ELAPSE_ERROR;
         return;
     }
-    elapsed->QuadPart = start.QuadPart - stop.QuadPart;               // calcs the ticks difference
-    elapsed->QuadPart = elapsed->QuadPart*micro_or_mili;    // convert into microseconds
+    elapsed->QuadPart = stop.QuadPart - start.QuadPart;            // calcs the ticks difference
+    elapsed->QuadPart = elapsed->QuadPart*micro_or_mili;           // convert into microseconds
     elapsed->QuadPart = elapsed->QuadPart / frequency.QuadPart;    // calculate the elapsed time in microseconds
     resetValues();  // resets the stamps
 }

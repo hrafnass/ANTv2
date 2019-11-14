@@ -67,7 +67,7 @@
 #include "src/gui/dialogs/game/breakdialog.h"
 // background functions
 #include "../background/run.h"
-// #include "../background/saving.h"
+#include "../background/precisetimer.h"
 
 namespace Ui {
 class GameWindow;
@@ -125,7 +125,8 @@ private:
     QEventLoop ev;                  // event loop - needed for keyRelease/PressEvent
 
     // needed for time measurement
-    QElapsedTimer timer;
+    QElapsedTimer timer;        // qt timer
+    PreciseTimer precise_timer; // own timer
     Run *run;
 
     // main game loop

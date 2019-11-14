@@ -50,6 +50,7 @@ bool GameWindow::gameLoop(){
         sleepGame(TIME_BETWEEN_ARROWS); // wait 1000ms
         deletePixmaps();                // clear screen (stars)
         timer.restart();        // restarts the timer
+        precise_timer.setTimeStamp(START);
         paintArrows(&t);        // paint arrows
         sleepGame(TIME_FOR_REACTION);           // wait 2000 ms
         deletePixmaps();        // clear screen (arrpws)
@@ -75,7 +76,10 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     // switch for all wanted keys
     switch (event->key()) {
     case Qt::Key_Left:
+        precise_timer.setTimeStamp(STOP);
         run->setMeasure(timer.elapsed(), LEFT);     // measured time, key and that the key was pressed
+
+        cout << "Press time: Mili secs: " << precise_timer.elapsedTimeInMiliSecs() << " Micro secs: " << precise_timer.elapsedTimeInMicroSecs() << endl;
         break;
     case Qt::Key_Right:
         run->setMeasure(timer.elapsed(), RIGHT);    // -"-

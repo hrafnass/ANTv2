@@ -38,8 +38,13 @@ public:
     // bool init();
     void setTimeStamp(bool);
     long long elapsedTimeInMicroSecs();     // calculates the elapsed time in microseconds
-    double elapsedTimeInMiliSecs();         //                      -"-       miliseconds
+    long long elapsedTimeInMiliSecs();      //                      -"-       miliseconds
 private:
+    // functions:
+    void resetValues();                     // reset all variables to -1
+    void calcElapsedTime(long long);        // calcs the values for elapsedTimeIn...Secs; long long = MICRO_SECS or MILI_SECS
+
+    //variables:
     // saves the needed time stamps
     LARGE_INTEGER start;
     LARGE_INTEGER stop;

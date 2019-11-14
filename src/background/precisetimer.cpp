@@ -44,7 +44,7 @@ void PreciseTimer::resetValues(){
 void PreciseTimer::calcElapsedTime(long long micro_or_mili, LARGE_INTEGER* elapsed){
     if(start.QuadPart == -1 || stop.QuadPart == -1){
         cout << "[*] Error: Time stamp isn't measured!!! " << endl;
-        elapsed->QuadPart = -1;
+        elapsed->QuadPart = ELAPSE_ERROR;
         return;
     }
     elapsed->QuadPart = start.QuadPart - stop.QuadPart;               // calcs the ticks difference

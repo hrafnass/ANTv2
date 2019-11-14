@@ -13,6 +13,9 @@ using namespace std;
 #define MILI_SECS 1000      // used in elapsedTimeInMiliSecs
 #define MICROS_SECS 1000000 // used in elapsedTimeInMicroSecs
 
+// check for the elapse functions return
+#define ELAPSE_ERROR -1     // one time stamp isn't measured
+
 // Measures with the windows api the time in ms accuracy.
 /*
  * Information about PreciseTimer:

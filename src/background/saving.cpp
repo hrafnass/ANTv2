@@ -25,7 +25,8 @@ void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {
     int number_of_rows = 1;         // count the number of colums
     QTextStream save(&file);        // output stream for a file
     // saves the headline in the csv file
-    save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment,birthday"<< endl;
+    // save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment,birthday"<< endl;
+    save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,birthday,comment"<< endl;
     // runs solong elements in the vector
     run->setIteratorToStart();      // start the iterator at the beginn
     while (run->readRun()) {
@@ -40,7 +41,8 @@ void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {
     // calc the values
     calc.calcValues(run);
     // saves all calculated and measured values
-    save << ",,,"<<calc.getMedian()<<","<<calc.getAverage()<<","<<calc.getRightPercentage()<<","<<calc.getEffects()<<","<<comment<<","<<birthday<<endl;
+    // save << ",,,"<<calc.getMedian()<<","<<calc.getAverage()<<","<<calc.getRightPercentage()<<","<<calc.getEffects()<<","<<comment<<","<<birthday<<endl;
+    save << ",,,"<<calc.getMedian()<<","<<calc.getAverage()<<","<<calc.getRightPercentage()<<","<<","<<birthday<<","<<comment<<endl;
     calc.resetValues(); // reset all calculated values
     return;
 }

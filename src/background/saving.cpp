@@ -26,11 +26,11 @@ void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {
     QTextStream save(&file);        // output stream for a file
     // saves the headline in the csv file
     // save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,effects,comment,birthday"<< endl;
-    save << "trial number,reaction time,right desicion,median,average,percentage of right decisions,birthday,comment"<< endl;
+    save << "trial number,kind of trial,reaction time,right desicion,median,average,percentage of right decisions,birthday,comment"<< endl;
     // runs solong elements in the vector
     run->setIteratorToStart();      // start the iterator at the beginn
     while (run->readRun()) {
-        save << number_of_rows<<"," << run->getActuellTrial().getReactionTime() << ",";
+        save << number_of_rows<<"," << run->getActuellTrial().getKindOfTrial() << "," << run->getActuellTrial().getReactionTime() << ",";
          // save if the reaction was right
         if (run->getActuellTrial().getRightReaction())
             save << "true"<< endl;

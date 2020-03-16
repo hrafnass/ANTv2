@@ -28,6 +28,9 @@ Trial::dir Trial::getDirection(){ return direction;}
 QString Trial::getMidImg() { return mid_img; }
 QString Trial::getOtherImg() { return other_img; }
 
+// getter kind of a Trial
+QString Trial::getKindOfTrial() {return "In Work!!!";}
+
 // private method
 // setter
 void Trial::setDirection(){

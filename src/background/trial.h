@@ -71,6 +71,8 @@ public:
     // return other and mid_img
     QString getMidImg();
     QString getOtherImg();
+    // get the kind of the trial - needed for saving
+    void getKindOfTrial();
     // getter and setter for measure
     void setMeasure(bool m) { measured = m;}
     bool getMeasure() { return measured;}

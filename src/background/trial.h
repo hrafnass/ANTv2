@@ -72,7 +72,7 @@ public:
     QString getMidImg();
     QString getOtherImg();
     // get the kind of the trial - needed for saving
-    void getKindOfTrial();
+    int getKindOfTrial();
     // getter and setter for measure
     void setMeasure(bool m) { measured = m;}
     bool getMeasure() { return measured;}

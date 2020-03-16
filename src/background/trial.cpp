@@ -29,7 +29,13 @@ QString Trial::getMidImg() { return mid_img; }
 QString Trial::getOtherImg() { return other_img; }
 
 // getter kind of a Trial
-QString Trial::getKindOfTrial() {return "In Work!!!";}
+int Trial::getKindOfTrial() {
+    /*
+     * star_position*100+arrow_position*10+image
+     * Code for the Arrow and Star specification - for later decoding which Trial was used
+     */
+    return (getStarPosition()*100+getArrowPosition()*10+img);
+}
 
 // private method
 // setter

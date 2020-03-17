@@ -42,13 +42,14 @@ public:
         up_star,
         down_star,
         mid,
-        both_star
+        both_star,
+        //non             // no star is show - has to be implemented
     } star_position;
     // arrowposition
     typedef enum{
         up_arrow,
         down_arrow,
-        both_arrow
+        both_arrow  // have to be removed
     }  arrow_position;
     // saves the direction of the mid arrow
     typedef enum  {

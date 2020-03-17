@@ -20,12 +20,12 @@
 */
 
 // PICTURE LENGTHS IN CM
-#define STAR_X 	1
+#define STAR_X 	0.5
 #define ARROW_X 2
 #define PLUS_X  1
 #define BAR_X   2
 // PICTURE WIDTHS IN CM
-#define STAR_Y  1
+#define STAR_Y  0.5
 #define ARROW_Y 1
 #define PLUS_Y  1
 #define BAR_Y   1

@@ -1,5 +1,18 @@
 #include "trial.h"
 
+// TRIALCCOMPONENTS CLASS
+// protected Methods
+void TrialComponents::SetInnerArrow(DirectionMidArrow arg_dir_mid_arrow){
+    // saves the fitting svg image path in arrow_inner
+    switch (arg_dir_mid_arrow) {
+    case left   : arrow_inner = ARROW_LEFT; break;
+    case right  : arrow_inner = ARROW_RIGHT; break;
+    default: cout << "[***] Error: Can't find an image, that fits." << endl;
+    }
+}
+
+
+// TRIAL CLASS
 // Constructor for a neutral Trial
 Trial::Trial(){
     SetTrial();

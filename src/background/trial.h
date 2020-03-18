@@ -5,10 +5,19 @@
 #include <vector>
 #include <iostream>
 
+#define ARROW_LEFT ":/ressources/images/arrow_left.svg"
+#define ARROW_RIGHT ":/ressources/images/arrow_right.svg"
+#define STAR ":/ressources/images/star.svg"
+
 using namespace std;
 
 class TrialComponents {
 public:
+    TrialComponents();
+    // Getter for arrow and star image
+    QString GetInnerArrow(){ return arrow_inner;}
+    QString GetOuterArrow(){ return arrow_outer;}
+protected:
     enum Cue {non_cue, center_cue, double_cue, spatial_cue_up, spatial_cue_down};   // where the star image is shown
     enum ArrowCombinations {neutral, congruent, incongruent};                       // how the arrows are combined i.e. ->-><-->->
     enum ArrowPositions {up, down};                 // Are the arrows over or under the plus sign
@@ -21,6 +30,15 @@ public:
         ArrowPositions position;
         DirectionMidArrow direction;
     };
+
+    void SetInnerArrow(DirectionMidArrow arg_dir_mid_arrow);
+    void SetOuterArrow(ArrowCombinations arg_arrow_combination);
+
+private:
+    // saves the image paths
+    QString arrow_inner = "";
+    QString arrow_outer = "";
+    QString star = STAR;
 };
 
 class Trial : public TrialComponents

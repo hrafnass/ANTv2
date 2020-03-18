@@ -31,10 +31,10 @@ public:
     Trial(Cue arg_cue, ArrowCombinations arg_arrow_combi, ArrowPositions arg_arrow_pos, DirectionMidArrow arg_arrow_dir);
     // Getter and Setter - reaction
     bool GetReaction() {return reaction;}
-    void SetReaction(bool arg_reaction=false) {reaction = arg_reaction;}
     //      -"-          - reaction_time
     int GetReactionTime() {return reaction_time;}
-    void SetReactionTime(int arg_reaction_time=-1) {reaction_time=arg_reaction_time;}
+    // Setter for reaction and reaction_time - only exist together
+    void SetReactions(bool arg_reaction = false, int arg_reaction_time = -1);
     //      -"-          - for Components (Setters aren't needed)
     // Cue:
     Cue GetCue() { return comp.cue;}
@@ -46,9 +46,15 @@ public:
     DirectionMidArrow GetDirectionMidArrow() {return comp.direction;}
 
 private:
+    // sets the Component for the Constructor
+    void SetComponents(Cue arg_cue=non_cue, ArrowCombinations arg_arrow_combi=neutral, ArrowPositions arg_arrow_pos=down, DirectionMidArrow arg_arrow_dir=left);
+    // all variables for the Constructor
+    void SetTrial(Cue arg_cue=non_cue, ArrowCombinations arg_arrow_combi=neutral, ArrowPositions arg_arrow_pos=down, DirectionMidArrow arg_arrow_dir=left);    // setter for the Trial-Constructor
+
     bool reaction;      // if the reaction is right or wrong
     int reaction_time;  // saves the reaction time - -1 is the standard setting
     Components comp;
+
 };
 
 

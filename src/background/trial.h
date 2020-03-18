@@ -7,6 +7,7 @@
 
 #define ARROW_LEFT ":/ressources/images/arrow_left.svg"
 #define ARROW_RIGHT ":/ressources/images/arrow_right.svg"
+#define BAR ":/ressources/images/bar.svg"
 #define STAR ":/ressources/images/star.svg"
 
 using namespace std;
@@ -37,7 +38,7 @@ protected:
 private:
     // saves the image paths
     QString arrow_inner = "";
-    QString arrow_outer = "";
+    QString arrow_outer = "";   // outer arrows also can be bar.svg
     QString star = STAR;
 };
 

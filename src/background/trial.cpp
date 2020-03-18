@@ -5,12 +5,25 @@
 void TrialComponents::SetInnerArrow(DirectionMidArrow arg_dir_mid_arrow){
     // saves the fitting svg image path in arrow_inner
     switch (arg_dir_mid_arrow) {
-    case left   : arrow_inner = ARROW_LEFT; break;
-    case right  : arrow_inner = ARROW_RIGHT; break;
-    default: cout << "[***] Error: Can't find an image, that fits." << endl;
+    case left   : arrow_inner = ARROW_LEFT; break;  // inner arrow points to the left
+    case right  : arrow_inner = ARROW_RIGHT; break; //              -"-          right
+    default: cout << "[***] Error(SetInnerArrow): Can't find an image, that fits." << endl;
     }
 }
 
+void TrialComponents::SetOuterArrow(ArrowCombinations arg_arrow_combination){
+    switch (arg_arrow_combination) {
+    case neutral    : arrow_outer = BAR; break;         // the outer images are bar.svg
+    case congruent  : arrow_outer = arrow_inner; break; // inner and outer arrow are the same
+    case incongruent:
+        if(arrow_inner == ARROW_LEFT)   // ->-><-->->
+            arrow_outer = ARROW_RIGHT;
+        else
+            arrow_outer = ARROW_LEFT;   // <-<--><-<-
+        break;
+    default: cout << "[***] Error(SetOuterArrow): Can't find an image, that fits." << endl;
+    }
+}
 
 // TRIAL CLASS
 // Constructor for a neutral Trial

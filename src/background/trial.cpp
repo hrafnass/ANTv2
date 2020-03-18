@@ -56,6 +56,11 @@ void Trial::SetComponents(Cue arg_cue, ArrowCombinations arg_arrow_combi, ArrowP
 
 // Setter for Trial(...)
 void Trial::SetTrial(Cue arg_cue, ArrowCombinations arg_arrow_combi, ArrowPositions arg_arrow_pos, DirectionMidArrow arg_arrow_dir){
+    // fills comp
     SetComponents(arg_cue, arg_arrow_combi, arg_arrow_pos, arg_arrow_dir);
+    // sets the image paths
+    SetInnerArrow(comp.direction);
+    SetOuterArrow(comp.combination);
+    // sets reaction and reaction time
     SetReactions();
 }

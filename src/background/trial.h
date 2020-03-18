@@ -12,6 +12,26 @@
 
 using namespace std;
 
+/* ******************************************************************
+ * A Trial is the combination of stars (cue) and five arrows.       *
+ * First the/no star(s) is shown and then the arrows.               *
+ * Example:                                                         *
+ *                                                                  *
+ *      *                   <-<-<-<-<-                              *
+ *      +   ----------->         +                                  *
+ *      *                    - - - - -                              *
+ *                                                                  *
+ * The player should react how fast he could and find out in which  *
+ * direction (DirectionMidArrow) the mid arrow points. The Trial-   *
+ * Components have all needed informations to show a Trial in the   *
+ * GameWindow-Class. The image path of the inner and outer arrow(s) *
+ * and the arrow and cue combination for a Trial.                   *
+ * -----------------------------------------------------------------*
+ * The Trial-Class has two Constructors (a standard Trial and a     *
+ * specialized). The Trial Class saves the TrialComponents and the  *
+ * reaction time and reaction (measured in the game).               *
+ * ******************************************************************/
+
 class TrialComponents {
 public:
     TrialComponents();

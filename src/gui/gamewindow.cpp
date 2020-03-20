@@ -5,6 +5,25 @@
 
 using namespace std;
 
+// window constructor
+GameWindow::GameWindow(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::GameWindow)
+{
+    ui->setupUi(this);
+    /* We need a fixed size between arrows and the plus img. Important for the game.
+     * I take 1 inch (2 cm) for the distance between arrows and plus.
+     * We only need to change the height. The width doesn't interest.
+     * -> w, expanding aren't needed; only h and fixed
+     **/
+    // calcs the needed px size
+    int w = CmToPixelNbrX(DISTANCE_ARROW_PLUS_X);
+    int h = CmToPixelNbrY(DISTANCE_ARROW_PLUS_Y);
+    // changes the size
+    ui->verticalSpacerUpMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
+    ui->verticalSpacerDownMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
+}
+
 // public Methods: GameWindow
 bool GameWindow::GameLoop(int arg_pass_number){
     // check if run is filled

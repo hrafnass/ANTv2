@@ -8,9 +8,23 @@ Run::Run(){
 
 
 // public methods
+// controlls if the vector is at the end, (if not) saves the reactions and iterate the trial
+bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction){
+    if(it_v_trial != v_trial.end())
+    {
+        cout << "[*] End of Trial vector reached!!!" << endl;
+        return false;   // iterator reached the end of v_trial
+    }
+    // sets the reactions
+    it_v_trial->SetReactions(arg_reaction, arg_reaction_time);
+    // iterates the the iterator
+    ++it_v_trial;
+
+    return true;    // if the iterator isn't at the end - return true
+}
+
 // cleans, shuffels the vector and set the iterator to star
 bool Run::CleanMeasuredValues(){
-    unsigned int position = 0;
     // cleans all measured values
     for(it_v_trial = v_trial.begin();it_v_trial != v_trial.end();++it_v_trial){
         it_v_trial->SetReactions();

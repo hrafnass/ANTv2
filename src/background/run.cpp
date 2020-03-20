@@ -8,9 +8,14 @@ Run::Run(){
 
 
 // public methods
-// cleans and shuffels the vector
+// cleans, shuffels the vector and set the iterator to star
 bool Run::CleanMeasuredValues(){
+    unsigned int position = 0;
     // cleans all measured values
+    for(it_v_trial = v_trial.begin();it_v_trial != v_trial.end();++it_v_trial){
+        it_v_trial->SetReactions();
+    }
+    it_v_trial = v_trial.begin();   // iterator to start
 
     ShuffelTrialVector();   // shuffels the vector
     return true;

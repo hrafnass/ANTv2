@@ -12,12 +12,12 @@ class Run{
 public:
     Run();
     // TrialVector positions
-    Trial NextTrial();
-    vector<Trial>::iterator GetVectorEnd();
-    vector<Trial>::iterator GetVectorStart();
+    bool NextTrial();           // iterates to the next trial; returns false if the end is reached
     // measured values
-    bool SetMeasuredValues(int reaction_time=-1, bool reaction=false);  // measure reaction time and reaction
-    bool CleanMeasuredValues();     // delete measured values
+    bool SetMeasuredValues(int arg_reaction_time=-1, bool arg_reaction=false); // saves the measured values in the actuell trial
+    bool CleanMeasuredValues();     // delete all measured values in the trial vector and shuffels it
+    // Getter for the actuell Trial
+    Trial GetTrial();
 private:
     // fill the vector with trials
     bool CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialComponents::ArrowPositions arg_pos, TrialComponents::DirectionMidArrow arg_dir);
@@ -26,8 +26,8 @@ private:
     void ShuffelTrialVector() { shuffle(v_trial.begin(), v_trial.end(), generator);}
 
     // trial vector
-    vector<Trial> v_trial;          // saves all trials
-
+    vector<Trial> v_trial;              // saves all trials
+    vector<Trial>::iterator it_v_trial; // to iterate over all trials in vector
     // shuffeling
     random_device rd;  // the generator values aren't reproducable
     mt19937 generator; // random_generator for shuffelRun

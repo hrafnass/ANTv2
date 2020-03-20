@@ -1,7 +1,20 @@
 #include "run.h"
 
+Run::Run(){
+    // Constructor fills the vector, clean the reaction variables and shuffels the vector
+    FillTrialVector();
+    CleanMeasuredValues();
+}
+
 
 // public methods
+// cleans and shuffels the vector
+bool Run::CleanMeasuredValues(){
+    // cleans all measured values
+
+    ShuffelTrialVector();   // shuffels the vector
+    return true;
+}
 
 
 // private methods

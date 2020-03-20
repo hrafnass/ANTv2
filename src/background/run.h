@@ -10,7 +10,7 @@ using namespace std;
 
 class Run{
 public:
-    Run();
+    Run(int runs);  // adds the number of runs for v_trials
     // TrialVector positions
     bool NextTrial();           // iterates to the next trial; returns false if the end is reached
     // measured values
@@ -21,6 +21,7 @@ public:
 private:
     // fill the vector with trials
     bool CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialComponents::ArrowPositions arg_pos, TrialComponents::DirectionMidArrow arg_dir);
+    bool AddRuns(unsigned int arg_add);  // adds the number of Runs (saved in arg_add) to v_trial
     bool FillTrialVector();         // fill a trial vector - iterates over the three components added as arguments in CreateAndAddTrial and runs this function
     // shuffel this vector
     void ShuffelTrialVector() { shuffle(v_trial.begin(), v_trial.end(), generator);}

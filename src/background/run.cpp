@@ -1,8 +1,8 @@
 #include "run.h"
 
-Run::Run(){
+Run::Run(int runs){
     // Constructor fills the vector, clean the reaction variables and shuffels the vector
-    FillTrialVector();
+    AddRuns(runs);
     CleanMeasuredValues();
 }
 
@@ -74,6 +74,21 @@ bool Run::CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialC
         v_trial.push_back(Trial(cue_cast, arg_combi, arg_pos, arg_dir));
         if(cue != TrialComponents::Cue::spatial_cue_up && cue != TrialComponents::spatial_cue_down)
             v_trial.push_back(Trial(cue_cast, arg_combi, arg_pos, arg_dir));
+    }
+    return true;
+}
+
+// adds a special number of Runs in the v_trial vector
+bool Run::AddRuns(unsigned int arg_add){
+    bool return_fill_vector = false;
+
+    if(arg_add == 0)
+        return false;
+
+    for(int i = 0; i < arg_add; i++){
+        return_fill_vector = FillTrialVector();
+        if(!return_fill_vector)
+            return false;
     }
     return true;
 }

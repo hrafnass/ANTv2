@@ -17,7 +17,8 @@ public:
     bool SetMeasuredValues(int arg_reaction_time=-1, bool arg_reaction=false); // saves the measured values in the actuell trial
     bool CleanMeasuredValues();     // delete all measured values in the trial vector and shuffels it
     // Getter for the actuell Trial
-    Trial GetTrial(bool *size);
+    Trial GetTrial(bool *size);     // getter for actuell trial
+    int GetPosition() {return (it_v_trial - v_trial.begin());}  // getter for the position of the actuell trial
 private:
     // fill the vector with trials
     bool CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialComponents::ArrowPositions arg_pos, TrialComponents::DirectionMidArrow arg_dir);

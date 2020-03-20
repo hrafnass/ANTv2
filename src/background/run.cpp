@@ -60,8 +60,6 @@ Trial Run::GetTrial(bool *size){
     return *it_v_trial;
 }
 
-
-
 // private methods
 
 // fill the trial vector

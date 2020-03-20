@@ -5,6 +5,8 @@
 
 
 // private methods
+
+// fill the trial vector
 bool Run::FillTrialVector(){
     // for static cast
     TrialComponents::ArrowCombinations combination_cast;
@@ -29,6 +31,7 @@ bool Run::FillTrialVector(){
     return true;
 }
 
+// Create a new Trial and add it to the trial vector
 bool Run::CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialComponents::ArrowPositions arg_pos, TrialComponents::DirectionMidArrow arg_dir){
     // cast variable for cue
     TrialComponents::Cue cue_cast;

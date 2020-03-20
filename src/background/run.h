@@ -19,12 +19,18 @@ public:
     bool SetMeasuredValues(int reaction_time=-1, bool reaction=false);  // measure reaction time and reaction
     bool CleanMeasuredValues();     // delete measured values
 private:
+    // fill the vector with trials
     bool CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialComponents::ArrowPositions arg_pos, TrialComponents::DirectionMidArrow arg_dir);
     bool FillTrialVector();         // fill a trial vector - iterates over the three components added as arguments in CreateAndAddTrial and runs this function
-    bool ShuffelTrialVector();      // shuffel this vector
+    // shuffel this vector
+    void ShuffelTrialVector() { shuffle(v_trial.begin(), v_trial.end(), generator);}
 
     // trial vector
     vector<Trial> v_trial;          // saves all trials
+
+    // shuffeling
+    random_device rd;  // the generator values aren't reproducable
+    mt19937 generator; // random_generator for shuffelRun
 };
 
 #endif // RUN_H

@@ -16,6 +16,10 @@ class GameWindow : public QWidget
 public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
+    // Game loop
+    bool GameLoop();    // loop for the game
+    // setter for run
+    void SetRun(Run *arg_run) { run = arg_run;}
 
 protected:
     // Event funtions
@@ -43,6 +47,9 @@ protected:
 
     // needed for time measurement
     QElapsedTimer timer;
+
+    // The Run for the Game
+    Run *run = nullptr;
 };
 
 // The Real Game

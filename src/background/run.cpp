@@ -4,6 +4,7 @@ Run::Run(unsigned int runs){
     // Constructor fills the vector, clean the reaction variables and shuffels the vector
     AddRuns(runs);
     CleanMeasuredValues();
+    run_length = v_trial.size();    // sets the run_length to the vector size
 }
 
 
@@ -59,6 +60,18 @@ Trial Run::GetTrial(bool *size){
     *size = true;
     return *it_v_trial;
 }
+
+// Setter RunLenght
+void Run::SetRunLength(int arg_length){
+    // if arg_length isn't in the interval 0 < x < v_trial.size()
+    if(arg_length < v_trial.size() || arg_length > v_trial.size()){
+        run_length = v_trial.size();
+        return;
+    }
+    // arg_length fits in the vector size
+    run_length = arg_length;
+}
+
 
 // private methods
 

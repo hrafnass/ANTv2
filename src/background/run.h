@@ -6,6 +6,8 @@
 
 #include "trial.h"
 
+#define SET_RUN_LENGTH -1   // sets the run length to vector size - input for SetRunLength(int arg_length)
+
 using namespace std;
 
 class Run{
@@ -19,6 +21,11 @@ public:
     // Getter for the actuell Trial
     Trial GetTrial(bool *size);     // getter for actuell trial
     int GetPosition() {return (it_v_trial - v_trial.begin());}  // getter for the position of the actuell trial
+    // Setter and Getter for the run length
+    // The run_length how many Trials of the vector you can use for a game loop i.e. 12 for a test game or
+    // all for a normal game. The Constructor sets run_length to the vector size
+    void SetRunLength(int arg_length); // if the input is -1 or bigger then v_trial.size run_length is set to v_trial.size
+    unsigned int GetRunLength() { return run_length;}
 private:
     // fill the vector with trials
     bool CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialComponents::ArrowPositions arg_pos, TrialComponents::DirectionMidArrow arg_dir);
@@ -33,6 +40,8 @@ private:
     // shuffeling
     random_device rd;  // the generator values aren't reproducable
     mt19937 generator; // random_generator for shuffelRun
+    // saves the run_length
+    unsigned int run_length;
 };
 
 #endif // RUN_H

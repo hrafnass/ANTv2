@@ -16,4 +16,7 @@
 #define CORRECT ":/ressources/images/right.svg"
 #define WRONG ":/ressources/images/false.svg"
 
+// 2.54 cm = 1 Inch
+#define INCH_IN_CM 2.54
+
 #endif // IMAGE_DEFINITIONS_H

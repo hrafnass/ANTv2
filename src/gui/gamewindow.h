@@ -27,11 +27,11 @@ protected:
     void keyReleaseEvent(QKeyEvent *);      // release key
 
     // calculation functions
-    int cmToPixelNbrX(double);		// calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
-    int cmToPixelNbrY(double);		// -"-																				 - Y coord (height in pixel)
+    int CmToPixelNbrX(double);		// calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
+    int CmToPixelNbrY(double);		// -"-																				 - Y coord (height in pixel)
 
     // painting functions
-    void deletePixmaps();		// deletes all pictures in all pixmaps
+    void DeletePixmaps();		// deletes all pictures in all pixmaps
     void paintStars(Trial *);	// paint all stars (like clear screen)
     void paintArrows(Trial *);	// paint all arrows 		-"-
     void paintPlus();           // paints the plus img
@@ -39,6 +39,10 @@ protected:
     // functions for label settings
     void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"
     void paintStar(QLabel *, QString, int, int);                    // paint a star
+
+    // function which cleans the window and set it to sleep
+    void SleepGame(int arg_time);
+    void ResetWindow(int arg_time);
 
     // variables
     // needed vor the grafic surface

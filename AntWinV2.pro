@@ -51,7 +51,10 @@ HEADERS += \
     src/gui/dialogs/main/reminder.h \
     src/gui/gamewindow.h \
     src/gui/mainwindow.h \
-    src/gui/dialogs/main/excercisedialog.h
+    src/gui/dialogs/main/excercisedialog.h \
+    src/gui/imagedefinitions.h \
+    src/gui/game_and_gui_def.h \
+    src/gui/game_headers.h
 
 SOURCES += \
     src/background/calculation.cpp \

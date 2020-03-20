@@ -27,8 +27,8 @@ protected:
     void keyReleaseEvent(QKeyEvent *);      // release key
 
     // calculation functions
-    int CmToPixelNbrX(double);		// calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
-    int CmToPixelNbrY(double);		// -"-																				 - Y coord (height in pixel)
+    int CmToPixelNbrX(double arg_width_in_cm);  // calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
+    int CmToPixelNbrY(double arg_height_in_cm); // -"-																				 - Y coord (height in pixel)
 
     // painting functions
     void DeletePixmaps();		// deletes all pictures in all pixmaps
@@ -41,7 +41,7 @@ protected:
     void paintStar(QLabel *, QString, int, int);                    // paint a star
 
     // function which cleans the window and set it to sleep
-    void SleepGame(int arg_time);
+    void SleepGame(int arg_sleep_time);
     void ResetWindow(int arg_time);
 
     // variables

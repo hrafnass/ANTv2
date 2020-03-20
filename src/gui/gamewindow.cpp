@@ -34,7 +34,6 @@ bool GameWindow::GameLoop(int arg_pass_number){
         // paint arrows
         // wait and delete pixmaps
         ResetWindow(TIME_FOR_REACTION);     // 2000ms
-        // check for the break/pause/"quit test" dialog
         // if no next trial is reachable the game loop is quit
         if(run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in GameLoop" << endl;
@@ -53,16 +52,23 @@ void GameWindow::ResetWindow(int arg_time){
     DeletePixmaps();
 }
 
-// Calculations
-// calculations: number of px
-int GameWindow::CmToPixelNbrX(double width_in_cm){
-    int dpi = GameWindow::physicalDpiX();											// get the logical dpi for width
-    return static_cast<int>(((width_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+// sets the GameLoop in a SleepModus
+void GameWindow::SleepGame(int arg_sleep_time){
+    // pause the game loop for sleep_time ms and then quit ev
+    QTimer::singleShot(arg_sleep_time, &ev, SLOT(quit()));
+    ev.exec();              // starts the event loop
 }
 
-int GameWindow::CmToPixelNbrY(double height_in_cm){
+// Calculations
+// calculations: number of px
+int GameWindow::CmToPixelNbrX(double arg_width_in_cm){
+    int dpi = GameWindow::physicalDpiX();											// get the logical dpi for width
+    return static_cast<int>(((arg_width_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+}
+
+int GameWindow::CmToPixelNbrY(double arg_height_in_cm){
     int dpi = GameWindow::physicalDpiY();											// get the logical dpi for height
-    return static_cast<int>(((height_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
+    return static_cast<int>(((arg_height_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
 // gui and image functions

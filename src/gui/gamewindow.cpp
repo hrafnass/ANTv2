@@ -28,23 +28,23 @@ bool GameWindow::GameLoop(int arg_pass_number){
     // runs so long run (run_length) it allows
     for(unsigned int i=0; i < run->GetRunLength(); ++i){
         // paint stars
-
         // wait and delete pixmaps
-        ResetWindow(TIME_BETWEEN_ARROWS);   // 10000ms
-
+        ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms
         // restart timer - measurement
-
         // paint arrows
         // wait and delete pixmaps
         ResetWindow(TIME_FOR_REACTION);     // 2000ms
+        // check for the break/pause/"quit test" dialog
+        // if no next trial is reachable the game loop is quit
+        if(run->NextTrial()){
+            cout << "[***] Warning: Run->NextTrial return false in GameLoop" << endl;
+            break;
+        }
     }
 
     // qt timer
-
     return true;
 }
-
-
 
 // Protected Methods: Game Window
 // GameLoop functions - pauses the game and delets the window
@@ -65,6 +65,7 @@ int GameWindow::CmToPixelNbrY(double height_in_cm){
     return static_cast<int>(((height_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
+// gui and image functions
 // clears all labels
 void GameWindow::DeletePixmaps(){
     // iterate over all labels and clear them
@@ -73,4 +74,17 @@ void GameWindow::DeletePixmaps(){
     }
     // paint the fixation cross
     PaintPlus();
+}
+
+// images:
+// plus image
+void GameWindow::PaintPlus(){
+    // saves the img pos
+    QString plus = PLUS_NAME;
+    // calc width and height
+    int w = CmToPixelNbrX(PLUS_X);
+    int h = CmToPixelNbrY(PLUS_Y);
+    // paint
+    ui->Centreline->setFixedSize(w, h);
+    ui->Centreline->setPixmap(plus);
 }

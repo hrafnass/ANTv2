@@ -15,6 +15,8 @@
 // TRAININGS MODE TEXTS
 #define CORRECT ":/ressources/images/right.svg"
 #define WRONG ":/ressources/images/false.svg"
+// NORMAL GAMING IMAGES
+#define PLUS_NAME ":/ressources/images/plus.svg"
 
 // 2.54 cm = 1 Inch
 #define INCH_IN_CM 2.54

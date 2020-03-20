@@ -35,6 +35,7 @@ bool Run::CleanMeasuredValues(){
 }
 
 // TRIALS
+// check if the next trial exist or goes to the start again
 bool Run::NextTrial(){
     ++it_v_trial;                   // iterates the vector
     if(it_v_trial != v_trial.end()) // check if the end of the vector was reached
@@ -43,6 +44,22 @@ bool Run::NextTrial(){
     it_v_trial = v_trial.begin();
     return false;
 }
+
+// returns the actuel trial; it doesn't need a check the iterator is at the end,
+// because NextTrial is the only way to iterate over
+Trial Run::GetTrial(bool *size){
+    Trial t;    // standard trial if the trial vector have the size 0
+    // if the size is 0, we can't iterate over v_trial -> *size = false
+    if(v_trial.size() == 0){
+        cout << "[***] Error: Trial Vector have the size 0!!!" << endl;
+        *size = false;
+        return t;
+    }
+    // everything is ok!!!
+    *size = true;
+    return *it_v_trial;
+}
+
 
 
 // private methods

@@ -10,7 +10,7 @@ using namespace std;
 
 class Run{
 public:
-    Run(int runs);  // adds the number of runs for v_trials
+    Run(unsigned int runs);  // adds the number of runs for v_trials
     // TrialVector positions
     bool NextTrial();           // iterates to the next trial; returns false if the end is reached
     // measured values

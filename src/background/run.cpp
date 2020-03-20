@@ -1,6 +1,6 @@
 #include "run.h"
 
-Run::Run(int runs){
+Run::Run(unsigned int runs){
     // Constructor fills the vector, clean the reaction variables and shuffels the vector
     AddRuns(runs);
     CleanMeasuredValues();
@@ -8,6 +8,7 @@ Run::Run(int runs){
 
 
 // public methods
+// MEASUREMENT:
 // controlls if the vector is at the end, (if not) saves the reactions and iterate the trial
 bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction){
     if(it_v_trial != v_trial.end())
@@ -17,8 +18,6 @@ bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction){
     }
     // sets the reactions
     it_v_trial->SetReactions(arg_reaction, arg_reaction_time);
-    // iterates the the iterator
-    ++it_v_trial;
 
     return true;    // if the iterator isn't at the end - return true
 }
@@ -33,6 +32,16 @@ bool Run::CleanMeasuredValues(){
 
     ShuffelTrialVector();   // shuffels the vector
     return true;
+}
+
+// TRIALS
+bool Run::NextTrial(){
+    ++it_v_trial;                   // iterates the vector
+    if(it_v_trial != v_trial.end()) // check if the end of the vector was reached
+        return true;                // not the end
+    // if the end was reached -> set iterator to the begin again and return false
+    it_v_trial = v_trial.begin();
+    return false;
 }
 
 
@@ -80,14 +89,14 @@ bool Run::CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialC
 
 // adds a special number of Runs in the v_trial vector
 bool Run::AddRuns(unsigned int arg_add){
-    bool return_fill_vector = false;
-
+    bool return_fill_vector = false;    // saves the return of FillTrialVector()
+    // if no run was added return is false
     if(arg_add == 0)
         return false;
-
-    for(int i = 0; i < arg_add; i++){
+    // fills the vector
+    for(unsigned int i = 0; i < arg_add; i++){
         return_fill_vector = FillTrialVector();
-        if(!return_fill_vector)
+        if(!return_fill_vector) // something goes wrong in FillTrialVector
             return false;
     }
     return true;

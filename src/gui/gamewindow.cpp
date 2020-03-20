@@ -47,12 +47,13 @@ bool GameWindow::GameLoop(int arg_pass_number){
 
 
 // Protected Methods: Game Window
-// pauses the game and delets the window
+// GameLoop functions - pauses the game and delets the window
 void GameWindow::ResetWindow(int arg_time){
     SleepGame(arg_time);
     DeletePixmaps();
 }
 
+// Calculations
 // calculations: number of px
 int GameWindow::CmToPixelNbrX(double width_in_cm){
     int dpi = GameWindow::physicalDpiX();											// get the logical dpi for width
@@ -64,3 +65,12 @@ int GameWindow::CmToPixelNbrY(double height_in_cm){
     return static_cast<int>(((height_in_cm / INCH_IN_CM) * dpi)*GameWindow::devicePixelRatioF());	// devicePixelRatioF is the factor between logical and real pixel
 }
 
+// clears all labels
+void GameWindow::DeletePixmaps(){
+    // iterate over all labels and clear them
+    foreach(QLabel *label, this->findChildren<QLabel *>()){
+        label->clear();
+    }
+    // paint the fixation cross
+    PaintPlus();
+}

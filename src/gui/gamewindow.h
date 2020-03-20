@@ -34,7 +34,7 @@ protected:
     void DeletePixmaps();		// deletes all pictures in all pixmaps
     void paintStars(Trial *);	// paint all stars (like clear screen)
     void paintArrows(Trial *);	// paint all arrows 		-"-
-    void paintPlus();           // paints the plus img
+    void PaintPlus();           // paints the plus img
 
     // functions for label settings
     void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"

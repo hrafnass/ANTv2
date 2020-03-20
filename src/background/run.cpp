@@ -12,10 +12,14 @@ Run::Run(unsigned int runs){
 // MEASUREMENT:
 // controlls if the vector is at the end, (if not) saves the reactions and iterate the trial
 bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction){
-    if(it_v_trial != v_trial.end())
+    if(it_v_trial == v_trial.end())
     {
         cout << "[*] End of Trial vector reached!!!" << endl;
         return false;   // iterator reached the end of v_trial
+    }
+    if(GetPosition() == (run_length-1)){
+        cout << "[*] End of Run Length - The next Trials aren't allowed" << endl;
+        return false;
     }
     // sets the reactions
     it_v_trial->SetReactions(arg_reaction, arg_reaction_time);
@@ -38,9 +42,11 @@ bool Run::CleanMeasuredValues(){
 // TRIALS
 // check if the next trial exist or goes to the start again
 bool Run::NextTrial(){
-    ++it_v_trial;                   // iterates the vector
-    if(it_v_trial != v_trial.end()) // check if the end of the vector was reached
-        return true;                // not the end
+    ++it_v_trial;                           // iterates the vector
+    if(it_v_trial != v_trial.end()){        // check if the end of the vector was reached
+        if(GetPosition() < (run_length-1))  // check if the Trial fits in run (run_length)
+            return true;                    // not the end
+    }
     // if the end was reached -> set iterator to the begin again and return false
     it_v_trial = v_trial.begin();
     return false;

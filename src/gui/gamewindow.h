@@ -17,7 +17,7 @@ public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
     // Game loop
-    bool GameLoop();    // loop for the game
+    bool GameLoop(int arg_pass_number);    // loop for the game
     // setter for run
     void SetRun(Run *arg_run) { run = arg_run;}
 

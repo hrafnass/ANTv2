@@ -35,7 +35,7 @@ protected:
 
     // painting functions
     void DeletePixmaps();		// deletes all pictures in all pixmaps
-    void paintStars(Trial *);	// paint all stars (like clear screen)
+    void PaintStars(Trial *arg_trial);	// paint all stars (like clear screen)
     void paintArrows(Trial *);	// paint all arrows 		-"-
     void PaintPlus();           // paints the plus img
 

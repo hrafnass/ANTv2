@@ -113,6 +113,7 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
     // only needed for GameEsc
     if(event->key() == Qt::Key_Escape){
         cout << "[*] esc key - game loop quiting" << endl;
+        run->SetRunLength(-1);  // no new run can be started
         this->close();
     }
 }
@@ -161,6 +162,35 @@ void GameWindow::DeletePixmaps(){
     }
     // paint the fixation cross
     PaintPlus();
+}
+// paints a Trial
+void GameWindow::PaintStars(Trial *arg_trial){
+    // calculate width and height;
+        int w = CmToPixelNbrX(STAR_X);
+        int h = CmToPixelNbrY(STAR_Y);
+
+        // switch instead of many ifs
+        switch (arg_trial->GetCue()) {
+        case TrialComponents::Cue::spatial_cue_up:
+            paintStar(ui->MidAbove, STAR, w, h);
+            break;
+        case TrialComponents::Cue::spatial_cue_down:
+            paintStar(ui->MidBelow, STAR, w, h);
+            break;
+        case TrialComponents::Cue::double_cue:
+            paintStar(ui->MidAbove, STAR, w, h);
+            paintStar(ui->MidBelow, STAR, w, h);
+            break;
+        case TrialComponents::Cue::center_cue:
+            paintStar(ui->Centreline, STAR,w, h);
+            break;
+        case TrialComponents::Cue::non_cue:
+            cout << "[*] Nearly the same like default - no cue is printed" << endl;
+            break;
+        default:
+            cout << "[*] Can't paint stars"<<endl;
+            break;
+        }
 }
 
 // images:

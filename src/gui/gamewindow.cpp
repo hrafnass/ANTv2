@@ -94,7 +94,6 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         cout << "[*] Key was pressed before!" << endl;
         return;
     }
-
     // switch for all wanted keys
     switch (event->key()) {
     case Qt::Key_Left:
@@ -106,6 +105,15 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     default:
         cout << "[*] Wrong key" << endl;
         return;
+    }
+}
+
+// keyEvent (Release)
+void GameWindow::keyReleaseEvent(QKeyEvent *event){
+    // only needed for GameEsc
+    if(event->key() == Qt::Key_Escape){
+        cout << "[*] esc key - game loop quiting" << endl;
+        this->close();
     }
 }
 

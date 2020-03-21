@@ -17,14 +17,17 @@ public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
     // Game loop
-    bool GameLoop(int arg_pass_number);    // loop for the game
+    bool GameLoop(int arg_one_run/*size of one run - in test arg_pass_number == arg_one_run*/);    // loop for the game
     // setter for run
     void SetRun(Run *arg_run) { run = arg_run;}
+    // setter of the max. nbr of trials in the whole game
+    void SetPassNbr(int arg_pass_number);
 
 protected:
     // Event funtions
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release key
+    void SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction);  // saves the components in trial
 
     // calculation functions
     int CmToPixelNbrX(double arg_width_in_cm);  // calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
@@ -59,15 +62,20 @@ protected:
 // The Real Game
 class Measure : public GameWindow{
 public:
-
-private:
+    void BreakDialog();
+    void PrintDialog();
+protected:
+    void CheckAndLoadDialogs(); // muss dann überschrieben werden
 };
 
 // The Test Game
 class Test : public GameWindow {
 public:
+    void StopTestDialog();
 
-private:
+protected:
+    void CheckAndLoadDialogs(); // muss dann überschrieben werden
+    void ResetWindow(int arg_time); // override to show smiles
 };
 
 #endif // GAMEWINDOW_H

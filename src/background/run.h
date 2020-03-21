@@ -16,7 +16,7 @@ public:
     // TrialVector positions
     bool NextTrial();           // iterates to the next trial; returns false if the end is reached
     // measured values
-    bool SetMeasuredValues(int arg_reaction_time=-1, bool arg_reaction=false); // saves the measured values in the actuell trial
+    bool SetMeasuredValues(int arg_reaction_time=-1, bool arg_reaction=false, bool arg_pressed); // saves the measured values in the actuell trial
     bool CleanMeasuredValues();     // delete all measured values in the trial vector and shuffels it
     // Getter for the actuell Trial
     Trial GetTrial(bool *size);     // getter for actuell trial

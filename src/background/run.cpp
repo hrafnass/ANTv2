@@ -11,7 +11,7 @@ Run::Run(unsigned int runs){
 // public methods
 // MEASUREMENT:
 // controlls if the vector is at the end, (if not) saves the reactions and iterate the trial
-bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction){
+bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction, bool arg_pressed){
     if(it_v_trial == v_trial.end())
     {
         cout << "[*] End of Trial vector reached!!!" << endl;
@@ -22,7 +22,7 @@ bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction){
         return false;
     }
     // sets the reactions
-    it_v_trial->SetReactions(arg_reaction, arg_reaction_time);
+    it_v_trial->SetReactions(arg_reaction, arg_reaction_time, arg_pressed);
 
     return true;    // if the iterator isn't at the end - return true
 }

@@ -72,8 +72,9 @@ public:
     bool GetReaction() {return reaction;}
     //      -"-          - reaction_time
     int GetReactionTime() {return reaction_time;}
+    bool GetPressed() {return was_pressed;}
     // Setter for reaction and reaction_time - only exist together
-    void SetReactions(bool arg_reaction = false, int arg_reaction_time = -1);
+    void SetReactions(bool arg_reaction = false, int arg_reaction_time = -1, bool arg_pressed = false);
     //      -"-          - for Components (Setters aren't needed)
     // Cue:
     Cue GetCue() { return comp.cue;}
@@ -92,6 +93,7 @@ private:
 
     bool reaction;      // if the reaction is right or wrong
     int reaction_time;  // saves the reaction time - -1 is the standard setting
+    bool was_pressed;   // saves if a key(right or wrong) was pressed
     Components comp;
 
 };

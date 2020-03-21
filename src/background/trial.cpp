@@ -37,10 +37,11 @@ Trial::Trial(Cue arg_cue, ArrowCombinations arg_arrow_combi, ArrowPositions arg_
 
 // public Methods:
 // sets reaction time and the reaction
-void Trial::SetReactions(bool arg_reaction, int arg_reaction_time){
+void Trial::SetReactions(bool arg_reaction, int arg_reaction_time, bool arg_pressed){
     reaction = arg_reaction;
     reaction_time = arg_reaction_time;
-    cout << "[*] SetReaction: " << reaction << " " << reaction_time << endl;
+    was_pressed = arg_pressed;
+    cout << "[*] SetReaction: " << reaction << " " << reaction_time << " " << was_pressed << endl;
 }
 
 

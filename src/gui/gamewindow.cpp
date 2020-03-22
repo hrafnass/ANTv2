@@ -59,14 +59,21 @@ bool GameWindow::GameLoop(int arg_one_run){
         cout << "[***] Error: Vector Size is 0!" << endl;
         return false;
     }
+    // Delete everythind
+    DeletePixmaps();
 
+    timer.start();  // starts the timer
     // runs so long a multiple from arg_one_run is reached
     for(unsigned int i=0; i < (run->GetRunLength()%arg_one_run); ++i){
         // paint stars
+        Trial actuell_trial = run->GetTrial(&in_size);
+        PaintStars(&actuell_trial);
         // wait and delete pixmaps
         ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms
         // restart timer - measurement
+        timer.restart();
         // paint arrows
+        PaintArrows(&actuell_trial);
         // wait and delete pixmaps
         ResetWindow(TIME_FOR_REACTION);     // 2000ms
         // if no next trial is reachable the game loop is quit

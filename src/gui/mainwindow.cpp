@@ -7,16 +7,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    run.initRun(3);     // loaded the run with 3
-    game.setRun(&run);  // give run to GameWindow
-    game.setCursor(Qt::BlankCursor);    // blanks the cursor from the game window
-    // connects the mainwindow with the excercisedialog
-    connect(&excercise_dialog,SIGNAL(buttonPressed()), this, SLOT(on_action_bung_triggered()));
+    // blanks the cursor from
+    measure.setCursor(Qt::BlankCursor);
+    test.setCursor(Qt::BlankCursor);
+    init = false;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+// init of the games
+void MainWindow::InitGames(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){
+    test.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);
+    measure.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);
+    init = true;
 }
 
 // open the About Game dialog
@@ -29,6 +35,10 @@ void MainWindow::on_actionAboutReactiongame_triggered()
 
 void MainWindow::on_startGamePushButton_clicked()
 {
+    if(!init){
+        cout << "[***] Error: MainWindow InitGames wasn't set!!!"<<endl;
+        return;
+    }
     // saves the whole text input
     QString forename = ui->forenameLineEdit->text();
     QString name = ui->nameLineEdit->text();
@@ -42,6 +52,9 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.show();
         return;
     }
+    //test.Game();
+    measure.SetMainWindowInput(forename, name, notice, birthday);
+    measure.Game();
     // free labels
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");

@@ -20,15 +20,13 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void InitGames(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs);
 private slots:
     // windows from the menu bar
     void on_actionAboutReactiongame_triggered();
     // game window started with button click
     void on_startGamePushButton_clicked();
 private:
-    // game function
-    void gamingModes(bool);           // needed to start the game in exercise or measurement mode 
-
     // Windows UI
     Ui::MainWindow *ui;
     // gaming
@@ -39,7 +37,8 @@ private:
     // aboutDialog
     AboutGameDialog about_game;
 
-    Run run;
+    Run *r;
+    bool init;  // check if the game was init;
 };
 
 #endif // MAINWINDOW_H

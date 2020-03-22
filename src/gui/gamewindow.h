@@ -18,14 +18,16 @@ public:
     ~GameWindow();
     // Game loop
     bool GameLoop(int arg_one_run/*size of one run - in test arg_pass_number == arg_one_run*/);    // loop for the game
-    // setter for run
+    // setts the whole game
+    void SetGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs);
+protected:
+    // game setter
     void SetRun(Run *arg_run) { run = arg_run;}
     // setter of the max. nbr of trials in the whole game
     void SetPassNbr(int arg_pass_number);
     // setter for the number of runs
     void SetNbrOfRuns(unsigned int arg_nbr_of_runs);
 
-protected:
     // Event funtions
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release key
@@ -63,29 +65,24 @@ protected:
 
     // The Run for the Game
     Run *run = nullptr;
-private:
     unsigned int number_of_runs; // saves how many runs are used - if it isn't set or < 1 standard is 2
 };
 
 // The Real Game
-class Measure : public GameWindow{
+class Measure : public GameWindow {
 public:
-    Measure();
-protected:
-    void CheckAndLoadDialogs(); // muss dann überschrieben werden
+    bool Game(int arg_size_test);
 private:
-    // Dialog Methods
-    void BreakDialog();
-    void PrintDialog();
+    // measurement dialogs
+    BreakDialog pause;
+    SaveDialog save;
 };
 
 // The Test Game
-class Test : public GameWindow {
+class TestGame : public GameWindow {
 public:
-    void StopTestDialog();
-
+    bool Game();
 protected:
-    void CheckAndLoadDialogs(); // muss dann überschrieben werden
     void ResetWindow(int arg_time); // override to show smiles
 };
 

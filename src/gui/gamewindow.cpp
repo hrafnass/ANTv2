@@ -88,7 +88,14 @@ bool GameWindow::GameLoop(int arg_one_run){
     // qt timer
     return true;
 }
+// set the the game
+void GameWindow::SetGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){
+    SetRun(arg_run);
+    SetPassNbr(arg_pass_number);
+    SetNbrOfRuns(arg_nbr_of_runs);
+}
 
+// Protected Methods: Game Window
 void GameWindow::SetPassNbr(int arg_pass_number){
     // sets the run_length number, if it doesn't fit
     if(run->GetRunLength() != arg_pass_number)
@@ -100,10 +107,8 @@ void GameWindow::SetNbrOfRuns(unsigned int arg_nbr_of_runs){
     if(arg_nbr_of_runs > 0)
         number_of_runs = arg_nbr_of_runs;
     else
-        number_of_runs = NBR_OF_RUNS;
+        number_of_runs = NBR_OF_RUNS;   // standard
 }
-
-// Protected Methods: Game Window
 // keyPress Methods
 // keyEvent (Press)
 void GameWindow::keyPressEvent(QKeyEvent *event){
@@ -284,18 +289,35 @@ void GameWindow::PaintPlus(){
 }
 
 // Measure Class:
-// public Methods and Constructor
-Measure::Measure(int arg_run){  // saves how many runs are played
-
+// public Methods
+bool Measure::Game(int arg_size_test){
+    if(run==nullptr){
+        cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
+        return false;
+    }
+    run->SetMeasuredValues(-1, false, false);
+    // normal Game
+    for(unsigned int i = 0; i < number_of_runs; ++i){
+        if(!GameLoop(TRIALS_IN_RUN)){
+            cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
+            return false;
+        }
+        pause.open();   // pause between the runs
+    }
+    save.open();        // saves the measured values - if you want to print it (html)
+    return true;
 }
 
 // protected Methods
 
 // Test Class
 // public Methods
+bool TestGame::Game(){
+    return false;
+}
 
 // protected Methods - override ResetWindow
-void Test::ResetWindow(int arg_time){
+void TestGame::ResetWindow(int arg_time){
     bool check = false;
     QString right_or_wrong_smile;   // saves the smile paths
     GameWindow::ResetWindow(arg_time);

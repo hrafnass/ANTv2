@@ -38,7 +38,8 @@ FORMS += \
     src/gui/mainwindow.ui \
     src/gui/dialogs/game/savedialog.ui \
     src/gui/dialogs/main/reminder.ui \
-    src/gui/dialogs/main/excercisedialog.ui
+    src/gui/dialogs/main/excercisedialog.ui \
+    src/gui/dialogs/game/excercisedialog.ui
 
 HEADERS += \
     src/background/calculation.h \
@@ -54,7 +55,8 @@ HEADERS += \
     src/gui/dialogs/main/excercisedialog.h \
     src/gui/imagedefinitions.h \
     src/gui/game_and_gui_def.h \
-    src/gui/game_headers.h
+    src/gui/game_headers.h \
+    src/gui/dialogs/game/excercisedialog.h
 
 SOURCES += \
     src/background/calculation.cpp \
@@ -68,7 +70,9 @@ SOURCES += \
     src/gui/gamewindow.cpp \
     src/gui/mainwindow.cpp \
     src/main.cpp \
-    src/gui/dialogs/main/excercisedialog.cpp
+    src/gui/dialogs/main/excercisedialog.cpp \
+    src/gui/dialogs/game/breakdialog.cpp \
+    src/gui/dialogs/game/excercisedialog.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

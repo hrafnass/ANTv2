@@ -290,7 +290,7 @@ void GameWindow::PaintPlus(){
 
 // Measure Class:
 // public Methods
-bool Measure::Game(int arg_size_test){
+bool Measure::Game(){
     if(run==nullptr){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
         return false;
@@ -304,6 +304,9 @@ bool Measure::Game(int arg_size_test){
         }
         pause.open();   // pause between the runs
     }
+    // saving the csv file
+
+    // check if the user wants to print
     save.open();        // saves the measured values - if you want to print it (html)
     return true;
 }
@@ -311,9 +314,25 @@ bool Measure::Game(int arg_size_test){
 // protected Methods
 
 // Test Class
-// public Methods
+// public Methods+Constructor
+//TestGame Constructor
+TestGame::TestGame(){
+    connect(&excercise,SIGNAL(buttonPressed()), this, SLOT(on_action_bung_triggered()));
+}
+
 bool TestGame::Game(){
     return false;
+}
+
+// SLOT
+void TestGame::on_action_excercise_triggered(){
+    if(!Game()){
+        cout << "[***] Error: TestGame Error!!!" << endl;
+        return;
+    }
+    // ask the user for a new excercise
+    excercise.setModal(true);
+    excercise.show();
 }
 
 // protected Methods - override ResetWindow

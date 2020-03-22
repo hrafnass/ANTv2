@@ -71,7 +71,7 @@ protected:
 // The Real Game
 class Measure : public GameWindow {
 public:
-    bool Game(int arg_size_test);
+    bool Game();
 private:
     // measurement dialogs
     BreakDialog pause;
@@ -81,9 +81,14 @@ private:
 // The Test Game
 class TestGame : public GameWindow {
 public:
-    bool Game();
+    TestGame();     // construcotr
+    bool Game();    // game
+    // SLOT
+    void on_action_excercise_triggered();
 protected:
     void ResetWindow(int arg_time); // override to show smiles
+private:
+    ExcerciseDialog excercise;
 };
 
 #endif // GAMEWINDOW_H

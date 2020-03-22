@@ -7,6 +7,7 @@
 // dialog headers
 #include "src/gui/dialogs/game/breakdialog.h"
 #include "src/gui/dialogs/game/savedialog.h"
+#include "src/gui/dialogs/game/excercisedialog.h"
 // background headers
 #include "src/background/run.h"
 

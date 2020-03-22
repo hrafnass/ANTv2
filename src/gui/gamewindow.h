@@ -72,10 +72,17 @@ protected:
 class Measure : public GameWindow {
 public:
     bool Game();
+    // setter for the input
+    void SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday);
 private:
     // measurement dialogs
     BreakDialog pause;
     SaveDialog save;
+    // input
+    QString forename;
+    QString name;
+    QString notice;
+    QString birthday;
 };
 
 // The Test Game

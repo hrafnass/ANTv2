@@ -311,6 +311,13 @@ bool Measure::Game(){
     return true;
 }
 
+void Measure::SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday){
+    forename = arg_forename;
+    name = arg_name;
+    notice = arg_notice;
+    birthday = arg_birthday;
+}
+
 // protected Methods
 
 // Test Class

@@ -46,29 +46,4 @@ void MainWindow::on_startGamePushButton_clicked()
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");
     ui->noticeTextEdit->setText("");
-    // game
-    gamingModes(false);    // else the exercise is activated every time after on_action_bung_triggered() runed
-    // save data
-    save_dialog.setSaving(&run, name, forename, notice, birthday);
-    save_dialog.setModal(true);
-    save_dialog.show();
-}
-
-// start in exercise mode Strg+U
-void MainWindow::on_action_bung_triggered() {
-    gamingModes(true);
-    // ask the user for a new excercise
-    excercise_dialog.setModal(true);
-    excercise_dialog.show();
-}
-
-// game function
-void MainWindow::gamingModes(bool mode){
-    if(mode)
-        game.setExercise(mode);
-    else
-        game.setExercise(mode, -1);
-    run.newGame();          // start the settings for a new game
-    game.showFullScreen();  // open the window in fullscreen
-    game.gameLoop();        // start game loop
 }

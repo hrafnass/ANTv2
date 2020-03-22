@@ -41,7 +41,7 @@ protected:
 
     // functions for label settings
     void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"
-    void paintStar(QLabel *, QString, int, int);                    // paint a star
+    void PaintStar(QLabel *arg_label, QString arg_img_name, int arg_w, int arg_h); // paint a star
 
     // function which cleans the window and set it to sleep
     void SleepGame(int arg_sleep_time);

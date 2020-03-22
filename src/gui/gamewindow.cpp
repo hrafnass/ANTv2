@@ -172,17 +172,17 @@ void GameWindow::PaintStars(Trial *arg_trial){
         // switch instead of many ifs
         switch (arg_trial->GetCue()) {
         case TrialComponents::Cue::spatial_cue_up:
-            paintStar(ui->MidAbove, STAR, w, h);
+            PaintStar(ui->MidAbove, STAR, w, h);
             break;
         case TrialComponents::Cue::spatial_cue_down:
-            paintStar(ui->MidBelow, STAR, w, h);
+            PaintStar(ui->MidBelow, STAR, w, h);
             break;
         case TrialComponents::Cue::double_cue:
-            paintStar(ui->MidAbove, STAR, w, h);
-            paintStar(ui->MidBelow, STAR, w, h);
+            PaintStar(ui->MidAbove, STAR, w, h);
+            PaintStar(ui->MidBelow, STAR, w, h);
             break;
         case TrialComponents::Cue::center_cue:
-            paintStar(ui->Centreline, STAR,w, h);
+            PaintStar(ui->Centreline, STAR,w, h);
             break;
         case TrialComponents::Cue::non_cue:
             cout << "[*] Nearly the same like default - no cue is printed" << endl;
@@ -191,6 +191,16 @@ void GameWindow::PaintStars(Trial *arg_trial){
             cout << "[*] Can't paint stars"<<endl;
             break;
         }
+}
+
+// make the star setting and paint the star
+void GameWindow::PaintStar(QLabel *arg_label, QString arg_img_name, int arg_w, int arg_h){
+    // set the size and paint the star
+    arg_label->setFixedSize(arg_w, arg_h);
+    arg_label->setPixmap(arg_img_name);
+    // only needed star height different to arrow heigth - explanation in gamewindow.h
+    // ui->MidAbove->setFixedHeight(cmToPixelNbrY(STAR_Y));
+    // ui->MidBelow->setFixedHeight(cmToPixelNbrY(STAR_Y));
 }
 
 // images:

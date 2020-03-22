@@ -16,6 +16,9 @@
 // own header
 #include "game_and_gui_def.h"
 #include "imagedefinitions.h"
+// dialog headers
+#include "src/gui/dialogs/game/breakdialog.h"
+// background headers
 #include "src/background/run.h"
 
 #endif // GAME_HEADERS_H

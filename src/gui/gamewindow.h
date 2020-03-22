@@ -22,6 +22,8 @@ public:
     void SetRun(Run *arg_run) { run = arg_run;}
     // setter of the max. nbr of trials in the whole game
     void SetPassNbr(int arg_pass_number);
+    // setter for the number of runs
+    void SetNbrOfRuns(unsigned int arg_nbr_of_runs);
 
 protected:
     // Event funtions
@@ -40,8 +42,7 @@ protected:
     void PaintPlus();           // paints the plus img
 
     // functions for label settings
-    // paint a list of arrows
-    void PaintListLabelsArrows(QList<QLabel *> arg_list,Trial *arg_trial,int arg_w,int arg_h);
+    void PaintListLabelsArrows(QList<QLabel *> arg_list,Trial *arg_trial,int arg_w,int arg_h); // paint a list of arrows
     void PaintStar(QLabel *arg_label, QString arg_img_name, int arg_w, int arg_h); // paint a star
 
     // function which cleans the window and set it to sleep
@@ -62,15 +63,20 @@ protected:
 
     // The Run for the Game
     Run *run = nullptr;
+private:
+    unsigned int number_of_runs; // saves how many runs are used - if it isn't set or < 1 standard is 2
 };
 
 // The Real Game
 class Measure : public GameWindow{
 public:
-    void BreakDialog();
-    void PrintDialog();
+    Measure();
 protected:
     void CheckAndLoadDialogs(); // muss dann überschrieben werden
+private:
+    // Dialog Methods
+    void BreakDialog();
+    void PrintDialog();
 };
 
 // The Test Game

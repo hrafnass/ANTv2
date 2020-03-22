@@ -29,6 +29,8 @@ GameWindow::GameWindow(QWidget *parent) :
     // changes the size
     ui->verticalSpacerUpMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui->verticalSpacerDownMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
+    // set the standard value for runs
+    number_of_runs = NBR_OF_RUNS;
 }
 
 // public Methods: GameWindow
@@ -91,6 +93,14 @@ void GameWindow::SetPassNbr(int arg_pass_number){
     // sets the run_length number, if it doesn't fit
     if(run->GetRunLength() != arg_pass_number)
         run->SetRunLength(arg_pass_number);
+}
+
+// number of runs setter
+void GameWindow::SetNbrOfRuns(unsigned int arg_nbr_of_runs){
+    if(arg_nbr_of_runs > 0)
+        number_of_runs = arg_nbr_of_runs;
+    else
+        number_of_runs = NBR_OF_RUNS;
 }
 
 // Protected Methods: Game Window
@@ -274,7 +284,10 @@ void GameWindow::PaintPlus(){
 }
 
 // Measure Class:
-// public Methods
+// public Methods and Constructor
+Measure::Measure(int arg_run){  // saves how many runs are played
+
+}
 
 // protected Methods
 

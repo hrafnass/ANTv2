@@ -36,11 +36,12 @@ protected:
     // painting functions
     void DeletePixmaps();		// deletes all pictures in all pixmaps
     void PaintStars(Trial *arg_trial);	// paint all stars (like clear screen)
-    void paintArrows(Trial *);	// paint all arrows 		-"-
+    void PaintArrows(Trial *arg_trial);	// paint all arrows 		-"-
     void PaintPlus();           // paints the plus img
 
     // functions for label settings
-    void paintListLabelsArrows(QList<QLabel *>,QString,int,int);    // paint a list of "other arrows"
+    // paint a list of arrows
+    void PaintListLabelsArrows(QList<QLabel *> arg_list,Trial *arg_trial,int arg_w,int arg_h);
     void PaintStar(QLabel *arg_label, QString arg_img_name, int arg_w, int arg_h); // paint a star
 
     // function which cleans the window and set it to sleep
@@ -54,6 +55,10 @@ protected:
 
     // needed for time measurement
     QElapsedTimer timer;
+
+    // label lists
+    QList<QLabel *> up_arrows;
+    QList<QLabel *> down_arrows;
 
     // The Run for the Game
     Run *run = nullptr;

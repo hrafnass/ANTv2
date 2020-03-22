@@ -11,6 +11,13 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    // label lists of lists up and down
+    QRegularExpression exp_up("UpLabel*");
+    QRegularExpression exp_down("DownLabel*");
+
+    QList<QLabel *> up_arrows = this->findChildren<QLabel *>(exp_up);
+    QList<QLabel *> down_arrows = this->findChildren<QLabel *>(exp_down);
+
     /* We need a fixed size between arrows and the plus img. Important for the game.
      * I take 1 inch (2 cm) for the distance between arrows and plus.
      * We only need to change the height. The width doesn't interest.
@@ -203,7 +210,50 @@ void GameWindow::PaintStar(QLabel *arg_label, QString arg_img_name, int arg_w, i
     // ui->MidBelow->setFixedHeight(cmToPixelNbrY(STAR_Y));
 }
 
+// paints an arrow
+void GameWindow::PaintArrows(Trial *arg_trial){
+    // width and height of the "other" arrows
+    int w = CmToPixelNbrX(ARROW_X);
+    int h = CmToPixelNbrY(ARROW_Y);
+
+    // paint the other images and the mid images
+    switch (arg_trial->GetArrowPositions()) {
+    case TrialComponents::ArrowPositions::up:       // paints the arrow over the cross
+        PaintListLabelsArrows(up_arrows, arg_trial, w, h);
+        break;
+    case TrialComponents::ArrowPositions::down:     // paints the arrows under the cross
+        PaintListLabelsArrows(down_arrows, arg_trial, w, h);
+        break;
+    default:
+        cout << "[***] Error: This ArrowPosition doesn't exists!!!" << endl;
+    }
+}
+
 // images:
+// paint a list of arrows
+void GameWindow::PaintListLabelsArrows(QList<QLabel *> arg_list, Trial *arg_trial, int arg_w, int arg_h){
+    // list is empty
+    if(arg_list.isEmpty())
+        return;
+
+    int pos;    // saves the pos in l
+    // runs over the list and fills it with the QString image
+    for(QList<QLabel*>::iterator it = arg_list.begin(); it != arg_list.end(); ++it){
+        pos = it - arg_list.begin();
+        // paint all outer images
+        arg_list.at(pos)->setFixedSize(arg_w, arg_h);
+        arg_list.at(pos)->setPixmap(arg_trial->GetOuterArrow());
+    }
+    // paints the mid image
+    if(arg_trial->GetArrowPositions() == TrialComponents::ArrowPositions::up){
+        ui->MidAbove->setFixedSize(arg_w, arg_h);
+        ui->MidAbove->setPixmap(arg_trial->GetInnerArrow());
+    }else {
+        ui->MidBelow->setFixedSize(arg_w, arg_h);
+        ui->MidBelow->setPixmap(arg_trial->GetInnerArrow());
+    }
+}
+
 // plus image
 void GameWindow::PaintPlus(){
     // saves the img pos

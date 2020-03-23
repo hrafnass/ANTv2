@@ -34,12 +34,11 @@ RESOURCES = \
 FORMS += \
     src/gui/dialogs/game/breakdialog.ui \
     src/gui/dialogs/main/aboutgamedialog.ui \
-    src/gui/gamewindow.ui \
     src/gui/mainwindow.ui \
     src/gui/dialogs/game/savedialog.ui \
     src/gui/dialogs/main/reminder.ui \
-    src/gui/dialogs/main/excercisedialog.ui \
-    src/gui/dialogs/game/excercisedialog.ui
+    src/gui/dialogs/game/excercisedialog.ui \
+    src/gui/game/gamewindow.ui
 
 HEADERS += \
     src/background/calculation.h \
@@ -50,13 +49,12 @@ HEADERS += \
     src/gui/dialogs/game/savedialog.h \
     src/gui/dialogs/main/aboutgamedialog.h \
     src/gui/dialogs/main/reminder.h \
-    src/gui/gamewindow.h \
     src/gui/mainwindow.h \
-    src/gui/dialogs/main/excercisedialog.h \
-    src/gui/imagedefinitions.h \
-    src/gui/game_and_gui_def.h \
-    src/gui/game_headers.h \
-    src/gui/dialogs/game/excercisedialog.h
+    src/gui/dialogs/game/excercisedialog.h \
+    src/gui/game/game_and_gui_def.h \
+    src/gui/game/game_headers.h \
+    src/gui/game/gamewindow.h \
+    src/gui/game/imagedefinitions.h
 
 SOURCES += \
     src/background/calculation.cpp \
@@ -67,12 +65,11 @@ SOURCES += \
     src/gui/dialogs/game/savedialog.cpp \
     src/gui/dialogs/main/aboutgamedialog.cpp \
     src/gui/dialogs/main/reminder.cpp \
-    src/gui/gamewindow.cpp \
     src/gui/mainwindow.cpp \
     src/main.cpp \
-    src/gui/dialogs/main/excercisedialog.cpp \
     src/gui/dialogs/game/breakdialog.cpp \
-    src/gui/dialogs/game/excercisedialog.cpp
+    src/gui/dialogs/game/excercisedialog.cpp \
+    src/gui/game/gamewindow.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

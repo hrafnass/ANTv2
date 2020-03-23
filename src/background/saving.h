@@ -1,13 +1,13 @@
 #ifndef SAVING_H
 #define SAVING_H
-
+/*
 #include <QtCore/QDate>
 #include <QtCore/QFile>
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
 #include <QtCore/QTime>
 
-#include "calculation.h"
+//#include "calculation.h"
 #include "run.h"
 
 // Saves all calculated and measured data of the reaction game in  a csv file
@@ -37,5 +37,5 @@ public:
     // write
     void writeCSVFile(Run *run, QString comment, QString birthday);                     // saves all calculated and measured values
 };
-
+*/
 #endif // SAVING_H

@@ -41,7 +41,7 @@ private:
     // Variables
     Ui::SaveDialog *ui;
     // calculation and saving
-    Saving s;           // save all data
+    // Saving s;           // save all data
     // Calculation c;      // calculation
     // needed for startSaving
     Run *r;

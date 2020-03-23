@@ -6,7 +6,7 @@
 #include "dialogs/main/aboutgamedialog.h"
 #include "dialogs/main/reminder.h"
 #include "gamewindow.h"
-#include "../background/run.h"
+#include "src/background/run.h"
 
 namespace Ui {
 class MainWindow;

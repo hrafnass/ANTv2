@@ -31,7 +31,7 @@ Trial::Trial(){
     SetTrial();
 }
 
-Trial::Trial(Cue arg_cue, ArrowCombinations arg_arrow_combi, ArrowPositions arg_arrow_pos, DirectionMidArrow arg_arrow_dir){
+Trial::Trial(TrialComponents::Cue arg_cue, TrialComponents::ArrowCombinations arg_arrow_combi, TrialComponents::ArrowPositions arg_arrow_pos, TrialComponents::DirectionMidArrow arg_arrow_dir){
     SetTrial(arg_cue, arg_arrow_combi, arg_arrow_pos, arg_arrow_dir);
 }
 

@@ -1,5 +1,5 @@
 #include "saving.h"
-
+/*
 // opens the csv file
 bool Saving::openCSVFile() {
     bool opened = file.open(QFile::WriteOnly);              // tries to open the csv file in write only mode
@@ -13,7 +13,7 @@ void Saving::setQFileDescriptor(QString name, QString forename){
 }
 
 // write in the csv file
-void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {
+void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {*/
     /*
         Input of a csv-file:
         trial number, reaction time*, reacted**, average***, right percentage***, median***, effects***, comment***
@@ -21,7 +21,7 @@ void Saving::writeCSVFile(Run *run, QString comment, QString birthday) {
         **  true if there was a reaction false if not
         *** all values from Calculation
     */
-    Calculation calc;
+    /*Calculation calc;
     int number_of_rows = 1;         // count the number of colums
     QTextStream save(&file);        // output stream for a file
     // saves the headline in the csv file
@@ -52,17 +52,17 @@ void Saving::closeCSVFile(){
     file.close();
     return;
 }
-
+*/
 // creates the csv filename
 /*
     The name of a csv file is build in that way:
     forename_name_year_month_day_hour_minute.csv
 */
-QString Saving::createFilename(QString name, QString forename){
+/*QString Saving::createFilename(QString name, QString forename){
     // create the filename
     QDate date = QDate::currentDate();  // get the current date  (system clock)
     QTime time = QTime::currentTime();  // get the current time     -"-
     QString filename = name+"_"+forename+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm")+".csv";
     // returns the filename
     return filename;
-}
+}*/

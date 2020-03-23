@@ -7,7 +7,7 @@ Calculation::Calculation(){
     effects = 0;
     median = 0;
 }
-
+/*
 // all getter
 double Calculation::getAverage(){
     return average;
@@ -74,7 +74,7 @@ void Calculation::calcRightPercentage(unsigned long all_trials, unsigned long ri
     }
     percentage = (static_cast<double>(right_trials)/static_cast<double>(all_trials))*100;
     cout << "right trials: " << right_trials << " all trials: " << all_trials << " percentage: "<< percentage <<endl;
-}
+}*/
 
 // median for reaction times:
 /*
@@ -83,7 +83,7 @@ void Calculation::calcRightPercentage(unsigned long all_trials, unsigned long ri
  *  odd: to_median.at((to_median.size()+1)/2)
  *  - includes all negative values (Trials with no reactions)
  * */
-bool Calculation::calcMedian(Run *calc_median){
+/*bool Calculation::calcMedian(Run *calc_median){
     sort(calc_median->getVectorStart(), calc_median->getVectorEnd(), compareTimeFunction); // sorting the to_median vector
     // calculates the vector positions
     unsigned int odd_pos = (calc_median->getVectorSize()+1)/2;
@@ -113,7 +113,7 @@ bool Calculation::calcMedian(Run *calc_median){
 // compare function for the sort algorithmus in calcMedian
 bool Calculation::compareTimeFunction(Trial t1, Trial t2){
     return t1.getReactionTime() < t2.getReactionTime();
-}
+}*/
 
 /* calcEffects calculate the conflict/orientation/alertness effect
  * reaction_times1 is the first vector for the median calculation

@@ -22,7 +22,7 @@ void SaveDialog::setSaving(Run *run, QString name, QString  forename, QString co
     r = run;
     com = comment;
     birth = birthday;
-    s.setQFileDescriptor(name, forename);
+    //s.setQFileDescriptor(name, forename);
 }
 
 // private slots:
@@ -30,7 +30,7 @@ void SaveDialog::setSaving(Run *run, QString name, QString  forename, QString co
 void SaveDialog::on_buttonBox_accepted()
 {
     // setValues();                        // get the needed values
-    bool opened = s.openCSVFile();      // try to opens a file
+    /*bool opened = s.openCSVFile();      // try to opens a file
     if(opened)
     {
         cout << "[*] Save file!!!" << endl;
@@ -38,7 +38,7 @@ void SaveDialog::on_buttonBox_accepted()
         s.closeCSVFile();               // close the descriptor
     }else{
         cout << "[*] Couldn't open file!!!" << endl;
-    }
+    }*/
     this->close(); // close the window
     return;
 }

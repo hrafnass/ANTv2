@@ -34,7 +34,7 @@ using namespace std;
 
 class TrialComponents {
 public:
-    TrialComponents();
+    //TrialComponents();
     // Getter for arrow and star image
     QString GetInnerArrow(){ return arrow_inner;}
     QString GetOuterArrow(){ return arrow_outer;}
@@ -67,7 +67,7 @@ public:
     // Constructors
     Trial();    // for a Trial without a special Components combination
     // needed for run when special Components are create for the game
-    Trial(Cue arg_cue, ArrowCombinations arg_arrow_combi, ArrowPositions arg_arrow_pos, DirectionMidArrow arg_arrow_dir);
+    Trial(TrialComponents::Cue arg_cue, TrialComponents::ArrowCombinations arg_arrow_combi, TrialComponents::ArrowPositions arg_arrow_pos, TrialComponents::DirectionMidArrow arg_arrow_dir);
     // Getter and Setter - reaction
     bool GetReaction() {return reaction;}
     //      -"-          - reaction_time
@@ -77,24 +77,24 @@ public:
     void SetReactions(bool arg_reaction = false, int arg_reaction_time = -1, bool arg_pressed = false);
     //      -"-          - for Components (Setters aren't needed)
     // Cue:
-    Cue GetCue() { return comp.cue;}
+    TrialComponents::Cue GetCue() { return comp.cue;}
     // ArrowCombinations:
-    ArrowCombinations GetArrowCombinations() {return comp.combination;}
+    TrialComponents::ArrowCombinations GetArrowCombinations() {return comp.combination;}
     // ArrowPositions:
-    ArrowPositions GetArrowPositions() {return comp.position;}
+    TrialComponents::ArrowPositions GetArrowPositions() {return comp.position;}
     // DirectionMidArrow
-    DirectionMidArrow GetDirectionMidArrow() {return comp.direction;}
+    TrialComponents::DirectionMidArrow GetDirectionMidArrow() {return comp.direction;}
 
 private:
     // sets the Component for the Constructor
-    void SetComponents(Cue arg_cue=non_cue, ArrowCombinations arg_arrow_combi=neutral, ArrowPositions arg_arrow_pos=down, DirectionMidArrow arg_arrow_dir=left);
+    void SetComponents(TrialComponents::Cue arg_cue=non_cue, TrialComponents::ArrowCombinations arg_arrow_combi=neutral, TrialComponents::ArrowPositions arg_arrow_pos=down, TrialComponents::DirectionMidArrow arg_arrow_dir=left);
     // all variables for the Constructor
-    void SetTrial(Cue arg_cue=non_cue, ArrowCombinations arg_arrow_combi=neutral, ArrowPositions arg_arrow_pos=down, DirectionMidArrow arg_arrow_dir=left);    // setter for the Trial-Constructor
+    void SetTrial(TrialComponents::Cue arg_cue=non_cue, TrialComponents::ArrowCombinations arg_arrow_combi=neutral, TrialComponents::ArrowPositions arg_arrow_pos=down, TrialComponents::DirectionMidArrow arg_arrow_dir=left);    // setter for the Trial-Constructor
 
     bool reaction;      // if the reaction is right or wrong
     int reaction_time;  // saves the reaction time - -1 is the standard setting
     bool was_pressed;   // saves if a key(right or wrong) was pressed
-    Components comp;
+    TrialComponents::Components comp;
 
 };
 

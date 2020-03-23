@@ -37,10 +37,6 @@ void Measure::SetMainWindowInput(QString arg_forename, QString arg_name, QString
 // Test Class
 // public Methods+Constructor
 //TestGame Constructor
-/*TestGame::TestGame(){
-    connect(&excercise,SIGNAL(buttonPressed()), this, SLOT(on_action_bung_triggered()));
-}*/
-
 bool TestGame::Game(){
     Run *run = game.GetRun();
     if(run==nullptr){
@@ -63,13 +59,8 @@ bool TestGame::Game(){
 
 // SLOT
 void TestGame::on_action_excercise_triggered(){
-    if(!Game()){
-        cout << "[***] Error: TestGame Error!!!" << endl;
-        return;
-    }
-    // ask the user for a new excercise
-    excercise.setModal(true);
-    excercise.show();
+    cout << "NEW GAME???"<<endl;
+    Game();
 }
 
 // protected Methods - override ResetWindow

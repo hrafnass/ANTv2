@@ -240,7 +240,6 @@
      <string>Hilfe</string>
     </property>
     <addaction name="actionAboutReactiongame"/>
-    <addaction name="action_bung"/>
    </widget>
    <addaction name="menuDatei"/>
    <addaction name="menuHilfe"/>

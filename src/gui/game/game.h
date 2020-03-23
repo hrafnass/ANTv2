@@ -17,7 +17,7 @@ public:
     void InitGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){ game.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);}
 private:
     // measurement dialogs - and game window
-    //BreakDialog pause;
+    BreakDialog pause;
     GameWindow game;
     //SaveDialog save;
     // input

@@ -14,10 +14,12 @@ bool Measure::Game(){
     for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
         if(!game.GameLoop(TRIALS_IN_RUN_GAME)){
             cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
+            game.close();
             return false;
         }
-        //pause.open();   // pause between the runs
+        pause.open();   // pause between the runs
     }
+    game.close();
     // saving the csv file
 
     // check if the user wants to print
@@ -49,11 +51,12 @@ bool TestGame::Game(){
     for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
         if(!game.GameLoop(TRIALS_IN_RUN_TEST)){
             cout << "[***] Error: Error in Game Loop - TestGame Class!" << endl;
+            game.close();
             return false;
         }
     }
     excercise.open();
-
+    game.close();
     return true;
 }
 

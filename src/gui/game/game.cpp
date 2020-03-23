@@ -3,18 +3,19 @@
 // Measure Class:
 // public Methods
 bool Measure::Game(){
+    Run *run = game.GetRun();
     if(run==nullptr){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
         return false;
     }
     run->SetMeasuredValues(-1, false, false);
     // normal Game
-    for(unsigned int i = 0; i < number_of_runs; ++i){
-        if(!GameLoop(TRIALS_IN_RUN_GAME)){
+    for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
+        if(!game.GameLoop(TRIALS_IN_RUN_GAME)){
             cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
             return false;
         }
-        pause.open();   // pause between the runs
+        //pause.open();   // pause between the runs
     }
     // saving the csv file
 
@@ -40,14 +41,15 @@ void Measure::SetMainWindowInput(QString arg_forename, QString arg_name, QString
 }*/
 
 bool TestGame::Game(){
+    Run *run = game.GetRun();
     if(run==nullptr){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
         return false;
     }
     run->SetMeasuredValues(-1, false, false);
     // Test Game
-    for(unsigned int i = 0; i < number_of_runs; ++i){
-        if(!GameLoop(TRIALS_IN_RUN_TEST)){
+    for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
+        if(!game.GameLoop(TRIALS_IN_RUN_TEST)){
             cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
             return false;
         }
@@ -69,7 +71,7 @@ void TestGame::on_action_excercise_triggered(){
 }
 
 // protected Methods - override ResetWindow
-void TestGame::ResetWindow(int arg_time){
+/*void TestGame::ResetWindow(int arg_time){
     bool check = false;
     QString right_or_wrong_smile;   // saves the smile paths
     GameWindow::ResetWindow(arg_time);
@@ -83,4 +85,4 @@ void TestGame::ResetWindow(int arg_time){
         right_or_wrong_smile = WRONG;
     // paint the picture
     ui->Centreline->setPixmap(right_or_wrong_smile);
-}
+}*/

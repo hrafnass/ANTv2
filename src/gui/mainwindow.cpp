@@ -7,9 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    // blanks the cursor from
-    measure.setCursor(Qt::BlankCursor);
-    test.setCursor(Qt::BlankCursor);
     init = false;
 }
 
@@ -20,8 +17,8 @@ MainWindow::~MainWindow()
 
 // init of the games
 void MainWindow::InitGames(Run *arg_run){
-    test.SetGame(arg_run,TRIALS_IN_RUN_TEST,NBR_OF_RUNS_TEST);
-    measure.SetGame(arg_run,0,NBR_OF_RUNS_GAME);                // 0 loads the standard vector size
+    test.InitGame(arg_run,TRIALS_IN_RUN_TEST,NBR_OF_RUNS_TEST);
+    measure.InitGame(arg_run,0,NBR_OF_RUNS_GAME);                // 0 loads the standard vector size
     init = true;
 }
 
@@ -52,9 +49,9 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.show();
         return;
     }
-    test.Game();
+    //test.Game();
     measure.SetMainWindowInput(forename, name, notice, birthday);
-    measure.Game();
+    //measure.Game();
     // free labels
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");

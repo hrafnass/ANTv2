@@ -20,21 +20,21 @@ public:
     bool GameLoop(int arg_one_run/*size of one run - in test arg_pass_number == arg_one_run*/);    // loop for the game
     // setts the whole game
     void SetGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs);
-    // Getter for Run
-    Run* GetRun(){ return run;}
-protected:
     // game setter
     void SetRun(Run *arg_run) { run = arg_run;}
     // setter of the max. nbr of trials in the whole game
     void SetPassNbr(int arg_pass_number);
     // setter for the number of runs
     void SetNbrOfRuns(unsigned int arg_nbr_of_runs);
-
+    // Getter for GameWindow class
+    Run* GetRun(){ return run;}
+    unsigned int GetNbrOfRuns(){ return number_of_runs;}
+protected:
     // Event funtions
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release key
+private:
     void SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction);  // saves the components in trial
-
     // calculation functions
     int CmToPixelNbrX(double arg_width_in_cm);  // calculates the number of pixel on the user display (high definition, normal, ...) - X coord (width in pixel)
     int CmToPixelNbrY(double arg_height_in_cm); // -"-																				 - Y coord (height in pixel)

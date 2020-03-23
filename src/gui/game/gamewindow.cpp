@@ -33,6 +33,12 @@ GameWindow::GameWindow(QWidget *parent) :
     number_of_runs = NBR_OF_RUNS_GAME;
 }
 
+// destructor
+GameWindow::~GameWindow()
+{
+    delete ui;
+}
+
 // public Methods: GameWindow
 // The GameLoop Method runs one run after this a pause is possible
 // return true: One Run is reached successfully
@@ -95,7 +101,6 @@ void GameWindow::SetGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr
     SetNbrOfRuns(arg_nbr_of_runs);
 }
 
-// Protected Methods: Game Window
 void GameWindow::SetPassNbr(int arg_pass_number){
     // sets the run_length number, if it doesn't fit
     if(run->GetRunLength() != arg_pass_number)
@@ -109,6 +114,8 @@ void GameWindow::SetNbrOfRuns(unsigned int arg_nbr_of_runs){
     else
         number_of_runs = NBR_OF_RUNS_GAME;   // standard
 }
+
+// Protected Methods: Game Window
 // keyPress Methods
 // keyEvent (Press)
 
@@ -148,6 +155,7 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
     }
 }
 
+// private Mehtods
 void GameWindow::SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction){
     bool check = false;
     if(arg_direction == run->GetTrial(&check).GetDirectionMidArrow()){

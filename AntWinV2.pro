@@ -70,7 +70,8 @@ SOURCES += \
     src/main.cpp \
     src/gui/dialogs/game/breakdialog.cpp \
     src/gui/dialogs/game/excercisedialog.cpp \
-    src/gui/game/gamewindow.cpp
+    src/gui/game/gamewindow.cpp \
+    src/gui/game/game.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

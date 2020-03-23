@@ -20,6 +20,8 @@ public:
     bool GameLoop(int arg_one_run/*size of one run - in test arg_pass_number == arg_one_run*/);    // loop for the game
     // setts the whole game
     void SetGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs);
+    // Getter for Run
+    Run* GetRun(){ return run;}
 protected:
     // game setter
     void SetRun(Run *arg_run) { run = arg_run;}

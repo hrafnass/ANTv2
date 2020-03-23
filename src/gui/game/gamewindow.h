@@ -68,37 +68,4 @@ protected:
     unsigned int number_of_runs; // saves how many runs are used - if it isn't set or < 1 standard is 2
 };
 
-// The Real Game
-class Measure : private GameWindow {
-public:
-    //Measure(){}
-    //~Measure() {}
-    bool Game();
-    // setter for the input
-    void SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday);
-private:
-    // measurement dialogs
-    BreakDialog pause;
-    //SaveDialog save;
-    // input
-    QString forename;
-    QString name;
-    QString notice;
-    QString birthday;
-};
-
-// The Test Game
-class TestGame : private GameWindow {
-public:
-    //TestGame();     // construcotr
-    //~TestGame() {}
-    bool Game();    // game
-    // SLOT
-    void on_action_excercise_triggered();
-protected:
-    void ResetWindow(int arg_time); // override to show smiles
-private:
-    ExcerciseDialog excercise;
-};
-
 #endif // GAMEWINDOW_H

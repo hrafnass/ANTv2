@@ -54,7 +54,8 @@ HEADERS += \
     src/gui/game/game_and_gui_def.h \
     src/gui/game/game_headers.h \
     src/gui/game/gamewindow.h \
-    src/gui/game/imagedefinitions.h
+    src/gui/game/imagedefinitions.h \
+    src/gui/game/game.h
 
 SOURCES += \
     src/background/calculation.cpp \

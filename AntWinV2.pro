@@ -68,7 +68,6 @@ SOURCES += \
     src/gui/dialogs/main/reminder.cpp \
     src/gui/mainwindow.cpp \
     src/main.cpp \
-    src/gui/dialogs/game/breakdialog.cpp \
     src/gui/dialogs/game/excercisedialog.cpp \
     src/gui/game/gamewindow.cpp \
     src/gui/game/game.cpp

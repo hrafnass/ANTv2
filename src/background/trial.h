@@ -99,4 +99,4 @@ private:
 };
 
 
-#endif
+#endif  // TRIAL_H

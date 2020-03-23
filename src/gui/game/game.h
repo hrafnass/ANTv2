@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include "gamewindow.h"
-//#include "src/gui/dialogs/game/breakdialog.h"
+#include "src/gui/dialogs/game/breakdialog.h"
 
 // The Real Game
 class Measure {

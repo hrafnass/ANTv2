@@ -10,10 +10,10 @@
 #define DISTANCE_ARROW_PLUS_Y 2     // its the fixed distance of a spacer - we use 2.54  at the moment
 #define DISTANCE_ARROW_PLUS_X 2     // its the fixed distance of a spacer - we use 2.54  at the moment
 
-#define NBR_TRAINING_TRIALS 12  // its the number of trainings trials for the the excercise game
+#define NBR_OF_RUNS_TEST 1
+#define NBR_OF_RUNS_GAME 2          // one run = 96 Trials
 
-#define NBR_OF_RUNS 2           // one run = 96 Trials
-
-#define TRIALS_IN_RUN 96        // number of Trials in one Run - standard
+#define TRIALS_IN_RUN_GAME 96       // number of Trials in one Run - standard (for a game)
+#define TRIALS_IN_RUN_TEST 12       // number of Trials in a Test Runs - standard
 
 #endif // GAME_AND_GUI_DEF_H

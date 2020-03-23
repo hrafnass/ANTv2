@@ -66,7 +66,7 @@ bool GameWindow::GameLoop(int arg_one_run){
 
     timer.start();  // starts the timer
     // runs so long a multiple from arg_one_run is reached
-    for(unsigned int i=0; i < (run->GetRunLength()%arg_one_run); ++i){
+    for(int i=0; i < arg_one_run; ++i){
         // paint stars
         Trial actuell_trial = run->GetTrial(&in_size);
         PaintStars(&actuell_trial);
@@ -107,10 +107,11 @@ void GameWindow::SetNbrOfRuns(unsigned int arg_nbr_of_runs){
     if(arg_nbr_of_runs > 0)
         number_of_runs = arg_nbr_of_runs;
     else
-        number_of_runs = NBR_OF_RUNS;   // standard
+        number_of_runs = NBR_OF_RUNS_GAME;   // standard
 }
 // keyPress Methods
 // keyEvent (Press)
+
 void GameWindow::keyPressEvent(QKeyEvent *event){
     bool check = false;
     // if the timer is not active no key press events can take
@@ -298,7 +299,7 @@ bool Measure::Game(){
     run->SetMeasuredValues(-1, false, false);
     // normal Game
     for(unsigned int i = 0; i < number_of_runs; ++i){
-        if(!GameLoop(TRIALS_IN_RUN)){
+        if(!GameLoop(TRIALS_IN_RUN_GAME)){
             cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
             return false;
         }
@@ -328,7 +329,20 @@ TestGame::TestGame(){
 }
 
 bool TestGame::Game(){
-    return false;
+    if(run==nullptr){
+        cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
+        return false;
+    }
+    run->SetMeasuredValues(-1, false, false);
+    // Test Game
+    for(unsigned int i = 0; i < number_of_runs; ++i){
+        if(!GameLoop(TRIALS_IN_RUN_TEST)){
+            cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
+            return false;
+        }
+    }
+
+    excercise.open();
 }
 
 // SLOT

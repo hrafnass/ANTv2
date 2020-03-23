@@ -20,7 +20,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void InitGames(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs);
+    void InitGames(Run *arg_run);
 private slots:
     // windows from the menu bar
     void on_actionAboutReactiongame_triggered();

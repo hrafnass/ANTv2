@@ -19,9 +19,9 @@ MainWindow::~MainWindow()
 }
 
 // init of the games
-void MainWindow::InitGames(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){
-    test.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);
-    measure.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);
+void MainWindow::InitGames(Run *arg_run){
+    test.SetGame(arg_run,TRIALS_IN_RUN_TEST,NBR_OF_RUNS_TEST);
+    measure.SetGame(arg_run,0,NBR_OF_RUNS_GAME);                // 0 loads the standard vector size
     init = true;
 }
 
@@ -52,7 +52,7 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.show();
         return;
     }
-    //test.Game();
+    test.Game();
     measure.SetMainWindowInput(forename, name, notice, birthday);
     measure.Game();
     // free labels

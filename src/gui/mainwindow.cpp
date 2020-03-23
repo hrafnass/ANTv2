@@ -49,7 +49,7 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.show();
         return;
     }
-    //test.Game();
+    test.Game();
     measure.SetMainWindowInput(forename, name, notice, birthday);
     //measure.Game();
     // free labels

@@ -15,8 +15,8 @@ GameWindow::GameWindow(QWidget *parent) :
     QRegularExpression exp_up("UpLabel*");
     QRegularExpression exp_down("DownLabel*");
 
-    QList<QLabel *> up_arrows = this->findChildren<QLabel *>(exp_up);
-    QList<QLabel *> down_arrows = this->findChildren<QLabel *>(exp_down);
+    up_arrows = this->findChildren<QLabel *>(exp_up);
+    down_arrows = this->findChildren<QLabel *>(exp_down);
 
     /* We need a fixed size between arrows and the plus img. Important for the game.
      * I take 1 inch (2 cm) for the distance between arrows and plus.
@@ -85,7 +85,8 @@ bool GameWindow::GameLoop(int arg_one_run){
         // wait and delete pixmaps
         ResetWindow(TIME_FOR_REACTION);     // 2000ms
         // if no next trial is reachable the game loop is quit
-        if(run->NextTrial()){
+        cout << "Position GameLoop RUn "<<run->GetPosition()<<endl;
+        if(!run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in GameLoop" << endl;
             break;
         }
@@ -250,9 +251,11 @@ void GameWindow::PaintArrows(Trial *arg_trial){
     // paint the other images and the mid images
     switch (arg_trial->GetArrowPositions()) {
     case TrialComponents::ArrowPositions::up:       // paints the arrow over the cross
+        cout << "[****] DEBUG: ARROW UP " <<endl;
         PaintListLabelsArrows(up_arrows, arg_trial, w, h);
         break;
     case TrialComponents::ArrowPositions::down:     // paints the arrows under the cross
+        cout << "[****] DEBUG: ARROW DOWN " <<endl;
         PaintListLabelsArrows(down_arrows, arg_trial, w, h);
         break;
     default:
@@ -264,8 +267,10 @@ void GameWindow::PaintArrows(Trial *arg_trial){
 // paint a list of arrows
 void GameWindow::PaintListLabelsArrows(QList<QLabel *> arg_list, Trial *arg_trial, int arg_w, int arg_h){
     // list is empty
-    if(arg_list.isEmpty())
+    if(arg_list.isEmpty()){
+        cout << "[***] Error: Empty Label List!!!"<<endl;
         return;
+    }
 
     int pos;    // saves the pos in l
     // runs over the list and fills it with the QString image

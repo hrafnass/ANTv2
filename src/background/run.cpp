@@ -44,7 +44,7 @@ bool Run::CleanMeasuredValues(){
 bool Run::NextTrial(){
     ++it_v_trial;                           // iterates the vector
     if(it_v_trial != v_trial.end()){        // check if the end of the vector was reached
-        if(GetPosition() < (run_length-1))  // check if the Trial fits in run (run_length)
+        if(GetPosition() <= run_length)  // check if the Trial fits in run (run_length)
             return true;                    // not the end
     }
     // if the end was reached -> set iterator to the begin again and return false
@@ -102,6 +102,7 @@ bool Run::FillTrialVector(){
             }
         }
     }
+    cout << "[**] FillVector: Size of Vector: " << v_trial.size() << endl;
 
     return true;
 }

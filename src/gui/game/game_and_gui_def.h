@@ -14,6 +14,6 @@
 #define NBR_OF_RUNS_GAME 2          // one run = 96 Trials
 
 #define TRIALS_IN_RUN_GAME 96       // number of Trials in one Run - standard (for a game)
-#define TRIALS_IN_RUN_TEST 12       // number of Trials in a Test Runs - standard
+#define TRIALS_IN_RUN_TEST  6       // number of Trials in a Test Runs - standard
 
 #endif // GAME_AND_GUI_DEF_H

@@ -9,6 +9,7 @@ bool Measure::Game(){
         return false;
     }
     run->SetMeasuredValues(-1, false, false);
+    game.showFullScreen();
     // normal Game
     for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
         if(!game.GameLoop(TRIALS_IN_RUN_GAME)){
@@ -46,11 +47,12 @@ bool TestGame::Game(){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
         return false;
     }
-    run->SetMeasuredValues(-1, false, false);
+    run->CleanMeasuredValues();
     // Test Game
+    game.showFullScreen();
     for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
         if(!game.GameLoop(TRIALS_IN_RUN_TEST)){
-            cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
+            cout << "[***] Error: Error in Game Loop - TestGame Class!" << endl;
             return false;
         }
     }

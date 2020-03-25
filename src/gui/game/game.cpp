@@ -55,7 +55,7 @@ bool TestGame::Game(){
             return false;
         }
     }
-    excercise.open();
+    //arg_excercise->open();
     game.close();
     return true;
 }

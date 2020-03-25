@@ -31,6 +31,8 @@ GameWindow::GameWindow(QWidget *parent) :
     ui->verticalSpacerDownMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
     // set the standard value for runs - game
     number_of_runs = NBR_OF_RUNS_GAME;
+
+    run_game_loop = true;   // game loop is allowed to run
 }
 
 // destructor
@@ -70,6 +72,7 @@ bool GameWindow::GameLoop(int arg_one_run){
     // Delete everythind
     DeletePixmaps();
 
+    run_game_loop = true;   // game loop is allowed to run
     timer.start();  // starts the timer
     // runs so long a multiple from arg_one_run is reached
     for(int i=0; i < arg_one_run; ++i){
@@ -89,6 +92,10 @@ bool GameWindow::GameLoop(int arg_one_run){
         if(!run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in GameLoop" << endl;
             break;
+        }
+        if(!run_game_loop)
+        {
+            cout << "[***] Warning: run_game_loop is false -> ESC was pressed" << endl;
         }
     }
 
@@ -153,6 +160,7 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
         cout << "[*] esc key - game loop quiting" << endl;
         run->SetRunLength(-1);  // no new run can be started
         this->close();
+        run_game_loop = false;  // quit the game loop
     }
 }
 
@@ -251,11 +259,9 @@ void GameWindow::PaintArrows(Trial *arg_trial){
     // paint the other images and the mid images
     switch (arg_trial->GetArrowPositions()) {
     case TrialComponents::ArrowPositions::up:       // paints the arrow over the cross
-        cout << "[****] DEBUG: ARROW UP " <<endl;
         PaintListLabelsArrows(up_arrows, arg_trial, w, h);
         break;
     case TrialComponents::ArrowPositions::down:     // paints the arrows under the cross
-        cout << "[****] DEBUG: ARROW DOWN " <<endl;
         PaintListLabelsArrows(down_arrows, arg_trial, w, h);
         break;
     default:

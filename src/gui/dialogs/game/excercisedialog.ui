@@ -129,7 +129,7 @@
    <sender>pushButtonMeasure</sender>
    <signal>clicked()</signal>
    <receiver>ExcerciseDialog</receiver>
-   <slot>close()</slot>
+   <slot>lower()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>57</x>
@@ -145,7 +145,7 @@
    <sender>pushButtonRetry</sender>
    <signal>clicked()</signal>
    <receiver>ExcerciseDialog</receiver>
-   <slot>close()</slot>
+   <slot>lower()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>185</x>

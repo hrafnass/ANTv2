@@ -68,6 +68,8 @@ private:
     // The Run for the Game
     Run *run = nullptr;
     unsigned int number_of_runs; // saves how many runs are used - if it isn't set or < 1 standard is 2
+private:
+    bool run_game_loop; // for ESC - quit the game loop
 };
 
 #endif // GAMEWINDOW_H

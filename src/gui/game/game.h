@@ -37,11 +37,9 @@ public:
     void InitGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){ game.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);}
     bool Game();    // game
     // getter for ExcerciseDialog
-    ExcerciseDialog* GetExcerciseDialog() { return &excercise;}
 protected:
     void ResetWindow(int arg_time); // override to show smiles
 private:
-    ExcerciseDialog excercise;
     GameWindow game;
 };
 

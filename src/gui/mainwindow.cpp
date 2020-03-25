@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     init = false;
+    excercise.SetGameObjects(&measure, &test);
 }
 
 MainWindow::~MainWindow()
@@ -49,9 +50,10 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.show();
         return;
     }
+    excercise.open();
+
     test.Game();
     measure.SetMainWindowInput(forename, name, notice, birthday);
-    //measure.Game();
     // free labels
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");

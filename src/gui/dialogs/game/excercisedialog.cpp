@@ -8,13 +8,23 @@ ExcerciseDialog::ExcerciseDialog(QWidget *parent) :
     ui(new Ui::ExcerciseDialog)
 {
     ui->setupUi(this);
-    QPushButton *retry = ui->buttonBox->button(QDialogButtonBox::Retry);
-    QPushButton *measure = ui->buttonBox->button(QDialogButtonBox::Ok);
-    connect(retry, SIGNAL(clicked()), this, SLOT(on_buttonBox_clicked()));
-    connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(on_buttonBox_accepted()));
+    connect(ui->pushButtonMeasure, SIGNAL(clicked()), this, SLOT(measure()));
+    connect(ui->pushButtonRetry, SIGNAL(clicked()), this, SLOT(testing()));
 }
 
 ExcerciseDialog::~ExcerciseDialog()
 {
     delete ui;
+}
+
+void ExcerciseDialog::measure() {
+    std::cout << "measure - slot!!!"<<std::endl;
+    m->Game();
+    this->open();
+}
+
+void ExcerciseDialog::testing() {
+    std::cout << "testing - slot!!!"<<std::endl;
+    t->Game();
+    this->open();
 }

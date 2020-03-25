@@ -5,6 +5,7 @@
 // windows
 #include "dialogs/main/aboutgamedialog.h"
 #include "dialogs/main/reminder.h"
+#include "dialogs/game/excercisedialog.h"
 #include "game/game.h"
 #include "src/background/run.h"
 
@@ -36,7 +37,8 @@ private:
     Reminder reminder_dialog;
     // aboutDialog
     AboutGameDialog about_game;
-
+    // excercise dialog
+    ExcerciseDialog excercise;
     Run *r;
     bool init;  // check if the game was init;
 };

@@ -40,9 +40,6 @@ public:
     ExcerciseDialog* GetExcerciseDialog() { return &excercise;}
 protected:
     void ResetWindow(int arg_time); // override to show smiles
-// SLOT
-private slots:
-    void on_action_excercise_triggered();
 private:
     ExcerciseDialog excercise;
     GameWindow game;

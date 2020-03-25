@@ -59,26 +59,3 @@ bool TestGame::Game(){
     game.close();
     return true;
 }
-
-// SLOT
-void TestGame::on_action_excercise_triggered(){
-    cout << "NEW GAME???"<<endl;
-    Game();
-}
-
-// protected Methods - override ResetWindow
-/*void TestGame::ResetWindow(int arg_time){
-    bool check = false;
-    QString right_or_wrong_smile;   // saves the smile paths
-    GameWindow::ResetWindow(arg_time);
-    // if a key was pressed - show a smile
-    if(!(run->GetTrial(&check)).GetPressed())
-        return;
-    // saves the picture path in right_or_wrong_smile
-    if((run->GetTrial(&check)).GetReaction())           // happy smile
-        right_or_wrong_smile = CORRECT;
-    else                                                // sad smile
-        right_or_wrong_smile = WRONG;
-    // paint the picture
-    ui->Centreline->setPixmap(right_or_wrong_smile);
-}*/

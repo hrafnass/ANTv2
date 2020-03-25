@@ -8,22 +8,13 @@ ExcerciseDialog::ExcerciseDialog(QWidget *parent) :
     ui(new Ui::ExcerciseDialog)
 {
     ui->setupUi(this);
+    QPushButton *retry = ui->buttonBox->button(QDialogButtonBox::Retry);
+    QPushButton *measure = ui->buttonBox->button(QDialogButtonBox::Ok);
+    connect(retry, SIGNAL(clicked()), this, SLOT(on_buttonBox_clicked()));
+    connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(on_buttonBox_accepted()));
 }
 
 ExcerciseDialog::~ExcerciseDialog()
 {
     delete ui;
-}
-
-void ExcerciseDialog::on_buttonBox_accepted()
-{
-    cout << "[*] Start a new excercise game" << endl;
-    this->close();
-    emit buttonPressed();
-}
-
-// no button was pushed
-void ExcerciseDialog::on_buttonBox_rejected() {
-    cout << "[*] Quit the excercise!!!" << endl;
-    this->close();
 }

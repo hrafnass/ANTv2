@@ -2,6 +2,7 @@
 #define EXCERCISEDIALOG_H
 
 #include <QDialog>
+#include <QtWidgets>
 
 #include <iostream>
 
@@ -17,17 +18,8 @@ public:
     explicit ExcerciseDialog(QWidget *parent = nullptr);
     ~ExcerciseDialog();
 
-signals:
-    void buttonPressed();
-
-private slots:
-    void on_buttonBox_accepted();
-
-    void on_buttonBox_rejected();
-
 private:
     Ui::ExcerciseDialog *ui;
-
 };
 
 #endif // EXCERCISEDIALOG_H

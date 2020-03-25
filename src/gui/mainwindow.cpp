@@ -51,7 +51,7 @@ void MainWindow::on_startGamePushButton_clicked()
     }
     test.Game();
     measure.SetMainWindowInput(forename, name, notice, birthday);
-    measure.Game();
+    //measure.Game();
     // free labels
     ui->forenameLineEdit->setText("");
     ui->nameLineEdit->setText("");

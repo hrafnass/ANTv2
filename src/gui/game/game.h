@@ -33,12 +33,11 @@ class TestGame : public QObject
     Q_OBJECT
 
 public:
-    TestGame() {
-        game.setCursor(Qt::BlankCursor);
-        connect(&excercise,SIGNAL(buttonPressed()), this, SLOT(on_action_excercise_triggered()));
-    }     // construcotr
+    TestGame() { game.setCursor(Qt::BlankCursor);}     // construcotr
     void InitGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){ game.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);}
     bool Game();    // game
+    // getter for ExcerciseDialog
+    ExcerciseDialog* GetExcerciseDialog() { return &excercise;}
 protected:
     void ResetWindow(int arg_time); // override to show smiles
 // SLOT

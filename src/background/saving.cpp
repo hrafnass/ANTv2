@@ -47,10 +47,22 @@ void CSVDocument::WriteCSVFile(Run *arg_run){
 }
 
 // private Methods
-bool CSVDocument::LookUpTable_Run(Trial *arg_trial, QString *arg_cue, QString *arg_combinations, QString *arg_position, QString *arg_mid_arrow){
+bool CSVDocument::LookUpTable_Trial(Trial *arg_trial, QString *arg_cue, QString *arg_combinations, QString *arg_position, QString *arg_mid_arrow){
     if(arg_trial == nullptr)
         return false;
 
+    // set the look up for Cue
+    if(!LookUpTableCue(arg_trial, arg_cue))
+        return false;
+
+    // set the look up for combinations
+    if(!LookUpTableComb(arg_trial, arg_combinations))
+        return false;
+
+    return true;
+}
+
+bool CSVDocument::LookUpTableCue(Trial *arg_trial, QString *arg_cue){
     // translate CUE = Star Position
     switch (arg_trial->GetCue()) {
     case TrialComponents::Cue::non_cue:
@@ -71,6 +83,25 @@ bool CSVDocument::LookUpTable_Run(Trial *arg_trial, QString *arg_cue, QString *a
     default:
         *arg_cue = "cue_error";
         cout << "[***] Error: Can't fine Cue"<< endl;
+        return false;
+    }
+
+    return true;
+}
+
+bool CSVDocument::LookUpTableComb(Trial *arg_trial, QString *arg_combinations){
+    // Translate arrowcombinations
+    switch (arg_trial->GetArrowCombinations()) {
+    case TrialComponents::ArrowCombinations::neutral:
+        *arg_combinations = "neutral";
+        break;
+    case TrialComponents::ArrowCombinations::congruent:
+        *arg_combinations = "congruent";
+        break;
+    case TrialComponents::ArrowCombinations::incongruent:
+        *arg_combinations = "incongruent";
+        break;
+    default:
         return false;
     }
 

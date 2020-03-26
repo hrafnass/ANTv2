@@ -40,7 +40,12 @@ public:
                      // saves all calculated and measured values
 private:
     // transforms the enum values into strings i.e. non_cue for 0 into "non_cue"
-    bool LookUpTable_Run(Trial *arg_trial, QString* arg_cue, QString* arg_combinations, QString* arg_position, QString* arg_mid_arrow);
+    bool LookUpTable_Trial(Trial *arg_trial, QString* arg_cue, QString* arg_combinations, QString* arg_position, QString* arg_mid_arrow);
+    bool LookUpTableCue(Trial *arg_trial, QString* arg_cue);
+    bool LookUpTableComb(Trial *arg_trial, QString* arg_combinations);
+    bool LookUpTablePos(Trial *arg_trial, QString* arg_position);
+    bool LookUpTableMid(Trial *arg_trial, QString* arg_mid_arrow);
+
     QString name;
     QString forename;
     QString birthday;

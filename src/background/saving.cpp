@@ -1,5 +1,6 @@
 #include "saving.h"
-
+//SAVING
+// protected functions for Saving class
 // opens the csv file
 bool Saving::OpenCSVFile() {
     bool opened = file.open(QFile::WriteOnly);              // tries to open the csv file in write only mode
@@ -30,4 +31,48 @@ QString Saving::CreateFilename(QString name, QString forename){
     QString filename = name+"_"+forename+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm")+".csv";
     // returns the filename
     return filename;
+}
+
+//CSVDOCUMENT
+// public Methods
+void CSVDocument::SetInformations(QString arg_name, QString arg_forename, QString arg_birthday, QString arg_comment){
+    name = arg_name;
+    forename = arg_forename;
+    birthday = arg_birthday;
+    comment = arg_comment;
+}
+
+void CSVDocument::WriteCSVFile(Run *arg_run){
+
+}
+
+// private Methods
+bool CSVDocument::LookUpTable_Run(Trial *arg_trial, QString *arg_cue, QString *arg_combinations, QString *arg_position, QString *arg_mid_arrow){
+    if(arg_trial == nullptr)
+        return false;
+
+    // translate CUE = Star Position
+    switch (arg_trial->GetCue()) {
+    case TrialComponents::Cue::non_cue:
+        *arg_cue = "non_cue";
+        break;
+    case TrialComponents::Cue::center_cue:
+        *arg_cue = "center_cue";
+        break;
+    case TrialComponents::Cue::double_cue:
+        *arg_cue = "double_cue";
+        break;
+    case TrialComponents::Cue::spatial_cue_up:
+        *arg_cue = "spatial_cue_up";
+        break;
+    case TrialComponents::Cue::spatial_cue_down:
+        *arg_cue = "spatial_cue_down";
+        break;
+    default:
+        *arg_cue = "cue_error";
+        cout << "[***] Error: Can't fine Cue"<< endl;
+        return false;
+    }
+
+    return true;
 }

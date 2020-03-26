@@ -53,6 +53,10 @@ private:
     void SleepGame(int arg_sleep_time);
     void ResetWindow(int arg_time);
 
+private:
+    void SetSizeOfAllLabels();
+    void IterateLabelList(QList<QLabel *> arg_list, int arg_w, int arg_h);
+
     // variables
     // needed vor the grafic surface
     Ui::GameWindow *ui;
@@ -68,7 +72,6 @@ private:
     // The Run for the Game
     Run *run = nullptr;
     unsigned int number_of_runs; // saves how many runs are used - if it isn't set or < 1 standard is 2
-private:
     bool run_game_loop; // for ESC - quit the game loop
 };
 

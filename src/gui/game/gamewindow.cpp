@@ -29,6 +29,7 @@ GameWindow::GameWindow(QWidget *parent) :
     // changes the size
     ui->verticalSpacerUpMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui->verticalSpacerDownMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
+    SetSizeOfAllLabels();
     // set the standard value for runs - game
     number_of_runs = NBR_OF_RUNS_GAME;
 
@@ -77,7 +78,7 @@ bool GameWindow::GameLoop(int arg_one_run){
     // runs so long a multiple from arg_one_run is reached
     for(int i=0; i < arg_one_run; ++i){
         // paint stars
-        Trial actuell_trial = run->GetTrial(&in_size);
+        actuell_trial = run->GetTrial(&in_size);
         PaintStars(&actuell_trial);
         // wait and delete pixmaps
         ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms
@@ -96,6 +97,7 @@ bool GameWindow::GameLoop(int arg_one_run){
         if(!run_game_loop)
         {
             cout << "[***] Warning: run_game_loop is false -> ESC was pressed" << endl;
+            return false;
         }
     }
 
@@ -267,6 +269,10 @@ void GameWindow::PaintArrows(Trial *arg_trial){
     default:
         cout << "[***] Error: This ArrowPosition doesn't exists!!!" << endl;
     }
+
+    // set a fixed size for the mid labels
+    ui->MidAbove->setFixedSize(w, h);
+    ui->MidBelow->setFixedSize(w, h);
 }
 
 // images:
@@ -306,4 +312,28 @@ void GameWindow::PaintPlus(){
     // paint
     ui->Centreline->setFixedSize(w, h);
     ui->Centreline->setPixmap(plus);
+}
+
+// private Methods
+void GameWindow::SetSizeOfAllLabels(){
+    int w_plus = CmToPixelNbrX(PLUS_X);
+    int h_plus = CmToPixelNbrY(PLUS_Y);
+
+    int w_arrow = CmToPixelNbrX(ARROW_X);
+    int h_arrow = CmToPixelNbrY(ARROW_Y);
+
+    ui->Centreline->setFixedSize(w_plus, h_plus);
+
+    IterateLabelList(up_arrows, w_arrow, h_arrow);
+    IterateLabelList(down_arrows, w_arrow, h_arrow);
+}
+
+void GameWindow::IterateLabelList(QList<QLabel *> arg_list, int arg_w, int arg_h){
+    int pos = 0;
+
+    for(QList<QLabel*>::iterator it = arg_list.begin(); it != arg_list.end(); ++it){
+        pos = it - arg_list.begin();
+        // paint all outer images
+        arg_list.at(pos)->setFixedSize(arg_w, arg_h);
+    }
 }

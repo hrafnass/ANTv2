@@ -50,9 +50,8 @@ void MainWindow::on_startGamePushButton_clicked()
         reminder_dialog.show();
         return;
     }
-    excercise.open();
-
     test.Game();
+    excercise.open();
     measure.SetMainWindowInput(forename, name, notice, birthday);
     // free labels
     ui->forenameLineEdit->setText("");

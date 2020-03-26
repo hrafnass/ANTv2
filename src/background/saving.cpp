@@ -133,3 +133,20 @@ bool CSVDocument::LookUpTablePos(Trial *arg_trial, QString *arg_position){
     }
     return true;
 }
+
+bool CSVDocument::LookUpTableMid(Trial *arg_trial, QString *arg_mid_arrow){
+    switch (arg_trial->GetDirectionMidArrow()) {
+    case TrialComponents::DirectionMidArrow::left:
+        *arg_mid_arrow = "left";
+        break;
+    case TrialComponents::DirectionMidArrow::right:
+        *arg_mid_arrow = "right";
+        break;
+    default:
+        *arg_mid_arrow = "error_mid_arrow";
+        cout << "[***]Errror: Error in LookUpTableMid" << endl;
+        return false;
+    }
+
+    return true;
+}

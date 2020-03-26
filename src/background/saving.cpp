@@ -59,6 +59,14 @@ bool CSVDocument::LookUpTable_Trial(Trial *arg_trial, QString *arg_cue, QString 
     if(!LookUpTableComb(arg_trial, arg_combinations))
         return false;
 
+    // set the look up for position
+    if(!LookUpTableComb(arg_trial, arg_position))
+        return false;
+
+    // set the look up for midarrow
+    if(!LookUpTableComb(arg_trial, arg_mid_arrow))
+        return false;
+
     return true;
 }
 

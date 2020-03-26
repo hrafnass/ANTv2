@@ -110,8 +110,26 @@ bool CSVDocument::LookUpTableComb(Trial *arg_trial, QString *arg_combinations){
         *arg_combinations = "incongruent";
         break;
     default:
+        cout << "[***] Error: Error in LookUpTableComb"<<endl;
+        *arg_combinations = "error_combinations";
         return false;
     }
 
+    return true;
+}
+
+bool CSVDocument::LookUpTablePos(Trial *arg_trial, QString *arg_position){
+    switch (arg_trial->GetArrowPositions()) {
+    case TrialComponents::ArrowPositions::up:
+        *arg_position = "up";
+        break;
+    case TrialComponents::ArrowPositions::down:
+        *arg_position = "down";
+        break;
+    default:
+        *arg_position = "error_position";
+        cout << "[***] Error: Error in LookUpTablePos" << endl;
+        return false;
+    }
     return true;
 }

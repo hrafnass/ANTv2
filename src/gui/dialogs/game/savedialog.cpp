@@ -19,12 +19,10 @@ SaveDialog::~SaveDialog()
 
 // public Methods
 // Setter
-void SaveDialog::SetSaving(Run *arg_r, QString* arg_name, QString* arg_fname, QString* arg_comm, QString* arg_birth){
+void SaveDialog::SetSaving(Run *arg_r, QString* arg_name, QString* arg_fname){
     r = arg_r;
     name = arg_name;
     forename = arg_fname;
-    comment = arg_comm;
-    birthday = arg_birth;
 }
 
 

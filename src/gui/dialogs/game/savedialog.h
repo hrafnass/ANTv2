@@ -22,7 +22,7 @@ public:
     explicit SaveDialog(QWidget *parent = nullptr);
     ~SaveDialog();
     // Setter for all needed values
-    void SetSaving(Run *arg_r, QString* arg_name, QString* arg_fname, QString* arg_comm, QString* arg_birth);    // to init the save and calculation of all values
+    void SetSaving(Run *arg_r, QString* arg_name, QString* arg_fname);    // to init the save and calculation of all values
 
 private slots:
     void printValues();
@@ -34,8 +34,6 @@ private:
     Run *r;
     QString *name;
     QString *forename;
-    QString *comment;
-    QString *birthday;
 };
 
 #endif // SAVEDIALOG_H

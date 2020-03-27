@@ -15,12 +15,12 @@ class Saving
 {
 protected:
     // open and close a file descriptor
-    bool OpenCSVFile();                                                                 // open a new csv-file
-    void CloseCSVFile();                                                                // closes the csv-file
+    bool OpenFile();                                                                 // open a new csv-file
+    void CloseFile();                                                                // closes the csv-file
     // qfile descriptor settings
-    void SetQFileDescriptor(QString name, QString forename);                            // set the standard settings for the qfile-descriptor
+    void SetQFileDescriptor(QString name, QString forename, QString filetype);          // set the standard settings for the qfile-descriptor
     // functions
-    QString CreateFilename(QString name, QString forename);         // creates a new filename for the csv-file
+    QString CreateFilename(QString name, QString forename, QString filetype);         // creates a new filename for the csv-file
     // variables
     QFile file;                 // saves the "qt-file descriptor"
 };
@@ -28,7 +28,7 @@ protected:
 class HTMLDocument : public Saving {
 public:
     bool CreateHTMLFile(QString* name, QString* fname); // Creates the HTML File
-    bool WriteHTMLFile();                           // Writes the HTML FILE and Close it
+    bool WriteHTMLFile(Calculation *c);                 // Writes the HTML FILE and Close it
 };
 
 
@@ -38,7 +38,7 @@ public:
     // write and close the file
     bool WriteCSVFile(Run *arg_run);
     // setter for all informations
-    void SetInformations(QString arg_name, QString arg_forename, QString arg_birthday, QString arg_comment);
+    void SetInformations(QString* arg_name, QString* arg_forename, QString* arg_birthday, QString* arg_comment);
                      // saves all calculated and measured values
 private:
     // transforms the enum values into strings i.e. non_cue for 0 into "non_cue"
@@ -48,10 +48,10 @@ private:
     bool LookUpTablePos(Trial *arg_trial, QString* arg_position);
     bool LookUpTableMid(Trial *arg_trial, QString* arg_mid_arrow);
 
-    QString name;
-    QString forename;
-    QString birthday;
-    QString comment;
+    QString* name;
+    QString* forename;
+    QString* birthday;
+    QString* comment;
 };
 
 #endif // SAVING_H

@@ -20,7 +20,7 @@ private:
     // measurement dialogs - and game window
     BreakDialog pause;
     GameWindow game;
-    //SaveDialog save;
+    SaveDialog save;
     // input
     QString forename;
     QString name;

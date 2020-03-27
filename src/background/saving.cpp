@@ -33,6 +33,29 @@ QString Saving::CreateFilename(QString name, QString forename, QString filetype)
     return filename;
 }
 
+//HTMLDOCUMENT
+// public methods
+
+// creates the HTML File
+bool HTMLDocument::CreateHTMLFile(QString *name, QString *fname){
+    QString filename;
+    bool ret = OpenFile();
+    if(!ret){
+        cout << "[***] Error: Can't open File in CreateHTMLFile"<<endl;
+        return false;
+    }
+    // names the file
+    SetQFileDescriptor(*name,*fname,"html");
+    return true;
+}
+
+bool HTMLDocument::WriteHTMLFile(Calculation *c){
+    QTextStream save(&file);        // output stream for a file
+
+    save << "<html><body>Not written yet!!!</body></html>"<<endl;
+    return true;
+}
+
 //CSVDOCUMENT
 // public Methods
 void CSVDocument::SetInformations(QString* arg_name, QString* arg_forename, QString* arg_birthday, QString* arg_comment){
@@ -68,16 +91,18 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
         actuell_trial = arg_run->GetTrial(&in_size);
         if(!LookUpTable_Trial(&actuell_trial, &cue, &comb, &pos, &mid)){
                 cout << "Quit WriteCSVFile" << endl;
+                CloseFile();
                 return false;
         }
         // save i-th number line of the body
-        save << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<","<arg_birthday <<","<< actuell_trial.GetCue();
-        save <<","<<actuell_trial.GetArrowCombinations() <<","<< actuell_trial.GetArrowPositions() << "," actuell_tral.GetDirectionMidArrow()<<endl;
+        save << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<","<<birthday <<","<< actuell_trial.GetCue();
+        save <<","<<actuell_trial.GetArrowCombinations() <<","<< actuell_trial.GetArrowPositions() << "," << actuell_trial.GetDirectionMidArrow()<<","<<comment<<endl;
         if(!arg_run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in WriteCSVFile - CSVDocument" << endl;
             break;
         }
     }
+    CloseFile();
     return true;
 }
 

@@ -26,3 +26,22 @@ void SaveDialog::SetSaving(Run *arg_r, QString* arg_name, QString* arg_fname, QS
     comment = arg_comm;
     birthday = arg_birth;
 }
+
+
+// private slots
+void SaveDialog::printValues(){
+    HTMLDocument html;
+    Calculation calc;
+    bool ret = false;
+
+    ret = html.CreateHTMLFile(name, forename);
+    if(ret == false){
+        cout << "[***] Error: Error in printValues(CreateHTMLFile) - private Slot SaveDialog"<<endl;
+        return;
+    }
+    ret = html.WriteHTMLFile();
+    if(ret == false){
+        cout << "[***] Error: Error in printValues(WriteHTMLFile) - private Slot SaveDialog"<<endl;
+        return;
+    }
+}

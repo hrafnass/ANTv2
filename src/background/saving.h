@@ -27,13 +27,15 @@ protected:
 
 class HTMLDocument : public Saving {
 public:
-    writeHTMLFile();
+    bool CreateHTMLFile(QString* name, QString* fname); // Creates the HTML File
+    bool WriteHTMLFile();                           // Writes the HTML FILE and Close it
 };
 
 
 class CSVDocument : public Saving {
 public:
-    // write
+    bool CreateCSVFile();   // Creates the CSV saving file
+    // write and close the file
     bool WriteCSVFile(Run *arg_run);
     // setter for all informations
     void SetInformations(QString arg_name, QString arg_forename, QString arg_birthday, QString arg_comment);

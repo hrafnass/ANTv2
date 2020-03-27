@@ -8,6 +8,7 @@
 #include "src/background/run.h"
 // classes for values and saving
 #include "src/background/saving.h"
+#include "src/background/calculation.h"
 
 namespace Ui {
 class SaveDialog;
@@ -29,6 +30,7 @@ private slots:
 private:
     // Variables
     Ui::SaveDialog *ui;
+    // all needed values
     Run *r;
     QString *name;
     QString *forename;

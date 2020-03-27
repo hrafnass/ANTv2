@@ -42,8 +42,30 @@ void CSVDocument::SetInformations(QString arg_name, QString arg_forename, QStrin
     comment = arg_comment;
 }
 
-void CSVDocument::WriteCSVFile(Run *arg_run){
-
+bool CSVDocument::WriteCSVFile(Run *arg_run){
+    QString cue, comb, pos, mid;    // Strings for the lookup table
+    bool in_size = false;
+    Trial actuell_trial;
+    QTextStream save(&file);        // output stream for a file
+    // csv table head
+    save << "trial number,reaction time,right desicion,birthday,cue,combinations,position,position mid arrow,comment"<< endl;
+    // csv table body
+    for(unsigned int i=0; i < arg_run->GetRunLength(); ++i){
+        // paint stars
+        actuell_trial = arg_run->GetTrial(&in_size);
+        if(!LookUpTable_Trial(&actuell_trial, &cue, &comb, &pos, &mid)){
+                cout << "Quit WriteCSVFile" << endl;
+                return false;
+        }
+        // save i-th number line of the body
+        save << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<","<arg_birthday <<","<< actuell_trial.GetCue();
+        save <<","<<actuell_trial.GetArrowCombinations() <<","<< actuell_trial.GetArrowPositions() << "," actuell_tral.GetDirectionMidArrow()<<endl;
+        if(!arg_run->NextTrial()){
+            cout << "[***] Warning: Run->NextTrial return false in WriteCSVFile - CSVDocument" << endl;
+            break;
+        }
+    }
+    return true;
 }
 
 // private Methods

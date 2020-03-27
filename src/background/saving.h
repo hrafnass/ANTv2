@@ -25,16 +25,16 @@ protected:
     QFile file;                 // saves the "qt-file descriptor"
 };
 
-/*class HTMLDocument : public Saving {
+class HTMLDocument : public Saving {
 public:
-    writeHTMLFile(Calculation *arg_calc);
-};*/
+    writeHTMLFile();
+};
 
 
 class CSVDocument : public Saving {
 public:
     // write
-    void WriteCSVFile(Run *arg_run);
+    bool WriteCSVFile(Run *arg_run);
     // setter for all informations
     void SetInformations(QString arg_name, QString arg_forename, QString arg_birthday, QString arg_comment);
                      // saves all calculated and measured values

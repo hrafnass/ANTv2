@@ -17,6 +17,9 @@ public:
     void SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday);
     void InitGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){ game.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);}
 private:
+    // save files
+    bool SaveCSV();
+    bool SaveHTML();
     // measurement dialogs - and game window
     BreakDialog pause;
     GameWindow game;

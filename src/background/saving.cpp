@@ -11,6 +11,7 @@ bool Saving::OpenFile() {
 void Saving::SetQFileDescriptor(QString name, QString forename, QString filetype){
         QString filename = CreateFilename(name, forename, filetype);// creates the filename for the csv file
         file.setFileName(filename);                             // sets the filename of the file
+        cout << "filename"<<endl;
 }
 
 // closes the csv file
@@ -38,14 +39,15 @@ QString Saving::CreateFilename(QString name, QString forename, QString filetype)
 
 // creates the HTML File
 bool HTMLDocument::CreateHTMLFile(QString *name, QString *fname){
-    QString filename;
-    bool ret = OpenFile();
+    bool ret;
+    // names the file
+    SetQFileDescriptor(*name,*fname,"html");
+    //
+    ret = OpenFile();
     if(!ret){
         cout << "[***] Error: Can't open File in CreateHTMLFile"<<endl;
         return false;
     }
-    // names the file
-    SetQFileDescriptor(*name,*fname,"html");
     return true;
 }
 
@@ -67,14 +69,14 @@ void CSVDocument::SetInformations(QString* arg_name, QString* arg_forename, QStr
 
 // Creats the CSV file
 bool CSVDocument::CreateCSVFile(){
-    QString filename;
-    bool ret = OpenFile();
+    bool ret;
+    // names the file
+    SetQFileDescriptor(*name,*forename,"csv");
+    ret = OpenFile();
     if(!ret){
         cout << "[***] Error: Can't open File in CreateCSVFile"<<endl;
         return false;
     }
-    // names the file
-    SetQFileDescriptor(*name,*forename,"csv");
     return true;
 }
 

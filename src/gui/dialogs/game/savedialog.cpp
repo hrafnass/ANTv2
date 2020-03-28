@@ -37,7 +37,7 @@ void SaveDialog::printValues(){
         cout << "[***] Error: Error in printValues(CreateHTMLFile) - private Slot SaveDialog"<<endl;
         return;
     }
-    ret = html.WriteHTMLFile();
+    ret = html.WriteHTMLFile(&calc);
     if(ret == false){
         cout << "[***] Error: Error in printValues(WriteHTMLFile) - private Slot SaveDialog"<<endl;
         return;

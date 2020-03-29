@@ -55,9 +55,9 @@ bool Run::NextTrial(){
 // returns the actuel trial; it doesn't need a check the iterator is at the end,
 // because NextTrial is the only way to iterate over
 Trial Run::GetTrial(bool *size){
-    Trial t;    // standard trial if the trial vector have the size 0
     // if the size is 0, we can't iterate over v_trial -> *size = false
     if(v_trial.size() == 0){
+        Trial t;    // standard trial if the trial vector have the size 0
         cout << "[***] Error: Trial Vector have the size 0!!!" << endl;
         *size = false;
         return t;

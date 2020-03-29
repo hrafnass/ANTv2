@@ -26,6 +26,8 @@ public:
     void SetPassNbr(int arg_pass_number);
     // setter for the number of runs
     void SetNbrOfRuns(unsigned int arg_nbr_of_runs);
+    // setter for test game check
+    void SetTest(bool arg_test){ test = arg_test;}
     // Getter for GameWindow class
     Run* GetRun(){ return run;}
     unsigned int GetNbrOfRuns(){ return number_of_runs;}
@@ -53,7 +55,6 @@ private:
     void SleepGame(int arg_sleep_time);
     void ResetWindow(int arg_time);
 
-private:
     void SetSizeOfAllLabels();
     void IterateLabelList(QList<QLabel *> arg_list, int arg_w, int arg_h);
 
@@ -73,6 +74,8 @@ private:
     Run *run = nullptr;
     unsigned int number_of_runs; // saves how many runs are used - if it isn't set or < 1 standard is 2
     bool run_game_loop; // for ESC - quit the game loop
+    // check if the game is a test game
+    bool test;
 };
 
 #endif // GAMEWINDOW_H

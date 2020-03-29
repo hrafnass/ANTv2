@@ -34,6 +34,7 @@ GameWindow::GameWindow(QWidget *parent) :
     number_of_runs = NBR_OF_RUNS_GAME;
 
     run_game_loop = true;   // game loop is allowed to run
+    test = false;           // standard setting for test game is false = no test game
 }
 
 // destructor
@@ -79,6 +80,7 @@ bool GameWindow::GameLoop(int arg_one_run){
     for(int i=0; i < arg_one_run; ++i){
         // paint stars
         actuell_trial = run->GetTrial(&in_size);
+        cout << "ACTUELL POSITION OF I AND TRIAL: "<<i<<" "<<run->GetPosition()<<endl;
         PaintStars(&actuell_trial);
         // wait and delete pixmaps
         ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms
@@ -144,9 +146,11 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     // switch for all wanted keys
     switch (event->key()) {
     case Qt::Key_Left:
+        cout << "press"<<endl;
         SaveMeasuredValues(TrialComponents::DirectionMidArrow::left);
         break;
     case Qt::Key_Right:
+        cout << "press"<<endl;
         SaveMeasuredValues(TrialComponents::DirectionMidArrow::right);
         break;
     default:

@@ -173,10 +173,15 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
 // private Mehtods
 void GameWindow::SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction){
     bool check = false;
+    cout << "SaveMeasuredValues"<<endl;
     if(arg_direction == run->GetTrial(&check).GetDirectionMidArrow()){
         run->SetMeasuredValues(timer.elapsed(), true, true);
+        cout << "\tcorrect"<<endl;
+        PaintFeedback(CORRECT);
     }else {
         run->SetMeasuredValues(timer.elapsed(), false, true);
+        cout << "\twrong"<<endl;
+        PaintFeedback(WRONG);
     }
 }
 
@@ -316,6 +321,16 @@ void GameWindow::PaintPlus(){
     // paint
     ui->Centreline->setFixedSize(w, h);
     ui->Centreline->setPixmap(plus);
+}
+
+// paint the feedback
+void GameWindow::PaintFeedback(string arg_feedback){
+    cout << "test value"<< test <<endl;
+    if(test){
+        QString feedback = QString::fromStdString(arg_feedback);
+        ui->Centreline->setPixmap(feedback);
+        cout << "paint feedback"<<endl;
+    }
 }
 
 // private Methods

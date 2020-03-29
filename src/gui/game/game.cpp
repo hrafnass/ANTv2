@@ -4,6 +4,7 @@
 // public Methods
 bool Measure::Game(){
     Run *run = game.GetRun();
+    game.SetTest(NO_TEST);
     if(run==nullptr){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
         return false;
@@ -37,6 +38,7 @@ void Measure::SetMainWindowInput(QString arg_forename, QString arg_name, QString
 
 // private Methods
 bool Measure::SaveCSV(){
+    cout << "save csv"<<endl;
     csv.SetInformations(&name, &forename, &birthday, &notice);
     if(!csv.CreateCSVFile()){
         cout << "[***] Error: Measure - SaveCSV() -> can't create csv file"<<endl;
@@ -57,6 +59,7 @@ bool Measure::SaveCSV(){
 //TestGame Constructor
 bool TestGame::Game(){
     Run *run = game.GetRun();
+    game.SetTest(TEST);
     if(run==nullptr){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
         return false;
@@ -71,7 +74,6 @@ bool TestGame::Game(){
             return false;
         }
     }
-    //arg_excercise->open();
     game.close();
     return true;
 }

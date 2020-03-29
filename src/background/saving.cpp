@@ -97,19 +97,22 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
                 return false;
         }
         // save i-th number line of the body
-        save << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<","<<birthday <<","<< actuell_trial.GetCue();
-        save <<","<<actuell_trial.GetArrowCombinations() <<","<< actuell_trial.GetArrowPositions() << "," << actuell_trial.GetDirectionMidArrow()<<","<<comment<<endl;
+        save << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<",";
+        save <<","<< cue <<","<<comb <<","<< pos << "," << mid <<","<<endl;
         if(!arg_run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in WriteCSVFile - CSVDocument" << endl;
             break;
         }
     }
+    save << arg_run->GetPosition() <<","<<","<<",";
+    save << *birthday <<","<<","<<","<<"," <<","<<*comment<<endl;
     CloseFile();
     return true;
 }
 
 // private Methods
 bool CSVDocument::LookUpTable_Trial(Trial *arg_trial, QString *arg_cue, QString *arg_combinations, QString *arg_position, QString *arg_mid_arrow){
+    cout << "POSITION: CUE: "<<arg_cue<<" ELSE: "<<arg_combinations<<" "<<arg_position<<" "<<arg_mid_arrow<<endl;
     if(arg_trial == nullptr)
         return false;
 
@@ -122,13 +125,12 @@ bool CSVDocument::LookUpTable_Trial(Trial *arg_trial, QString *arg_cue, QString 
         return false;
 
     // set the look up for position
-    if(!LookUpTableComb(arg_trial, arg_position))
+    if(!LookUpTablePos(arg_trial, arg_position))
         return false;
 
     // set the look up for midarrow
-    if(!LookUpTableComb(arg_trial, arg_mid_arrow))
+    if(!LookUpTableMid(arg_trial, arg_mid_arrow))
         return false;
-
     return true;
 }
 
@@ -136,22 +138,22 @@ bool CSVDocument::LookUpTableCue(Trial *arg_trial, QString *arg_cue){
     // translate CUE = Star Position
     switch (arg_trial->GetCue()) {
     case TrialComponents::Cue::non_cue:
-        *arg_cue = "non_cue";
+        *arg_cue = "non cue";
         break;
     case TrialComponents::Cue::center_cue:
-        *arg_cue = "center_cue";
+        *arg_cue = "center cue";
         break;
     case TrialComponents::Cue::double_cue:
-        *arg_cue = "double_cue";
+        *arg_cue = "double cue";
         break;
     case TrialComponents::Cue::spatial_cue_up:
-        *arg_cue = "spatial_cue_up";
+        *arg_cue = "spatial cue up";
         break;
     case TrialComponents::Cue::spatial_cue_down:
-        *arg_cue = "spatial_cue_down";
+        *arg_cue = "spatial cue down";
         break;
     default:
-        *arg_cue = "cue_error";
+        *arg_cue = "cue error";
         cout << "[***] Error: Can't fine Cue"<< endl;
         return false;
     }
@@ -176,6 +178,7 @@ bool CSVDocument::LookUpTableComb(Trial *arg_trial, QString *arg_combinations){
         *arg_combinations = "error_combinations";
         return false;
     }
+    cout << "COMB: "<<arg_combinations<< " "<<arg_combinations->toStdString()<< " ";
 
     return true;
 }
@@ -189,10 +192,11 @@ bool CSVDocument::LookUpTablePos(Trial *arg_trial, QString *arg_position){
         *arg_position = "down";
         break;
     default:
-        *arg_position = "error_position";
+        *arg_position = "error position";
         cout << "[***] Error: Error in LookUpTablePos" << endl;
         return false;
     }
+    cout << "POS: "<<arg_position<< " "<<arg_position->toStdString()<< " ";
     return true;
 }
 
@@ -209,6 +213,6 @@ bool CSVDocument::LookUpTableMid(Trial *arg_trial, QString *arg_mid_arrow){
         cout << "[***]Errror: Error in LookUpTableMid" << endl;
         return false;
     }
-
+    cout << "MID: "<<arg_mid_arrow<< " "<<arg_mid_arrow->toStdString()<< " ";
     return true;
 }

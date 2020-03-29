@@ -41,7 +41,7 @@ void Trial::SetReactions(bool arg_reaction, int arg_reaction_time, bool arg_pres
     reaction = arg_reaction;
     reaction_time = arg_reaction_time;
     was_pressed = arg_pressed;
-    cout << "[*] SetReaction: " << reaction << " " << reaction_time << " " << was_pressed << endl;
+    //cout << "[*] SetReaction: " << reaction << " " << reaction_time << " " << was_pressed << endl;
 }
 
 

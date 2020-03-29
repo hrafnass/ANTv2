@@ -11,14 +11,14 @@ bool Measure::Game(){
     run->SetMeasuredValues(-1, false, false);
     game.showFullScreen();
     // normal Game
-    /*for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
+    for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
         if(!game.GameLoop(TRIALS_IN_RUN_GAME)){
             cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
             game.close();
             return false;
         }
         pause.open();   // pause between the runs
-    }*/
+    }
     game.close();
     // saving the csv file
     if(!SaveCSV())

@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <QObject>
+#include <QtWidgets>
 
 #include "gamewindow.h"
 #include "src/gui/dialogs/game/breakdialog.h"
@@ -17,6 +18,8 @@ public:
     void SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday);
     void InitGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){ game.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);}
 private:
+    // game loop pause
+    int PauseWindow();
     // save files
     bool SaveCSV();
     bool SaveHTML();

@@ -2,6 +2,7 @@
 #define GAMEWINDOW_H
 
 #include "game_headers.h"
+#include "src/gui/dialogs/game/breakdialog.h"
 
 namespace Ui {
 class GameWindow;
@@ -77,6 +78,8 @@ private:
     bool run_game_loop; // for ESC - quit the game loop
     // check if the game is a test game
     bool test;
+
+    int testing =0;
 };
 
 #endif // GAMEWINDOW_H

@@ -4,6 +4,7 @@
 // public Methods
 bool Measure::Game(){
     Run *run = game.GetRun();
+    QEventLoop ev;
     game.SetTest(NO_TEST);
     if(run==nullptr){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
@@ -20,7 +21,7 @@ bool Measure::Game(){
             game.close();
             return false;
         }
-        pause.open();   // pause between the runs
+        PauseWindow();
     }
     game.close();
     // saving the csv file
@@ -53,6 +54,12 @@ bool Measure::SaveCSV(){
     return true;
 }
 
+int Measure::PauseWindow(){
+    QEventLoop loop;
+    pause.open();
+    QObject::connect(&pause, SIGNAL(finished(int)), &loop, SLOT(quit()));
+    return loop.exec();
+}
 
 // protected Methods
 

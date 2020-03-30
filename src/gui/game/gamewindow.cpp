@@ -10,6 +10,7 @@ GameWindow::GameWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GameWindow)
 {
+    testing = 0;
     ui->setupUi(this);
     // label lists of lists up and down
     QRegularExpression exp_up("UpLabel*");
@@ -82,13 +83,15 @@ bool GameWindow::GameLoop(int arg_one_run){
         actuell_trial = run->GetTrial(&in_size);
         PaintStars(&actuell_trial);
         // wait and delete pixmaps
-        ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms
+        //ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms
+        ResetWindow(0);
         // restart timer - measurement
         timer.restart();
         // paint arrows
         PaintArrows(&actuell_trial);
         // wait and delete pixmaps
-        ResetWindow(TIME_FOR_REACTION);     // 2000ms
+        //ResetWindow(TIME_FOR_REACTION);     // 2000ms
+        ResetWindow(0);
         // if no next trial is reachable the game loop is quit
         cout << "Position GameLoop RUn "<<run->GetPosition()<<endl;
         if(!run->NextTrial()){
@@ -100,6 +103,12 @@ bool GameWindow::GameLoop(int arg_one_run){
             cout << "[***] Warning: run_game_loop is false -> ESC was pressed" << endl;
             return false;
         }
+        if((i%2)==0){
+            run->SetMeasuredValues(testing, true, true);
+        }else{
+            run->SetMeasuredValues(testing, false, true);
+        }
+        testing++;
     }
 
     // qt timer

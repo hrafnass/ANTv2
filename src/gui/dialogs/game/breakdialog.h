@@ -14,7 +14,6 @@ class BreakDialog : public QDialog
 public:
     explicit BreakDialog(QWidget *parent = nullptr);
     ~BreakDialog();
-
 private:
     Ui::BreakDialog *ui;
 };

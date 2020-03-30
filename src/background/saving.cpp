@@ -112,7 +112,6 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
 
 // private Methods
 bool CSVDocument::LookUpTable_Trial(Trial *arg_trial, QString *arg_cue, QString *arg_combinations, QString *arg_position, QString *arg_mid_arrow){
-    cout << "POSITION: CUE: "<<arg_cue<<" ELSE: "<<arg_combinations<<" "<<arg_position<<" "<<arg_mid_arrow<<endl;
     if(arg_trial == nullptr)
         return false;
 
@@ -178,7 +177,6 @@ bool CSVDocument::LookUpTableComb(Trial *arg_trial, QString *arg_combinations){
         *arg_combinations = "error_combinations";
         return false;
     }
-    cout << "COMB: "<<arg_combinations<< " "<<arg_combinations->toStdString()<< " ";
 
     return true;
 }
@@ -196,7 +194,6 @@ bool CSVDocument::LookUpTablePos(Trial *arg_trial, QString *arg_position){
         cout << "[***] Error: Error in LookUpTablePos" << endl;
         return false;
     }
-    cout << "POS: "<<arg_position<< " "<<arg_position->toStdString()<< " ";
     return true;
 }
 
@@ -213,6 +210,5 @@ bool CSVDocument::LookUpTableMid(Trial *arg_trial, QString *arg_mid_arrow){
         cout << "[***]Errror: Error in LookUpTableMid" << endl;
         return false;
     }
-    cout << "MID: "<<arg_mid_arrow<< " "<<arg_mid_arrow->toStdString()<< " ";
     return true;
 }

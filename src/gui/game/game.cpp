@@ -15,6 +15,8 @@ bool Measure::Game(){
     for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){
         if(!game.GameLoop(TRIALS_IN_RUN_GAME)){
             cout << "[***] Error: Error in Game Loop - Measure Class!" << endl;
+            if(!SaveCSV())
+                return false;
             game.close();
             return false;
         }

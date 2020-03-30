@@ -47,7 +47,7 @@ GameWindow::~GameWindow()
 // The GameLoop Method runs one run after this a pause is possible
 // return true: One Run is reached successfully
 // return false: trials for the run aren't set right
-bool GameWindow::GameLoop(int arg_one_run){
+bool GameWindow::GameLoop(int arg_one_run){         
     // check if run is filled
     if(run == nullptr){
         cout << "[***] Error: No Run-Object is loaded!" << endl;
@@ -80,7 +80,6 @@ bool GameWindow::GameLoop(int arg_one_run){
     for(int i=0; i < arg_one_run; ++i){
         // paint stars
         actuell_trial = run->GetTrial(&in_size);
-        cout << "ACTUELL POSITION OF I AND TRIAL: "<<i<<" "<<run->GetPosition()<<endl;
         PaintStars(&actuell_trial);
         // wait and delete pixmaps
         ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms

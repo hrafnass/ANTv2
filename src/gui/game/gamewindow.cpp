@@ -93,7 +93,12 @@ bool GameWindow::GameLoop(int arg_one_run){
         //ResetWindow(TIME_FOR_REACTION);     // 2000ms
         ResetWindow(0);
         // if no next trial is reachable the game loop is quit
-        cout << "Position GameLoop RUn "<<run->GetPosition()<<endl;
+        cout << "Position GameLoop Run "<<run->GetPosition()<<endl;
+        if((i%2)==0){
+            run->SetMeasuredValues(testing, true, true);
+        }else{
+            run->SetMeasuredValues(testing, false, true);
+        }
         if(!run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in GameLoop" << endl;
             break;
@@ -102,11 +107,6 @@ bool GameWindow::GameLoop(int arg_one_run){
         {
             cout << "[***] Warning: run_game_loop is false -> ESC was pressed" << endl;
             return false;
-        }
-        if((i%2)==0){
-            run->SetMeasuredValues(testing, true, true);
-        }else{
-            run->SetMeasuredValues(testing, false, true);
         }
         testing++;
     }

@@ -6,7 +6,6 @@ BreakDialog::BreakDialog(QWidget *parent) :
     ui(new Ui::BreakDialog)
 {
     ui->setupUi(this);
-    connect(ui->pushButton, SIGNAL(clicked()),this, SLOT(execEventLoop()));
 }
 
 BreakDialog::~BreakDialog()

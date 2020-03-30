@@ -98,6 +98,7 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
         }
         // save i-th number line of the body
         save << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<",";
+        cout << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<endl;
         save <<","<< cue <<","<<comb <<","<< pos << "," << mid <<","<<endl;
         if(!arg_run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in WriteCSVFile - CSVDocument" << endl;

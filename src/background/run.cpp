@@ -17,7 +17,10 @@ bool Run::SetMeasuredValues(int arg_reaction_time, bool arg_reaction, bool arg_p
         cout << "[*] End of Trial vector reached!!!" << endl;
         return false;   // iterator reached the end of v_trial
     }
-    if(GetPosition() == (run_length-1)){
+    // GetPosition starts at 0 and run_length is the number of trials I can/have to use
+    // => max Position must fullfill GetPosition +1 == run_length
+    // => GetPosition == run_length means it's the 1. trial after run_length => don't wanted
+    if(GetPosition() == run_length){
         cout << "[*] End of Run Length - The next Trials aren't allowed" << endl;
         return false;
     }

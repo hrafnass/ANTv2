@@ -38,10 +38,12 @@ QString Saving::CreateFilename(QString name, QString forename, QString filetype)
 // public methods
 
 // creates the HTML File
-bool HTMLDocument::CreateHTMLFile(QString *name, QString *fname){
+bool HTMLDocument::CreateHTMLFile(QString *arg_name, QString *arg_fname){
     bool ret;
+    name = arg_name;
+    forename = arg_fname;
     // names the file
-    SetQFileDescriptor(*name,*fname,"html");
+    SetQFileDescriptor(*name,*forename,"html");
     //
     ret = OpenFile();
     if(!ret){
@@ -53,8 +55,28 @@ bool HTMLDocument::CreateHTMLFile(QString *name, QString *fname){
 
 bool HTMLDocument::WriteHTMLFile(Calculation *c){
     QTextStream save(&file);        // output stream for a file
-
-    save << "<html><body>Not written yet!!!</body></html>"<<endl;
+    // html file begin
+    save << "<html>\n\t<body>"<<endl;
+    // table definition
+    save << "<table style=\"undefined; width: 223px\">"<<endl;
+    //colgroup
+    save << "<colgroup>\n\t<col style=\"width: 70px\">\n\t<col style=\"width: 70px\">\n\t<col style=\"width: 70px\">\n</colgroup>"<<endl;
+    // table heading
+    save << "\t<tr>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">Name</span><br></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">Vorname</span></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">Input 3</span></th>"<<endl;
+    save << "\t</tr>"<<endl;
+    // table body first row
+    save << "\t<tr>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">"<<name<<"</span><br></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">"<<forename<<"</span></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">Not defined yet!!!</span></th>"<<endl;
+    save << "\t</tr>"<<endl;
+    // html file end
+    save << "\t</body>\n</html>"<<endl;
+    // close file
+    CloseFile();
     return true;
 }
 

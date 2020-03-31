@@ -27,8 +27,11 @@ protected:
 
 class HTMLDocument : public Saving {
 public:
-    bool CreateHTMLFile(QString* name, QString* fname); // Creates the HTML File
+    bool CreateHTMLFile(QString *arg_name, QString *arg_fname); // Creates the HTML File
     bool WriteHTMLFile(Calculation *c);                 // Writes the HTML FILE and Close it
+private:
+    QString *name;
+    QString *forename;
 };
 
 

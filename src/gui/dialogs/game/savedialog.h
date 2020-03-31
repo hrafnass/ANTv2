@@ -22,18 +22,11 @@ public:
     explicit SaveDialog(QWidget *parent = nullptr);
     ~SaveDialog();
     // Setter for all needed values
-    void SetSaving(Run *arg_r, QString* arg_name, QString* arg_fname);    // to init the save and calculation of all values
-
 private slots:
-    void printValues();
-
+    void acceptSaveDialog(){ this->done(QDialog::Accepted);}
 private:
     // Variables
     Ui::SaveDialog *ui;
-    // all needed values
-    Run *r;
-    QString *name;
-    QString *forename;
 };
 
 #endif // SAVEDIALOG_H

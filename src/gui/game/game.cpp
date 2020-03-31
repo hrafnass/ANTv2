@@ -1,6 +1,11 @@
 #include "game.h"
 
 // Measure Class:
+Measure::Measure(){
+    game.setCursor(Qt::BlankCursor);
+    QObject::connect(&save, SIGNAL(accepted()), this, SLOT(printHTML()));
+
+}
 // public Methods
 bool Measure::Game(){
     Run *run = game.GetRun();
@@ -28,7 +33,7 @@ bool Measure::Game(){
     if(!SaveCSV())
         return false;
     // check if the user wants to print
-    //save.open();        // saves the measured values - if you want to print it (html)
+    save.open();        // saves the measured values - if you want to print it (html)
     return true;
 }
 
@@ -39,7 +44,18 @@ void Measure::SetMainWindowInput(QString arg_forename, QString arg_name, QString
     birthday = arg_birthday;
 }
 
-// private Methods
+// private Methods/slots
+void Measure::printHTML(){
+    if(!html.CreateHTMLFile(&name, &forename)){
+        cout << "[***] Error: Measure - printHTML() -> can't create html file"<<endl;
+        return;
+    }
+    if(!html.WriteHTMLFile(&c)){
+        cout << "[***] Error: Measure - printHTML() -> can't write html file"<<endl;
+        return;
+    }
+}
+
 bool Measure::SaveCSV(){
     cout << "save csv"<<endl;
     csv.SetInformations(&name, &forename, &birthday, &notice);

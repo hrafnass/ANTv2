@@ -35,7 +35,9 @@ public:
 protected:
     // Event funtions
     void keyPressEvent(QKeyEvent *);        // press key
-    void keyReleaseEvent(QKeyEvent *);      // release key
+    void keyReleaseEvent(QKeyEvent *);      // release keyf
+private slots:
+
 private:
     void SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction);  // saves the components in trial
     // calculation functions

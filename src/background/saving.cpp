@@ -69,8 +69,8 @@ bool HTMLDocument::WriteHTMLFile(Calculation *c){
     save << "\t</tr>"<<endl;
     // table body first row
     save << "\t<tr>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">"<<name<<"</span><br></th>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">"<<forename<<"</span></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">"<<*name<<"</span><br></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">"<<*forename<<"</span></th>"<<endl;
     save << "\t\t<th><span style=\"font-weight:bold\">Not defined yet!!!</span></th>"<<endl;
     save << "\t</tr>"<<endl;
     // html file end

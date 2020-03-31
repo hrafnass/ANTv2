@@ -9,14 +9,19 @@
 #include "src/gui/dialogs/game/savedialog.h"
 
 // The Real Game
-class Measure {
+class Measure : public QObject{
+    Q_OBJECT
+
 public:
-    Measure(){game.setCursor(Qt::BlankCursor);}
+    Measure();
     //~Measure() {}
     bool Game();
     // setter for the input
     void SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday);
     void InitGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){ game.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);}
+
+private slots:
+    void printHTML();
 private:
     // game loop pause
     int PauseWindow();
@@ -25,10 +30,13 @@ private:
     bool SaveHTML();
     // measurement dialogs - and game window
     BreakDialog pause;
+    SaveDialog save;
     GameWindow game;
     // files
     CSVDocument csv;
     HTMLDocument html;
+    // Calculation
+    Calculation c;
     // input
     QString forename;
     QString name;
@@ -48,6 +56,7 @@ public:
     // getter for ExcerciseDialog
 protected:
     void ResetWindow(int arg_time); // override to show smiles
+
 private:
     GameWindow game;
 };

@@ -15,7 +15,7 @@ bool Measure::Game(){
         cout << "[***] Error: Measure Game - run = nullptr no Game possible!!!" << endl;
         return false;
     }
-    run->SetMeasuredValues(-1, false, false);
+    run->CleanMeasuredValues();
     game.showFullScreen();
     // normal Game
     for(unsigned int i = 0; i < game.GetNbrOfRuns(); ++i){

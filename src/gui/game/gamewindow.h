@@ -2,7 +2,6 @@
 #define GAMEWINDOW_H
 
 #include "game_headers.h"
-#include "src/gui/dialogs/game/breakdialog.h"
 
 namespace Ui {
 class GameWindow;
@@ -36,8 +35,6 @@ protected:
     // Event funtions
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release keyf
-private slots:
-
 private:
     void SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction);  // saves the components in trial
     // calculation functions
@@ -80,8 +77,6 @@ private:
     bool run_game_loop; // for ESC - quit the game loop
     // check if the game is a test game
     bool test;
-
-    int testing =0;
 };
 
 #endif // GAMEWINDOW_H

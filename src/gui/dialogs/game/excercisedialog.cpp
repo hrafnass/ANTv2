@@ -20,7 +20,7 @@ ExcerciseDialog::~ExcerciseDialog()
 void ExcerciseDialog::measure() {
     std::cout << "measure - slot!!!"<<std::endl;
     m->Game();
-    this->open();
+    // this->open();
 }
 
 void ExcerciseDialog::testing() {

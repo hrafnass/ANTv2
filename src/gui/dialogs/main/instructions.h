@@ -2,6 +2,8 @@
 #define INSTRUCTIONS_H
 
 #include <QDialog>
+#include <QUrl>
+#include <QtGui/QDesktopServices>
 
 namespace Ui {
 class Instructions;

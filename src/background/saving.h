@@ -50,8 +50,7 @@ private:
     bool LookUpTablePos(Trial *arg_trial, QString* arg_position);
     bool LookUpTableMid(Trial *arg_trial, QString* arg_mid_arrow);
 
-    QString* name;
-    QString* forename;
+    QString* ciphre;
     QString* birthday;
     QString* comment;
 };

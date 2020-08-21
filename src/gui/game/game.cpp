@@ -45,7 +45,7 @@ void Measure::SetMainWindowInput(QString arg_ciphre, QString arg_notice, QString
 
 // private Methods/slots
 void Measure::printHTML(){
-    if(!html.CreateHTMLFile(&name, &forename)){
+    if(!html.CreateHTMLFile(&ciphre)){
         cout << "[***] Error: Measure - printHTML() -> can't create html file"<<endl;
         return;
     }
@@ -57,7 +57,7 @@ void Measure::printHTML(){
 
 bool Measure::SaveCSV(){
     cout << "save csv"<<endl;
-    csv.SetInformations(&name, &forename, &birthday, &notice);
+    csv.SetInformations(&ciphre, &birthday, &notice);
     if(!csv.CreateCSVFile()){
         cout << "[***] Error: Measure - SaveCSV() -> can't create csv file"<<endl;
         return false;

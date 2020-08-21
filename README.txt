@@ -1,9 +1,27 @@
-If you want to re-link the AntV2 you first have to build Qt library and the used tools (qmake).
-In this project was Qt5.12.2 and mingw used.
-Download the Qt-library and toolchain to build Qt5.12.2 from https://github.com/hrafnass/qt5.12.2_build or
-use git clone https://github.com/hrafnass/qt5.12.2_build.
+# ANTv2
+***
+## Table of Contents
+1. [General Informations about ANTv2](#general-informations)
+2. [Used Technologies](#used-technologies)
+3. [Installation & System Requirements](#installation-&-system-requirements)
+4. [Build Instruction](#build-instruction)
+5. [License](#license)
 
-Re-Linking:
+## General Informations about ANTv2
+* In Work
 
-1. create a Makefile from AntWinV2.pro
-qmake -o Makefile AntWinV2.pro
+## Used Technologies
+* In Work
+*
+
+## Installation & System Requirement
+* In Work
+
+## Build Instruction
+* In Work
+1. Build Qt5:
+1.1 A [Qt-Build Instruction](https://github.com/hrafnass/qt5.12.2) and the used Qt5.12.2 source code exists there.
+1.2 Rebuild ANTv2 
+
+## License
+* ANTv2 is licensed under [GPLv3](https://github.com/hrafnass/ANTv2/blob/master/LICENSE)

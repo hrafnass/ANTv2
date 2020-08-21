@@ -80,18 +80,17 @@ bool HTMLDocument::WriteHTMLFile(Calculation *c){
 
 //CSVDOCUMENT
 // public Methods
-void CSVDocument::SetInformations(QString* arg_name, QString* arg_forename, QString* arg_birthday, QString* arg_comment){
-    name = arg_name;
-    forename = arg_forename;
-    birthday = arg_birthday;
-    comment = arg_comment;
+void CSVDocument::SetInformations(QString* arg_ciphre, QString* arg_birthday, QString* arg_comment){
+    ciphre      = arg_ciphre;
+    birthday    = arg_birthday;
+    comment     = arg_comment;
 }
 
 // Creats the CSV file
 bool CSVDocument::CreateCSVFile(){
     bool ret;
     // names the file
-    SetQFileDescriptor(*name,*forename,"csv");
+    SetQFileDescriptor(*ciphre, "csv");
     ret = OpenFile();
     if(!ret){
         cout << "[***] Error: Can't open File in CreateCSVFile"<<endl;

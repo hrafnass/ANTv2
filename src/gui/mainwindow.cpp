@@ -32,9 +32,11 @@ void MainWindow::on_actionAboutReactiongame_triggered()
 }
 
 // open the Instruction dialog
-void MainWindow::on_actionInstruktionen_triggered()
+void MainWindow::on_actionInstructions_triggered()
 {
-
+    // show the instruction window everytime in the foreground
+    instruction_dialog.setModal(true);
+    instruction_dialog.show();
 }
 
 void MainWindow::on_startGamePushButton_clicked()

@@ -3,11 +3,12 @@
 
 #include <QtWidgets/QMainWindow>
 // windows
-#include "dialogs/main/aboutgamedialog.h"
-#include "dialogs/main/reminder.h"
-#include "dialogs/game/excercisedialog.h"
-#include "game/game.h"
-#include "src/background/run.h"
+#include "dialogs/main/aboutgamedialog.h"   // about the used techs
+#include "dialogs/main/instructions.h"      // whats the game about
+#include "dialogs/main/reminder.h"          // is the input right
+#include "dialogs/game/excercisedialog.h"   // excersice game dialog
+#include "game/game.h"                      // the real game
+#include "src/background/run.h"             // the trials in the background
 
 namespace Ui {
 class MainWindow;
@@ -24,7 +25,8 @@ public:
     void InitGames(Run *arg_run);
 private slots:
     // windows from the menu bar
-    void on_actionAboutReactiongame_triggered();
+    void on_actionAboutReactiongame_triggered();    // for the about ANT window
+    void on_actionInstructions_triggered();
     // game window started with button click
     void on_startGamePushButton_clicked();
 private:
@@ -37,6 +39,8 @@ private:
     Reminder reminder_dialog;
     // aboutDialog
     AboutGameDialog about_game;
+    // instruction dialog
+    Instructions instruction_dialog;
     // excercise dialog
     ExcerciseDialog excercise;
     Run *r;

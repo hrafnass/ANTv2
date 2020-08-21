@@ -23,12 +23,18 @@ void MainWindow::InitGames(Run *arg_run){
     init = true;
 }
 
-// open the About Game dialog
+// open the About ANT dialog
 void MainWindow::on_actionAboutReactiongame_triggered()
 {
     // AboutGamewindow is everytime in foreground
     about_game.setModal(true);
     about_game.show();
+}
+
+// open the Instruction dialog
+void MainWindow::on_actionInstruktionen_triggered()
+{
+
 }
 
 void MainWindow::on_startGamePushButton_clicked()

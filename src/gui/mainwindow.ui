@@ -210,7 +210,7 @@
     <property name="title">
      <string>Hilfe</string>
     </property>
-    <addaction name="actionInstruktionen"/>
+    <addaction name="actionInstructionen"/>
     <addaction name="actionAboutReactiongame"/>
    </widget>
    <widget class="QMenu" name="menuDatei">
@@ -235,7 +235,7 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionInstruktionen">
+  <action name="actionInstructionen">
    <property name="text">
     <string>Instruktionen</string>
    </property>

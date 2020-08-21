@@ -34,6 +34,7 @@ RESOURCES = \
 FORMS += \
     src/gui/dialogs/game/breakdialog.ui \
     src/gui/dialogs/main/aboutgamedialog.ui \
+    src/gui/dialogs/main/instructions.ui \
     src/gui/mainwindow.ui \
     src/gui/dialogs/game/savedialog.ui \
     src/gui/dialogs/main/reminder.ui \
@@ -48,6 +49,7 @@ HEADERS += \
     src/gui/dialogs/game/breakdialog.h \
     src/gui/dialogs/game/savedialog.h \
     src/gui/dialogs/main/aboutgamedialog.h \
+    src/gui/dialogs/main/instructions.h \
     src/gui/dialogs/main/reminder.h \
     src/gui/mainwindow.h \
     src/gui/dialogs/game/excercisedialog.h \
@@ -65,6 +67,7 @@ SOURCES += \
     src/gui/dialogs/game/breakdialog.cpp \
     src/gui/dialogs/game/savedialog.cpp \
     src/gui/dialogs/main/aboutgamedialog.cpp \
+    src/gui/dialogs/main/instructions.cpp \
     src/gui/dialogs/main/reminder.cpp \
     src/gui/mainwindow.cpp \
     src/main.cpp \

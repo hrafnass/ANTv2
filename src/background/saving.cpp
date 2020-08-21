@@ -8,8 +8,8 @@ bool Saving::OpenFile() {
 }
 
 // sets the qfile-descriptor
-void Saving::SetQFileDescriptor(QString name, QString forename, QString filetype){
-        QString filename = CreateFilename(name, forename, filetype);// creates the filename for the csv file
+void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype){
+        QString filename = CreateFilename(arg_ciphre, filetype);// creates the filename for the csv file
         file.setFileName(filename);                             // sets the filename of the file
         cout << "filename"<<endl;
 }
@@ -22,14 +22,13 @@ void Saving::CloseFile(){
 
 /*
     The name of a csv/html file is build in that way:
-    forename_name_year_month_day_hour_minute.
-    CreateFilename create everything before the dot+filetype
+    ciphre_year_month_day_hour_minute(actuell time).arg_filetype
 */
-QString Saving::CreateFilename(QString name, QString forename, QString filetype){
+QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype){
     // create the filename
     QDate date = QDate::currentDate();  // get the current date  (system clock)
     QTime time = QTime::currentTime();  // get the current time     -"-
-    QString filename = name+"_"+forename+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm")+"."+filetype;
+    QString filename = arg_ciphre+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm")+"."+arg_filetype;
     // returns the filename
     return filename;
 }
@@ -38,12 +37,11 @@ QString Saving::CreateFilename(QString name, QString forename, QString filetype)
 // public methods
 
 // creates the HTML File
-bool HTMLDocument::CreateHTMLFile(QString *arg_name, QString *arg_fname){
+bool HTMLDocument::CreateHTMLFile(QString *arg_ciphre){
     bool ret;
-    name = arg_name;
-    forename = arg_fname;
+    ciphre   = arg_ciphre;
     // names the file
-    SetQFileDescriptor(*name,*forename,"html");
+    SetQFileDescriptor(*arg_ciphre,"html");
     //
     ret = OpenFile();
     if(!ret){
@@ -63,14 +61,14 @@ bool HTMLDocument::WriteHTMLFile(Calculation *c){
     save << "<colgroup>\n\t<col style=\"width: 70px\">\n\t<col style=\"width: 70px\">\n\t<col style=\"width: 70px\">\n</colgroup>"<<endl;
     // table heading
     save << "\t<tr>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">Name</span><br></th>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">Vorname</span></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">Chiffre</span><br></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">Geburtstag</span></th>"<<endl;
     save << "\t\t<th><span style=\"font-weight:bold\">Input 3</span></th>"<<endl;
     save << "\t</tr>"<<endl;
     // table body first row
     save << "\t<tr>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">"<<*name<<"</span><br></th>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">"<<*forename<<"</span></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">"<<*ciphre<<"</span><br></th>"<<endl;
+    save << "\t\t<th><span style=\"font-weight:bold\">"<<*birthday<<"</span></th>"<<endl;
     save << "\t\t<th><span style=\"font-weight:bold\">Not defined yet!!!</span></th>"<<endl;
     save << "\t</tr>"<<endl;
     // html file end
@@ -160,7 +158,7 @@ bool CSVDocument::LookUpTableCue(Trial *arg_trial, QString *arg_cue){
     // translate CUE = Star Position
     switch (arg_trial->GetCue()) {
     case TrialComponents::Cue::non_cue:
-        *arg_cue = "non cue";
+        *arg_cue = "no cue";
         break;
     case TrialComponents::Cue::center_cue:
         *arg_cue = "center cue";

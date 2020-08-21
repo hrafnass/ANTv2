@@ -38,23 +38,22 @@ void MainWindow::on_startGamePushButton_clicked()
         return;
     }
     // saves the whole text input
-    QString forename = ui->forenameLineEdit->text();
-    QString name = ui->nameLineEdit->text();
+    QString ciphre = ui->ciphreLineEdit->text();
     QString notice = ui->noticeTextEdit->toPlainText();
-    QString birthday = ui->birthdayDateEdit->date().toString();
+    QString birthday = ui->birthdayLineEdit->text();
     // saves the birthday
-    // check if forename, name or birthday is empty
-    if(forename.isEmpty() || name.isEmpty() || birthday.isEmpty()){
+    // check if ciphre or birthday is empty - no check if it is a real date
+    if(ciphre.isEmpty() || birthday.isEmpty()){
         // open remind window
         reminder_dialog.setModal(true);
         reminder_dialog.show();
         return;
     }
     test.Game();
-    measure.SetMainWindowInput(forename, name, notice, birthday);
+    measure.SetMainWindowInput(ciphre, notice, birthday);
     excercise.open();
     // free labels
-    ui->forenameLineEdit->setText("");
-    ui->nameLineEdit->setText("");
+    ui->ciphreLineEdit->setText("");
     ui->noticeTextEdit->setText("");
+    ui->birthdayLineEdit->setText("");
 }

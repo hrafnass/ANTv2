@@ -17,7 +17,7 @@ public:
     //~Measure() {}
     bool Game();
     // setter for the input
-    void SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday);
+    void SetMainWindowInput(QString arg_ciphre, QString arg_notice, QString arg_birthday);
     void InitGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){ game.SetGame(arg_run,arg_pass_number,arg_nbr_of_runs);}
 
 private slots:
@@ -38,8 +38,7 @@ private:
     // Calculation
     Calculation c;
     // input
-    QString forename;
-    QString name;
+    QString ciphre;
     QString notice;
     QString birthday;
 };

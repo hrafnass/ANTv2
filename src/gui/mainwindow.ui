@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Reaktionsspiel</string>
+   <string>ANT</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../ressources.qrc">
+    <normaloff>:/ressources/images/arrow_left.svg</normaloff>:/ressources/images/arrow_left.svg</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -23,20 +27,114 @@
       <property name="verticalSpacing">
        <number>17</number>
       </property>
-      <item row="3" column="0">
-       <widget class="QLabel" name="birthdayLabel">
+      <item row="7" column="0" colspan="4">
+       <widget class="QTextEdit" name="noticeTextEdit">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="noticeLabel">
         <property name="font">
          <font>
           <pointsize>16</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Geburtstag:*</string>
+         <string>Notizen:</string>
         </property>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="ciphreLineEdit">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="3" column="2">
        <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="ciphreLabel">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Chiffre:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="8" column="3">
+       <widget class="QPushButton" name="startGamePushButton">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Starten</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <spacer name="horizontalSpacer_6">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -61,19 +159,6 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="3">
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="1" column="2">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
@@ -87,134 +172,26 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="nameLabel">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="birthdayLineEdit">
         <property name="font">
          <font>
           <pointsize>16</pointsize>
          </font>
-        </property>
-        <property name="text">
-         <string>Name*:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="noticeLabel">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Notizen:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="forenameLabel">
+       <widget class="QLabel" name="birthdayLabel">
         <property name="font">
          <font>
           <pointsize>16</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Vorname*:</string>
+         <string>Geburtstag:</string>
         </property>
        </widget>
-      </item>
-      <item row="8" column="3">
-       <widget class="QPushButton" name="startGamePushButton">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Starten</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0" colspan="4">
-       <widget class="QTextEdit" name="noticeTextEdit">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QDateEdit" name="birthdayDateEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="forenameLineEdit">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="nameLineEdit">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="4" column="1">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </item>
@@ -229,40 +206,25 @@
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuDatei">
-    <property name="title">
-     <string>Datei</string>
-    </property>
-    <addaction name="actionQuit"/>
-   </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
      <string>Hilfe</string>
     </property>
+    <addaction name="actionInstruktionen"/>
     <addaction name="actionAboutReactiongame"/>
+   </widget>
+   <widget class="QMenu" name="menuDatei">
+    <property name="title">
+     <string>Beenden</string>
+    </property>
+    <addaction name="actionQuit"/>
    </widget>
    <addaction name="menuDatei"/>
    <addaction name="menuHilfe"/>
   </widget>
-  <action name="actionAddDatabase">
-   <property name="text">
-    <string>Datenbank hinzufügen</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-  </action>
   <action name="actionAboutReactiongame">
    <property name="text">
-    <string>Über Reaktionsspiel</string>
-   </property>
-  </action>
-  <action name="actionHelp">
-   <property name="text">
-    <string>Hilfe</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+H</string>
+    <string>Über ANT</string>
    </property>
   </action>
   <action name="actionQuit">
@@ -273,24 +235,25 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="action_bung">
+  <action name="actionInstruktionen">
    <property name="text">
-    <string>Übung</string>
+    <string>Instruktionen</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+U</string>
+    <string>Ctrl+H</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>nameLineEdit</tabstop>
-  <tabstop>forenameLineEdit</tabstop>
-  <tabstop>birthdayDateEdit</tabstop>
+  <tabstop>ciphreLineEdit</tabstop>
+  <tabstop>birthdayLineEdit</tabstop>
   <tabstop>noticeTextEdit</tabstop>
   <tabstop>startGamePushButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../ressources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>actionQuit</sender>

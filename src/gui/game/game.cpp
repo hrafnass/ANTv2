@@ -37,9 +37,8 @@ bool Measure::Game(){
     return true;
 }
 
-void Measure::SetMainWindowInput(QString arg_forename, QString arg_name, QString arg_notice, QString arg_birthday){
-    forename = arg_forename;
-    name = arg_name;
+void Measure::SetMainWindowInput(QString arg_ciphre, QString arg_notice, QString arg_birthday){
+    ciphre = arg_ciphre;
     notice = arg_notice;
     birthday = arg_birthday;
 }

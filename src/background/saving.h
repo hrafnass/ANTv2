@@ -18,20 +18,20 @@ protected:
     bool OpenFile();                                                                 // open a new csv-file
     void CloseFile();                                                                // closes the csv-file
     // qfile descriptor settings
-    void SetQFileDescriptor(QString name, QString forename, QString filetype);          // set the standard settings for the qfile-descriptor
+    void SetQFileDescriptor(QString arg_ciphre, QString filetype);          // set the standard settings for the qfile-descriptor
     // functions
-    QString CreateFilename(QString name, QString forename, QString filetype);         // creates a new filename for the csv-file
+    QString CreateFilename(QString arg_ciphre, QString filetype);         // creates a new filename for the csv-file
     // variables
     QFile file;                 // saves the "qt-file descriptor"
 };
 
 class HTMLDocument : public Saving {
 public:
-    bool CreateHTMLFile(QString *arg_name, QString *arg_fname); // Creates the HTML File
+    bool CreateHTMLFile(QString *arg_ciphre); // Creates the HTML File
     bool WriteHTMLFile(Calculation *c);                 // Writes the HTML FILE and Close it
 private:
-    QString *name;
-    QString *forename;
+    QString *ciphre;
+    QString *birthday;
 };
 
 
@@ -41,8 +41,7 @@ public:
     // write and close the file
     bool WriteCSVFile(Run *arg_run);
     // setter for all informations
-    void SetInformations(QString* arg_name, QString* arg_forename, QString* arg_birthday, QString* arg_comment);
-                     // saves all calculated and measured values
+    void SetInformations(QString* arg_ciphre, QString* arg_birthday, QString* arg_comment);// saves all calculated and measured values
 private:
     // transforms the enum values into strings i.e. non_cue for 0 into "non_cue"
     bool LookUpTable_Trial(Trial *arg_trial, QString* arg_cue, QString* arg_combinations, QString* arg_position, QString* arg_mid_arrow);

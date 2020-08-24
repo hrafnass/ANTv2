@@ -106,6 +106,8 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
     QTextStream save(&file);        // output stream for a file
     // csv table head
     save << "trial number,reaction time,right desicion,birthday,cue,combinations,position,position mid arrow,comment"<< endl;
+    // set the Iterator to start
+    arg_run->SetIteratorToStart();
     // csv table body
     for(unsigned int i=0; i < arg_run->GetRunLength(); ++i){
         // paint stars
@@ -116,8 +118,13 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
                 return false;
         }
         // save i-th number line of the body
-        save << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<",";
-        cout << i <<","<<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction() <<endl;
+        save << (i+1) <<",";
+        // if the reaction time nder MINIMAL_REACTION_TIME => GetReactionTime isn't saved = missing value
+        if(actuell_trial.GetReactionTime() > MINIMAL_REACTION_TIME)
+            save <<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction();
+        else
+            save << "," << UNDER_MIN_REACTION;  // if the reaction time is under <= 100 ms the reaction of the trial = 0 = UNDER_MIN_REACTION
+        // saves the positions of the stars and arrows
         save <<","<< cue <<","<<comb <<","<< pos << "," << mid <<","<<endl;
         if(!arg_run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in WriteCSVFile - CSVDocument" << endl;

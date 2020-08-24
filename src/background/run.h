@@ -16,6 +16,8 @@ public:
     Run(unsigned int runs);  // adds the number of runs for v_trials
     // TrialVector positions
     bool NextTrial();           // iterates to the next trial; returns false if the end is reached
+    // setter vor the iterator
+    void SetIteratorToStart() { it_v_trial = v_trial.begin();} // iterator to start
     // measured values
     bool SetMeasuredValues(int arg_reaction_time=-1, bool arg_reaction=false, bool arg_pressed=false); // saves the measured values in the actuell trial
     bool CleanMeasuredValues();     // delete all measured values in the trial vector and shuffels it

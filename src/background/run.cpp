@@ -36,7 +36,7 @@ bool Run::CleanMeasuredValues(){
     for(it_v_trial = v_trial.begin();it_v_trial != v_trial.end();++it_v_trial){
         it_v_trial->SetReactions();
     }
-    it_v_trial = v_trial.begin();   // iterator to start
+    SetIteratorToStart(); // == it_v_trial = v_trial.begin();   // iterator to start
 
     ShuffelTrialVector();   // shuffels the vector
     return true;

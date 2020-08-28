@@ -14,6 +14,8 @@ public:
     Calculation(Run* arg_run);
 
 private:
+    // calculates the median
+    float Median(std::vector<int>* arg_v);
 
     // effect values
     // *median = media of reaction times (trials with special settings)

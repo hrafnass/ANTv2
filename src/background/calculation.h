@@ -11,30 +11,18 @@ using namespace std;
 class Calculation
 {
 public:
-    Calculation();
+    Calculation(Run* arg_run);
 
-    // getter for all needed values
-    double getAverage();                // average of all reaction times
-    double getMedian();                 // median of all reaction times
-    double getRightPercentage();        // percentage of all right decisions
-    double getEffects();
-    // resets all calculated values
-    void resetValues();
-    // calculates all values - run all private calculation functions
-    void calcValues(Run *run);
 private:
-    // functions for calculation of all values
-    void calcAverageReactionTime(Run *reaction_times);    // calculates the average reaction time of all reaction times, which aren't -1 (no reaction, trials after game quit)
-    bool calcMedian(Run *median);                         // calculates the median of an vector<int>
-    void calcRightPercentage(unsigned long all_trials, unsigned long right_trials); // calculates the percentage of right reactions
-    void calcEffects(vector<Run> reaction_times1, vector<Run>reaction_times2);
-    static bool compareTimeFunction(Trial t1, Trial t2); // a function for sort all Trials in run vector (compare all time values)
 
-    // variables - calculated values
-    double average;
-    double median;
-    double percentage;
-    double effects;
+    // effect values
+    // *median = media of reaction times (trials with special settings)
+    int confict_effect;         // in-)congruent differences of medians*
+    int orientation_effect;     // center/spatial cue differences of medians*
+    int alertnes_effect;        // no/double cue differences of medians*
+
+    // run - saves the run adress
+    Run* run;
 };
 
 #endif // CALCULATION_H

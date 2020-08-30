@@ -11,20 +11,34 @@ using namespace std;
 class Calculation
 {
 public:
-    Calculation(Run* arg_run);
+    Calculation();
+
+    void ResetCalculation();    // resets the calculation values
 
 private:
     // calculates the median
     float Median(std::vector<int>* arg_v);
 
+    unsigned int error_sum;     	// number of all trials with Trial.Reaction == false
+    float median_rt;                // saves the median of the reaction time
     // effect values
-    // *median = media of reaction times (trials with special settings)
-    int confict_effect;         // in-)congruent differences of medians*
-    int orientation_effect;     // center/spatial cue differences of medians*
-    int alertnes_effect;        // no/double cue differences of medians*
-
-    // run - saves the run adress
-    Run* run;
+    // median = media of reaction times (trials with special settings)
+    float confict_effect;           // in-)congruent differences of medians*
+    float orientation_effect;       // center/spatial cue differences of medians*
+    float alertnes_effect;          // no/double cue differences of medians*
+    // saves the vectors for reaction times
+    // (right reactions Trial.Reaction == true & 150ms < reaction time <= 2000ms)
+    // alertness vectors
+    vector<int> v_double_cue;
+    vector<int> v_no_cue;
+    // orientation vectors
+    vector<int> v_center_cue;
+    vector<int> v_spatial_cue;
+    // vectors for in/congruent trials
+    vector<int> v_congruent;
+    vector<int> v_incongruent;
+    // vector for all right reactions
+    vector<int> v_rt;
 };
 
 #endif // CALCULATION_H

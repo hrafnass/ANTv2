@@ -1,13 +1,22 @@
 #include "calculation.h"
 
-// init all needed and calculated values
-Calculation::Calculation(Run* arg_run){
-    run = arg_run;
+// public methods
+void Calculation::ResetCalculation(){
+    // reset calculations
     confict_effect = 0;
     orientation_effect = 0;
     alertnes_effect = 0;
+    median_rt = 0;
+    error_sum = 0;
+    // reset vectors
+    v_double_cue.clear();
+    v_no_cue.clear();
+    v_spatial_cue.clear();
+    v_center_cue.clear();
+    v_congruent.clear();
+    v_incongruent.clear();
+    v_rt.clear();
 }
-
 
 
 // private methods

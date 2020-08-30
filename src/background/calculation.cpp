@@ -18,6 +18,15 @@ void Calculation::ResetCalculation(){
     v_rt.clear();
 }
 
+// Calculate all values from the measured values
+void Calculation::CalcValues(){
+    // calculates the effects
+    confict_effect = CalcEffect(&v_congruent, &v_incongruent);
+    orientation_effect = CalcEffect(&v_center_cue, &v_spatial_cue);
+    alertnes_effect = CalcEffect(&v_no_cue, &v_double_cue);
+    // calculates the median of the reaction time (all right reactions)
+    median_rt = Median(&v_rt);
+}
 
 // private methods
 // calculates the Median from a vector of reaction times

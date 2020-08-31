@@ -2,13 +2,20 @@
 
 // public methods
 // Calculate all values from the measured values
-void Calculation::CalcValues(){
+bool Calculation::CalcValues(Run* arg_run){
+    // no good run
+    if(arg_run == nullptr)
+        return false;
+    // Fills all vectors and calculates the error sum
+    if(!FillVectors(arg_run))
+        return false;
     // calculates the effects
     confict_effect = CalcEffect(&v_congruent, &v_incongruent);
     orientation_effect = CalcEffect(&v_center_cue, &v_spatial_cue);
     alertnes_effect = CalcEffect(&v_no_cue, &v_double_cue);
     // calculates the median of the reaction time (all right reactions)
     median_rt = Median(&v_rt);
+    return true;
 }
 
 

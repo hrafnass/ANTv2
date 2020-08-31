@@ -14,7 +14,15 @@ public:
     Calculation();
 
     void ReCalc(Run* arg_run);              // clears all variables and delete all init values
-    void CalcValues(Run* arg_run);          // calculates the
+    bool CalcValues(Run* arg_run);          // calculates the
+
+    // getter effects
+    float GetConflict() { return confict_effect;}
+    float GetOrientation() { return orientation_effect;}
+    float GetAlertness() { return alertnes_effect;}
+    // getter median and error values
+    float GetRtMedian(){ return median_rt;}
+    unsigned int GetErrorSum() { return error_sum;}
 
 private:
     void ResetCalculation();    // resets the calculation values

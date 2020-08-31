@@ -13,7 +13,8 @@ class Calculation
 public:
     Calculation();
 
-    void ReCalc(Run* arg_run);              // clears all variables and delete all init values
+    void Reset();                           // resets the whole calculation
+    bool ReCalc(Run* arg_run);              // clears all variables and delete all init values
     bool CalcValues(Run* arg_run);          // calculates the
 
     // getter effects

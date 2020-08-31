@@ -18,6 +18,14 @@ bool Calculation::CalcValues(Run* arg_run){
     return true;
 }
 
+// Recalculates the Values
+bool Calculation::ReCalc(Run *arg_run){
+    Reset();    // resets vectors and calculated values
+    if(!CalcValues(arg_run))    // if the calculation was false
+        return false;
+    return true;
+}
+
 
 // private methods
 // calculates the Median from a vector of reaction times

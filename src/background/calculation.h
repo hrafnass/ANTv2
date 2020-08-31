@@ -13,14 +13,15 @@ class Calculation
 public:
     Calculation();
 
-    void ResetCalculation();    // resets the calculation values
     void CalcValues();          // calculates the
 
 private:
+    void ResetCalculation();    // resets the calculation values
+    void ResetVectors();        // clears all vectors
     // calculates the median
     float Median(std::vector<int>* arg_v);
     // fills the vectors with the needed reaction times - iterates one time over the run list
-    void FillVectors(Run* arg_run);
+    bool FillVectors(Run* arg_run);
     // calculates an effect
     float CalcEffect(vector<int>* arg_v1, vector<int>* arg_v2);
 

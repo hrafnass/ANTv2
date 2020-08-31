@@ -26,6 +26,13 @@ bool Calculation::ReCalc(Run *arg_run){
     return true;
 }
 
+// Resets all values
+void Calculation::Reset(){
+    // deletes/inits all needed values - can be calculated new over ReCalc or CalcValues
+    ResetCalculation();
+    ResetVectors();
+}
+
 
 // private methods
 // calculates the Median from a vector of reaction times

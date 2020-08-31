@@ -13,7 +13,8 @@ class Calculation
 public:
     Calculation();
 
-    void CalcValues();          // calculates the
+    void ReCalc(Run* arg_run);              // clears all variables and delete all init values
+    void CalcValues(Run* arg_run);          // calculates the
 
 private:
     void ResetCalculation();    // resets the calculation values

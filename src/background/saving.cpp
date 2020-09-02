@@ -53,26 +53,29 @@ bool JSDocument::CreateJSFile(QString *arg_ciphre){
 
 bool JSDocument::WriteJSFile(Calculation *c){
     QTextStream save(&file);        // output stream for a file
-    // html file begin
-    save << "<html>\n\t<body>"<<endl;
-    // table definition
-    save << "<table style=\"undefined; width: 223px\">"<<endl;
-    //colgroup
-    save << "<colgroup>\n\t<col style=\"width: 70px\">\n\t<col style=\"width: 70px\">\n\t<col style=\"width: 70px\">\n</colgroup>"<<endl;
-    // table heading
-    save << "\t<tr>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">Chiffre</span><br></th>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">Geburtstag</span></th>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">Input 3</span></th>"<<endl;
-    save << "\t</tr>"<<endl;
-    // table body first row
-    save << "\t<tr>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">"<<*ciphre<<"</span><br></th>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">"<<*birthday<<"</span></th>"<<endl;
-    save << "\t\t<th><span style=\"font-weight:bold\">Not defined yet!!!</span></th>"<<endl;
-    save << "\t</tr>"<<endl;
-    // html file end
-    save << "\t</body>\n</html>"<<endl;
+    // js file begin
+    // user and test settings
+    save << "var chiffre=\""<<*ciphre<<"\";";
+    save << "var test_date=\""<<birthday<<"\";";
+    // effects, error sum
+    save << "var error_sum="<<c->GetErrorSum()<<";";
+    save << "var conflict="<<c->GetConflict()<<";";
+    save << "var orientation="<<c->GetOrientation()<<";";
+    save << "var alertness="<<c->GetAlertness()<<";";
+    // medians
+    /*var median_rt   = "median reaction time";
+    var non_cue_neutral     = "no cue neutral median";   // medians for no cue
+    var non_cue_congruent   = "no cue congruent median";
+    var non_cue_incongruent = "no cue incongruent median";
+    var center_cue_neutral     = "center cue neutral median";   // medians for center cue
+    var center_cue_congruent   = "center cue congruent median";
+    var center_cue_incongruent = "center cue incongruent median";
+    var double_cue_neutral     = "double cue neutral median";   // double for center cue
+    var double_cue_congruent   = "double cue congruent median";
+    var double_cue_incongruent = "double cue incongruent median";
+    var spatial_cue_neutral     = "spatial cue neutral median";   // medians for spatial cue
+    var spatial_cue_congruent   = "spatial cue congruent median";
+    var spatial_cue_incongruent = "spatial cue incongruent median";*/
     // close file
     CloseFile();
     return true;

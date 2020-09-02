@@ -37,11 +37,11 @@ QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype){
 // public methods
 
 // creates the HTML File
-bool HTMLDocument::CreateHTMLFile(QString *arg_ciphre){
+bool JSDocument::CreateJSFile(QString *arg_ciphre){
     bool ret;
     ciphre   = arg_ciphre;
     // names the file
-    SetQFileDescriptor(*arg_ciphre,"html");
+    SetQFileDescriptor(*arg_ciphre,"js");
     //
     ret = OpenFile();
     if(!ret){
@@ -51,7 +51,7 @@ bool HTMLDocument::CreateHTMLFile(QString *arg_ciphre){
     return true;
 }
 
-bool HTMLDocument::WriteHTMLFile(Calculation *c){
+bool JSDocument::WriteJSFile(Calculation *c){
     QTextStream save(&file);        // output stream for a file
     // html file begin
     save << "<html>\n\t<body>"<<endl;

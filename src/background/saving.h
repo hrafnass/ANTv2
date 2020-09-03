@@ -28,10 +28,10 @@ protected:
     QFile file;                 // saves the "qt-file descriptor"
 };
 
-class HTMLDocument : public Saving {
+class JSDocument : public Saving {
 public:
-    bool CreateHTMLFile(QString *arg_ciphre); // Creates the HTML File
-    bool WriteHTMLFile(Calculation *c);                 // Writes the HTML FILE and Close it
+    bool CreateJSFile(QString *arg_ciphre); // Creates the HTML File
+    bool WriteJSFile(Calculation *c);                 // Writes the HTML FILE and Close it
 private:
     QString *ciphre;
     QString *birthday;

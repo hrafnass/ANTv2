@@ -35,13 +35,14 @@ private:
     // calculates an effect
     float CalcEffect(vector<int>* arg_v1, vector<int>* arg_v2);
 
+    // RESEARCH VALUES
     unsigned int error_sum;     	// number of all trials with Trial.Reaction == false
     float median_rt;                // saves the median of the reaction time
     // effect values
     // median = media of reaction times (trials with special settings)
     float confict_effect;           // in-)congruent differences of medians*
     float orientation_effect;       // center/spatial cue differences of medians*
-    float alertnes_effect;          // no/double cue differences of medians*
+    float alertnes_effect;          // no/double cue differences of medians*  
     // saves the vectors for reaction times
     // (right reactions Trial.Reaction == true & 150ms < reaction time <= 2000ms)
     // alertness vectors

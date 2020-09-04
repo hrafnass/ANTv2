@@ -31,6 +31,7 @@ public:
     void SetTest(bool arg_test){ test = arg_test;}
     // Getter for GameWindow class
     Run* GetRun(){ return run;}
+    bool GetRunLoop() { return run_game_loop;}
     unsigned int GetNbrOfRuns(){ return number_of_runs;}
 protected:
     // Event funtions

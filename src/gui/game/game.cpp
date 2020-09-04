@@ -12,6 +12,7 @@ bool Measure::Game(){
     // check, if run is created correct
     if(run == nullptr)
         return false;
+    // eventloop
     QEventLoop ev;
     game.SetTest(NO_TEST);
     if(run==nullptr){
@@ -35,8 +36,13 @@ bool Measure::Game(){
     // saving the csv file
     if(!SaveCSV())
         return false;
-    // check if the user wants to print
-    save.open();        // saves the measured values - if you want to print it (html)
+    /* check if the user wants to print the calculated values
+     * if GetRunLoop() == false the game was quit with ESC ->
+     * the value calculation is senseless, because the test person
+     * hasn't react to all arrows.
+     */
+    if(game.GetRunLoop())
+        save.open();        // saves the measured values - if you want to print it (html)
     return true;
 }
 

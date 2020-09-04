@@ -37,7 +37,7 @@ GameWindow::GameWindow(QWidget *parent) :
     test = false;           // standard setting for test game is false = no test game
 
     // connections for the game window
-    connect(this,SIGNAL(pressed_key_game()), this, SLOT(quit_eventloop())); // for the key press
+    connect(this,SIGNAL(keyPressed()), this, SLOT(quit_eventloop())); // for the key press
     connect(&quit, &QTimer::timeout, &ev, &QEventLoop::quit);
     quit.setSingleShot(true);   // only need one shot; for connect and sleep
 

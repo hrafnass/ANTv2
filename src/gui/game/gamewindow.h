@@ -38,7 +38,7 @@ protected:
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release keyf
 private slots:
-    void quit_eventloop() { ev.quit();}
+    void quit_eventloop() { ev.quit(); cout << "HALLO";}
 private:
     void SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction);  // saves the components in trial
     // calculation functions

@@ -11,8 +11,6 @@ using namespace std;
 class Calculation
 {
 public:
-    Calculation();
-
     void Reset();                           // resets the whole calculation
     bool ReCalc(Run* arg_run);              // clears all variables and delete all init values
     bool CalcValues(Run* arg_run);          // calculates the
@@ -57,5 +55,6 @@ private:
     // vector for all right reactions
     vector<int> v_rt;
 };
+
 
 #endif // CALCULATION_H

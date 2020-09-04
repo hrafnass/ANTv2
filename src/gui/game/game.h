@@ -34,9 +34,9 @@ private:
     GameWindow game;
     // files
     CSVDocument csv;
-    HTMLDocument html;
-    // Calculation
-    Calculation c;
+    JSDocument js;
+    // run
+    Run *run = nullptr;
     // input
     QString ciphre;
     QString notice;

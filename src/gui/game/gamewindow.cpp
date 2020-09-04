@@ -35,6 +35,12 @@ GameWindow::GameWindow(QWidget *parent) :
 
     run_game_loop = true;   // game loop is allowed to run
     test = false;           // standard setting for test game is false = no test game
+
+    // connections for the game window
+    connect(this,SIGNAL(pressed_key_game()), this, SLOT(quit_eventloop())); // for the key press
+    connect(&quit, &QTimer::timeout, &ev, &QEventLoop::quit);
+    quit.setSingleShot(true);   // only need one shot; for connect and sleep
+
 }
 
 // destructor
@@ -155,6 +161,8 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         cout << "[*] Wrong key" << endl;
         return;
     }
+    // emit keypress signal
+    emit keyPressed();
 }
 
 // keyEvent (Release)
@@ -192,9 +200,10 @@ void GameWindow::ResetWindow(int arg_time){
 
 // sets the GameLoop in a SleepModus
 void GameWindow::SleepGame(int arg_sleep_time){
-    // pause the game loop for sleep_time ms and then quit ev
-    QTimer::singleShot(arg_sleep_time, &ev, SLOT(quit()));
-    ev.exec();              // starts the event loop
+    // The game should wait until the play pressed a key or
+    // the the timer reached the maximum time (2000ms)
+    quit.start(arg_sleep_time);  // TIME_FOR_REACTION max reaction
+    ev.exec();  // exec the event loop
 }
 
 // Calculations

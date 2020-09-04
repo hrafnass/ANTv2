@@ -31,10 +31,12 @@ protected:
 class JSDocument : public Saving {
 public:
     bool CreateJSFile(QString *arg_ciphre); // Creates the HTML File
-    bool WriteJSFile(Calculation *c);                 // Writes the HTML FILE and Close it
+    bool WriteJSFile(Run* arg_run);                 // Writes the HTML FILE and Close it
 private:
     QString *ciphre;
     QString *birthday;
+
+    Calculation c;
 };
 
 

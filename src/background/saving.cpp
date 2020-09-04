@@ -51,17 +51,20 @@ bool JSDocument::CreateJSFile(QString *arg_ciphre){
     return true;
 }
 
-bool JSDocument::WriteJSFile(Calculation *c){
+bool JSDocument::WriteJSFile(Run* arg_run){
+    // calculate the values and checks if every is correct
+    if(!c.ReCalc(arg_run))
+        return false;
     QTextStream save(&file);        // output stream for a file
     // js file begin
     // user and test settings
     save << "var chiffre=\""<<*ciphre<<"\";";
     save << "var test_date=\""<<birthday<<"\";";
     // effects, error sum
-    save << "var error_sum="<<c->GetErrorSum()<<";";
-    save << "var conflict="<<c->GetConflict()<<";";
-    save << "var orientation="<<c->GetOrientation()<<";";
-    save << "var alertness="<<c->GetAlertness()<<";";
+    save << "var error_sum="<<c.GetErrorSum()<<";";
+    save << "var conflict="<<c.GetConflict()<<";";
+    save << "var orientation="<<c.GetOrientation()<<";";
+    save << "var alertness="<<c.GetAlertness()<<";";
     // medians
     /*var median_rt   = "median reaction time";
     var non_cue_neutral     = "no cue neutral median";   // medians for no cue

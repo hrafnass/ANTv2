@@ -8,7 +8,10 @@ Measure::Measure(){
 }
 // public Methods
 bool Measure::Game(){
-    Run *run = game.GetRun();
+    run = game.GetRun();
+    // check, if run is created correct
+    if(run == nullptr)
+        return false;
     QEventLoop ev;
     game.SetTest(NO_TEST);
     if(run==nullptr){
@@ -45,11 +48,11 @@ void Measure::SetMainWindowInput(QString arg_ciphre, QString arg_notice, QString
 
 // private Methods/slots
 void Measure::printHTML(){
-    if(!html.CreateHTMLFile(&ciphre)){
+    if(!js.CreateJSFile(&ciphre)){
         cout << "[***] Error: Measure - printHTML() -> can't create html file"<<endl;
         return;
     }
-    if(!html.WriteHTMLFile(&c)){
+    if(!js.WriteJSFile(run)){
         cout << "[***] Error: Measure - printHTML() -> can't write html file"<<endl;
         return;
     }

@@ -12,7 +12,8 @@ class GameWindow;
 class GameWindow : public QWidget
 {
     Q_OBJECT
-
+signals:
+    void keyPressed(); // signal emittet in KeyPress
 public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
@@ -35,6 +36,8 @@ protected:
     // Event funtions
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release keyf
+private slots:
+    void quit_eventloop() { ev.quit();}
 private:
     void SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction);  // saves the components in trial
     // calculation functions
@@ -64,8 +67,9 @@ private:
     Ui::GameWindow *ui;
     QEventLoop ev;                  // event loop - needed for keyRelease/PressEvent
 
-    // needed for time measurement
-    QElapsedTimer timer;
+    // timer
+    QElapsedTimer timer;        // needed for time measurement
+    QTimer quit;                // for the reaction
 
     // label lists
     QList<QLabel *> up_arrows;

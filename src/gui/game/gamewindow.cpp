@@ -11,6 +11,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+
     // label lists of lists up and down
     QRegularExpression exp_up("UpLabel*");
     QRegularExpression exp_down("DownLabel*");
@@ -21,22 +22,22 @@ GameWindow::GameWindow(QWidget *parent) :
     /* We need a fixed size between arrows and the plus img. Important for the game.
      * I take 1 inch (2 cm) for the distance between arrows and plus.
      * We only need to change the height. The width doesn't interest.
-     * -> w, expanding aren't needed; only h and fixed
-     **/
+     * -> w, expanding aren't needed; only h and fixed */
     // calcs the needed px size
     int w = CmToPixelNbrX(DISTANCE_ARROW_PLUS_X);
     int h = CmToPixelNbrY(DISTANCE_ARROW_PLUS_Y);
+
     // changes the size
     ui->verticalSpacerUpMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui->verticalSpacerDownMid->changeSize(w, h, QSizePolicy::Expanding, QSizePolicy::Fixed);
     SetSizeOfAllLabels();
-    // set the standard value for runs - game
-    number_of_runs = NBR_OF_RUNS_GAME;
 
+    // set the standard value for runs and game variables
+    number_of_runs = NBR_OF_RUNS_GAME;
     run_game_loop = true;   // game loop is allowed to run
     test = false;           // standard setting for test game is false = no test game
 
-    // connections for the game window
+    // connections for the game window - for (2.) for SleepGame and ResetGame
     connect(this,SIGNAL(keyPressed()), this, SLOT(quit_eventloop())); // for the key press
     connect(&quit, &QTimer::timeout, &ev, &QEventLoop::quit);
     quit.setSingleShot(true);   // only need one shot; for connect and sleep
@@ -50,51 +51,38 @@ GameWindow::~GameWindow()
 }
 
 // public Methods: GameWindow
-// The GameLoop Method runs one run after this a pause is possible
-// return true: One Run is reached successfully
-// return false: trials for the run aren't set right
-bool GameWindow::GameLoop(int arg_one_run){         
-    // check if run is filled
-    if(run == nullptr){
-        cout << "[***] Error: No Run-Object is loaded!" << endl;
-        return false;
-    }
-    
-    // check if the size of one run is usable
-    if(arg_one_run <= 0 || arg_one_run > run->GetRunLength()){
-        cout << "[***] Error: The One Run Value: "<< arg_one_run << " can't used!" << endl;
-        return false;
-    }
-
-    // check if the game reached the end
-    if(run->GetRunLength() == (run->GetPosition()+1))
-        return true;
+/* The GameLoop Method runs one run after this a pause is possible
+ * return true: One Run is reached successfully
+ * return false: trials for the run aren't set right */
+bool GameWindow::GameLoop(unsigned int arg_one_run){
+    // set the variable values before start
+    run_game_loop = true;   // game loop is allowed to run
+    bool in_size = false;   // check if the actuell vector.size > 0
+    Trial actuell_trial;    // start trial
 
     // clean run and get the first Trial
-    bool in_size = false;                   // check if the actuell vector.size > 0
-    Trial actuell_trial = run->GetTrial(&in_size);
-    if(!in_size){
-        cout << "[***] Error: Vector Size is 0!" << endl;
+    actuell_trial = run->GetTrial(&in_size);
+    // checks everything
+    if(!StartCheckup(arg_one_run, in_size))
         return false;
-    }
-    // Delete everythind
-    DeletePixmaps();
 
-    run_game_loop = true;   // game loop is allowed to run
-    timer.start();  // starts the timer
+    // Delete everything
+    DeletePixmaps();  
+
+    timer.start();          // starts the timer
     // runs so long a multiple from arg_one_run is reached
     for(int i=0; i < arg_one_run; ++i){
         // paint stars
         actuell_trial = run->GetTrial(&in_size);
         PaintStars(&actuell_trial);
         // wait and delete pixmaps
-        ResetWindow(TIME_BETWEEN_ARROWS);   // 1000ms
+        ResetWindow(TIME_BETWEEN_ARROWS, false);   // 1000ms
         // restart timer - measurement
         timer.restart();
         // paint arrows
         PaintArrows(&actuell_trial);
         // wait and delete pixmaps
-        ResetWindow(TIME_FOR_REACTION);     // 2000ms
+        ResetWindow(TIME_FOR_REACTION, true);     // 2000ms
         // if no next trial is reachable the game loop is quit
         if(!run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in GameLoop" << endl;
@@ -362,4 +350,30 @@ void GameWindow::IterateLabelList(QList<QLabel *> arg_list, int arg_w, int arg_h
         // paint all outer images
         arg_list.at(pos)->setFixedSize(arg_w, arg_h);
     }
+}
+
+bool GameWindow::StartCheckup(unsigned int arg_one_run, bool in_size){
+    // check if run is filled
+    if(run == nullptr){
+        cout << "[***] Error: No Run-Object is loaded!" << endl;
+        return false;
+    }
+
+    // check if the size of one run is usable
+    if(arg_one_run <= 0 || arg_one_run > run->GetRunLength()){
+        cout << "[***] Error: The One Run Value: "<< arg_one_run << " can't used!" << endl;
+        return false;
+    }
+
+    // check if the game reached the end
+    if(run->GetRunLength() == (run->GetPosition()+1))
+        return false;
+
+    // check in_size in the actuell trial
+    if(!in_size){
+        cout << "[***] Error: Vector Size is 0!" << endl;
+        return false;
+    }
+
+    return true;
 }

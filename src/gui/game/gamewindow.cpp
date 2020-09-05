@@ -71,7 +71,7 @@ bool GameWindow::GameLoop(unsigned int arg_one_run){
 
     timer.start();          // starts the timer
     // runs so long a multiple from arg_one_run is reached
-    for(int i=0; i < arg_one_run; ++i){
+    for(unsigned int i=0; i < arg_one_run; ++i){
         // paint stars
         actuell_trial = run->GetTrial(&in_size);
         PaintStars(&actuell_trial);
@@ -99,13 +99,13 @@ bool GameWindow::GameLoop(unsigned int arg_one_run){
     return true;
 }
 // set the the game
-void GameWindow::SetGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs){
+void GameWindow::SetGame(Run *arg_run, unsigned int arg_pass_number, unsigned int arg_nbr_of_runs){
     SetRun(arg_run);
     SetPassNbr(arg_pass_number);
     SetNbrOfRuns(arg_nbr_of_runs);
 }
 
-void GameWindow::SetPassNbr(int arg_pass_number){
+void GameWindow::SetPassNbr(unsigned int arg_pass_number){
     // sets the run_length number, if it doesn't fit
     if(run->GetRunLength() != arg_pass_number)
         run->SetRunLength(arg_pass_number);
@@ -181,16 +181,20 @@ void GameWindow::SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direc
 
 
 // GameLoop functions - pauses the game and delets the window
-void GameWindow::ResetWindow(int arg_time){
-    SleepGame(arg_time);
+void GameWindow::ResetWindow(int arg_time, bool arg_arrow){
+    SleepGame(arg_time, arg_arrow);
     DeletePixmaps();
 }
 
 // sets the GameLoop in a SleepModus
-void GameWindow::SleepGame(int arg_sleep_time){
-    // The game should wait until the play pressed a key or
-    // the the timer reached the maximum time (2000ms)
-    quit.start(arg_sleep_time);  // TIME_FOR_REACTION max reaction
+void GameWindow::SleepGame(int arg_sleep_time, bool arg_arrow){
+    /* The game should wait until the play pressed a key or
+     * the the timer reached the maximum time (2000ms) */
+    if(arg_arrow){  // (2.)
+        quit.start(arg_sleep_time);  // TIME_FOR_REACTION max reaction
+    }else {         // (1.)
+        QTimer::singleShot(arg_sleep_time, &ev, SLOT(quit()));  // window sleeps the full time
+    }
     ev.exec();  // exec the event loop
 }
 

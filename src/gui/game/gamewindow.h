@@ -20,10 +20,10 @@ public:
     // Game loop
     bool GameLoop(unsigned int arg_one_run/*size of one run - in test arg_pass_number == arg_one_run*/);    // loop for the game
     // setts the whole game
-    void SetGame(Run *arg_run, int arg_pass_number, unsigned int arg_nbr_of_runs);
+    void SetGame(Run *arg_run, unsigned int arg_pass_number, unsigned int arg_nbr_of_runs);
     // game setter
     void SetRun(Run *arg_run) { run = arg_run;}         // setter of the max. nbr of trials in the whole game
-    void SetPassNbr(int arg_pass_number);
+    void SetPassNbr(unsigned int arg_pass_number);
     void SetNbrOfRuns(unsigned int arg_nbr_of_runs);    // setter for the number of runs
     void SetTest(bool arg_test){ test = arg_test;}      // setter for test game check
     // Getter for GameWindow class

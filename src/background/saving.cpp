@@ -13,14 +13,16 @@ void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype){
     QString filename = CreateFilename(arg_ciphre, filetype, false);
     // creates the name for the saving dir
     QString directory = CreateFilename(arg_ciphre, filetype, true);
+    // creates the file path
+    QString filepath = "measurements/"+directory+"/"+filename;
 
     // Create save directory
     if(!CreateDirs(directory)){
-        cout << "[*] Error: In SetQFileDescriptor: Error in CreateDirs"<<endl;
+        cout << "[***] Error: In SetQFileDescriptor: Error in CreateDirs"<<endl;
         return;
     }
     // create file descriptor
-    file.setFileName(filename);                             // sets the filename of the file
+    file.setFileName(filepath);                             // sets the filename of the file
 }
 
 // closes the csv file
@@ -41,8 +43,8 @@ QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype, bool di
     // if dir == true -> we want to create a directory else
     if(!dir)
         name = name+"."+arg_filetype;   // name for a file
-    else
-        name = name+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm"); // name for a test
+    else    // name for a test
+        name = name+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm");
     // returns the filename
     return name;
 }

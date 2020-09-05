@@ -35,7 +35,7 @@ protected:
     void CloseFile();    // closes the file
     // qfile descriptor settings
     // set the standard settings for the qfile-descriptor and create a file directory
-    void SetQFileDescriptor(QString arg_ciphre, QString filetype,bool dir);
+    void SetQFileDescriptor(QString arg_ciphre, QString filetype);
     // functions
     // creates a new filename for the csv-file
     QString CreateFilename(QString arg_ciphre, QString filetype, bool dir);

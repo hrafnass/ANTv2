@@ -8,12 +8,19 @@ bool Saving::OpenFile() {
 }
 
 // sets the qfile-descriptor
-void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype, bool dir){
-        // Create save directory
-        // create file descriptor
-        QString filename = CreateFilename(arg_ciphre, filetype, dir);// creates the filename for the csv file
-        file.setFileName(filename);                             // sets the filename of the file
-        cout << "filename"<<endl;
+void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype){
+    // creates the filename for the file;
+    QString filename = CreateFilename(arg_ciphre, filetype, false);
+    // creates the name for the saving dir
+    QString directory = CreateFilename(arg_ciphre, filetype, true);
+
+    // Create save directory
+    if(!CreateDirs(directory)){
+        cout << "[*] Error: In SetQFileDescriptor: Error in CreateDirs"<<endl;
+        return;
+    }
+    // create file descriptor
+    file.setFileName(filename);                             // sets the filename of the file
 }
 
 // closes the csv file
@@ -43,8 +50,8 @@ QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype, bool di
 // private
 // create all needed dirs
 bool Saving::CreateDirs(QString arg_ciphre){
+    QString path = "measurements/"+arg_ciphre;
     QDir dir;
-    QString ciphre = CreateFilename(arg_ciphre, "", true);
     // check if the root dir exists
     if(!dir.exists("measurements")){
         // directory doesn't exists -> create it
@@ -54,9 +61,10 @@ bool Saving::CreateDirs(QString arg_ciphre){
         }
     }
     // check if the chipre dir exits
-    if(!dir.exists(ciphre)){
+    if(!dir.exists(path)){
         // the test person dir doesn't exists
-        if(!dir.exists(ciphre)){
+        if(!dir.mkdir(path)){
+            cout << "[*] Error in CreateDirs - creating new directory; path: " << path.toStdString()<<endl;
             // couldn't create arg_ciphre dir
             return false;
         }
@@ -72,7 +80,7 @@ bool JSDocument::CreateJSFile(QString *arg_ciphre){
     bool ret;
     ciphre   = arg_ciphre;
     // names the file
-    SetQFileDescriptor(*arg_ciphre,"js", false);
+    SetQFileDescriptor(*arg_ciphre,"js");
     //
     ret = OpenFile();
     if(!ret){
@@ -127,7 +135,7 @@ void CSVDocument::SetInformations(QString* arg_ciphre, QString* arg_birthday, QS
 bool CSVDocument::CreateCSVFile(){
     bool ret;
     // names the file
-    SetQFileDescriptor(*ciphre, "csv", false);
+    SetQFileDescriptor(*ciphre, "csv");
     ret = OpenFile();
     if(!ret){
         cout << "[***] Error: Can't open File in CreateCSVFile"<<endl;

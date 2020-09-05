@@ -9,6 +9,9 @@ bool Saving::OpenFile() {
 
 // sets the qfile-descriptor
 void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype){
+        // Create save directory
+        QDir dir;
+        // create file descriptor
         QString filename = CreateFilename(arg_ciphre, filetype);// creates the filename for the csv file
         file.setFileName(filename);                             // sets the filename of the file
         cout << "filename"<<endl;
@@ -33,7 +36,30 @@ QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype){
     return filename;
 }
 
-//HTMLDOCUMENT
+// private
+// create all needed dirs
+bool Saving::CreateDirs(QString arg_ciphre){
+    QDir dir;
+    // check if the root dir exists
+    if(!dir.exists("measurements")){
+        // directory doesn't exists -> create it
+        if(!dir.mkdir("measurements")){
+            // couldn't create the measurements dir
+            return false;
+        }
+    }
+    // check if the chipre dir exits
+    if(!dir.exists(arg_ciphre)){
+        // the test person dir doesn't exists
+        if(!dir.exists(arg_ciphre)){
+            // couldn't create arg_ciphre dir
+            return false;
+        }
+    }
+    return true;
+}
+
+// JSDOCUMENT
 // public methods
 
 // creates the HTML File

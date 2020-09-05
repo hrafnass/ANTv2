@@ -5,6 +5,7 @@
 #define UNDER_MIN_REACTION 0         // our reaction time is a missing value => Reation of trial = 0
 
 #include <QtCore/QDate>
+#include <QtCore/QDir>
 #include <QtCore/QFile>
 #include <QtCore/QString>
 #include <QtCore/QTextStream>
@@ -13,25 +14,42 @@
 #include "calculation.h"
 #include "run.h"
 
+
+/* ***********************************************************************************
+ * Directory Structure:                                                              *
+ *  measurements/        (root dir for all measurements)                             *
+ *              /ciphre  (every ciphre - test person get his own folder)             *
+ * --------------------------------------------------------------------------------- *
+ * Files in ciphre:                                                                  *
+ *      ciphre_year_month_day_hour_minute.csv   (all measured values in this run)    *
+ *      print.html              (out if the run was finished successful)             *
+ *      year_month_minute.js    ( -"-)                                               *
+ * --------------------------------------------------------------------------------- *
+ * print.html has an input script to find out the right js document.                 *
+ * ***********************************************************************************/
+
 // Saves all calculated and measured data of the reaction game in  a csv file
 class Saving
 {
 protected:
     // open and close a file descriptor
-    bool OpenFile();                                                                 // open a new csv-file
-    void CloseFile();                                                                // closes the csv-file
+    bool OpenFile();     // open a new file
+    void CloseFile();    // closes the file
     // qfile descriptor settings
-    void SetQFileDescriptor(QString arg_ciphre, QString filetype);          // set the standard settings for the qfile-descriptor
+    // set the standard settings for the qfile-descriptor and create a file directory
+    void SetQFileDescriptor(QString arg_ciphre, QString filetype);
     // functions
-    QString CreateFilename(QString arg_ciphre, QString filetype);         // creates a new filename for the csv-file
+    QString CreateFilename(QString arg_ciphre, QString filetype);  // creates a new filename for the csv-file
     // variables
     QFile file;                 // saves the "qt-file descriptor"
+private:
+    bool CreateDirs(QString arg_ciphre);    // creates the dir structure
 };
 
 class JSDocument : public Saving {
 public:
-    bool CreateJSFile(QString *arg_ciphre); // Creates the HTML File
-    bool WriteJSFile(Run* arg_run);                 // Writes the HTML FILE and Close it
+    bool CreateJSFile(QString *arg_ciphre); // Creates the JS-File
+    bool WriteJSFile(Run* arg_run);         // Writes the JS-File and Close it
 private:
     QString *ciphre;
     QString *birthday;

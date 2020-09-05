@@ -71,6 +71,9 @@ bool Saving::CreateDirs(QString arg_ciphre){
             return false;
         }
     }
+    // copies the print pattern in game
+    QFile::copy("../../html/pattern.html", path+"/print.html");
+
     return true;
 }
 

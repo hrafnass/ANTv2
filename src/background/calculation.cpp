@@ -4,11 +4,15 @@
 // Calculate all values from the measured values
 bool Calculation::CalcValues(Run* arg_run){
     // no good run
-    if(arg_run == nullptr)
+    if(arg_run == nullptr){
+        cout << "[*] Error - CalcValues: run = nullptr!" << endl;
         return false;
+    }
     // Fills all vectors and calculates the error sum
-    if(!FillVectors(arg_run))
+    if(!FillVectors(arg_run)){
+        cout << "[*] Error - FillVectors doesn't successed!" << endl;
         return false;
+    }
     // calculates the effects
     confict_effect = CalcEffect(&v_congruent, &v_incongruent);
     orientation_effect = CalcEffect(&v_center_cue, &v_spatial_cue);

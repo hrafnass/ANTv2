@@ -8,11 +8,10 @@ bool Saving::OpenFile() {
 }
 
 // sets the qfile-descriptor
-void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype){
+void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype, bool dir){
         // Create save directory
-        QDir dir;
         // create file descriptor
-        QString filename = CreateFilename(arg_ciphre, filetype);// creates the filename for the csv file
+        QString filename = CreateFilename(arg_ciphre, filetype, dir);// creates the filename for the csv file
         file.setFileName(filename);                             // sets the filename of the file
         cout << "filename"<<endl;
 }
@@ -27,19 +26,25 @@ void Saving::CloseFile(){
     The name of a csv/html file is build in that way:
     ciphre_year_month_day_hour_minute(actuell time).arg_filetype
 */
-QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype){
+QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype, bool dir){
     // create the filename
     QDate date = QDate::currentDate();  // get the current date  (system clock)
     QTime time = QTime::currentTime();  // get the current time     -"-
-    QString filename = arg_ciphre+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm")+"."+arg_filetype;
+    QString name = arg_ciphre;
+    // if dir == true -> we want to create a directory else
+    if(!dir)
+        name = name+"."+arg_filetype;   // name for a file
+    else
+        name = name+"_"+date.toString("yyyy_MM_dd")+"_"+time.toString("hh_mm"); // name for a test
     // returns the filename
-    return filename;
+    return name;
 }
 
 // private
 // create all needed dirs
 bool Saving::CreateDirs(QString arg_ciphre){
     QDir dir;
+    QString ciphre = CreateFilename(arg_ciphre, "", true);
     // check if the root dir exists
     if(!dir.exists("measurements")){
         // directory doesn't exists -> create it
@@ -49,9 +54,9 @@ bool Saving::CreateDirs(QString arg_ciphre){
         }
     }
     // check if the chipre dir exits
-    if(!dir.exists(arg_ciphre)){
+    if(!dir.exists(ciphre)){
         // the test person dir doesn't exists
-        if(!dir.exists(arg_ciphre)){
+        if(!dir.exists(ciphre)){
             // couldn't create arg_ciphre dir
             return false;
         }
@@ -67,7 +72,7 @@ bool JSDocument::CreateJSFile(QString *arg_ciphre){
     bool ret;
     ciphre   = arg_ciphre;
     // names the file
-    SetQFileDescriptor(*arg_ciphre,"js");
+    SetQFileDescriptor(*arg_ciphre,"js", false);
     //
     ret = OpenFile();
     if(!ret){
@@ -122,7 +127,7 @@ void CSVDocument::SetInformations(QString* arg_ciphre, QString* arg_birthday, QS
 bool CSVDocument::CreateCSVFile(){
     bool ret;
     // names the file
-    SetQFileDescriptor(*ciphre, "csv");
+    SetQFileDescriptor(*ciphre, "csv", false);
     ret = OpenFile();
     if(!ret){
         cout << "[***] Error: Can't open File in CreateCSVFile"<<endl;

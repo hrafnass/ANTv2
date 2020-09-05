@@ -15,18 +15,16 @@
 #include "run.h"
 
 
-/* ***********************************************************************************
- * Directory Structure:                                                              *
- *  measurements/        (root dir for all measurements)                             *
- *              /ciphre  (every ciphre - test person get his own folder)             *
- * --------------------------------------------------------------------------------- *
- * Files in ciphre:                                                                  *
- *      ciphre_year_month_day_hour_minute.csv   (all measured values in this run)    *
- *      print.html              (out if the run was finished successful)             *
- *      year_month_minute.js    ( -"-)                                               *
- * --------------------------------------------------------------------------------- *
- * print.html has an input script to find out the right js document.                 *
- * ***********************************************************************************/
+/* ***********************************************************************************************
+ * Directory Structure:                                                                          *
+ *  measurements/        (root dir for all measurements)                                         *
+ *              /ciphre_year_month_day_hour_min  (every ciphre - test person get his own folder) *            *
+ * --------------------------------------------------------------------------------------------- *
+ * Files in ciphre:                                                                              *
+ *      ciphre.csv   (all measured values in this run)                                           *
+ *      print.html              (out if the run was finished successful)                         *
+ *      val.js    ( -"-)                                                                         *     *
+ * ***********************************************************************************************/
 
 // Saves all calculated and measured data of the reaction game in  a csv file
 class Saving
@@ -37,9 +35,10 @@ protected:
     void CloseFile();    // closes the file
     // qfile descriptor settings
     // set the standard settings for the qfile-descriptor and create a file directory
-    void SetQFileDescriptor(QString arg_ciphre, QString filetype);
+    void SetQFileDescriptor(QString arg_ciphre, QString filetype,bool dir);
     // functions
-    QString CreateFilename(QString arg_ciphre, QString filetype);  // creates a new filename for the csv-file
+    // creates a new filename for the csv-file
+    QString CreateFilename(QString arg_ciphre, QString filetype, bool dir);
     // variables
     QFile file;                 // saves the "qt-file descriptor"
 private:

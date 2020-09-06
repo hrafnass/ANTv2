@@ -56,7 +56,7 @@ private:
 class JSDocument : public Saving {
 public:
     bool CreateJSFile(QString *arg_ciphre); // Creates the JS-File
-    bool WriteJSFile(Run* arg_run);         // Writes the JS-File and Close it
+    bool WriteJSFile(Run* arg_run, QDate* arg_date, QTime* arg_time); // Writes the JS-File and Close it
 private:
     QString *ciphre;
     QString *birthday;

@@ -6,7 +6,6 @@ void Saving::SetTimeAndDate(){
     time = QTime::currentTime();  // get the current time     -"-
 }
 
-
 // protected functions for Saving class
 // opens the csv file
 bool Saving::OpenFile() {
@@ -101,7 +100,7 @@ bool JSDocument::CreateJSFile(QString *arg_ciphre){
     return true;
 }
 
-bool JSDocument::WriteJSFile(Run* arg_run){
+bool JSDocument::WriteJSFile(Run* arg_run, QDate* arg_date, QTime* arg_time){
     // calculate the values and checks if every is correct
     if(!c.ReCalc(arg_run))
         return false;
@@ -109,7 +108,7 @@ bool JSDocument::WriteJSFile(Run* arg_run){
     // js file begin
     // user and test settings
     save << "var chiffre=\""<<*ciphre<<"\";";
-    save << "var test_date=\""<<birthday<<"\";";
+    save << "var test_date=\""<<arg_time->hour()<< ":" << arg_time->minute() << " " << arg_date->day() << "." << arg_date->month()<< "." << arg_date->year()<<"\";";
     // effects, error sum
     save << "var error_sum="<<c.GetErrorSum()<<";";
     save << "var conflict="<<c.GetConflict()<<";";

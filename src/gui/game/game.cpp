@@ -54,18 +54,21 @@ void Measure::SetMainWindowInput(QString arg_ciphre, QString arg_notice, QString
 
 // private Methods/slots
 void Measure::printHTML(){
+    QDate d = csv.GetDate();
+    QTime t = csv.GetTime();
+
     if(!js.CreateJSFile(&ciphre)){
         cout << "[***] Error: Measure - printHTML() -> can't create html file"<<endl;
         return;
     }
-    if(!js.WriteJSFile(run)){
+    if(!js.WriteJSFile(run, &d, &t)){
         cout << "[***] Error: Measure - printHTML() -> can't write html file"<<endl;
         return;
     }
 }
 
 bool Measure::SaveCSV(){
-    cout << "save csv"<<endl;
+    csv.SetTimeAndDate();
     csv.SetInformations(&ciphre, &birthday, &notice);
     if(!csv.CreateCSVFile()){
         cout << "[***] Error: Measure - SaveCSV() -> can't create csv file"<<endl;

@@ -57,11 +57,11 @@ void Measure::printHTML(){
     QDate d = csv.GetDate();
     QTime t = csv.GetTime();
 
-    if(!js.CreateJSFile(&ciphre)){
+    if(!js.CreateJSFile(&ciphre, &d, &t)){
         cout << "[***] Error: Measure - printHTML() -> can't create html file"<<endl;
         return;
     }
-    if(!js.WriteJSFile(run, &d, &t)){
+    if(!js.WriteJSFile(run)){
         cout << "[***] Error: Measure - printHTML() -> can't write html file"<<endl;
         return;
     }

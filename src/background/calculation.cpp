@@ -3,14 +3,15 @@
 // public methods
 // Calculate all values from the measured values
 bool Calculation::CalcValues(Run* arg_run){
+    cout << "[*] CalcValues - Calculation"<<endl;
     // no good run
     if(arg_run == nullptr){
-        cout << "[*] Error - CalcValues: run = nullptr!" << endl;
+        cout << "[***] Error - CalcValues: run = nullptr!" << endl;
         return false;
     }
     // Fills all vectors and calculates the error sum
     if(!FillVectors(arg_run)){
-        cout << "[*] Error - FillVectors doesn't successed!" << endl;
+        cout << "[***] Error - FillVectors doesn't successed!" << endl;
         return false;
     }
     // calculates the effects
@@ -24,6 +25,7 @@ bool Calculation::CalcValues(Run* arg_run){
 
 // Recalculates the Values
 bool Calculation::ReCalc(Run *arg_run){
+    cout << "[*] ReCalc - Calculation"<<endl;
     Reset();    // resets vectors and calculated values
     if(!CalcValues(arg_run))    // if the calculation was false
         return false;
@@ -32,6 +34,7 @@ bool Calculation::ReCalc(Run *arg_run){
 
 // Resets all values
 void Calculation::Reset(){
+    cout << "[*] Reset - Calculation"<<endl;
     // deletes/inits all needed values - can be calculated new over ReCalc or CalcValues
     ResetCalculation();
     ResetVectors();
@@ -41,6 +44,10 @@ void Calculation::Reset(){
 // private methods
 // calculates the Median from a vector of reaction times
 float Calculation::Median(std::vector<int>* arg_v){
+    cout << "[*] Median - Calculation"<<endl;
+    // check if the vector has a any elements
+    if(arg_v->size() == 0)  // if the vector has no elements the median is zero
+        return 0.0;
     unsigned long long pos = arg_v->size()/2;   // calcs the postion
     // sort the vector ascending
     sort(arg_v->begin(), arg_v->end());
@@ -52,6 +59,7 @@ float Calculation::Median(std::vector<int>* arg_v){
 }
 // reset all vectors
 void Calculation::ResetVectors(){
+    cout << "[*] ResetVectors - Calculation"<<endl;
     // reset vectors
     v_double_cue.clear();
     v_no_cue.clear();
@@ -63,6 +71,7 @@ void Calculation::ResetVectors(){
 }
 // reset the calculation
 void Calculation::ResetCalculation(){
+    cout << "[*] ResetCalculation - Calculation"<<endl;
     // reset calculations
     confict_effect = 0;
     orientation_effect = 0;
@@ -72,10 +81,12 @@ void Calculation::ResetCalculation(){
 }
 // calculates an effect - differences of two medians
 float Calculation::CalcEffect(vector<int> *arg_v1, vector<int> *arg_v2){
+    cout << "[*] CalcEffect"<<endl;
     return (Median(arg_v1) - Median(arg_v2));
 }
 // fills all vectors
 bool Calculation::FillVectors(Run *arg_run){
+    cout << "[*] FillVectors - Calculation"<<endl;
     bool ok = false;    // param for GetTrial in arg_run
     Trial t;            // saves returned trial
 
@@ -83,8 +94,10 @@ bool Calculation::FillVectors(Run *arg_run){
     error_sum = 0;      // error is calculated in FillVector
 
     // if run isn't filled
-    if(arg_run == nullptr)
+    if(arg_run == nullptr){
+        cout << "[***] Error FillVectors - arg_run == nulptr"<<endl;
         return false;
+    }
     // iterate over the run
     do {
         t = arg_run->GetTrial(&ok); // get the actuell trial
@@ -92,6 +105,9 @@ bool Calculation::FillVectors(Run *arg_run){
         if(!t.GetReaction() || t.GetReactionTime() < 150 || t.GetReactionTime() > 2000){
             ++error_sum;
         } else {    // if the reaction is right
+            // save all right reactions - max. 180 Trials
+            if(v_rt.size() < 180)
+                v_rt.push_back(t.GetReactionTime());
             // check the cues and fill them in the vectorss
             switch (t.GetCue()) {
             case TrialComponents::Cue::non_cue:
@@ -115,5 +131,6 @@ bool Calculation::FillVectors(Run *arg_run){
         }
     } while (arg_run->NextTrial() && ok);
 
+    cout << "[*] FillVectors - Calculation quit"<<endl;
     return true;
 }

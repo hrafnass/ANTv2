@@ -127,26 +127,26 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     bool check = false;
     // if the timer is not active no key press events can take
     if(timer.elapsed() > TIME_FOR_REACTION){    // the measured time is > TIME_FOR_REA2000 ms
-        cout << "[*] No key saved." << " - excercise number: " << (run->GetPosition()+1) << endl;
+        cout << "[***] No key saved." << " - excercise number: " << (run->GetPosition()+1) << endl;
         return;
     }
     // check if a key (left or right) was pressed before then we don't take a new anwser
     if(run->GetTrial(&check).GetPressed()){
-        cout << "[*] Key was pressed before!" << endl;
+        // cout << "[*] Key was pressed before!" << endl;
         return;
     }
     // switch for all wanted keys
     switch (event->key()) {
     case Qt::Key_Left:
-        cout << "press"<<endl;
+        //cout << "press"<<endl;
         SaveMeasuredValues(TrialComponents::DirectionMidArrow::left);
         break;
     case Qt::Key_Right:
-        cout << "press"<<endl;
+        //cout << "press"<<endl;
         SaveMeasuredValues(TrialComponents::DirectionMidArrow::right);
         break;
     default:
-        cout << "[*] Wrong key" << endl;
+        //cout << "[*] Wrong key" << endl;
         return;
     }
     // emit keypress signal
@@ -167,14 +167,14 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
 // private Mehtods
 void GameWindow::SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction){
     bool check = false;
-    cout << "SaveMeasuredValues"<<endl;
+    // cout << "SaveMeasuredValues"<<endl;
     if(arg_direction == run->GetTrial(&check).GetDirectionMidArrow()){
         run->SetMeasuredValues(timer.elapsed(), true, true);
-        cout << "\tcorrect"<<endl;
+        //cout << "\tcorrect"<<endl;
         PaintFeedback(CORRECT);
     }else {
         run->SetMeasuredValues(timer.elapsed(), false, true);
-        cout << "\twrong"<<endl;
+        //cout << "\twrong"<<endl;
         PaintFeedback(WRONG);
     }
 }
@@ -242,7 +242,7 @@ void GameWindow::PaintStars(Trial *arg_trial){
             PaintStar(ui->Centreline, STAR,w, h);
             break;
         case TrialComponents::Cue::non_cue:
-            cout << "[*] Nearly the same like default - no cue is printed" << endl;
+            //cout << "[*] Nearly the same like default - no cue is printed" << endl;
             break;
         default:
             cout << "[*] Can't paint stars"<<endl;
@@ -324,11 +324,11 @@ void GameWindow::PaintPlus(){
 
 // paint the feedback
 void GameWindow::PaintFeedback(string arg_feedback){
-    cout << "test value"<< test <<endl;
+    //cout << "test value"<< test <<endl;
     if(test){
         QString feedback = QString::fromStdString(arg_feedback);
         ui->Centreline->setPixmap(feedback);
-        cout << "paint feedback"<<endl;
+        //cout << "paint feedback"<<endl;
     }
 }
 

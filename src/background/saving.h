@@ -40,10 +40,10 @@ protected:
     void CloseFile();    // closes the file
     // qfile descriptor settings
     // set the standard settings for the qfile-descriptor and create a file directory
-    void SetQFileDescriptor(QString arg_ciphre, QString filetype);
+    void SetQFileDescriptor(QString arg_ciphre, QString arg_filename, QString filetype);
     // functions
     // creates a new filename for the csv-file
-    QString CreateFilename(QString arg_ciphre, QString filetype, bool dir);
+    QString CreateFilename(QString arg_filename, QString filetype, bool dir);
     // variables
     QFile file;                 // saves the "qt-file descriptor"
     // Date and time
@@ -55,8 +55,8 @@ private:
 
 class JSDocument : public Saving {
 public:
-    bool CreateJSFile(QString *arg_ciphre); // Creates the JS-File
-    bool WriteJSFile(Run* arg_run, QDate* arg_date, QTime* arg_time); // Writes the JS-File and Close it
+    bool CreateJSFile(QString *arg_ciphre, QDate* arg_date, QTime* arg_time); // Creates the JS-File
+    bool WriteJSFile(Run* arg_run); // Writes the JS-File and Close it
 private:
     QString *ciphre;
     QString *birthday;

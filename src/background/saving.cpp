@@ -14,9 +14,9 @@ bool Saving::OpenFile() {
 }
 
 // sets the qfile-descriptor
-void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype){
+void Saving::SetQFileDescriptor(QString arg_ciphre, QString arg_filename, QString filetype){
     // creates the filename for the file;
-    QString filename = CreateFilename(arg_ciphre, filetype, false);
+    QString filename = CreateFilename(arg_filename, filetype, false);
     // creates the name for the saving dir
     QString directory = CreateFilename(arg_ciphre, filetype, true);
     // creates the file path
@@ -71,7 +71,7 @@ bool Saving::CreateDirs(QString arg_ciphre){
     if(!dir.exists(path)){
         // the test person dir doesn't exists
         if(!dir.mkdir(path)){
-            cout << "[*] Error in CreateDirs - creating new directory; path: " << path.toStdString()<<endl;
+            cout << "[***] Error in CreateDirs - creating new directory; path: " << path.toStdString()<<endl;
             // couldn't create arg_ciphre dir
             return false;
         }
@@ -86,11 +86,14 @@ bool Saving::CreateDirs(QString arg_ciphre){
 // public methods
 
 // creates the HTML File
-bool JSDocument::CreateJSFile(QString *arg_ciphre){
+bool JSDocument::CreateJSFile(QString *arg_ciphre, QDate* arg_date, QTime* arg_time){
     bool ret;
+    date = *arg_date;
+    time = *arg_time;
     ciphre   = arg_ciphre;
+    QString name = "vals";
     // names the file
-    SetQFileDescriptor(*arg_ciphre,"js");
+    SetQFileDescriptor(*arg_ciphre, name,"js");
     //
     ret = OpenFile();
     if(!ret){
@@ -100,20 +103,21 @@ bool JSDocument::CreateJSFile(QString *arg_ciphre){
     return true;
 }
 
-bool JSDocument::WriteJSFile(Run* arg_run, QDate* arg_date, QTime* arg_time){
+bool JSDocument::WriteJSFile(Run* arg_run){
     // calculate the values and checks if every is correct
     if(!c.ReCalc(arg_run))
         return false;
     QTextStream save(&file);        // output stream for a file
     // js file begin
     // user and test settings
-    save << "var chiffre=\""<<*ciphre<<"\";";
-    save << "var test_date=\""<<arg_time->hour()<< ":" << arg_time->minute() << " " << arg_date->day() << "." << arg_date->month()<< "." << arg_date->year()<<"\";";
+    save << "var chiffre=\""<<*ciphre<<"\";"<<endl;
+    save << "var test_date=\""<<time.hour()<< ":" << time.minute() << " " << date.day() << "." << date.month()<< "." << date.year()<<"\";"<<endl;
     // effects, error sum
-    save << "var error_sum="<<c.GetErrorSum()<<";";
-    save << "var conflict="<<c.GetConflict()<<";";
-    save << "var orientation="<<c.GetOrientation()<<";";
-    save << "var alertness="<<c.GetAlertness()<<";";
+    save << "var median_rt="<<c.GetRtMedian()<<";"<<endl;
+    save << "var error_sum="<<c.GetErrorSum()<<";"<<endl;
+    save << "var conflict="<<c.GetConflict()<<";"<<endl;
+    save << "var orientation="<<c.GetOrientation()<<";"<<endl;
+    save << "var alertness="<<c.GetAlertness()<<";"<<endl;
     // medians
     /*var median_rt   = "median reaction time";
     var non_cue_neutral     = "no cue neutral median";   // medians for no cue
@@ -145,7 +149,7 @@ void CSVDocument::SetInformations(QString* arg_ciphre, QString* arg_birthday, QS
 bool CSVDocument::CreateCSVFile(){
     bool ret;
     // names the file
-    SetQFileDescriptor(*ciphre, "csv");
+    SetQFileDescriptor(*ciphre,*ciphre,"csv");
     ret = OpenFile();
     if(!ret){
         cout << "[***] Error: Can't open File in CreateCSVFile"<<endl;
@@ -168,19 +172,19 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
         // paint stars
         actuell_trial = arg_run->GetTrial(&in_size);
         if(!LookUpTable_Trial(&actuell_trial, &cue, &comb, &pos, &mid)){
-                cout << "Quit WriteCSVFile" << endl;
+                //cout << "Quit WriteCSVFile" << endl;
                 CloseFile();
                 return false;
         }
         // save i-th number line of the body
-        save << (i+1) <<",,";
+        save << (i+1) <<",";
         // if the reaction time nder MINIMAL_REACTION_TIME => GetReactionTime isn't saved = missing value
         if(actuell_trial.GetReactionTime() > MINIMAL_REACTION_TIME)
             save <<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction();
         else
             save << "," << UNDER_MIN_REACTION;  // if the reaction time is under <= 100 ms the reaction of the trial = 0 = UNDER_MIN_REACTION
         // saves the positions of the stars and arrows
-        save <<","<< cue <<","<<comb <<","<< pos << "," << mid <<","<<endl;
+        save <<",,"<< cue <<","<<comb <<","<< pos << "," << mid <<","<<endl;
         if(!arg_run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in WriteCSVFile - CSVDocument" << endl;
             break;

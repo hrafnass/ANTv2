@@ -1,5 +1,12 @@
 #include "saving.h"
 //SAVING
+// public:
+void Saving::SetTimeAndDate(){
+    date = QDate::currentDate();  // get the current date  (system clock)
+    time = QTime::currentTime();  // get the current time     -"-
+}
+
+
 // protected functions for Saving class
 // opens the csv file
 bool Saving::OpenFile() {
@@ -14,7 +21,7 @@ void Saving::SetQFileDescriptor(QString arg_ciphre, QString filetype){
     // creates the name for the saving dir
     QString directory = CreateFilename(arg_ciphre, filetype, true);
     // creates the file path
-    QString filepath = "measurements/"+directory+"/"+filename;
+    QString filepath = "../../measurements/"+directory+"/"+filename;
 
     // Create save directory
     if(!CreateDirs(directory)){
@@ -37,8 +44,6 @@ void Saving::CloseFile(){
 */
 QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype, bool dir){
     // create the filename
-    QDate date = QDate::currentDate();  // get the current date  (system clock)
-    QTime time = QTime::currentTime();  // get the current time     -"-
     QString name = arg_ciphre;
     // if dir == true -> we want to create a directory else
     if(!dir)
@@ -52,12 +57,13 @@ QString Saving::CreateFilename(QString arg_ciphre, QString arg_filetype, bool di
 // private
 // create all needed dirs
 bool Saving::CreateDirs(QString arg_ciphre){
-    QString path = "measurements/"+arg_ciphre;
+    QString root_path = "../../measurements/";
+    QString path = root_path+arg_ciphre;
     QDir dir;
     // check if the root dir exists
-    if(!dir.exists("measurements")){
+    if(!dir.exists(root_path)){
         // directory doesn't exists -> create it
-        if(!dir.mkdir("measurements")){
+        if(!dir.mkdir(root_path)){
             // couldn't create the measurements dir
             return false;
         }

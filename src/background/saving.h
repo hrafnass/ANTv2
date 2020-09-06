@@ -29,6 +29,11 @@
 // Saves all calculated and measured data of the reaction game in  a csv file
 class Saving
 {
+public:
+    // getter and setter for time and date
+    QTime GetTime() { return time;}
+    QDate GetDate() { return date;}
+    void SetTimeAndDate();
 protected:
     // open and close a file descriptor
     bool OpenFile();     // open a new file
@@ -41,6 +46,9 @@ protected:
     QString CreateFilename(QString arg_ciphre, QString filetype, bool dir);
     // variables
     QFile file;                 // saves the "qt-file descriptor"
+    // Date and time
+    QDate date;
+    QTime time;
 private:
     bool CreateDirs(QString arg_ciphre);    // creates the dir structure
 };

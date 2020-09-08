@@ -58,7 +58,8 @@ private:
     void PaintStars(Trial *arg_trial);	// paint all stars (like clear screen)
     void PaintArrows(Trial *arg_trial);	// paint all arrows 		-"-
     void PaintPlus();                   // paints the plus img
-    void PaintFeedback(string arg_feedback); // paints the correct or false image for the test game
+    void PaintFeedback(string arg_feedback);    // paints the correct or false image for the test game
+    void ShowFeedback(string arg_feedback);     // shows the feedback for a special time (1000ms)
     void SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction);  // saves the components in trial
     // LABEL SETTINGS:
     void PaintListLabelsArrows(QList<QLabel *> arg_list,Trial *arg_trial,int arg_w,int arg_h); // paint a list of arrows

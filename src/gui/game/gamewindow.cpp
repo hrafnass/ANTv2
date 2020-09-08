@@ -179,14 +179,12 @@ void GameWindow::SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direc
         return;
     if(arg_direction == run->GetTrial(&check).GetDirectionMidArrow()){
         run->SetMeasuredValues(timer.elapsed(), true, true);
-        //cout << "\tcorrect"<<endl;
-        PaintFeedback(CORRECT);
+        ShowFeedback(CORRECT);
     }else {
         run->SetMeasuredValues(timer.elapsed(), false, true);
-        //cout << "\twrong"<<endl;
-        PaintFeedback(WRONG);
+        ShowFeedback(WRONG);
     }
-    KeyPressSignal();   // after the saving the
+
 }
 
 
@@ -343,11 +341,12 @@ void GameWindow::PaintPlus(){
 // paint the feedback
 void GameWindow::PaintFeedback(string arg_feedback){
     //cout << "test value"<< test <<endl;
-    if(test){
-        QString feedback = QString::fromStdString(arg_feedback);
-        ui->Centreline->setPixmap(feedback);
-        //cout << "paint feedback"<<endl;
-    }
+    if(!test)
+        return;
+    // paints the feed back and set and show it
+    QString feedback = QString::fromStdString(arg_feedback);
+    ui->Centreline->setPixmap(feedback);
+    ResetWindow(TIME_BETWEEN_ARROWS, false);   // 1000ms
 }
 
 // private Methods
@@ -400,6 +399,10 @@ bool GameWindow::StartCheckup(unsigned int arg_one_run, bool in_size){
     return true;
 }
 
+void GameWindow::ShowFeedback(string arg_feedback){
+    KeyPressSignal();   // after the saving the
+    PaintFeedback(arg_feedback);
+}
 
 // to emit the keyPressed Signal - it returns the start value of emit_key_pressed
 bool GameWindow::KeyPressSignal(){

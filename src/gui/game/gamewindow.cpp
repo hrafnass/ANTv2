@@ -36,6 +36,7 @@ GameWindow::GameWindow(QWidget *parent) :
     number_of_runs = NBR_OF_RUNS_GAME;
     run_game_loop = true;   // game loop is allowed to run
     test = false;           // standard setting for test game is false = no test game
+    emit_key_pressed = false;   // keyEventPressed doesn't emit the keyPressed signal
 
     // connections for the game window - for (2.) for SleepGame and ResetGame
     connect(this,SIGNAL(keyPressed()), this, SLOT(quit_eventloop())); // for the key press
@@ -57,6 +58,7 @@ GameWindow::~GameWindow()
 bool GameWindow::GameLoop(unsigned int arg_one_run){
     // set the variable values before start
     run_game_loop = true;   // game loop is allowed to run
+    emit_key_pressed = false;
     bool in_size = false;   // check if the actuell vector.size > 0
     Trial actuell_trial;    // start trial
 
@@ -74,15 +76,16 @@ bool GameWindow::GameLoop(unsigned int arg_one_run){
     for(unsigned int i=0; i < arg_one_run; ++i){
         // paint stars
         actuell_trial = run->GetTrial(&in_size);
+        cout << "I: " <<i<<" Timer before restart: "<<timer.elapsed()<< " - ";
         PaintStars(&actuell_trial);
         // wait and delete pixmaps
         ResetWindow(TIME_BETWEEN_ARROWS, false);   // 1000ms
-        // restart timer - measurement
-        timer.restart();
+        cout << "I: " <<i<<" Timer after reset: "<<timer.elapsed()<< " - ";
         // paint arrows
         PaintArrows(&actuell_trial);
         // wait and delete pixmaps
         ResetWindow(TIME_FOR_REACTION, true);     // 2000ms
+        cout << "I: " <<i<<" Timer after restart: "<<timer.elapsed()<<endl;
         // if no next trial is reachable the game loop is quit
         if(!run->NextTrial()){
             cout << "[***] Warning: Run->NextTrial return false in GameLoop" << endl;
@@ -127,7 +130,7 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
     bool check = false;
     // if the timer is not active no key press events can take
     if(timer.elapsed() > TIME_FOR_REACTION){    // the measured time is > TIME_FOR_REA2000 ms
-        cout << "[***] No key saved." << " - excercise number: " << (run->GetPosition()+1) << endl;
+        //cout << "[***] No key saved." << " - excercise number: " << (run->GetPosition()+1) << endl;
         return;
     }
     // check if a key (left or right) was pressed before then we don't take a new anwser
@@ -150,7 +153,11 @@ void GameWindow::keyPressEvent(QKeyEvent *event){
         return;
     }
     // emit keypress signal
-    emit keyPressed();
+    /*if(ev.isRunning())
+        cout << "ev is Running - keyPressed ";
+    else
+        cout << "ev is NOT Running - keyPressed ";*/
+
 }
 
 // keyEvent (Release)
@@ -168,6 +175,8 @@ void GameWindow::keyReleaseEvent(QKeyEvent *event){
 void GameWindow::SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direction){
     bool check = false;
     // cout << "SaveMeasuredValues"<<endl;
+    if(!emit_key_pressed)   // we are in a section where no key should pressed -> no value should be saved
+        return;
     if(arg_direction == run->GetTrial(&check).GetDirectionMidArrow()){
         run->SetMeasuredValues(timer.elapsed(), true, true);
         //cout << "\tcorrect"<<endl;
@@ -177,6 +186,7 @@ void GameWindow::SaveMeasuredValues(TrialComponents::DirectionMidArrow arg_direc
         //cout << "\twrong"<<endl;
         PaintFeedback(WRONG);
     }
+    KeyPressSignal();   // after the saving the
 }
 
 
@@ -190,12 +200,16 @@ void GameWindow::ResetWindow(int arg_time, bool arg_arrow){
 void GameWindow::SleepGame(int arg_sleep_time, bool arg_arrow){
     /* The game should wait until the play pressed a key or
      * the the timer reached the maximum time (2000ms) */
+    QEventLoop looping;
     if(arg_arrow){  // (2.)
         quit.start(arg_sleep_time);  // TIME_FOR_REACTION max reaction
-    }else {         // (1.)
-        QTimer::singleShot(arg_sleep_time, &ev, SLOT(quit()));  // window sleeps the full time
+        cout << "arrow " << timer.elapsed() << " ";
+        ev.exec();  // exec the event loop
+        return;
     }
-    ev.exec();  // exec the event loop
+    // (1.)
+    QTimer::singleShot(arg_sleep_time, &looping, SLOT(quit()));  // window sleeps the full time
+    looping.exec();
 }
 
 // Calculations
@@ -281,6 +295,10 @@ void GameWindow::PaintArrows(Trial *arg_trial){
     // set a fixed size for the mid labels
     ui->MidAbove->setFixedSize(w, h);
     ui->MidBelow->setFixedSize(w, h);
+
+    // restart timer - measurement
+    cout << "restart timer: " << timer.restart() << " - ";
+    emit_key_pressed = true;    // so we ensure that the key press signal can only emit after timer was reset and the arrows painted
 }
 
 // images:
@@ -380,4 +398,15 @@ bool GameWindow::StartCheckup(unsigned int arg_one_run, bool in_size){
     }
 
     return true;
+}
+
+
+// to emit the keyPressed Signal - it returns the start value of emit_key_pressed
+bool GameWindow::KeyPressSignal(){
+    if(emit_key_pressed){
+        emit_key_pressed = false;   // only the first pre
+        emit keyPressed();
+        return true;
+    }
+    return false;
 }

@@ -17,21 +17,23 @@ signals:
 public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
-    // Game loop
+
+    // GAME LOOP
     bool GameLoop(unsigned int arg_one_run/*size of one run - in test arg_pass_number == arg_one_run*/);    // loop for the game
-    // setts the whole game
-    void SetGame(Run *arg_run, unsigned int arg_pass_number, unsigned int arg_nbr_of_runs);
-    // game setter
+
+    // GETTER AND SETTER FUNCTIONS
+    Run* GetRun(){ return run;}
+    bool GetRunLoop() { return run_game_loop;}          // is the game quitted by ESC
+    unsigned int GetNbrOfRuns(){ return number_of_runs;}
+
+    void SetGame(Run *arg_run, unsigned int arg_pass_number, unsigned int arg_nbr_of_runs); // setts the whole game
     void SetRun(Run *arg_run) { run = arg_run;}         // setter of the max. nbr of trials in the whole game
     void SetPassNbr(unsigned int arg_pass_number);
     void SetNbrOfRuns(unsigned int arg_nbr_of_runs);    // setter for the number of runs
     void SetTest(bool arg_test){ test = arg_test;}      // setter for test game check
-    // Getter for GameWindow class
-    Run* GetRun(){ return run;}
-    bool GetRunLoop() { return run_game_loop;}          // is the game quitted by ESC
-    unsigned int GetNbrOfRuns(){ return number_of_runs;}
+
 protected:
-    // Event funtions
+    // EVENT FUNCTIONS
     void keyPressEvent(QKeyEvent *);        // press key
     void keyReleaseEvent(QKeyEvent *);      // release keyf
 private slots:
@@ -39,7 +41,10 @@ private slots:
      * could start immediatly (connected in constructor). If you need to whole
      * 2000ms for your reaction the second signal/slot connection in the
      * constructor reacts.*/
-    void quit_eventloop() { ev.quit();}
+    void quit_eventloop() {
+        if(ev.isRunning())
+            cout << " slot is alive ";
+        ev.quit();}
 private:
     // FOR GAMELOOP:
     bool StartCheckup(unsigned int arg_one_run, bool in_size);
@@ -59,7 +64,7 @@ private:
     void PaintListLabelsArrows(QList<QLabel *> arg_list,Trial *arg_trial,int arg_w,int arg_h); // paint a list of arrows
     void PaintStar(QLabel *arg_label, QString arg_img_name, int arg_w, int arg_h); // paint a star
 
-    // TIME FUNCTIONS:
+    // TIME FUNCTIONS
     /*
      * Parameter:   -arg_sleep_time(arg_sleep_time), arg_time(ResetWindow):
      *  The time the arrows shouldn't change
@@ -73,13 +78,17 @@ private:
     void SleepGame(int arg_sleep_time, bool arrow); // set the window to a sleep until a key was pressed or a max. time is over
     void ResetWindow(int arg_time, bool arrow);     // cleans the window after the sleep
 
+    // LABEL FUNCTUINS
     void SetSizeOfAllLabels();
     void IterateLabelList(QList<QLabel *> arg_list, int arg_w, int arg_h);
 
-    // variables
+    // SIGNAL FUNCTIONS
+    bool KeyPressSignal();
+
+    // VARIABLES
     // needed vor the grafic surface
     Ui::GameWindow *ui;
-    QEventLoop ev;                  // event loop - needed for keyRelease/PressEvent
+    QEventLoop ev;              // event loop - needed for keyRelease/PressEvent
 
     // timer
     QElapsedTimer timer;        // needed for time measurement
@@ -91,10 +100,11 @@ private:
 
     // The Run for the Game
     Run *run = nullptr;
-    unsigned int number_of_runs; // saves how many runs are used - if it isn't set or < 1 standard is 2
-    bool run_game_loop; // for ESC - quit the game loop
-    // check if the game is a test game
-    bool test;
+    unsigned int number_of_runs;    // saves how many runs are used - if it isn't set or < 1 standard is 2
+    bool run_game_loop;             // for ESC - quit the game loop
+    // different check variables
+    bool test;                      // check if the game is a test game
+    bool emit_key_pressed;          // checks in which part of the trial the key was pressed - false (cue phase); true (arrow phase)
 };
 
 #endif // GAMEWINDOW_H

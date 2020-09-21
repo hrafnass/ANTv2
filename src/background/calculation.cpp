@@ -100,11 +100,14 @@ bool Calculation::FillVectors(Run *arg_run){
         cout << "[***] Error FillVectors - arg_run == nulptr"<<endl;
         return false;
     }
+
+    arg_run->RTFilter(150,2000);    // everything what is lower then 150ms or higher then 2000 ms is not used for calculations
+
     // iterate over the run
     do {
         t = arg_run->GetTrial(&ok); // get the actuell trial
         // if the reaction is false
-        if(!t.GetReaction() || t.GetReactionTime() < 150 || t.GetReactionTime() > 2000){
+        if(!t.GetReaction()){
             ++error_sum;
         } else {    // if the reaction is right
             // save all right reactions - max. 180 Trials

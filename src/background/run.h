@@ -29,6 +29,7 @@ public:
     // all for a normal game. The Constructor sets run_length to the vector size
     void SetRunLength(int arg_length); // if the input is -1 or bigger then v_trial.size run_length is set to v_trial.size
     unsigned int GetRunLength() { return run_length;}
+    void RTFilter(unsigned int lower_limit, unsigned int upper_limit);      // the limit in which reaction times are analyzed as test values
 private:
     // fill the vector with trials
     bool CreateAndAddTrial(TrialComponents::ArrowCombinations arg_combi, TrialComponents::ArrowPositions arg_pos, TrialComponents::DirectionMidArrow arg_dir);

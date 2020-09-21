@@ -179,7 +179,7 @@ bool CSVDocument::WriteCSVFile(Run *arg_run){
         // save i-th number line of the body
         save << (i+1) <<",";
         // if the reaction time nder MINIMAL_REACTION_TIME => GetReactionTime isn't saved = missing value
-        if(actuell_trial.GetReactionTime() > MINIMAL_REACTION_TIME)
+        if(actuell_trial.GetReactionTime() >= MINIMAL_REACTION_TIME)
             save <<actuell_trial.GetReactionTime() <<","<<actuell_trial.GetReaction();
         else
             save << "," << UNDER_MIN_REACTION;  // if the reaction time is under <= 100 ms the reaction of the trial = 0 = UNDER_MIN_REACTION

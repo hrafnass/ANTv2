@@ -55,7 +55,9 @@ float Calculation::Median(std::vector<int>* arg_v){
     if((arg_v->size() % 2) != 0){    // vector is uneven
         return static_cast<float>(arg_v->at(pos));
     }
-    return static_cast<float>((arg_v->at(pos-1) + arg_v->at(pos)) / 2); // the median with even vector size
+    float ret = static_cast<float>(arg_v->at(pos-1) + arg_v->at(pos));  // the 2 mid values of the set
+    ret = ret / 2;      // calc the median
+    return ret;
 }
 // reset all vectors
 void Calculation::ResetVectors(){

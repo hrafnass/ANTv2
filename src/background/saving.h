@@ -1,7 +1,7 @@
 #ifndef SAVING_H
 #define SAVING_H
 
-#define MINIMAL_REACTION_TIME 100    // the minimal reaction time is 100 ms
+#define MINIMAL_REACTION_TIME 150    // the minimal reaction time is 100 ms
 #define UNDER_MIN_REACTION 0         // our reaction time is a missing value => Reation of trial = 0
 
 #include <QtCore/QDate>

@@ -81,6 +81,14 @@ void Run::SetRunLength(int arg_length){
     run_length = arg_length;
 }
 
+void Run::RTFilter(unsigned int lower_limit, unsigned int upper_limit){
+    // iterates over all measured values and check how high the reaction times are
+    for(it_v_trial = v_trial.begin();it_v_trial != v_trial.end();++it_v_trial){
+        if(it_v_trial->GetReactionTime() < lower_limit || it_v_trial->GetReactionTime() > upper_limit)
+            it_v_trial->SetReactions(false,-1, true);     // The Trial has the values Pressed=yes(true);Reactiontime = -1 and Right Reaction = No(false)
+    }
+    SetIteratorToStart(); // == it_v_trial = v_trial.begin();   // iterator to start
+}
 
 // private methods
 

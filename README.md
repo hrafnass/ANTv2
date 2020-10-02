@@ -11,9 +11,9 @@
 1. Directories:
 1.1 [html](html) includes the html patterns for the calculated values.
 1.2 [qt](qt) includes all used submodules. The used qtmodules and tools are under the [GLPv3](COPYING) and the [LGPLv3](COPYING.LESSER):
-1.2.1 [qtbase]() for creating the essential libraries (qtcore, qtgui, ...) and all building tools (qmake, ...). Qmake is used to build all other modules and an easy way to create [ANTv2](#build-instruction).
-1.2.2 [qtsvg](qt/5.12.2/submodules/qtsvg-everywhere-src-5.12.2/) used for the svg-ressources.
-1.3 [Readme](Readme) has a full documentation about all possible functions and settings of the program.
+1.2.1 [qtbase]() for creating the essential libraries (qtcore, qtgui, ...) and all building tools (qmake, ...). Qmake is used to build all other modules and an easy way to create [ANTv2](#build-instruction). (In Work!)
+1.2.2 [qtsvg](qt/5.12.2/submodules/qtsvg-everywhere-src-5.12.2/) used for the svg-ressources. (In Work!)
+1.3 [Readme](Readme) has a full documentation about all possible functions and settings of the program. (In Work!)
 1.4 [src](src) ANTv2 source code under the [GPLv3](LICENSE).
 
 ## Used Technologies

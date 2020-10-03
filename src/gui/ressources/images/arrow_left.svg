@@ -14,7 +14,7 @@
    preserveAspectRatio="xMidYMid meet"
    id="svg4574"
    sodipodi:docname="arrow_left.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
   <defs
      id="defs4578" />
   <sodipodi:namedview
@@ -27,14 +27,14 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
+     inkscape:window-height="1015"
      id="namedview4576"
      showgrid="false"
      inkscape:zoom="0.62433862"
      inkscape:cx="1024.3307"
      inkscape:cy="487.15615"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4574"
      units="cm" />
@@ -48,6 +48,8 @@ Created by potrace 1.15, written by Peter Selinger 2001-2017
     <dc:type
        rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
     <dc:title></dc:title>
+    <cc:license
+       rdf:resource="https://www.gnu.org/licenses/gpl-3.0" />
   </cc:Work>
 </rdf:RDF>
 </metadata>

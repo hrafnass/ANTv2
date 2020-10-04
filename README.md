@@ -39,5 +39,12 @@ Who wants the complete Qt source code can click [here]() or download it from the
     * In Work
     * For everybody, who wants a prebuild windows version, which only needed to download, click [here](https://github.com/hrafnass/Game).
 
-## License
-* ANTv2 is licensed under [GPLv3](https://github.com/hrafnass/ANTv2/blob/master/LICENSE)
+## Licenses
+* GPLv3:
+    * [qmake](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/qmake/) (tool for building ANTv2 and the needed essentials and features)
+    * ANTv2
+* LGPLv3:
+    * [QtSvg](qt/5.12.2/submodules/qtsvg-everywhere-src-5.12.2/)
+    * [QtCore](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/)
+    * [QtGui](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/)
+    * [QtWidgets](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/)

@@ -26,7 +26,8 @@ Who wants the complete Qt source code can click [here]() or download it from the
     * In Work
 
 * Linux:
-    * In Work
+    * [Installation instruction](qt/INSTALL_LINUX.md)
+    * If you want the [Qt website](https://doc.qt.io/qt-5/linux-building.html)
 
 * MacOS
     * In Work

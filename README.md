@@ -34,6 +34,7 @@ Who wants the complete Qt source code can click [here]() or download it from the
 
 ### ANTv2
 * Building and Installing:
+    * change in the ANTv2 main directory.
     * Windows:
         * run install.cmd path_where_you_want_to_install_antv2 
     * Linux:

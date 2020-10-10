@@ -33,12 +33,16 @@ Who wants the complete Qt source code can click [here]() or download it from the
     * In Work
 
 ### ANTv2
-* Building
-    * In Work
+* Building and Installing:
+    * Windows:
+        * run install.cmd path_where_you_want_to_install_antv2 
+    * Linux:
+        * run install.sh path_where_you_want_to_install_antv2
 
-* Installation
-    * In Work
-    * For everybody, who wants a prebuild windows version, which only needed to download, click [here](https://github.com/hrafnass/Game).
+    path_where_you_want_to_install_antv2:   If you add no path the actuell directory is used.
+
+    For everybody, who wants a prebuild windows version, download [here](https://github.com/hrafnass/Game).
+    The install script needs a preinstall qt version and the shell must could access the qt and compiler tools (qmake, make, ...)
 
 ## Licenses
 * GPLv3:

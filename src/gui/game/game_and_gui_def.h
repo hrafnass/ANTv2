@@ -1,4 +1,7 @@
 /* ANTv2
+ * Copyright (C) 2020 Siegfried Gauggel
+ * Copyright (C) 2020 Marcel Gräfenstein
+ * 
  * This file is part of ANTv2.
  * 
  * ANTv2 is free software: you can redistribute it and/or modify

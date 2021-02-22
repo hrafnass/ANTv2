@@ -42,7 +42,7 @@ private:
     vector<Trial> v_trial;              // saves all trials
     vector<Trial>::iterator it_v_trial; // to iterate over all trials in vector
     // shuffeling
-    random_device rd;  // the generator values aren't reproducable
+    random_device rd;  // the generator values aren't reproducable more or less pseudorandom
     mt19937 generator; // random_generator for shuffelRun
     // saves the run_length
     unsigned int run_length;

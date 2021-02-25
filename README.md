@@ -23,11 +23,12 @@
 ### Qt-submodules/libraries:
 Who wants the complete Qt source code can click [here]() or download it from the Qt archieves or github repositories.
 * Windows:
-    * In Work
+    * [Installation instruction](qt/INSTALL_WIN.md)
+    * If you want the [Qt website for Windows](https://doc.qt.io/qt-5/windows-building.html)
 
 * Linux:
     * [Installation instruction](qt/INSTALL_LINUX.md)
-    * If you want the [Qt website](https://doc.qt.io/qt-5/linux-building.html)
+    * If you want the [Qt website for linux](https://doc.qt.io/qt-5/linux-building.html)
 
 * MacOS
     * In Work

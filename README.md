@@ -25,6 +25,8 @@ Who wants the complete Qt source code can click [here]() or download it from the
 * Windows:
     * [Installation instruction](Qt/INSTALL_WIN.md)
     * If you want the [Qt website for Windows](https://doc.qt.io/qt-5/windows-building.html)
+    * [Build ANTv2 from source code](Build.md)
+    * [Run](run.bat) the execute, when build from source
 
 * Linux:
     * [Installation instruction](Qt/INSTALL_LINUX.md)

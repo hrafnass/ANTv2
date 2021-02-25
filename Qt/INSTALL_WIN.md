@@ -2,10 +2,10 @@
 ***
 ## 1.1 Requirements:
 * Compiler:
-** GCC 7.x or later
+    * GCC 7.x or later
 * Qt-submodules:
-** qtbase
-** qtsvg
+    * qtbase
+    * qtsvg
 
 ## 1.2. Building Qt in the ANTv2-Repository:
     1. Build qtbase (It has the essential modules (qtgui, ...) and tools (qmake, ...)):

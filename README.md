@@ -9,9 +9,9 @@
 ## General Informations about ANTv2
 * Directories:
     1. [html](html) includes the html patterns for the calculated values.
-    2. [qt](qt) includes all used submodules. The used qtmodules and tools are under the [GLPv3](COPYING) and the [LGPLv3](COPYING.LESSER):
-        1. [qtbase]() for creating the essential libraries (qtcore, qtgui, ...) and all building tools (qmake, ...). Qmake is used to build all other modules and an easy way to create [ANTv2](#build-instruction). (In Work!)
-        2. [qtsvg](qt/5.12.2/submodules/qtsvg-everywhere-src-5.12.2/) used for the svg-ressources. (In Work!)
+    2. [Qt](Qt) includes all used submodules. The used qtmodules and tools are under the [GLPv3](COPYING) and the [LGPLv3](COPYING.LESSER):
+        1. [qtbase](Qt/5.12.2/submodules/qtbase/) for creating the essential libraries (qtcore, qtgui, ...) and all building tools (qmake, ...). Qmake is used to build all other modules and an easy way to create [ANTv2](#build-instruction). (In Work!)
+        2. [qtsvg](Qt/5.12.2/submodules/qtsvg/) used for the svg-ressources. (In Work!)
     3. [Readme](Readme) has a full documentation about all possible functions and settings of the program. (In Work!)
     4. [src](src) ANTv2 source code under the [GPLv3](LICENSE).
 
@@ -23,11 +23,11 @@
 ### Qt-submodules/libraries:
 Who wants the complete Qt source code can click [here]() or download it from the Qt archieves or github repositories.
 * Windows:
-    * [Installation instruction](qt/INSTALL_WIN.md)
+    * [Installation instruction](Qt/INSTALL_WIN.md)
     * If you want the [Qt website for Windows](https://doc.qt.io/qt-5/windows-building.html)
 
 * Linux:
-    * [Installation instruction](qt/INSTALL_LINUX.md)
+    * [Installation instruction](Qt/INSTALL_LINUX.md)
     * If you want the [Qt website for linux](https://doc.qt.io/qt-5/linux-building.html)
 
 * MacOS
@@ -48,10 +48,10 @@ Who wants the complete Qt source code can click [here]() or download it from the
 
 ## Licenses
 * GPLv3:
-    * [qmake](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/qmake/) (tool for building ANTv2 and the needed essentials and features)
+    * [qmake](Qt/5.12.2/submodules/qtbase/qmake/) (tool for building ANTv2 and the needed essentials and features)
     * ANTv2
 * LGPLv3:
-    * [QtSvg](qt/5.12.2/submodules/qtsvg-everywhere-src-5.12.2/)
-    * [QtCore](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/)
-    * [QtGui](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/)
-    * [QtWidgets](qt/5.12.2/submodules/qtbase-everywhere-src-5.12.2/)
+    * [QtSvg](Qt/5.12.2/submodules/qtsvg/)
+    * [QtCore](Qt/5.12.2/submodules/qtbase/)
+    * [QtGui](Qt/5.12.2/submodules/qtbase/)
+    * [QtWidgets](Qt/5.12.2/submodules/qtbase/)

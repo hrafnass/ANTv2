@@ -15,7 +15,7 @@
         > SET PATH=%_ROOT%\submodules\qtbase\bin;C:\qt\mingw64\bin; # set the right path for the qt - folder 
         > cd C:\Qt\5.12.2\submodules\qtbase                         # go into the qtbase directory
         > configure.bat -shared -debug-and-release -platform win32-g++ -qt-zlib -qt-pcre -qt-libpng -qt-libjpeg -qt-freetype -opengl desktop -opensource -confirm-license -make libs -nomake tools -nomake examples -nomake tests   # all settings which are needed for ANTv2
-        > mingw32-make -j 4                                         # mingw32-make build the qt libs and tools. -j 4 sets the number of jobs. You need to know the performance of your computer.
+        > mingw32-make -j 4                                         # mingw32-make build the qt libs and tools. -j 4 sets the number of jobs.
         > mingw32-make -j 4 install                                 # installs the qtbase files
 ```
 
@@ -30,3 +30,9 @@
 ```
 ## 1.3 Other Qt-Versions:
 For other suitable Qt source code versions, you only have to change VERSION and the source code path to your code.
+
+## 2. Installation note:
+* Windows File Paths over 260 Characters:
+    * The Standard File Path length in Windows account for 260 Characters. You have to make sure that you don't come over this length. C:\Qt works for a normal Qt installation on Windows 10. If you use another, longer path the installation could fail.
+* Antivirus software:
+    * In the most times AV software should not make problems during the qt build. 

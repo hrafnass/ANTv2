@@ -3,25 +3,15 @@
 ## Table of Contents
 1. [General Informations about ANTv2](#general-informations)
 2. [Used Technologies](#used-technologies)
-3. [Installation & System Requirements](#installation-&-system-requirements)
-4. [Build Instruction](#build-instruction)
-5. [License](#license)
+3. [Building & Installation](#building-&-installation)
+4. [License](#license)
 
 ## General Informations about ANTv2
-* In Work
+* Directories:
+    1. [html](html) includes the html patterns for the calculated values.
+    2. [libs](libs) includes the source code of all needed Qt-modules. The used qtmodules and tools are under the [GLPv3](COPYING) and the [LGPLv3](COPYING.LESSER)
+    3. [src](src) ANTv2 source code under the [GPLv3](LICENSE).
 
-## Used Technologies
-* In Work
-*
+## Building & Installation
+* Instructions to [build ANTv2 from source code](BUILDING.md)
 
-## Installation & System Requirement
-* In Work
-
-## Build Instruction
-* In Work
-1. Build Qt5:
-1.1 A [Qt-Build Instruction](https://github.com/hrafnass/qt5.12.2) and the used Qt5.12.2 source code exists there.
-1.2 Rebuild ANTv2 
-
-## License
-* ANTv2 is licensed under [GPLv3](https://github.com/hrafnass/ANTv2/blob/master/LICENSE)

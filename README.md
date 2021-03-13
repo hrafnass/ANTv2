@@ -3,7 +3,7 @@
 ## Table of Contents
 1. [General Informations about ANTv2](#general-informations)
 2. [Building & Installation](#building-&-installation)
-3  [Download Binaries for Windows](#download-binaries)
+3. [Download Binaries for Windows](#download-binaries)
 4. [License](#license)
 
 ## General Informations about ANTv2
@@ -15,9 +15,7 @@ ANT version 2 (ANTv2) is a computer based test to gather differentiated attentio
     3. [src](src) ANTv2 source code.
 
 
-## Used Technologies
-* Qt5: Version 5.12.2
-*
+
 ## Building & Installation
 * Instructions to [build ANTv2 from source code](BUILDING.md)
 

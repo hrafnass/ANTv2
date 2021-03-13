@@ -16,15 +16,15 @@ To build ANTv2 and Qt from source code you need some packages.
 Use the following commands for installation:
 
 ### Debian / Ubuntu
-    ```
+```
         sudo apt-get install build-essential gcc g++ libqt5svg5-dev qtbase5-dev qt5-qmake
-    ```
+```
 
 
 ### Fedora /CentOS
-    ```
+```
         sudo yum install gcc g++ qt5-base-devel qt5-qtsvg-devel
-    ```
+```
 
 ### Windows
 * Installation instruction for the needed qt modules from source code in [libs](libs)

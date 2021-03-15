@@ -20,17 +20,37 @@ Use the following commands for installation:
         sudo apt-get install build-essential gcc g++ libqt5svg5-dev qtbase5-dev qt5-qmake
 ```
 
-
 ### Fedora /CentOS
 ```
         sudo yum install gcc g++ qt5-base-devel qt5-qtsvg-devel
 ```
-
+## MacOS and OSX 11 and above
+    * Install xcode commandline tools
+        * Install the full 
+        * Install only the commandline tools
+            ```
+                $ xcode-select --install
+            ```
+    * Install [Homebrew](https://brew.sh/)
+        * e.g. install with:
+            ```
+                $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            ```
+    * Install Qt:
+        ```
+            $ brew install qt
+        ```
+    * Add the following line in your .bash_profile file to add Qt to your environment Variable (PATH)
+        ```
+            export PATH=/usr/local/opt/qt/bin:$PATH
+        ```
+        
 ### Windows
 * Installation instruction for the needed qt modules from source code in [libs](libs)
     * Build qtbase
     ```
-        $ REM It copies the Qt folder into C:\Qt - C:\Qt is the installation folder for Qt. If you want another directory change C:\Qt. Than you must change C:\Qt in all other settings.
+        $ REM It copies the Qt folder into C:\Qt - C:\Qt is the installation folder for Qt. 
+        $ REM If you want another directory change C:\Qt. Than you must change C:\Qt in all other settings.
         $ COPY Qt C:\Qt                                                    
         $ SET _ROOT=C:\Qt\5.12.2\
         $ REM Set the right path for the qt - folder 
@@ -60,10 +80,10 @@ Use the following commands for installation:
 # Building ANTv2
 
 ### Linux
-
+    In Work
 
 ### macOS
-
+    In Work
 
 ### Windows
 * This instructions only work with the prior qt installation instruction. If you installed Qt in an other location you have to change the filepaths.
@@ -77,4 +97,3 @@ Use the following commands for installation:
         $ mingw32-make
     ```
     * If you want to run ANTv2 add the qt library paths at the environment variables or use [run_ant.bat](run_ant.bat)
-

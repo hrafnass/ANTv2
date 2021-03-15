@@ -26,5 +26,5 @@ You can download the compiled binaries for Windows (32bit/64bit) and all needed 
 
 
 ## License
-Licensed under [GPLv3](LICENSE)
+ANTv2 is licensed under [GPLv3](LICENSE)
 

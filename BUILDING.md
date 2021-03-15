@@ -24,27 +24,26 @@ Use the following commands for installation:
 ```
         sudo yum install gcc g++ qt5-base-devel qt5-qtsvg-devel
 ```
+
 ## MacOS and OSX 11 and above
-    * Install xcode commandline tools
-        * Install the full 
-        * Install only the commandline tools
-            ```
-                $ xcode-select --install
-            ```
-    * Install [Homebrew](https://brew.sh/)
-        * e.g. install with:
-            ```
-                $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            ```
-    * Install Qt:
-        ```
-            $ brew install qt
-        ```
-    * Add the following line in your .bash_profile file to add Qt to your environment Variable (PATH)
-        ```
-            export PATH=/usr/local/opt/qt/bin:$PATHll
-        ```
-        
+* Install xcode commandline tools
+```
+    $ xcode-select --install
+```
+* Install [Homebrew](https://brew.sh/)
+    * e.g. install with:
+    ```
+        $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+* Install Qt:
+```
+    $ brew install qt
+```
+* Add the following line in your .bash_profile file to add Qt to your environment Variable (PATH)
+```
+    export PATH=/usr/local/opt/qt/bin:$PATHll
+```
+
 ### Windows
 * Installation instruction for the needed qt modules from source code in [libs](libs)
     * Build qtbase
@@ -83,16 +82,16 @@ Use the following commands for installation:
 * After you have installed all necessary libraries. You can build ANTv2 with qmake and make.
 
 ### Linux
-    ```
-        $ qmake -o Makefile AntWinV2.pro "CONFIG+=release"
-        $ make
-    ```
+```
+    $ qmake -o Makefile AntWinV2.pro "CONFIG+=release"
+    $ make
+```
 
 ### macOS
-    ```
-        $ qmake -o Makefile AntWinV2.pro "CONFIG+=release"
-        $ make
-    ```
+```
+    $ qmake -o Makefile AntWinV2.pro "CONFIG+=release"
+    $ make
+```
 
 ### Windows
 * This instructions only work with the prior qt installation instruction. If you installed Qt in an other location you have to change the filepaths.
@@ -110,14 +109,19 @@ Use the following commands for installation:
 ## Install ANTv2
 * The installation is only possible after the installation of the required dependencies and the build of ANTv2.
 * ANTv2 normally installed in the main directory of the repository in the directory antv2. If you want to change this location you must change the installation in the paticular installation script.
+* Run the installation script in the ANTv2 main directory.
 
 ### Linux
-    In Work!
+```
+    $ install.sh
+```
 
 ### macOS
-    In Work!
+```
+    $ install.sh
+```
 
 ### Windows
-    ```
-        $ install.bat
-    ```
+```
+    $ install.bat
+```

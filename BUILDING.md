@@ -42,7 +42,7 @@ Use the following commands for installation:
         ```
     * Add the following line in your .bash_profile file to add Qt to your environment Variable (PATH)
         ```
-            export PATH=/usr/local/opt/qt/bin:$PATH
+            export PATH=/usr/local/opt/qt/bin:$PATHll
         ```
         
 ### Windows

@@ -58,11 +58,13 @@ Use the following commands for installation:
         $ cd C:\Qt\5.12.2\submodules\qtbase
         $ REM All settings which are needed for ANTv2
         $ configure.bat -shared -debug-and-release -platform win32-g++ -qt-zlib -qt-pcre -qt-libpng -qt-libjpeg -qt-freetype -opengl desktop -opensource -confirm-license -make libs -nomake tools -nomake examples -nomake tests   
-        $ REM Run the make from your prefered Compiler e.g. mingw32:
-        $ REM mingw32-make build and install qtbase. -j 4 sets the number of jobs
-        $ mingw32-make -j 4                                         .
-        $ mingw32-make -j 4 install
+        $ REM Run the make from your prefered Compiler e.g. mingw32 - mingw32-make:
+        $ REM mingw32-make build and install qtbase. -j N sets the number of jobs
+        $ make -j N                                         .
+        $ make -j N install
     ```
+        * instead of -j N add a number of CPU cores you want to use for the build
+        * e.g. mingw32-make -j 4 for 4 cores
 
     * Build qtsvg
     ```
@@ -78,12 +80,19 @@ Use the following commands for installation:
     ```
 
 # Building ANTv2
+* After you have installed all necessary libraries. You can build ANTv2 with qmake and make.
 
 ### Linux
-    In Work
+    ```
+        $ qmake -o Makefile AntWinV2.pro "CONFIG+=release"
+        $ make
+    ```
 
 ### macOS
-    In Work
+    ```
+        $ qmake -o Makefile AntWinV2.pro "CONFIG+=release"
+        $ make
+    ```
 
 ### Windows
 * This instructions only work with the prior qt installation instruction. If you installed Qt in an other location you have to change the filepaths.
@@ -93,7 +102,7 @@ Use the following commands for installation:
         $ SET PATH=%PATH%C:\Qt\Qt\5.12.2\submodules\qtbase\mkspecs;C:\Qt\mingw64\bin;C:\Qt\Qt-5.12.2\bin
         $ REM CONFIG+=release creates a release-version of ANTv2, without you create a debug version
         $ qmake.exe -o Makefile AntWinV2.pro "CONFIG+=release"
-        $ REM Run the make from your prefered Compiler e.g. mingw32:
-        $ mingw32-make
+        $ REM Run the make from your prefered Compiler e.g. mingw32: mingw32-make
+        $ make.exe
     ```
     * If you want to run ANTv2 add the qt library paths at the environment variables or use [run_ant.bat](run_ant.bat)

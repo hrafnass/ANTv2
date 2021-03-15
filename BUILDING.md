@@ -60,8 +60,8 @@ Use the following commands for installation:
         $ configure.bat -shared -debug-and-release -platform win32-g++ -qt-zlib -qt-pcre -qt-libpng -qt-libjpeg -qt-freetype -opengl desktop -opensource -confirm-license -make libs -nomake tools -nomake examples -nomake tests   
         $ REM Run the make from your prefered Compiler e.g. mingw32 - mingw32-make:
         $ REM mingw32-make build and install qtbase. -j N sets the number of jobs
-        $ make -j N                                         .
-        $ make -j N install
+        $ make.exe -j N                                         .
+        $ make.exe -j N install
     ```
         * instead of -j N add a number of CPU cores you want to use for the build
         * e.g. mingw32-make -j 4 for 4 cores
@@ -73,10 +73,10 @@ Use the following commands for installation:
         $ REM creates the Makefile for qtsvg
         $ qmake.exe -o Makefile qtsvg.pro                          
         $ REM If: ERROR: Missing CMake tests. Either create tests in tests/auto/cmake, or disable cmake config file creation with CONFIG-=create_cmake and add CMAKE_MODULE_TESTS = '-' at top of qmake.conf.
-        $ REM Run the make from your prefered Compiler e.g. mingw32:
+        $ REM Run the make from your prefered Compiler e.g. mingw32: mingw32-make
         $ REM Build and install qtsvg
-        $ mingw32-make                                             
-        $ mingw32-make install                                     
+        $ make.exe                                             
+        $ make.exe install                                     
     ```
 
 # Building ANTv2
@@ -106,3 +106,20 @@ Use the following commands for installation:
         $ make.exe
     ```
     * If you want to run ANTv2 add the qt library paths at the environment variables or use [run_ant.bat](run_ant.bat)
+    
+## Install ANTv2
+* The installation is only possible after the installation of the required dependencies and the build of ANTv2.
+* ANTv2 normally installed in the main directory of the repository in the directory antv2. If you want to change this location you must change the installation in the paticular installation script.
+
+### Linux
+    In Work!
+
+### macOS
+    In Work!
+
+### Windows
+    ```
+        $ install.bat
+    ```
+
+    

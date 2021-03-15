@@ -70,7 +70,7 @@ Use the following commands for installation:
     ```
         $ REM qtbase must installed bevor
         $ cd C:\qt\5.12.2\submodules\qtsvg
-        $ REM creates the Makefile for qtsvg
+        $ REM creates the Makefile for qtsvg 
         $ qmake.exe -o Makefile qtsvg.pro                          
         $ REM If: ERROR: Missing CMake tests. Either create tests in tests/auto/cmake, or disable cmake config file creation with CONFIG-=create_cmake and add CMAKE_MODULE_TESTS = '-' at top of qmake.conf.
         $ REM Run the make from your prefered Compiler e.g. mingw32: mingw32-make
@@ -121,5 +121,3 @@ Use the following commands for installation:
     ```
         $ install.bat
     ```
-
-    
